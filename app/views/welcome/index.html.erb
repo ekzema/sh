@@ -1,0 +1,15 @@
+<ul style="margin:0;">
+<% @category.each do |category| %>
+    <li><b><%= category.name %></b></li>
+      <ul style="margin:0;">
+        <% category.twocategories.each do |twocategory| %>
+        <li><%= twocategory.name %></li>
+        <ul style="margin:0;">
+          <% twocategory.threecategories.each do |threecategory| %>
+              <li><%= threecategory.name %></li>
+          <% end %>
+        </ul>
+        <% end %>
+      </ul>
+<% end %>
+</ul>

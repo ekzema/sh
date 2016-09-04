@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %><br>
+  <% @twocategories.each do |twocategories| %>
+   <%= twocategories.name %>
+      <%= link_to 'Перейти', twocategories %><%= link_to 'Изменить', edit_twocategory_path(twocategories) %> | <%= link_to 'Удалить', twocategories, method: :delete, data: { confirm: 'Вы уверины что хотите удалить ето категорию?' } %><br>
+  <% end %>
+</p>
+
+<%= form_for ([@category, Twocategory.new]) do |f| %>
+
+<div class="field">
+  <%= f.label :Название %><br />
+  <%= f.text_field :name %>
+</div>
+    <div class="actions">
+      <%= f.submit 'Сохранить' %>
+    </div>
+<% end %>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
