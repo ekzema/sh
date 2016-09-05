@@ -11,12 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+    <div class="field">
+      <%= f.label 'Название' %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label 'Описание' %>
+      <%= f.text_area :description %>
+    </div>
+    <h3>SEO</h3>
+    <div class="field">
+      <%= f.label 'Meta заголовок' %>
+      <%= f.text_field :meta_title %>
+    </div>
+    <div class="field">
+      <%= f.label 'Meta описание' %>
+      <%= f.text_area :meta_desc %>
+    </div>
+    <div class="field">
+      <%= f.label 'Meta ключи' %>
+      <%= f.text_area :meta_key %>
+    </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Сохранить' %>
   </div>
 <% end %>

@@ -46,6 +46,6 @@ class ThreecategoriesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def threecategory_params
-    params.require(:threecategory).permit(:name, :category_id)
+    params.require(:threecategory).permit(:name, :category_id, :description, :meta_desc, :meta_key, :meta_title)
   end
 end

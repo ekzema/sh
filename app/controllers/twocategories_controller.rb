@@ -60,6 +60,6 @@ class TwocategoriesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def twocategory_params
-    params.require(:twocategory).permit(:name, :category_id)
+    params.require(:twocategory).permit(:name, :category_id, :description, :meta_desc, :meta_key, :meta_title)
   end
 end
