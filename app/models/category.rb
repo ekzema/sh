@@ -5,10 +5,13 @@ class Category < ApplicationRecord
 
   has_attached_file :main_image, :default_url => "noimage.png"
   validates_attachment_content_type :main_image, content_type: /\Aimage\/.*\z/
+  validates_attachment_file_name :main_image, matches: [/png\z/, /jpe?g\z/, /gif\z/]
 
   def rename_main_image
-    extension = File.extname(main_image_file_name)
-    self.main_image.instance_write :file_name, "#{transtlit_name self.name.mb_chars.downcase.to_s}#{extension}"
+    if self.main_image?
+      extension = File.extname(main_image_file_name)
+      self.main_image.instance_write :file_name, "#{transtlit_name self.name.mb_chars.downcase.to_s}#{extension}"
+    end
   end
 
 

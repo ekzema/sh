@@ -59,6 +59,13 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def delete_attachment
+    @category= Category.find(params[:id])
+    @category.main_image = nil
+    @category.save
+    redirect_to :back
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category

@@ -1,4 +1,4 @@
-<%= form_for(category) do |f| %>
+<%= form_for(category, html: { multipart: true }) do |f| %>
   <% if category.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -33,7 +33,11 @@
       <%= f.text_area :meta_key %>
     </div>
 
-  <div class="actions">
+    <%= image_tag @category.main_image.url, title: "#{@category.name}", class: "EditImage" %><%= f.file_field :main_image %><% unless @category.main_image_file_name.nil? %>
+            <%= link_to("Удалить", {action: :delete_attachment, id: @category.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %>
+        <% end %><br><br>
+
+    <div class="actions">
     <%= f.submit 'Сохранить' %>
   </div>
 <% end %>
