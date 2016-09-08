@@ -10,27 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160904235415) do
+ActiveRecord::Schema.define(version: 20160906202402) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.text     "description", limit: 65535
+    t.text     "description",             limit: 65535
     t.string   "meta_desc"
     t.string   "meta_key"
     t.string   "meta_title"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "main_image_file_name"
+    t.string   "main_image_content_type"
+    t.integer  "main_image_file_size"
+    t.datetime "main_image_updated_at"
   end
 
   create_table "threecategories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "twocategory_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
     t.text     "description",    limit: 65535
     t.string   "meta_desc"
     t.string   "meta_key"
     t.string   "meta_title"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.index ["twocategory_id"], name: "index_threecategories_on_twocategory_id", using: :btree
   end
 

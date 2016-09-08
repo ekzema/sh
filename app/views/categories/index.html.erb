@@ -14,6 +14,7 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
+        <%= image_tag category.main_image.url %>
         <td><%= link_to 'Перейти', category %></td>
         <td><%= link_to 'Изменить', edit_category_path(category) %></td>
         <td><%= link_to 'Удалить', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -24,8 +25,7 @@
 
 <br>
 
-
-<%= form_for([@category, Category.new]) do |f| %>
+<%= form_for([@category, Category.new], html: { multipart: true }) do |f| %>
     <div class="field">
       <%= f.label 'Название' %>
       <%= f.text_field :name %>
@@ -46,6 +46,11 @@
     <div class="field">
       <%= f.label 'Meta ключи' %>
       <%= f.text_area :meta_key %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'Загрузить картинку' %>
+      <%= f.file_field :main_image %>
     </div>
 
     <div class="actions">
