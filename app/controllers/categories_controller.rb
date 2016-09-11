@@ -5,6 +5,9 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
+    @cat = Category.new
+    @cat.category_slide_images.build
+
   end
 
   # GET /categories/1
@@ -28,9 +31,10 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
       if @category.save
-        redirect_to :back
+        redirect_to categories_path, notice: "УСПЕХ!"
       else
-        render text: 'Error'
+        redirect_to categories_path, notice: "ПРОИЗОШЛА ОШИБКА!"
+
       end
 
   end
@@ -74,6 +78,8 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:name, :description, :meta_desc, :meta_key, :meta_title, :main_image)
+      params.require(:category).permit(:name, :description, :meta_desc, :meta_key, :meta_title, :main_image,
+      category_slide_images_attributes: [:id, :_destroy, :image]
+      )
     end
 end

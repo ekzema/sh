@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'category_slide_images/create'
+
   root 'welcome#index'
 
   get 'twocategories/index'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906202402) do
+ActiveRecord::Schema.define(version: 20160908230751) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20160906202402) do
     t.string   "main_image_content_type"
     t.integer  "main_image_file_size"
     t.datetime "main_image_updated_at"
+  end
+
+  create_table "category_slide_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "category_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["category_id"], name: "index_category_slide_images_on_category_id", using: :btree
   end
 
   create_table "threecategories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -50,6 +61,7 @@ ActiveRecord::Schema.define(version: 20160906202402) do
     t.index ["category_id"], name: "index_twocategories_on_category_id", using: :btree
   end
 
+  add_foreign_key "category_slide_images", "categories"
   add_foreign_key "threecategories", "twocategories"
   add_foreign_key "twocategories", "categories"
 end

@@ -25,7 +25,7 @@
 
 <br>
 
-<%= form_for([@category, Category.new], html: { multipart: true }) do |f| %>
+<%= nested_form_for(@cat, :html => {multipart: true}) do |f| %>
     <div class="field">
       <%= f.label 'Название' %>
       <%= f.text_field :name %>
@@ -52,6 +52,19 @@
       <%= f.label 'Загрузить картинку' %>
       <%= f.file_field :main_image %>
     </div>
+<p>-----------------------------</p>
+
+
+
+<%= f.fields_for :category_slide_images do |imgspec| %>
+    <%= imgspec.file_field :image %>
+    <%= imgspec.link_to_remove "Remove this task" %>
+<% end %>
+<p><%= f.link_to_add "Add a task", :category_slide_images %></p>
+
+
+
+
 
     <div class="actions">
       <%= f.submit 'Создать категорию' %>

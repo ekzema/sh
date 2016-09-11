@@ -1,0 +1,2 @@
+module CategorySlideImagesHelper
+end
