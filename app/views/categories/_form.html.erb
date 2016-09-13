@@ -1,43 +1,61 @@
-<%= form_for(category, html: { multipart: true }) do |f| %>
-  <% if category.errors.any? %>
+<%= nested_form_for(@category, html: { multipart: true }) do |f| %>
+<% if category.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
 
       <ul>
-      <% category.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% category.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
-  <% end %>
+<% end %>
 
-    <div class="field">
-      <%= f.label 'Название' %>
-      <%= f.text_field :name %>
-    </div>
-    <div class="field">
-      <%= f.label 'Описание' %>
-      <%= f.text_area :description %>
-    </div>
-    <h3>SEO</h3>
-    <div class="field">
-      <%= f.label 'Meta заголовок' %>
-      <%= f.text_field :meta_title %>
-    </div>
-    <div class="field">
-      <%= f.label 'Meta описание' %>
-      <%= f.text_area :meta_desc %>
-    </div>
-    <div class="field">
-      <%= f.label 'Meta ключи' %>
-      <%= f.text_area :meta_key %>
-    </div>
+<h3>Осноная картинка</h3>
+<ul class="sliderImg">
+    <li><%= image_tag @category.main_image.url, title: "#{@category.name}", class: "EditImage" %></li>
+     <li><%= f.file_field :main_image %><% unless @category.main_image_file_name.nil? %></li>
+    <li><%= link_to("Удалить", {action: :delete_attachment, id: @category.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %></li>
+<% end %>
+</ul>
+<div class="field">
+  <%= f.label 'Название' %>
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label 'Описание' %>
+  <%= f.text_area :description %>
+</div>
+<h3>SEO</h3>
+<div class="field">
+  <%= f.label 'Meta заголовок' %>
+  <%= f.text_field :meta_title %>
+</div>
+<div class="field">
+  <%= f.label 'Meta описание' %>
+  <%= f.text_area :meta_desc %>
+</div>
+<div class="field">
+  <%= f.label 'Meta ключи' %>
+  <%= f.text_area :meta_key %>
+</div>
 
-    <%= image_tag @category.main_image.url, title: "#{@category.name}", class: "EditImage" %><%= f.file_field :main_image %><% unless @category.main_image_file_name.nil? %>
-            <%= link_to("Удалить", {action: :delete_attachment, id: @category.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %>
-        <% end %><br><br>
+    <h4>Картики для слайдера</h4>
+
+      <% @category.category_slide_images.each do |slide_image| %>
+           <ul class="sliderImg">
+          <%= f.fields_for :category_slide_images, slide_image do |slide| %>
+                <li><%= image_tag slide_image.image.url()%></li>
+                <li><%= slide.file_field :image %></li>
+                <li><%= slide.link_to_remove "Удалить" %></li>
+          <% end %>
+           </ul>
+      <% end %>
+
+
 
     <div class="actions">
-    <%= f.submit 'Сохранить' %>
-  </div>
+      <%= f.link_to_add "Добавить ещё + ", :category_slide_images %>
+      <%= f.submit 'Сохранить' %>
+    </div>
 <% end %>

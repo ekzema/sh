@@ -6,8 +6,6 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
     @cat = Category.new
-    @cat.category_slide_images.build
-
   end
 
   # GET /categories/1
@@ -24,6 +22,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+    @category.category_slide_images.build
   end
 
   # POST /categories
@@ -79,7 +78,8 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name, :description, :meta_desc, :meta_key, :meta_title, :main_image,
-      category_slide_images_attributes: [:id, :_destroy, :image]
+      category_slide_images_attributes: [:id, :_destroy, :image],
+      twocategories_attributes: [:id, :_destroy, :name, :description, :meta_desc, :meta_key, :meta_title]
       )
     end
 end

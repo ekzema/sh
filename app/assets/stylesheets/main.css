@@ -1,0 +1,54 @@
+.sliderImg{
+    display: table;
+}
+
+.sliderImg li{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.categotyAdd{
+    text-align: center;
+    text-decoration: underline;
+    padding-bottom: 20px;
+}
+
+.catTable thead{
+    background-color: #eb4600;
+    color:white;
+}
+
+.catTable, .catTable td{
+    border: 1px solid black;
+}
+
+.catTable2 thead{
+    background-color: blue;
+    color:white;
+}
+
+.catTable2{
+    margin-left: 30px;
+    margin-top: -80px;
+}
+
+
+.catTable2, .catTable2 td{
+    border: 1px solid black;
+}
+
+.catTable3 thead{
+    background-color: green;
+    color:white;
+
+}
+
+.catTable3{
+    margin-left: 50px;
+    margin-top: -80px;
+}
+
+
+.catTable3, .catTable3 td{
+    border: 1px solid black;
+}

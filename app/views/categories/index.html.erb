@@ -5,16 +5,19 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Name</th>
-      <th colspan="3"></th>
+      <th>link to</th>
+      <th>Change</th>
+      <th>Destroy</th>
     </tr>
   </thead>
 
   <tbody>
     <% @categories.each do |category| %>
       <tr>
+        <td><%= image_tag category.main_image.url %></td>
         <td><%= category.name %></td>
-        <%= image_tag category.main_image.url %>
         <td><%= link_to 'Перейти', category %></td>
         <td><%= link_to 'Изменить', edit_category_path(category) %></td>
         <td><%= link_to 'Удалить', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -25,44 +28,111 @@
 
 <br>
 
+
+<h2 class="categotyAdd">Добавить новую категорию</h2>
 <%= nested_form_for(@cat, :html => {multipart: true}) do |f| %>
-    <div class="field">
-      <%= f.label 'Название' %>
+<table class="catTable">
+  <caption><h4>Категория первого уровня</h4></caption>
+  <thead>
+  <tr>
+    <th>Название</th>
+    <th>Основная картинка</th>
+    <th>Описание</th>
+    <th>Meta заголовок</th>
+    <th>Meta описание</th>
+    <th>Meta ключи</th>
+    <th>Загрузить картинку для слайдера</th>
+  </tr>
+  </thead>
+  <tr>
+    <td>
       <%= f.text_field :name %>
-    </div>
-    <div class="field">
-      <%= f.label 'Описание' %>
-      <%= f.text_area :description %>
-    </div>
-    <h3>SEO</h3>
-    <div class="field">
-      <%= f.label 'Meta заголовок' %>
-      <%= f.text_field :meta_title %>
-    </div>
-    <div class="field">
-      <%= f.label 'Meta описание' %>
-      <%= f.text_area :meta_desc %>
-    </div>
-    <div class="field">
-      <%= f.label 'Meta ключи' %>
-      <%= f.text_area :meta_key %>
-    </div>
-
-    <div class="field">
-      <%= f.label 'Загрузить картинку' %>
+    </td>
+    <td>
       <%= f.file_field :main_image %>
-    </div>
-<p>-----------------------------</p>
-
-
-
+    </td>
+    <td>
+      <%= f.text_area :description %>
+    </td>
+    <td>
+      <%= f.text_field :meta_title %>
+    </td>
+    <td>
+      <%= f.text_area :meta_desc %>
+    </td>
+    <td>
+      <%= f.text_area :meta_key %>
+    </td>
+<td>
 <%= f.fields_for :category_slide_images do |imgspec| %>
     <%= imgspec.file_field :image %>
-    <%= imgspec.link_to_remove "Remove this task" %>
+    <%= imgspec.link_to_remove "Удалить" %>
 <% end %>
-<p><%= f.link_to_add "Add a task", :category_slide_images %></p>
+<p><%= f.link_to_add "Добавить + ", :category_slide_images %></p>
+</td>
+  </tr>
+  </table>
 
+<%= f.fields_for :twocategories do |twocat| %>
+    &Lambda;<br>
+    |<br>
+    |<br>
+    |__<br>
+    <table class="catTable2">
+      <caption><h4>Категория второго уровня</h4></caption>
+      <thead>
+      <tr>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Meta заголовок</th>
+        <th>Meta описание</th>
+        <th>Meta ключи</th>
+      </tr>
+      </thead>
+      <tr>
+        <td><%= twocat.text_field :name %></td>
+        <td><%= twocat.text_area :description %></td>
+        <td><%= twocat.text_field :meta_title %></td>
+        <td><%= twocat.text_area :meta_desc %></td>
+        <td><%= twocat.text_area :meta_key %></td>
+      </tr>
+    </table>
 
+    <%= twocat.link_to_remove "Удалить", :style => 'color:red;' %>
+    <br>
+    <br>
+    <%= twocat.fields_for :threecategories do |threecat| %>
+        &nbsp;&nbsp;&nbsp;&nbsp; &Lambda;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__<br>
+        <table class="catTable3">
+          <caption><h4>Категория третьего уровня</h4></caption>
+          <thead>
+          <tr>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Meta заголовок</th>
+            <th>Meta описание</th>
+            <th>Meta ключи</th>
+          </tr>
+          </thead>
+          <tr>
+            <td><%= threecat.text_field :name %></td>
+            <td><%= threecat.text_area :description %></td>
+            <td><%= threecat.text_field :meta_title %></td>
+            <td><%= threecat.text_area :meta_desc %></td>
+            <td><%= threecat.text_area :meta_key %></td>
+          </tr>
+        </table>
+        <%= threecat.link_to_remove "Удалить", :style => 'color:red;' %>
+        <br>
+        <br>
+    <% end %>
+    <p><b><%= twocat.link_to_add "Добавить категорию третьего уорвня", :threecategories, :style => 'color:green;' %></b></p>
+
+<% end %>
+<p><b><%= f.link_to_add "Добавить категорию второго уорвня", :twocategories, :style => 'color:blue;' %></b></p>
 
 
 

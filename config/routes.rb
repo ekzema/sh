@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     collection do
       put 'delete_attachment'
     end
+
   end
 
   resources :twocategories, :only => [:index, :show, :edit, :update, :destroy] do
