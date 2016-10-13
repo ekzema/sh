@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928211915) do
+ActiveRecord::Schema.define(version: 20161013011731) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -40,12 +40,20 @@ ActiveRecord::Schema.define(version: 20160928211915) do
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "size"
     t.integer  "price"
-    t.text     "quality",          limit: 65535
+    t.text     "quality",                 limit: 65535
     t.integer  "category_id"
     t.integer  "twocategory_id"
     t.integer  "threecategory_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "meta_desc"
+    t.string   "meta_key"
+    t.string   "meta_title"
+    t.text     "description",             limit: 65535
+    t.string   "main_image_file_name"
+    t.string   "main_image_content_type"
+    t.integer  "main_image_file_size"
+    t.datetime "main_image_updated_at"
   end
 
   create_table "sliders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
