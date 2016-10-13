@@ -1,0 +1,55 @@
+<%= form_for(product) do |f| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field ccc">
+    <%= f.label :size %>
+    <%= f.text_field :size %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quality %>
+    <%= f.text_area :quality %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Категории' %>
+    <%= f.select(:category_id,  Category.all.collect {|category| [category.name, category.id]}, :include_blank => '- Категории -' ) %>
+  </div>
+
+    <div id="twocategory">
+      <% if @twocategories %>
+      <div class="field">
+        <%= select_tag('product[twocategory_id]', options_for_select(@twocategories.collect {|twocategory| [twocategory.name, twocategory.id]}, product.twocategory_id)) %>
+      </div>
+      <% end %>
+    </div>
+
+    <div id="threecategory">
+      <% if @threecategories %>
+          <div class="field">
+            <%= select_tag('product[threecategory_id]', options_for_select(@threecategories.collect {|threecategories| [threecategories.name, threecategories.id]}, product.threecategory_id)) %>
+          </div>
+      <% end %>
+    </div>
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

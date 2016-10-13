@@ -1,5 +1,6 @@
 class Category < ApplicationRecord
   before_create :rename_main_image
+  has_many :products
   has_many :twocategories, :dependent => :destroy
   has_many :category_slide_images, :dependent => :destroy
   accepts_nested_attributes_for :twocategories,

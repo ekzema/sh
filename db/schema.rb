@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160908230751) do
+ActiveRecord::Schema.define(version: 20160928211915) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -35,6 +35,25 @@ ActiveRecord::Schema.define(version: 20160908230751) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.index ["category_id"], name: "index_category_slide_images_on_category_id", using: :btree
+  end
+
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "size"
+    t.integer  "price"
+    t.text     "quality",          limit: 65535
+    t.integer  "category_id"
+    t.integer  "twocategory_id"
+    t.integer  "threecategory_id"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  create_table "sliders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_sliders_on_category_id", using: :btree
   end
 
   create_table "threecategories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -62,6 +81,7 @@ ActiveRecord::Schema.define(version: 20160908230751) do
   end
 
   add_foreign_key "category_slide_images", "categories"
+  add_foreign_key "sliders", "categories"
   add_foreign_key "threecategories", "twocategories"
   add_foreign_key "twocategories", "categories"
 end

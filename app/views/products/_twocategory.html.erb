@@ -1,0 +1,4 @@
+<div class="field">
+
+  <%= select_tag('product[twocategory_id]',  options_for_select(twocategory.collect {|twocategory| [twocategory.name, twocategory.id]}), :include_blank => '- Сезон -') %>
+</div>

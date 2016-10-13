@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  resources :products
   get 'category_slide_images/create'
 
   root 'welcome#index'
 
   get 'twocategories/index'
+  post 'products/form_render'
 
   resources :categories do
     resources :twocategories, :only => :create
