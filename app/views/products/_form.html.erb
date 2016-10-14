@@ -11,7 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field ccc">
+
+    <h3>Осноная картинка</h3>
+    <ul class="sliderImg">
+      <li><%= image_tag @product.main_image.url, title: "#{@product.name}", class: "EditImage" %></li>
+      <li><%= f.file_field :main_image %><% unless @product.main_image_file_name.nil? %></li>
+      <li><%= link_to("Удалить", {action: :delete_attachment, id: @product.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %></li>
+      <% end %>
+    </ul>
+    <div class="field">
+      <%= f.label 'Название товара' %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'Артикл товара' %>
+      <%= f.text_field :article %>
+    </div>
+
+  <div class="field">
     <%= f.label 'Размер' %>
     <%= f.text_field :size %>
   </div>
@@ -66,9 +84,15 @@
       <% end %>
     </div>
 
+    <div class="field">
+      <%= f.label 'Показать товар' %>
+
+      <%= f.check_box :visible  %>
+    </div>
+
 
 
   <div class="actions">
-    <%= f.submit 'Создать товар' %>
+    <%= f.submit 'Сохранить' %>
   </div>
 <% end %>
