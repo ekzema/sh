@@ -1,0 +1,2 @@
+module ProductSlideImagesHelper
+end
