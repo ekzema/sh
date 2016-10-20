@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :sellers
+
+
+  devise_for :sellers, controllers: {
+      sessions: "sellers/sessions",
+      registrations: "sellers/registrations",
+      unlocks: "sellers/unlocks",
+      passwords: "sellers/passwords",
+      omniauth: "sellers/omniauth",
+      confirmations: "sellers/confirmations"
+  } do
+  get '/sellers/sign_out' => 'devise/sessions#destroy'
+end
+
   resources :products
   get 'category_slide_images/create'
 
