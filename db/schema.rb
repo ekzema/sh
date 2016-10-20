@@ -14,12 +14,12 @@ ActiveRecord::Schema.define(version: 20161020013125) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.text     "description",             limit: 65535
     t.string   "meta_desc"
     t.string   "meta_key"
     t.string   "meta_title"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
     t.string   "main_image_file_name"
     t.string   "main_image_content_type"
     t.integer  "main_image_file_size"
@@ -104,41 +104,32 @@ ActiveRecord::Schema.define(version: 20161020013125) do
     t.index ["reset_password_token"], name: "index_sellers_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "sliders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "title"
-    t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["category_id"], name: "index_sliders_on_category_id", using: :btree
-  end
-
   create_table "threecategories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "twocategory_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.text     "description",    limit: 65535
     t.string   "meta_desc"
     t.string   "meta_key"
     t.string   "meta_title"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
     t.index ["twocategory_id"], name: "index_threecategories_on_twocategory_id", using: :btree
   end
 
   create_table "twocategories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "category_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.text     "description", limit: 65535
     t.string   "meta_desc"
     t.string   "meta_key"
     t.string   "meta_title"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
     t.index ["category_id"], name: "index_twocategories_on_category_id", using: :btree
   end
 
   add_foreign_key "category_slide_images", "categories"
   add_foreign_key "product_slide_images", "products"
-  add_foreign_key "sliders", "categories"
   add_foreign_key "threecategories", "twocategories"
   add_foreign_key "twocategories", "categories"
 end
