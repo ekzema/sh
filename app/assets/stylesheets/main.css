@@ -161,14 +161,14 @@ p {
     margin-bottom: 20px !important;
     margin-top: 20px;
 }
+
+.vmenu{
+    margin-bottom: 20px !important;
+}
+
 .brand{
     text-transform: uppercase;
 }
-
-.foter{
-    margin-bottom: 50px;
-}
-
 
 #mainmenu {
     position: relative;
