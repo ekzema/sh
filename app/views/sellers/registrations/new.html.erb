@@ -3,16 +3,46 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+    <h3>Осноная картинка</h3>
+    <ul class="sliderImg">
+        <li><%= image_tag @seller.avatar.url, title: "#{@seller.name}", class: "EditImage" %></li>
+        <li><%= f.file_field :avatar %><% unless @seller.avatar_file_name.nil? %></li>
+        <li><%= link_to("Удалить", {action: :delete_attachment, id: @seller.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %></li>
+    <% end %>
+    </ul>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
 
-<div class="field">
-  <%= f.label 'Имя' %><br />
-  <%= f.text_field :name %>
-</div>
+    <div class="field">
+      <%= f.label 'Имя' %><br />
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'Фамилия' %><br />
+      <%= f.text_field :surname %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'Дата рождения' %><br />
+      <%= f.date_field :date_of_birth %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'Город' %><br />
+      <%= f.select(:city, ['Запорожье', 'Днепр'],  {prompt: 'Выберите вашу область'})%>
+    </div>
+
+    <div class="field">
+      <%= f.label 'Промо код' %><br />
+      <%= f.text_field :promo_code %>
+    </div>
+
+
 
   <div class="field">
     <%= f.label :password %>
