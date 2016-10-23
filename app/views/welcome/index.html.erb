@@ -397,6 +397,51 @@
   </div>
 </div>
 
+<div id="carousel" class="carousel slide " data-ride="carousel">
+  <ol class="carousel-indicators">
+
+
+
+    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+
+
+        <% @image_count.times  do  %>
+    <li data-target="#carousel" data-slide-to=<%= @i %>></li>
+        <% @i+=1%>
+    <% end %>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item active">
+      <a href="/b.html"><img  src="/assets/5.jpg"></a>
+      <div class="carousel-caption">
+        <h3>Активный слайдер</h3>
+        <p>Lorem lorem lorem </p>
+      </div>
+    </div>
+    <% @category.each do |category| %>
+        <% category.category_slide_images.each do |slide| %>
+    <div class="item ">
+      <a href="/a.html">
+        <%= image_tag slide.image %>
+      </a>
+      <div class="carousel-caption">
+        <h3><%= slide.category.name %></h3>
+        <p><%= slide.category.description %></p>
+      </div>
+    </div>
+        <% end %>
+    <% end %>
+  </div>
+  <a class="carousel-control left" href="#carousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="carousel-control right" href="#carousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+
+
+
 <footer>
   <!-- footer -->
   <!-- footer

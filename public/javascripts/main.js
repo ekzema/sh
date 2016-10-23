@@ -1,9 +1,7 @@
 $(document).ready(function() {
 
-
-
+//    BEGIN ajax add category to ptoduct
     $(document).on( "click", "#product_category_id", function() {
-
         $('#twocategory').html('<img src="/loading.gif" alt=""/>');
          $.ajax({
             url: '/products/form_render',
@@ -34,6 +32,10 @@ $(document).on( "click", "#product_twocategory_id", function() {
         }
     });
 });
+//    END ajax add category to ptoduct
+
+
+
 });
 
 
