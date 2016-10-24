@@ -87,6 +87,12 @@ class ProductsController < ApplicationController
 
   end
 
+  def delete_attachment
+    @product= Product.find(params[:id])
+    @product.main_image = nil
+    @product.save
+    redirect_to :back
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product

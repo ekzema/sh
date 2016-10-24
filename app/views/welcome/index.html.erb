@@ -1,6 +1,5 @@
 <header>
   <!-- меню11 -->
-
   <div class="row">
     <div class="navbar navbar-inverse navbar-default navbar-static-top">
       <div class="container">
@@ -11,7 +10,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand brand visible-xs" href="/" >Магазин стоковой одежды</a>
+          <a class="navbar-brand brand visible-xs" href="/">Магазин стоковой одежды</a>
         </div>
         <div class="collapse navbar-collapse " id="responsive-menu">
           <ul class="nav navbar-nav tmenu">
@@ -21,12 +20,18 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-            <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu" data-toggle="dropdown" href="#">Войти<b class="caret"></b></a>
-            <ul class="dropdown-menu " role="menu" aria-labelledby="drop001">
-            <li><a tabindex="-1" class="xsmenu" href="#">Регистрация</a></li>
-            <li class="divider"></li>
-            <li><a tabindex="-1" class="xsmenu" href="#">Выйти</a></li>
-            </ul>
+              <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu" data-toggle="dropdown" href="#"><%= seller_signed_in? ? 'Кабинет' : 'Войти' %><b class="caret"></b></a>
+              <ul class="dropdown-menu " role="menu" aria-labelledby="drop001">
+                <% if seller_signed_in? %>
+                    <li><%= link_to('Выйти', destroy_seller_session_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
+                    <li class="divider"></li>
+                    <li><center><%= current_seller.email %></center ></li>
+                <% else %>
+                    <li><%= link_to('Войти', new_seller_session_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to('Регистрация', new_seller_registration_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
+                <% end %>
+              </ul>
             </li>
           </ul>
         </div>
@@ -34,7 +39,6 @@
     </div>
   </div>
 </header>
-
 <!-- основное меню  -->
 
 <header>
@@ -49,7 +53,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand brand visible-xs" href="/" >МЕНЮ</a>
+          <a class="navbar-brand brand visible-xs" href="/">МЕНЮ</a>
         </div>
         <div class="collapse navbar-collapse" id="responsive-menu1">
 
@@ -57,7 +61,8 @@
 
             <% @category.each do |category| %>
                 <li class="dropdown">
-                  <a type="button" id="<%= category.id %>" role="button" class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#"><%= category.name %><b class="caret"></b></a>
+                  <a type="button" id="<%= category.id %>" role="button" class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#"><%= category.name %>
+                    <b class="caret"></b></a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="drop001">
                     <% category.twocategories.each do |twocategory| %>
                         <li class="dropdown-submenu">
@@ -73,14 +78,15 @@
                 </li>
             <% end %>
 
-            <li><form class="navbar-form navbar-left hidden-sm hidden-xs" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Поиск">
-              </div>
-              <button type="submit" class="btn btn-default">Найти</button>
-            </form>
+            <li>
+              <form class="navbar-form navbar-left hidden-sm hidden-xs" role="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Поиск">
+                </div>
+                <button type="submit" class="btn btn-default">Найти</button>
+              </form>
             </li>
-            <li><a class="navbar-brand brand hidden-xs" href="/" >Магазин стоковой одежды</a></li>
+            <li><a class="navbar-brand brand hidden-xs" href="/">Магазин стоковой одежды</a></li>
           </ul>
 
         </div>
@@ -97,47 +103,55 @@
 
       <div class="">
         <menu class="men text-center">
-          <li class="dropdown saq "><a class="dropdown-toggle " data-toggle="dropdown" href="#"><img src="/assets/03.jpg" class="img-rounded"></a>
+          <li class="dropdown saq ">
+            <a class="dropdown-toggle " data-toggle="dropdown" href="#"><img src="/assets/03.jpg" class="img-rounded"></a>
             <ul class="dropdown-menu">
               <li><a href="#"></a>Женское лето</li>
 
             </ul>
           </li>
-          <li class="dropdown saq"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="/assets/3.jpg" class="img-rounded men"></a>
+          <li class="dropdown saq">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="/assets/3.jpg" class="img-rounded men"></a>
             <ul class="dropdown-menu">
               <li>Мужское лето</li>
             </ul>
           </li>
-          <li class="dropdown saq"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="/assets/04.jpg" class="img-rounded men"></a>
+          <li class="dropdown saq">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="/assets/04.jpg" class="img-rounded men"></a>
             <ul class="dropdown-menu">
               <li>Спорт женский</li>
             </ul>
           </li>
-          <li class="dropdown saq"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="/assets/3.jpg" class="img-rounded "></a>
+          <li class="dropdown saq">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="/assets/3.jpg" class="img-rounded "></a>
             <ul class="dropdown-menu">
               <li><a href="#"></a>Спорт мужской</li>
 
             </ul>
           </li>
-          <li class="dropdown saq"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="/assets/6.jpg" class="img-rounded men"></a>
+          <li class="dropdown saq">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="/assets/6.jpg" class="img-rounded men"></a>
             <ul class="dropdown-menu">
               <li><a href="#"></a>Осень женское</li>
 
             </ul>
           </li>
-          <li class="dropdown saq"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="/assets/05.jpg" class="img-rounded men"></a>
+          <li class="dropdown saq">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="/assets/05.jpg" class="img-rounded men"></a>
             <ul class="dropdown-menu">
               <li><a href="#"></a>Осень мужское</li>
 
             </ul>
           </li>
-          <li class="dropdown saq"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="/assets/3.jpg" class="img-rounded men"></a>
+          <li class="dropdown saq">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="/assets/3.jpg" class="img-rounded men"></a>
             <ul class="dropdown-menu">
               <li><a href="#"></a>Зима женское</li>
 
             </ul>
           </li>
-          <li class="dropdown saq"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="/assets/3.jpg" class="img-rounded men"></a>
+          <li class="dropdown saq">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="/assets/3.jpg" class="img-rounded men"></a>
             <ul class="dropdown-menu">
               <li><a href="#"></a>Зима мужское</li>
             </ul>
@@ -150,72 +164,43 @@
 <!-- центр -->
 
 <div class="container-fluid">
-
   <div class="">
     <!-- слайдер
      -->
-
     <div class="col-xs-12 col-sm-10">
       <div id="carousel" class="carousel slide " data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carousel" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel" data-slide-to="1"></li>
-          <li data-target="#carousel" data-slide-to="2"></li>
-          <li data-target="#carousel" data-slide-to="3"></li>
-          <li data-target="#carousel" data-slide-to="4"></li>
-          <li data-target="#carousel" data-slide-to="5"></li>
-          <li data-target="#carousel" data-slide-to="6"></li>
+          <% @image_count.times do %>
+              <li data-target="#carousel" data-slide-to=<%= @i %>></li>
+              <% @i+=1 %>
+          <% end %>
         </ol>
         <div class="carousel-inner">
           <div class="item active">
-            <a href="/b.html"><img  src="/assets/5.jpg"></a>
+            <a href="/b.html"><img src="/assets/5.jpg"></a>
+
             <div class="carousel-caption">
-              <h3>Женская одежда</h3>
-              <p>Широкий выбор футболок, шорт, платьев... </p>
+              <h3>Активный слайдер</h3>
+
+              <p>Lorem lorem lorem </p>
             </div>
           </div>
-          <div class="item ">
-            <a href="/a.html"><img src="/assets/03.jpg"></a>
-            <div class="carousel-caption">
-              <h3>Мужская одежда</h3>
-              <p>Прекрасный выбор: футболки, шорты, бриджи...</p>
-            </div>
-          </div>
-          <div class="item">
-            <a href="/a.html"><img src="/assets/2.jpg"></a>
-            <div class="carousel-caption">
-              <h3>Third slide label</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </div>
-          </div>
-          <div class="item">
-            <a href="/a.html"><img src="/assets/3.jpg"></a>
-            <div class="carousel-caption">
-              <h3>Third slide label</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </div>
-          </div>
-          <div class="item">
-            <a href="/a.html"><img src="/assets/4.jpg"></a>
-            <div class="carousel-caption">
-              <h3>Third slide label</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </div>
-          </div>
-          <div class="item">
-            <a href="/a.html"><img src="/assets/6.jpg"></a>
-            <div class="carousel-caption">
-              <h3>Third slide label</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </div>
-          </div>
-          <div class="item">
-            <a href="/a.html"><img src="/assets/7.jpg"></a>
-            <div class="carousel-caption">
-              <h3>Third slide label</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </div>
-          </div>
+          <% @category.each do |category| %>
+              <% category.category_slide_images.each do |slide| %>
+                  <div class="item ">
+                    <a href="/a.html">
+                      <%= image_tag slide.image %>
+                    </a>
+
+                    <div class="carousel-caption">
+                      <h3><%= slide.category.name %></h3>
+
+                      <p><%= slide.category.description %></p>
+                    </div>
+                  </div>
+              <% end %>
+          <% end %>
         </div>
         <a class="carousel-control left" href="#carousel" data-slide="prev">
           <span class="glyphicon glyphicon-chevron-left"></span>
@@ -227,15 +212,14 @@
     </div>
     <!-- реклама продавца
      -->
-      <div class="col-xs-12 col-sm-2">
-
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="col-xs-12 col-sm-2">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <!-- слайдер для рекламы-1
      -->
         <div id="carousel" class="carousel slide " data-ride="carousel">
           <div class="carousel-inner">
             <div class="item active">
-              <a href="#"><img  src="/assets/05.jpg"></a>
+              <a href="#"><img src="/assets/05.jpg"></a>
             </div>
             <div class="item ">
               <a href="/a.html"><img src="/assets/03.jpg"></a>
@@ -251,7 +235,7 @@
         <div id="carousel" class="carousel slide " data-ride="carousel">
           <div class="carousel-inner">
             <div class="item active">
-              <a href="#"><img  src="/assets/1.jpg"></a>
+              <a href="#"><img src="/assets/1.jpg"></a>
             </div>
             <div class="item ">
               <a href="/a.html"><img src="/assets/03.jpg"></a>
@@ -267,7 +251,7 @@
         <div id="carousel" class="carousel slide " data-ride="carousel">
           <div class="carousel-inner">
             <div class="item active">
-              <a href="#"><img  src="/assets/03.jpg"></a>
+              <a href="#"><img src="/assets/03.jpg"></a>
             </div>
             <div class="item ">
               <a href="/a.html"><img src="/assets/05.jpg"></a>
@@ -283,7 +267,7 @@
         <div id="carousel" class="carousel slide " data-ride="carousel">
           <div class="carousel-inner">
             <div class="item active">
-              <a href="#"><img  src="/assets/05.jpg"></a>
+              <a href="#"><img src="/assets/05.jpg"></a>
             </div>
             <div class="item ">
               <a href="/a.html"><img src="/assets/1.jpg"></a>
@@ -299,7 +283,7 @@
         <div id="carousel" class="carousel slide " data-ride="carousel">
           <div class="carousel-inner">
             <div class="item active">
-              <a href="#"><img  src="/assets/2.jpg"></a>
+              <a href="#"><img src="/assets/2.jpg"></a>
             </div>
             <div class="item ">
               <a href="/a.html"><img src="/assets/03.jpg"></a>
@@ -313,34 +297,31 @@
           </div>
         </div>
       </div>
-      </div>
-     
-        
-          
-       
-
-        <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="thumbnail">
-            <img src="/assets/05.jpg">
-            <p>петя</p>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="thumbnail">
-            <img src="/assets/05.jpg">
-            <p>игорь</p>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="thumbnail">
-            <img src="/assets/05.jpg">
-            <p>саша</p>
-          </div>
-        </div> -->
-      </div>
     </div>
 
+
+    <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="thumbnail">
+        <img src="/assets/05.jpg">
+        <p>петя</p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="thumbnail">
+        <img src="/assets/05.jpg">
+        <p>игорь</p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="thumbnail">
+        <img src="/assets/05.jpg">
+        <p>саша</p>
+      </div>
+    </div> -->
   </div>
+</div>
+
+</div>
 </div>
 
 <!-- среднее меню -->
@@ -372,75 +353,33 @@
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
       <div class="thumbnail">
         <img src="/assets/5.jpg">
+
         <p>fgfg</p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
       <div class="thumbnail">
         <img src="/assets/3.jpg">
+
         <p>fgfg</p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
       <div class="thumbnail">
         <img src="/assets/7.jpg">
+
         <p>fgfg</p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
       <div class="thumbnail">
         <img src="/assets/6.jpg">
+
         <p>fgfg</p>
       </div>
     </div>
-
   </div>
 </div>
-
-<div id="carousel" class="carousel slide " data-ride="carousel">
-  <ol class="carousel-indicators">
-
-
-
-    <li data-target="#carousel" data-slide-to="0" class="active"></li>
-
-
-        <% @image_count.times  do  %>
-    <li data-target="#carousel" data-slide-to=<%= @i %>></li>
-        <% @i+=1%>
-    <% end %>
-  </ol>
-  <div class="carousel-inner">
-    <div class="item active">
-      <a href="/b.html"><img  src="/assets/5.jpg"></a>
-      <div class="carousel-caption">
-        <h3>Активный слайдер</h3>
-        <p>Lorem lorem lorem </p>
-      </div>
-    </div>
-    <% @category.each do |category| %>
-        <% category.category_slide_images.each do |slide| %>
-    <div class="item ">
-      <a href="/a.html">
-        <%= image_tag slide.image %>
-      </a>
-      <div class="carousel-caption">
-        <h3><%= slide.category.name %></h3>
-        <p><%= slide.category.description %></p>
-      </div>
-    </div>
-        <% end %>
-    <% end %>
-  </div>
-  <a class="carousel-control left" href="#carousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
-  <a class="carousel-control right" href="#carousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-</div>
-
-
 
 <footer>
   <!-- footer -->
@@ -459,7 +398,7 @@
       </div>
       <div class="collapse navbar-collapse tmenu1" id="responsive">
         <ul class="nav navbar-nav">
-          <li><a href="#">рейтинг продавцов</a></li> 
+          <li><a href="#">рейтинг продавцов</a></li>
           <li><a href="#">популярные товары</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

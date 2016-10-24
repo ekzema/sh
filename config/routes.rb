@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root 'welcome#index'
 
   devise_for :sellers, controllers: {
       sessions: "sellers/sessions",
@@ -12,10 +12,13 @@ Rails.application.routes.draw do
   get '/sellers/sign_out' => 'devise/sessions#destroy'
 end
 
-  resources :products
-  get 'category_slide_images/create'
+  resources :products do
+    collection do
+      put 'delete_attachment'
+    end
+  end
 
-  root 'welcome#index'
+  get 'category_slide_images/create'
 
   get 'twocategories/index'
   post 'products/form_render'
