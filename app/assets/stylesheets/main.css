@@ -1,3 +1,5 @@
+
+
 .sliderImg{
     display: table;
 }
@@ -140,9 +142,7 @@ body {
 p {
     margin: 0px !important;
 }
-.navbar-inverse{
-    background: #565656;
-}
+
 .tmenu a{
     font-size: 18px;
     text-transform: capitalize;
@@ -357,4 +357,50 @@ table{
     list-style: none;
     background: #fff;
     margin-bottom: 150px;
+}
+/*слайдер*/
+
+.sld1 {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 5px 0;
+}
+
+
+
+.sld2 {
+    position: absolute;
+    bottom: 0px;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    padding: 5px 0;
+}
+.sld5 {
+    margin: 0;
+    padding: 0 10px;
+}
+.slick-track{
+    width: 100%;
+}
+
+
+.autoplay, .autoplay1 {
+    
+    margin: 0px 0px 50px 0px ;
+    text-align: center !important;
+    color: #fff!important;
+}
+.autoplay img, .autoplay1 img{
+    display: none;
+}
+.slick-slide {
+  margin: 0px 20px;
+}
+
+.slick-slide img {
+  width: 100%;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: black;
 }

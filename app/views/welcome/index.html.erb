@@ -163,7 +163,7 @@
 </div>
 <!-- центр -->
 
-<div class="container-fluid">
+<div class="">
   <div class="">
     <!-- слайдер
      -->
@@ -212,117 +212,33 @@
     </div>
     <!-- реклама продавца
      -->
-    <div class="col-xs-12 col-sm-2">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <!-- слайдер для рекламы-1
+     
+    <div class="col-xs-12 col-sm-2 ">
+      <!-- слайдер для рекламы-продавца -->
+        <section class="autoplay">
+            <% @sellers.each do | seller | %>
+            <div>
+              <%= image_tag seller.avatar %>
+              <div class="sld1"><p ><%= seller.name %></p></div>
+            </div>
+            <% end %>
+        </section>
+        <!-- слайдер для рекламы-товара
      -->
-        <div id="carousel" class="carousel slide " data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="item active">
-              <a href="#"><img src="/assets/05.jpg"></a>
+        <section class="autoplay1">
+            <% @products.each do | product | %>
+            <div>
+              <%= image_tag product.main_image %>
+              <div class="sld1"><p class=""><%= product.category.name %></p></div>
+              <div class="sld1"><p class=""><%= product.twocategory.name %></p></div> 
             </div>
-            <div class="item ">
-              <a href="/a.html"><img src="/assets/03.jpg"></a>
-            </div>
-            <div class="item">
-              <a href="/a.html"><img src="/assets/5.jpg"></a>
-            </div>
-            <div class="item ">
-              <a href="/a.html"><img src="/assets/3.jpg"></a>
-            </div>
-          </div>
-        </div>
-        <div id="carousel" class="carousel slide " data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="item active">
-              <a href="#"><img src="/assets/1.jpg"></a>
-            </div>
-            <div class="item ">
-              <a href="/a.html"><img src="/assets/03.jpg"></a>
-            </div>
-            <div class="item">
-              <a href="/a.html"><img src="/assets/5.jpg"></a>
-            </div>
-            <div class="item ">
-              <a href="/a.html"><img src="/assets/2.jpg"></a>
-            </div>
-          </div>
-        </div>
-        <div id="carousel" class="carousel slide " data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="item active">
-              <a href="#"><img src="/assets/03.jpg"></a>
-            </div>
-            <div class="item ">
-              <a href="/a.html"><img src="/assets/05.jpg"></a>
-            </div>
-            <div class="item">
-              <a href="/a.html"><img src="/assets/5.jpg"></a>
-            </div>
-            <div class="item ">
-              <a href="/a.html"><img src="/assets/05.jpg"></a>
-            </div>
-          </div>
-        </div>
-        <div id="carousel" class="carousel slide " data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="item active">
-              <a href="#"><img src="/assets/05.jpg"></a>
-            </div>
-            <div class="item ">
-              <a href="/a.html"><img src="/assets/1.jpg"></a>
-            </div>
-            <div class="item">
-              <a href="/a.html"><img src="/assets/5.jpg"></a>
-            </div>
-            <div class="item ">
-              <a href="/a.html"><img src="/assets/05.jpg"></a>
-            </div>
-          </div>
-        </div>
-        <div id="carousel" class="carousel slide " data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="item active">
-              <a href="#"><img src="/assets/2.jpg"></a>
-            </div>
-            <div class="item ">
-              <a href="/a.html"><img src="/assets/03.jpg"></a>
-            </div>
-            <div class="item">
-              <a href="/a.html"><img src="/assets/05.jpg"></a>
-            </div>
-            <div class="item ">
-              <a href="/a.html"><img src="/assets/1.jpg"></a>
-            </div>
-          </div>
-        </div>
-      </div>
+            <% end %>
+        </section>
     </div>
-
-
-    <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="thumbnail">
-        <img src="/assets/05.jpg">
-        <p>петя</p>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="thumbnail">
-        <img src="/assets/05.jpg">
-        <p>игорь</p>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="thumbnail">
-        <img src="/assets/05.jpg">
-        <p>саша</p>
-      </div>
-    </div> -->
   </div>
 </div>
 
-</div>
-</div>
+
 
 <!-- среднее меню -->
 <div class="container-fluid ">
@@ -381,10 +297,10 @@
   </div>
 </div>
 
+<!-- footer -->
+
 <footer>
-  <!-- footer -->
-  <!-- footer
-   -->
+  
   <div class="foter"></div>
   <div class="navbar navbar-inverse navbar-default ">
     <div class="container ">
