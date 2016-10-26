@@ -1,13 +1,158 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<!-- <p>
   <table>
     <tr>
         <td><%= image_tag @category.main_image.url %></td>
         <td><%= @category.name %><br></td>
     </tr>
-  </table>
-<br>
+  </table> -->
+ 
+<div class="container-fluid">
+  <div class="row">
+    <div class="kat">
+        <p class="nkat"><%= @category.name %></p>
+        <p class="opkat">Мы предлагаем мужскую одежду и аксессуары для широкого спектра видов спорта, в том числе баскетбол, футбол, гольф, теннис крикет и бег. С другой стороны, если вы просто хотите, чтобы добавить к вашей повседневной стиль, наша мужская коллекция содержит топ модных брендов, которые уверены, чтобы вы смотрите часть, не повреждая кармане. Наша коллекция мужской моды и спортивной одежды обновляется на ежедневной основе, что позволяет не отставать от современных с последними тенденциями.</p>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-2 col-lg-3">
+       <!-- меню -->
+    <div id="MainMenu">
+      <menu class="list-group panel">
+        <li><a class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"><%= @category.name %></a>
+        </li>
+        <li><a href="#demo2" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Самый популярные<i class="fa fa-caret-down"></i></a>
+          <div class="collapse in" id="demo2">
+            <label class="list-group-item">футболка</label>
+            <label class="list-group-item">поло</label>
+            <label class="list-group-item">шорты</label>
+          </div>
+        </li>
+        <li><a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Одежда<i class="fa fa-caret-down"></i></a>
+          <div class="collapse in" id="demo3">
+            <label class="list-group-item">футболки</label>
+            <label class="list-group-item">поло</label>
+            <label class="list-group-item">шведки</label>
+            <label class="list-group-item">рубашки</label>
+            <label class="list-group-item">бриджи</label>
+            <label class="list-group-item">шорты</label>
+            <label class="list-group-item">брюки</label>
+            <label class="list-group-item">джинсы</label>
+            <label class="list-group-item">кофты</label>
+            <label class="list-group-item">ветровки</label>
+            <label class="list-group-item">куртки</label>
+            <label class="list-group-item">пальто</label>
+            <label class="list-group-item">пуховики</label>
+        </div>
+        </li>
+        <li><a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Обувь<i class="fa fa-caret-down"></i></a>
+          <div class="collapse in" id="demo4">
+            <label class="list-group-item">спорт</label>
+            <label class="list-group-item">классика</label>
+            <label class="list-group-item">кежуал</label>
+            <label class="list-group-item">лето</label>
+            <label class="list-group-item">зима</label>
+        </div>
+        </li>
+        <li><a href="#demo5" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Аксессуары<i class="fa fa-caret-down"></i></a>
+          <div class="collapse in" id="demo5">
+            <label class="list-group-item">спорт</label>
+            <label class="list-group-item">кежуал</label>
+            <label class="list-group-item">классика</label>
+          </div>
+        </li>
+    </menu>
+    </div>
+    </div>
+    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-9">
+      <div class="container-fluid ">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 ">
+              <div class="thumbnail">
+                <%= image_tag @category.main_image.url %>
+                
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <div class="thumbnail">
+                <img class="stil1" src="/assets/01.jpg">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid ">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <div class="thumbnail">
+                <img class="stil1" src="/assets/07.jpg">
+                
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <div class="thumbnail">
+                <img class="stil1" src="/assets/15.jpg">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid ">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <div class="thumbnail">
+                <img class="stil1" src="/assets/14.jpg">
+                
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+              <div class="thumbnail">
+                <img class="stil1" src="/assets/08.jpg">
+                
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+              <div class="thumbnail">
+                <img class="stil1" src="/assets/06.jpg">
+                
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <div class="thumbnail">
+                <img class="stil1" src="/assets/18.jpg">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid ">
+          <div class="row">
+            <div class="col-xs-12 col-sm-4">
+              <div class="thumbnail">
+                <img class="stil1" src="/assets/04.jpg">
+                
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <div class="thumbnail">
+                <img class="stil1" src="/assets/05.jpg">
+                
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <div class="thumbnail">
+                <img class="stil1" src="/assets/04.jpg">
+                
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+  </div>
+</div>
+
+
+<!-- <br>
 <% @category.category_slide_images.each do |img| %>
     <%= image_tag img.image %>
   <% end %><br><br><br>
@@ -47,4 +192,5 @@
 <% end %>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<%= link_to 'Back', categories_path %> -->
+  

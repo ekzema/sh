@@ -15,32 +15,98 @@
   </head>
 
   <body>
-  
+    <header>
+      <!-- меню11 -->
+      <div class="row">
+        <div class="navbar navbar-inverse navbar-default navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
+                <span class="sr-only">open</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand brand visible-xs" href="/">Магазин стоковой одежды</a>
+            </div>
+            <div class="collapse navbar-collapse " id="responsive-menu">
+              <ul class="nav navbar-nav tmenu">
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Новости сайта</a></li>
+                <li><a href="#">VIP-Статус</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu" data-toggle="dropdown" href="#"><%= seller_signed_in? ? 'Кабинет' : 'Войти' %><b class="caret"></b></a>
+                  <ul class="dropdown-menu " role="menu" aria-labelledby="drop001">
+                    <% if seller_signed_in? %>
+                        <li><%= link_to('Выйти', destroy_seller_session_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
+                        <li class="divider"></li>
+                        <li><center><%= current_seller.email %></center ></li>
+                    <% else %>
+                        <li><%= link_to('Войти', new_seller_session_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
+                        <li class="divider"></li>
+                        <li><%= link_to('Регистрация', new_seller_registration_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
+                    <% end %>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
 
     <%= yield %>
-  
 
-  
-  <script src="/assets/slick.js" type="text/javascript" charset="utf-8"></script>
-  <script type="text/javascript">
-    $(document).on('ready', function() {
-      $('.autoplay').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        pauseOnHover: false,
-        arrows: false,
-        autoplaySpeed: 2000,
+    <!-- footer -->
+
+    <footer>
+      
+      <div class="foter"></div>
+      <div class="navbar navbar-inverse navbar-default ">
+        <div class="container ">
+          <div class="row">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive">
+              <span class="sr-only">open</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse tmenu1" id="responsive">
+            <ul class="nav navbar-nav">
+              <li><a href="#">рейтинг продавцов</a></li>
+              <li><a href="#">популярные товары</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">сайт разработан labsites.org</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="/assets/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      $(document).on('ready', function() {
+        $('.autoplay').slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+          pauseOnHover: false,
+          arrows: false,
+          autoplaySpeed: 2000,
+        });
+        $('.autoplay1').slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+          pauseOnHover: false,
+          arrows: false,
+          autoplaySpeed: 2500,
+        });
       });
-      $('.autoplay1').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        pauseOnHover: false,
-        arrows: false,
-        autoplaySpeed: 2500,
-      });
-    });
-  </script>
+    </script>
   </body>
 </html>
