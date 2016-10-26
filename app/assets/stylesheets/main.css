@@ -364,9 +364,6 @@ table{
     background: rgba(0, 0, 0, 0.4);
     padding: 5px 0;
 }
-
-
-
 .sld2 {
     position: absolute;
     bottom: 0px;
@@ -381,7 +378,6 @@ table{
 .slick-track{
     width: 100%;
 }
-
 .autoplay, .autoplay1 {
     margin: 0px 0px 50px 0px ;
     text-align: center !important;
