@@ -34,7 +34,6 @@ $(document).on( "click", "#product_twocategory_id", function() {
 });
 //    END ajax add category to ptoduct
 
-
 });
 
 

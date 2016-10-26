@@ -5,6 +5,5 @@ class WelcomeController < ApplicationController
     @i = 1
     @sellers = Seller.all
     @products = Product.all
-
   end
 end
