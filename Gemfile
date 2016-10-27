@@ -25,7 +25,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 gem 'paperclip', '~> 5.1'
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
@@ -41,6 +41,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'faker', '~> 1.6', '>= 1.6.6'
   gem 'better_errors', '~> 2.1', '>= 2.1.1'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
