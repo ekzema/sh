@@ -9,21 +9,19 @@
     vertical-align: middle;
 }
 
-.categotyAdd{
-    text-align: center;
-    text-decoration: underline;
-    padding-bottom: 20px;
-}
-
 .catTable thead{
     background-color: #eb4600;
     color:white;
 }
-
+.catTable{
+    width: 100%;
+}
 .catTable, .catTable td{
     border: 1px solid black;
 }
-
+.catTable th td{
+    width: 80px !important;
+}
 .catTable2 thead{
     background-color: blue;
     color:white;
@@ -399,3 +397,57 @@ table{
 .slick-next:before {
     color: black;
 }
+.prov a{
+    color: #333;
+    font-size: 12px;
+}
+.prov a:focus, .prov a:hover{
+    color: #fff;
+}
+
+/*футер вниз страницы*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 50px;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+}
+/*футер вниз страницы*/
+.navbar-inverse {
+    background-color: #333!important;
+}
+
+.imgcat img{
+    max-width: 200px;
+    max-height: 100px;
+}
+<div class="form-group">
+  <div class="col-sm-2 ">
+    <h3>Основная картинка</h3>
+  </div> 
+  <div class="col-sm-10 "> 
+    <ul class="sliderImg">
+      <li><%= image_tag @product.main_image.url, title: "#{@product.name}", class: "EditImage" %></li>
+      <li><%= f.file_field :main_image %><% unless @product.main_image_file_name.nil? %></li>
+      <li><%= link_to("Удалить", {action: :delete_attachment, id: @product.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-sm-2 ">
+    <%= f.label 'Название товара' %>
+  </div> 
+  <div class="col-sm-10 "> 
+    <%= f.text_field :name %>
+  </div>
+</div>

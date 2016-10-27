@@ -1,22 +1,23 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+<div class="row">
 
-<h1>Categories</h1>
-
-<table>
+<div class="table-responsive">
+  <table class="table table-hover">
+  <caption><<h1>Созданные категории</h1></caption>  
   <thead>
-    <tr>
-      <th>Image</th>
-      <th>Name</th>
-      <th>link to</th>
-      <th>Change</th>
-      <th>Destroy</th>
-      <th>Destroy</th>
+    <tr class="info">
+      <th>Основное фото</th>
+      <th>Название</th>
+      <th>Перейти</th>
+      <th>Изменить</th>
+      <th>Удалить</th>
     </tr>
   </thead>
 
   <tbody>
     <% @categories.each do |category| %>
-      <tr>
+      <tr class="success imgcat">
         <td><%= image_tag category.main_image.url %></td>
         <td><%= category.name %></td>
         <td><%= link_to 'Перейти', category %></td>
@@ -26,13 +27,13 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
-<br>
-
-
-<h2 class="categotyAdd">Добавить новую категорию</h2>
+<h1>Добавить новую категорию</h1>
+<div class="">
 <%= nested_form_for(@cat, :html => {multipart: true}) do |f| %>
-<table class="catTable">
+
+<table class="catTable table-hover">
   <caption><h4>Категория первого уровня</h4></caption>
   <thead>
   <tr>
@@ -141,3 +142,5 @@
       <%= f.submit 'Создать категорию' %>
     </div>
 <% end %>
+</div>
+</div>

@@ -4,7 +4,7 @@
 
 <table>
   <thead>
-    <tr>
+    <tr class="info">
       <th>Main_image</th>
       <th>Name</th>
       <th>Size</th>
@@ -25,7 +25,7 @@
 
   <tbody>
     <% @products.each do |product| %>
-      <tr>
+      <tr class="success imgcat">
         <td><%= image_tag product.main_image.url %></td>
         <td><%= product.name %></td>
         <td><%= product.size %></td>
