@@ -462,4 +462,20 @@ body {
 .btn2 a{
     color: #fff!important;
 }
+.btn3{
+    color: #111;
+    background-color: #fff;
+    border-color: #111;
+}
+.btn3:hover{
+    color: #111;
+    background-color: #696969;
+}
+.btn3 a:hover{
+    color: #fff!important;
+    text-decoration: none;
+}
+.btn3 a{
+    color: #111!important;
+
 /*кнопки цветные*/
