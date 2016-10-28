@@ -8,9 +8,21 @@
     <link rel="stylesheet" type="text/css" href="/assets/slick.css"/>
     <link rel="stylesheet" type="text/css" href="/assets/slick-theme.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+    <link rel="stylesheet" href="/assets/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
+    <script type="text/javascript" src="/assets/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="/assets/jquery.mousewheel-3.0.6.pack.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    $(".gallery").fancybox({
+    'transitionIn' : 'none',
+    'transitionOut' : 'none',
+    'prevEffect'  : 'fade',
+    'nextEffect'  : 'fade'          
+    });
+    });
+    </script>
     
   </head>
 
@@ -55,6 +67,61 @@
           </div>
         </div>
     </header>
+    <!-- основное меню  -->
+
+<header>
+  <div class="navbar navbar-default smenu">
+    <div class="container">
+      <div class="row">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu1">
+            <span class="sr-only">open</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand brand visible-xs" href="/">МЕНЮ</a>
+        </div>
+        <div class="collapse navbar-collapse" id="responsive-menu1">
+
+          <ul class="nav navbar-nav">
+
+            <% @catmenu.each do |category| %>
+                <li class="dropdown">
+                  <a type="button" id="<%= category.id %>" role="button" class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#"><%= category.name %>
+                    <b class="caret"></b></a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop001">
+                    <% category.twocategories.each do |twocategory| %>
+                        <li class="dropdown-submenu">
+                          <a tabindex="-1" href="#"><%= twocategory.name %></a>
+                          <ul class="dropdown-menu">
+                            <% twocategory.threecategories.each do |threecategory| %>
+                                <li><a tabindex="-1" href="#"><%= threecategory.name %></a></li>
+                            <% end %>
+                          </ul>
+                        </li>
+                    <% end %>
+                  </ul>
+                </li>
+            <% end %>
+
+            <li>
+              <form class="navbar-form navbar-left hidden-sm hidden-xs" role="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Поиск">
+                </div>
+                <button type="submit" class="btn btn-default">Найти</button>
+              </form>
+            </li>
+            <li><a class="navbar-brand brand hidden-xs" href="/">Магазин стоковой одежды</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
 
     <%= yield %>

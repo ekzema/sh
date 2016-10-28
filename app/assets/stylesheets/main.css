@@ -196,6 +196,9 @@ p {
     float:left !important;
 
 }
+.list {
+    list-style-type: none;
+}
 menu > li{
     list-style: none;
     display: inline;
@@ -297,8 +300,12 @@ input[type="checkbox"] {
     display: block;
 }
 .glf img{
-    width: 100%;
-    margin-top: 15px;
+    max-height: 400px;
+}
+
+.glf{
+    
+    margin-top:  15px;
 }
 /*корзина*/
 .corzina  {
@@ -477,5 +484,4 @@ body {
 }
 .btn3 a{
     color: #111!important;
-
-/*кнопки цветные*/
+}

@@ -1,6 +1,49 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<!-- центральное меню
+ -->
+
+<div class="container-fluid">
+  <div class="row">
+  <div class="col-sm-2 col-md-2 col-lg-2 hidden-xs">
+    
+    <menu class="fot">
+      <li><a class="gallery" rel="group" href="/assets/2.jpg"><img src="/assets/2.jpg"/></a></li>
+      <li><a class="gallery" rel="group" href="/assets/5.jpg"><img src="/assets/5.jpg"/></a></li>
+      <li><a class="gallery" rel="group" href="/assets/4.jpg"><img src="/assets/4.jpg"/></a></li>
+      <li><a class="gallery" rel="group" href="/assets/3.jpg"><img src="/assets/3.jpg"/></a></li>
+    </menu>
+    
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 glf text-center">
+    <%= image_tag(@product.main_image) %>
+  </div> 
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 glf">
+    <div id="MainMenu">
+      <ul class="list-group panel list">
+        <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">КАТЕГОРИЯ: <%= @product.category_id %></li>
+        <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ПОДКАТЕГОРИЯ: <%= @product.twocategory_id %></li>
+        <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ВИД ТОВАРА: <%= @product.threecategory_id %></li>
+        <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">СТОИМОСТЬ: <%= @product.price %> ГРН.</li>
+        <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">РАЗМЕР: <%= @product.size %></li>
+        <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ЦВЕТ: </li>
+        <li><a href="#demo1" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ПОДРОБНОЕ ОПИСАНИЕ<i class="fa fa-caret-down"></i></a>
+          <div class="collapse" id="demo1">
+            <p class="list-group-item ">Бла бла бла...Бла бла бла...Бла бла бла...Бла бла бла...Бла бла бла...</p>
+          </div>
+        </li>
+        <li><a href="#demo2" class="list-group-item list-group-item-success list" data-toggle="collapse" data-parent="#MainMenu">ПРОДАВЕЦ<i class="fa fa-caret-down"></i></a>
+          <div class="collapse" id="demo2">
+            <p class="list-group-item">Я ВАСЯ, КРУТОЙ ПРОДАВЕЦ! ПОКУПАЙТЕ! </p>
+            <p class="list-group-item">Мой телефон 101</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </div> 
+</div> 
+<!-- <p>
   <strong>Size:</strong>
   <%= @product.size %>
 </p>
@@ -28,7 +71,7 @@
 <p>
   <strong>Threecategory:</strong>
   <%= @product.threecategory_id %>
-</p>
+</p> -->
+<button type="button" class="btn btn3"><%= link_to 'Edit', edit_product_path(@product) %></button>
+<button type="button" class="btn btn3"><%= link_to 'Back', products_path %></button>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>

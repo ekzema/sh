@@ -141,7 +141,7 @@
       <%= f.check_box :visible  %>
     </div>
 
-    <h4>Картики для слайдера</h4>
+    <h4>Картинки для слайдера</h4>
     <% if params[:action] == 'edit' %>
         <% @product.product_slide_images.each do |slide_image| %>
             <ul class="sliderImg">
@@ -153,17 +153,17 @@
             </ul>
         <% end %>
     <% else %>
-        <%= f.fields_for :product_slide_images do |slide_images| %>
+    <%= f.fields_for :product_slide_images do |slide_images| %>
             <%= slide_images.file_field :image %>
             <%= slide_images.link_to_remove "Удалить" %>
-        <% end %>
-        <p><%= f.link_to_add "Добавить + ", :product_slide_images %></p>
+    <% end %>
+    <p><%= f.link_to_add "Добавить + ", :product_slide_images %></p>
     <% end %>
 
-  <div class="actions">
-  <button type="submit" class="btn btn3">Сохранить</button>
-    
-  </div>
-<% end %>
+  
+
+  <button type="submit" class="btn btn3 actions">Сохранить</button>
+
+  <% end %>
 </div>
 </div>

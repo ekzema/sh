@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
     @twocategories = Twocategory.where(:id => twocategories_id)
   end
 
-  # GET /categories/new
+  # GET/categories/new
   def new
     @category = Category.new
   end
