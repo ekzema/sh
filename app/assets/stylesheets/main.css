@@ -8,7 +8,7 @@
     display: table-cell;
     vertical-align: middle;
 }
-
+/*
 .catTable thead{
     background-color: #eb4600;
     color:white;
@@ -51,7 +51,7 @@
 
 .catTable3, .catTable3 td{
     border: 1px solid black;
-}
+}*/
 
 
 /*карусель*/
@@ -430,24 +430,36 @@ body {
     max-width: 200px;
     max-height: 100px;
 }
-<div class="form-group">
-  <div class="col-sm-2 ">
-    <h3>Основная картинка</h3>
-  </div> 
-  <div class="col-sm-10 "> 
-    <ul class="sliderImg">
-      <li><%= image_tag @product.main_image.url, title: "#{@product.name}", class: "EditImage" %></li>
-      <li><%= f.file_field :main_image %><% unless @product.main_image_file_name.nil? %></li>
-      <li><%= link_to("Удалить", {action: :delete_attachment, id: @product.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-<div class="form-group">
-  <div class="col-sm-2 ">
-    <%= f.label 'Название товара' %>
-  </div> 
-  <div class="col-sm-10 "> 
-    <%= f.text_field :name %>
-  </div>
-</div>
+
+/*кнопки цветные*/
+.btn1{
+    background-color: #800000;
+    border-color: #111;
+}
+.btn1:hover{
+    background-color: #FF0000;
+}
+.btn1 a:hover{
+    color: #fff!important;
+    text-decoration: none;
+}
+.btn1 a{
+    color: #fff!important;
+}
+.btn2{
+    color: #fff;
+    background-color: #008000;
+    border-color: #111;
+}
+.btn2:hover{
+    color: #111;
+    background-color: #00FF00;
+}
+.btn2 a:hover{
+    color: #fff!important;
+    text-decoration: none;
+}
+.btn2 a{
+    color: #fff!important;
+}
+/*кнопки цветные*/

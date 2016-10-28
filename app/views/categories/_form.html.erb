@@ -11,39 +11,70 @@
     </div>
 <% end %>
 
-<h3>Осноная картинка</h3>
-<ul class="sliderImg">
+<div class="form-group">
+  <div class="col-sm-2 ">
+    <%= f.label 'Основная картинка', class:"control-label" %>
+    </div>
+  <div class="col-sm-10 ">
+    <ul class="sliderImg imgcat">
     <li><%= image_tag @category.main_image.url, title: "#{@category.name}", class: "EditImage" %></li>
      <li><%= f.file_field :main_image %><% unless @category.main_image_file_name.nil? %></li>
     <li><%= link_to("Удалить", {action: :delete_attachment, id: @category.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %></li>
 <% end %>
 </ul>
-<div class="field">
-  <%= f.label 'Название' %>
-  <%= f.text_field :name %>
+  </div>
 </div>
-<div class="field">
-  <%= f.label 'Описание' %>
-  <%= f.text_area :description %>
+
+<div class="form-group">
+  <div class="col-sm-2 ">
+    <%= f.label 'Название', class:"control-label" %><br />
+    </div>
+  <div class="col-sm-10 ">
+    <%= f.text_field :name, class:"form-control" %>
+  </div>
 </div>
+<div class="form-group">
+  <div class="col-sm-2 ">
+    <%= f.label 'Описание', class:"control-label" %><br />
+    </div>
+  <div class="col-sm-10 ">
+    <%= f.text_area :description, class:"form-control" %>
+  </div>
+</div>
+
 <h3>SEO</h3>
-<div class="field">
-  <%= f.label 'Meta заголовок' %>
-  <%= f.text_field :meta_title %>
-</div>
-<div class="field">
-  <%= f.label 'Meta описание' %>
-  <%= f.text_area :meta_desc %>
-</div>
-<div class="field">
-  <%= f.label 'Meta ключи' %>
-  <%= f.text_area :meta_key %>
-</div>
 
-    <h4>Картики для слайдера</h4>
-
+<div class="form-group">
+  <div class="col-sm-2 ">
+    <%= f.label 'Meta заголовок', class:"control-label" %><br />
+    </div>
+  <div class="col-sm-10 ">
+    <%= f.text_field :meta_title, class:"form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-sm-2 ">
+    <%= f.label 'Meta описание', class:"control-label" %><br />
+    </div>
+  <div class="col-sm-10 ">
+    <%= f.text_area :meta_desc, class:"form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-sm-2 ">
+    <%= f.label 'Meta ключи', class:"control-label" %><br />
+    </div>
+  <div class="col-sm-10 ">
+    <%= f.text_area :meta_key, class:"form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-sm-2 ">
+    <%= f.label 'Картинки для слайдера', class:"control-label" %>
+    </div>
+  <div class="col-sm-10 ">
       <% @category.category_slide_images.each do |slide_image| %>
-           <ul class="sliderImg">
+           <ul class="sliderImg imgcat">
           <%= f.fields_for :category_slide_images, slide_image do |slide| %>
                 <li><%= image_tag slide_image.image.url()%></li>
                 <li><%= slide.file_field :image %></li>
@@ -51,11 +82,17 @@
           <% end %>
            </ul>
       <% end %>
+</div>
+</div>
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10 actions">
+  <%= f.link_to_add "Добавить ещё + ", :category_slide_images %>
+    <button type="submit" class="btn btn-default">Сохранить</button>
+  </div>
+</div>
 
-
-
-    <div class="actions">
+    <!-- <div class="actions">
       <%= f.link_to_add "Добавить ещё + ", :category_slide_images %>
       <%= f.submit 'Сохранить' %>
-    </div>
+    </div> -->
 <% end %>

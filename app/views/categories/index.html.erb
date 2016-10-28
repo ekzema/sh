@@ -4,7 +4,7 @@
 
 <div class="table-responsive">
   <table class="table table-hover">
-  <caption><<h1>Созданные категории</h1></caption>  
+  <caption><h1>Созданные категории</h1></caption>  
   <thead>
     <tr class="info">
       <th>Основное фото</th>
@@ -29,118 +29,136 @@
 </table>
 </div>
 
-<h1>Добавить новую категорию</h1>
-<div class="">
-<%= nested_form_for(@cat, :html => {multipart: true}) do |f| %>
 
-<table class="catTable table-hover">
-  <caption><h4>Категория первого уровня</h4></caption>
-  <thead>
-  <tr>
-    <th>Название</th>
-    <th>Основная картинка</th>
-    <th>Описание</th>
-    <th>Meta заголовок</th>
-    <th>Meta описание</th>
-    <th>Meta ключи</th>
-    <th>Загрузить картинку для слайдера</th>
-  </tr>
-  </thead>
-  <tr>
-    <td>
-      <%= f.text_field :name %>
-    </td>
-    <td>
+<h1>Добавить новую категорию</h1>
+<div class="container">
+<div class="table-responsive">
+  <%= nested_form_for(@cat, :html => {multipart: true}) do |f| %>
+  <table class="table table-hover">
+  <caption><h4>Категория первого уровня</h4></caption>  
+  
+    <tr class="info">
+      <th>Название</th>
+      <td><%= f.text_field :name %></td>
+    </tr>
+
+    <tr class="info">
+      <th>Основная картинка</th>
+      <td>
       <%= f.file_field :main_image %>
     </td>
-    <td>
+    </tr>
+
+    <tr class="info">
+      <th>Описание</th>
+      <td>
       <%= f.text_area :description %>
     </td>
-    <td>
+    </tr>
+
+    <tr class="info">
+      <th>Meta заголовок</th>
+      <td>
       <%= f.text_field :meta_title %>
     </td>
-    <td>
+    </tr>
+
+    <tr class="info">
+      <th>Meta описание</th>
+      <td>
       <%= f.text_area :meta_desc %>
     </td>
-    <td>
+    </tr>
+    <tr class="info">
+      <th>Meta ключи</th>
+      <td>
       <%= f.text_area :meta_key %>
     </td>
-<td>
-<%= f.fields_for :category_slide_images do |imgspec| %>
-    <%= imgspec.file_field :image %>
-    <%= imgspec.link_to_remove "Удалить" %>
-<% end %>
-<p><%= f.link_to_add "Добавить + ", :category_slide_images %></p>
-</td>
-  </tr>
-  </table>
+    </tr>
+    <tr>
+      <th>Загрузить картинку для слайдера</th>
+      <td>
+      <%= f.fields_for :category_slide_images do |imgspec| %>
+      <%= imgspec.file_field :image %>
+      <%= imgspec.link_to_remove "Удалить" %>
+      <% end %>
+      <p><%= f.link_to_add "Добавить + ", :category_slide_images %></p>
+      </td>
+    </tr>
+</table>
+
+
+
 
 <%= f.fields_for :twocategories do |twocat| %>
-    &Lambda;<br>
-    |<br>
-    |<br>
-    |__<br>
-    <table class="catTable2">
-      <caption><h4>Категория второго уровня</h4></caption>
-      <thead>
-      <tr>
-        <th>Название</th>
-        <th>Описание</th>
-        <th>Meta заголовок</th>
-        <th>Meta описание</th>
-        <th>Meta ключи</th>
-      </tr>
-      </thead>
-      <tr>
-        <td><%= twocat.text_field :name %></td>
-        <td><%= twocat.text_area :description %></td>
-        <td><%= twocat.text_field :meta_title %></td>
-        <td><%= twocat.text_area :meta_desc %></td>
-        <td><%= twocat.text_area :meta_key %></td>
-      </tr>
-    </table>
-
-    <%= twocat.link_to_remove "Удалить", :style => 'color:red;' %>
-    <br>
-    <br>
+<div class="col-sm-11">
+<table class="col-sm-offset-1 col-sm-10 table table-hover">
+  <caption><h4>Категория второго уровня</h4></caption>  
+  
+    <tr class="info">
+      <th>Название</th>
+      <td><%= twocat.text_field :name %></td>
+    </tr>
+    <tr class="info">
+      <th>Описание</th>
+      <td><%= twocat.text_area :description %></td>
+    </tr>
+    <tr class="info">
+      <th>Meta заголовок</th>
+      <td><%= twocat.text_field :meta_title %></td>
+    </tr>
+    <tr class="info">
+      <th>Meta описание</th>
+      <td><%= twocat.text_area :meta_desc %></td>
+    </tr>
+    <tr class="info">
+      <th>Meta ключи</th>
+      <td><%= twocat.text_area :meta_key %></td>
+    </tr>
+</table>
+</div>
+<button type="button" class="btn btn1"><%= twocat.link_to_remove "Удалить категорию второго уровня" %></button>
+    
     <%= twocat.fields_for :threecategories do |threecat| %>
-        &nbsp;&nbsp;&nbsp;&nbsp; &Lambda;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__<br>
-        <table class="catTable3">
-          <caption><h4>Категория третьего уровня</h4></caption>
-          <thead>
-          <tr>
-            <th>Название</th>
-            <th>Описание</th>
-            <th>Meta заголовок</th>
-            <th>Meta описание</th>
-            <th>Meta ключи</th>
-          </tr>
-          </thead>
-          <tr>
-            <td><%= threecat.text_field :name %></td>
-            <td><%= threecat.text_area :description %></td>
-            <td><%= threecat.text_field :meta_title %></td>
-            <td><%= threecat.text_area :meta_desc %></td>
-            <td><%= threecat.text_area :meta_key %></td>
-          </tr>
-        </table>
-        <%= threecat.link_to_remove "Удалить", :style => 'color:red;' %>
-        <br>
-        <br>
+<div class="col-sm-10">
+<table class="col-sm-offset-2 table table-hover">
+  <caption><h4>Категория третьего уровня</h4></caption>
+  <tr class="info">
+      <th>Название</th>
+      <td><%= threecat.text_field :name %></td>
+    </tr>
+    <tr class="info">
+      <th>Описание</th>
+      <td><%= threecat.text_field :description %></td>
+    </tr>
+    <tr class="info">
+      <th>Meta заголовок</th>
+      <td><%= threecat.text_field :meta_title %></td>
+    </tr>
+    <tr class="info">
+      <th>Meta описание</th>
+      <td><%= threecat.text_field :meta_desc %></td>
+    </tr>
+    <tr class="info">
+      <th>Meta ключи</th>
+      <td><%= threecat.text_field :meta_key %></td>
+    </tr>
+</table>
+</div>
+<button type="button" class="btn btn1"><%= threecat.link_to_remove "Удалить категорию третьего уровня" %></button>
+
+       
     <% end %>
-    <p><b><%= twocat.link_to_add "Добавить категорию третьего уорвня", :threecategories, :style => 'color:green;' %></b></p>
+
+    <p><b><%= twocat.link_to_add "Добавить категорию третьего уровня", :threecategories, :style => 'color:green;' %></b></p>
 
 <% end %>
-<p><b><%= f.link_to_add "Добавить категорию второго уорвня", :twocategories, :style => 'color:blue;' %></b></p>
-
-
-
-    <div class="actions">
-      <%= f.submit 'Создать категорию' %>
-    </div>
+<p><b><%= f.link_to_add "Добавить категорию второго уровня", :twocategories, :style => 'color:blue;' %></b></p>
+<div class="actions">
+<button type="submit" class="btn btn2">Создать категорию</button>
+</div>
 <% end %>
+</div>
+</div>
 </div>
 </div>
