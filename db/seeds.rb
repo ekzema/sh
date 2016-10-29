@@ -8,8 +8,11 @@
 
 require 'faker'
 include Faker
+
 #Category.delete_all
 #CategorySlideImage.delete_all
+#Twocategory.delete_all
+
 category = {'Мужская' => 'https://cloclo11.datacloudmail.ru/weblink/thumb/xw1/Lnwg/NyzJaG8GF/men.jpg?x-email=den.ukr%40mail.ru',
             'Женская' => 'https://cloclo26.datacloudmail.ru/weblink/thumb/xw1/6r8X/ME5BVw96s/w2.jpg?x-email=den.ukr%40mail.ru',
             'Унисекс' => 'https://cloclo22.datacloudmail.ru/weblink/thumb/xw1/JXQE/MRJiroPcG/uni.jpg?x-email=den.ukr%40mail.ru',
@@ -38,6 +41,8 @@ category_slide = {'Мужская' => [
                   ]
 }
 
+twocategory_name = ['Зима', 'Весна', 'Лето', 'Осень']
+
 category.each do |key, value|
     Category.create(
     :name => key,
@@ -51,4 +56,20 @@ category.each do |category|
   category_slide[category.name].each do |slide|
     category.category_slide_images.create(:image => slide)
    end
+end
+
+categories = Category.all
+
+categories.each do |category|
+  twocategory_name.each do |twocat|
+    category.twocategories.create(:name => twocat)
+  end
+end
+
+twocategories = Twocategory.all
+tr = 'test'
+categories.each do |category|
+  category.twocategories.each do |two|
+    two.threecategories.create(:name => tr)
+  end
 end

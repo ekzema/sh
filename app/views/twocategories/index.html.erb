@@ -1,2 +1,5 @@
 <h1>Twocategories#index</h1>
 <p>Find me in app/views/twocategories/index.html.erb</p>
+<% @twocategory.each do |twocategory| %>
+  <p><%= twocategory.name %></p>
+<% end %>
