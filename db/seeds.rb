@@ -10,8 +10,8 @@ require 'faker'
 include Faker
 
 #Category.delete_all
-#CategorySlideImage.delete_all
-#Twocategory.delete_all
+
+
 
 category = {'Мужская' => 'https://cloclo11.datacloudmail.ru/weblink/thumb/xw1/Lnwg/NyzJaG8GF/men.jpg?x-email=den.ukr%40mail.ru',
             'Женская' => 'https://cloclo26.datacloudmail.ru/weblink/thumb/xw1/6r8X/ME5BVw96s/w2.jpg?x-email=den.ukr%40mail.ru',
@@ -43,6 +43,33 @@ category_slide = {'Мужская' => [
 
 twocategory_name = ['Зима', 'Весна', 'Лето', 'Осень']
 
+threecategory = {
+                'Мужская' => {
+                              'Зима' => ['Дублёнки', 'Шапки', 'Свитора', 'Перчатки'],
+                              'Весна' => ['Ветровки', 'Куртки', 'Кофты', 'Джинсы'],
+                              'Лето' => ['Футболки', 'Кепки', 'Шорты', 'Бриджы'],
+                              'Осень' => ['Ветровки', 'Куртки', 'Кофты', 'Джинсы']
+                              },
+                'Женская' => {
+                              'Зима' => ['Шубы', 'Пуховики', 'Шапки', 'Дублёнки'],
+                              'Весна' => ['Джинсы', 'Юбки', 'Куртки', 'Кофты'],
+                              'Лето' => ['Юбки', 'Купальники', 'Футболки', 'Кепки'],
+                              'Осень' => ['Штаны', 'Куртки', 'Кофты', 'Ветровки']
+                            },
+                'Унисекс' => {
+                             'Зима' => ['Шубы', 'Куртки', 'Перчатки', 'Кофты'],
+                             'Весна' => ['Джинсы', 'Ветровки', 'Штаны', 'Шапки'],
+                             'Лето' => ['Футболки', 'Майки', 'Шорты', 'Кепки'],
+                             'Осень' => ['Куртки', 'Ветровки', 'Шапки', 'Штаны']
+                            },
+                'Детская' => {
+                             'Зима' => ['Куртки', 'Перчатки', 'Шапки', 'Шарфы'],
+                             'Весна' => ['Ветровки', 'Джинсы', 'Штаны', 'Шапки'],
+                             'Лето' => ['Футболки', 'Кепки', 'Шорты', 'Майки'],
+                             'Осень' => ['Куртки', 'Шапки', 'Кофты', 'Штаны']
+                            }
+                }
+
 category.each do |key, value|
     Category.create(
     :name => key,
@@ -67,9 +94,16 @@ categories.each do |category|
 end
 
 twocategories = Twocategory.all
-tr = 'test'
-categories.each do |category|
-  category.twocategories.each do |two|
-    two.threecategories.create(:name => tr)
+
+#categories.each do |category|
+#  category.twocategories.each do |two|
+#    two.threecategories.create(:name => tr)
+#  end
+#end
+
+
+  category = Category.where(:name => threecategory.keys)
+  category.each do |two|
+    puts two.name
   end
-end
+
