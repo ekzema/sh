@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
   def edit
     @twocategories = Twocategory.where(category_id: @product.category_id)
     @threecategories = Threecategory.where(twocategory_id: @product.twocategory_id)
+    @product.product_slide_images.build
   end
 
   # POST /products

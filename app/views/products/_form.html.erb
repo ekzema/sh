@@ -152,12 +152,13 @@
               <% end %>
             </ul>
         <% end %>
+        <p><%= f.link_to_add "Добавить + ", :product_slide_images %></p>
     <% else %>
-    <%= f.fields_for :product_slide_images do |slide_images| %>
+        <%= f.fields_for :product_slide_images do |slide_images| %>
             <%= slide_images.file_field :image %>
             <%= slide_images.link_to_remove "Удалить" %>
-    <% end %>
-    <p><%= f.link_to_add "Добавить + ", :product_slide_images %></p>
+        <% end %>
+        <p><%= f.link_to_add "Добавить + ", :product_slide_images %></p>
     <% end %>
 
   

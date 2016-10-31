@@ -43,7 +43,7 @@ category_slide = {'Мужская' => [
 
 twocategory_name = ['Зима', 'Весна', 'Лето', 'Осень']
 
-threecategory = {
+threecategory_name = {
                 'Мужская' => {
                               'Зима' => ['Дублёнки', 'Шапки', 'Свитора', 'Перчатки'],
                               'Весна' => ['Ветровки', 'Куртки', 'Кофты', 'Джинсы'],
@@ -73,7 +73,8 @@ threecategory = {
 category.each do |key, value|
     Category.create(
     :name => key,
-    :main_image => value
+    :main_image => value,
+    :description => Lorem.paragraph(1)
 )
 end
 
@@ -89,21 +90,17 @@ categories = Category.all
 
 categories.each do |category|
   twocategory_name.each do |twocat|
-    category.twocategories.create(:name => twocat)
+    category.twocategories.create(:name => twocat, :description => Lorem.paragraph(1))
   end
 end
 
-twocategories = Twocategory.all
+category = Category.all
 
-#categories.each do |category|
-#  category.twocategories.each do |two|
-#    two.threecategories.create(:name => tr)
-#  end
-#end
-
-
-  category = Category.where(:name => threecategory.keys)
-  category.each do |two|
-    puts two.name
+category.each do |cat|
+  cat.twocategories.each do |two|
+    threecategory_name[cat.name][two.name].each do |three|
+    two.threecategories.create(:name => three, :description => Lorem.paragraph(1))
   end
+  end
+end
 
