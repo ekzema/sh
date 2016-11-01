@@ -11,8 +11,6 @@ include Faker
 
 #Category.delete_all
 
-
-
 category = {'Мужская' => 'https://cloclo11.datacloudmail.ru/weblink/thumb/xw1/Lnwg/NyzJaG8GF/men.jpg?x-email=den.ukr%40mail.ru',
             'Женская' => 'https://cloclo26.datacloudmail.ru/weblink/thumb/xw1/6r8X/ME5BVw96s/w2.jpg?x-email=den.ukr%40mail.ru',
             'Унисекс' => 'https://cloclo22.datacloudmail.ru/weblink/thumb/xw1/JXQE/MRJiroPcG/uni.jpg?x-email=den.ukr%40mail.ru',
@@ -69,6 +67,49 @@ threecategory_name = {
                              'Осень' => ['Куртки', 'Шапки', 'Кофты', 'Штаны']
                             }
                 }
+
+
+seller_name = {
+               'Настя' => 'Иванова', 'Андрей' => 'Пупкин', 'Инга' => 'Куреленко', 'Сергей' => 'Плющь', 'Аня' => 'Имченко', 'Костя' => 'Копушенко', 'Юля' => 'Жабова', 'Валентин' => 'Полянченко', 'Оля' => 'Хлюпова', 'Вячеслав' => 'Полудубов',
+               'Света' => 'Петрова', 'Иван' => 'Иванов', 'Катя' => 'Светлова', 'Дима' => 'Огурцов', 'Яна' => 'Смешнова', 'Александр' => 'Хрустовой', 'Вика' => 'Лисичекно', 'Олег' => 'Загорный', 'Ева' => 'Белоусова', 'Жора' => 'Твёрдохлеб'
+               }
+
+seller_img = [
+              'https://cloclo19.datacloudmail.ru/weblink/thumb/xw1/KGs9/QLE7acyRM/1.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo37.datacloudmail.ru/weblink/thumb/xw1/JzzH/fDosuCueU/11%20(1).jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo37.datacloudmail.ru/weblink/thumb/xw1/8DWo/3Gej2eLNR/2.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo2.datacloudmail.ru/weblink/thumb/xw1/LXMT/SE1MAE5oZ/12.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo19.datacloudmail.ru/weblink/thumb/xw1/5Jth/u2RQR4Uqp/3.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo22.datacloudmail.ru/weblink/thumb/xw1/2iXG/5NRFdQeyo/13.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo3.datacloudmail.ru/weblink/thumb/xw1/Mwb4/9TAtMHefb/4.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo39.datacloudmail.ru/weblink/thumb/xw1/Ext2/5yuZsjNdk/14.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo37.datacloudmail.ru/weblink/thumb/xw1/MTs3/6u2fD7ggw/6.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo27.datacloudmail.ru/weblink/thumb/xw1/LRnX/owSgkGd2L/15.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo22.datacloudmail.ru/weblink/thumb/xw1/G5Cz/ozNPLFbzL/7.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/FJsL/i6j5dAK9u/16.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo26.datacloudmail.ru/weblink/thumb/xw1/DRvF/Z1m5ZfmXd/8.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo19.datacloudmail.ru/weblink/thumb/xw1/BZzK/Bv8DH7uvh/17.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo11.datacloudmail.ru/weblink/thumb/xw1/Bnt6/XeAd81CxG/9.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo19.datacloudmail.ru/weblink/thumb/xw1/JmjF/LurdQmpVm/18.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo19.datacloudmail.ru/weblink/thumb/xw1/5Emv/86DKToYvr/5.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo22.datacloudmail.ru/weblink/thumb/xw1/EtvH/pEFgfbRvG/19.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo2.datacloudmail.ru/weblink/thumb/xw1/MXUe/UdYNzzmxK/10.jpg?x-email=den.ukr%40mail.ru',
+              'https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/DYq2/n4gAfgBYT/20.jpg?x-email=den.ukr%40mail.ru'
+              ]
+
+i = 0
+seller_name.each do |key, value|
+  Seller.create(:name => key,
+                :surname => value,
+                :date_of_birth => Time.now,
+                :city => Address.city,
+                :promo_code => rand(10000..1000000),
+                :avatar => seller_img[i],
+                :email => Internet.safe_email,
+                :password => Internet.password(5)
+  )
+  i+=1
+end
 
 category.each do |key, value|
     Category.create(

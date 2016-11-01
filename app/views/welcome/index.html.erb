@@ -131,11 +131,11 @@
         </section>
         <!-- слайдер для рекламы-товара -->
         <section class="autoplay1">
-            <% @products.each do | product | %>
+            <% @products.each do |product| %>
             <div>
               <%= image_tag product.main_image %>
               <div class="sld1"><p class=""><%= product.category.name %></p></div>
-              <div class="sld1"><p class=""><%= product.twocategory.name %></p></div> 
+              <div class="sld1"><p class=""><%= product.twocategory.name %></p></div>
             </div>
             <% end %>
         </section>
