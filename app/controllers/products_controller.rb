@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_seller!, except: [:index, :show]
 
   # GET /products
   # GET /products.json
@@ -29,7 +30,8 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    @seller = Seller.find(current_seller.id)
+    @product = @seller.products.new(product_params)
 
     respond_to do |format|
       if @product.save

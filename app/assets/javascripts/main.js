@@ -23,11 +23,7 @@ $(document).on( "click", "#product_twocategory_id", function() {
         type: 'POST',
         data: $(this).serialize(),
         success: function(result){
-
-
             $('#threecategory').html(result);
-
-
             console.log(result);
         }
     });

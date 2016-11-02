@@ -3,27 +3,13 @@
   <head>
     <title>Sh</title>
     <%= csrf_meta_tags %>
-    
-    
-    <link rel="stylesheet" type="text/css" href="/assets/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="/assets/slick-theme.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
-    <%= stylesheet_link_tag    'application', media: 'all'%>
-    <%= javascript_include_tag 'application' %>
-    <script type="text/javascript" src="/assets/jquery.fancybox.js"></script>
-    <script type="text/javascript" src="/assets/jquery.mousewheel-3.0.6.pack.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-    $(".gallery").fancybox({
-    'transitionIn' : 'none',
-    'transitionOut' : 'none',
-    'prevEffect'  : 'fade',
-    'nextEffect'  : 'fade'          
-    });
-    });
-    </script>
-    
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <%= stylesheet_link_tag    '/slick/css/slick.css' %>
+    <%= stylesheet_link_tag    '/slick/css/slick-theme.css' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag '/slick/js/slick.js'%>
+
   </head>
 
   <body>
@@ -153,26 +139,21 @@
       
      
     </footer>
-    <script src="/assets/slick.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript">
-      $(document).on('ready', function() {
-        $('.autoplay').slick({
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          autoplay: true,
-          pauseOnHover: false,
-          arrows: false,
-          autoplaySpeed: 2000,
+
+    <script>
+        $(document).ready(function() {
+
+            $('.autoplay').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                pauseOnHover: false,
+                arrows: false,
+                autoplaySpeed: 2000
+            });
+
         });
-        $('.autoplay1').slick({
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          autoplay: true,
-          pauseOnHover: false,
-          arrows: false,
-          autoplaySpeed: 2500,
-        });
-      });
+
     </script>
   </body>
 </html>
