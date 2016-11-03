@@ -6,10 +6,24 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    '/bootstrap/css/bootstrap.css' %>
     <%= stylesheet_link_tag    '/slick/css/slick.css' %>
-    <%= stylesheet_link_tag    '/slick/css/slick-theme.css' %>
+    <%= stylesheet_link_tag    '/fancybox/source/jquery.fancybox.css' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag '/bootstrap/js/bootstrap.js'%>
-    <%= javascript_include_tag '/slick/js/slick.js'%>
+    <%= javascript_include_tag '/bootstrap/js/bootstrap.js' %>
+    <%= javascript_include_tag '/slick/js/slick.js' %>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+    <%= javascript_include_tag '/fancybox/lib/jquery.mousewheel-3.0.6.pack.js' %>
+    <%= javascript_include_tag '/fancybox/source/jquery.fancybox.pack.js' %>
+    <script type="text/javascript"> 
+    $(document).ready(function() {
+    $(".gallery").fancybox({
+    'transitionIn' : 'none',
+    'transitionOut' : 'none',
+    'prevEffect'  : 'fade',
+    'nextEffect'  : 'fade'          
+    });
+    });
+    </script>
   </head>
 
   <body>
@@ -114,7 +128,7 @@
     <%= yield %>
 
     <!-- footer -->
-
+    <div class="tofooter"></div>
     <footer class="navbar navbar-inverse navbar-default " id="footer">
     
       

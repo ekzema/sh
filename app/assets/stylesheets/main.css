@@ -428,6 +428,9 @@ body {
   /* Set the fixed height of the footer here */
   height: 50px;
 }
+.tofooter{
+    margin-bottom: 55px;
+}
 /*футер вниз страницы*/
 .navbar-inverse {
     background-color: #333!important;
