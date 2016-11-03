@@ -45,3 +45,16 @@ $(document).on('ready turbolinks:load', function(){
 
 });
 
+$(document).on('ready turbolinks:load', function(){
+    $('.s1').not('.slick-initialized').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        pauseOnHover: false,
+        adaptiveHeight: true,
+        arrows: false,
+        autoplaySpeed: 4000,
+        vertical: true
+    });
+
+});
