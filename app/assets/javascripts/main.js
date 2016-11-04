@@ -30,6 +30,16 @@ $(document).on( "click", "#product_twocategory_id", function() {
 });
 //    END ajax add category to ptoduct
 
+//BEGIN fancybox
+    $(".gallery").fancybox({
+        parent: 'body',
+        'transitionIn' : 'none',
+        'transitionOut' : 'none',
+        'prevEffect'  : 'fade',
+        'nextEffect'  : 'fade'
+    });
+//END fancybox
+
 });
 
 $(document).on('ready turbolinks:load', function(){
@@ -58,3 +68,4 @@ $(document).on('ready turbolinks:load', function(){
     });
 
 });
+

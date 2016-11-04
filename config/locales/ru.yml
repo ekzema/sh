@@ -1,0 +1,7 @@
+ru:
+  activerecord:
+    models:
+      product: "Товар"
+    attributes:
+      product:
+        name: "Имя"
