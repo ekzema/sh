@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       confirmations: "sellers/confirmations"
   } do
   get '/sellers/sign_out' => 'devise/sessions#destroy'
+  put 'delete_attachment'
 end
 
   resources :products do

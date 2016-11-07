@@ -11,10 +11,8 @@
     </div>
   <div class="col-sm-10 ">
     <ul class="sliderImg">
-    <li><%= image_tag @seller.avatar.url, title: "#{@seller.name}", class: "EditImage" %></li>
-    <li><%= f.file_field :avatar %><% unless @seller.avatar_file_name.nil? %></li>
-    <li><%= link_to("Удалить", {action: :delete_attachment, id: @seller.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %></li>
-    <% end %>
+    <li><%= image_tag 'no_photo_mini.jpg', title: "no avatar", class: "no_avatar" %></li>
+    <li><%= f.file_field :avatar %>
   </ul>
   </div>
 </div>
@@ -60,7 +58,7 @@
     <%= f.label 'Город', class:"control-label" %>
     </div>
   <div class="col-sm-10 ">
-    <%= f.select(:city, ['Запорожье', 'Днепр'],  {prompt: 'Выберите вашу область'}, class:"form-control") %>
+    <%= f.select(:city, Seller::CITY_TYPES,  {prompt: 'Выберите область'}, class:"form-control") %>
   </div>
 </div>
 

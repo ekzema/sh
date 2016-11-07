@@ -1,7 +1,17 @@
 ru:
   activerecord:
     models:
-      product: "Товар"
+      product:
     attributes:
       product:
         name: "Имя"
+    models:
+      seller: "Продавец"
+    attributes:
+      seller:
+          name: "Имя"
+          surname: "Фамилия"
+          password: "Пароль"
+          date_of_birth: "Дата рождения"
+          city: "Город"
+          promo_code: "Промо код"
