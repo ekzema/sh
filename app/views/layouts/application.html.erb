@@ -8,11 +8,50 @@
     <%= stylesheet_link_tag    '/slick/css/slick.css' %>
     <%= stylesheet_link_tag    '/slick/css/slick-theme.css' %>
     <%= stylesheet_link_tag    '/fancybox/source/jquery.fancybox.css' %>
+    <%= stylesheet_link_tag    '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag '/bootstrap/js/bootstrap.js' %>
     <%= javascript_include_tag '/slick/js/slick.js' %>
     <%= javascript_include_tag '/fancybox/lib/jquery.mousewheel-3.0.6.pack.js' %>
     <%= javascript_include_tag '/fancybox/source/jquery.fancybox.pack.js' %>
+    <%= javascript_include_tag 'https://code.jquery.com/ui/1.12.1/jquery-ui.js' %>
+    
+    <script>
+    var d = new Date(90,0,1);
+    $(function() {
+      $( "#datepicker" ).datepicker({
+                    defaultDate:d, //set the default date to Jan 1st 1990
+        changeMonth: true,
+        changeYear: true,
+                    yearRange: '1966:2000', //set the range of years
+                    dateFormat: 'dd-mm-yy', //set the format of the date
+
+      });
+      $.datepicker.regional['ru'] = {
+      closeText: 'Закрыть',
+      prevText: '&#x3c;Пред',
+      nextText: 'След&#x3e;',
+      currentText: 'Сегодня',
+      monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь',
+      'Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+      monthNamesShort: ['Янв','Фев','Мар','Апр','Май','Июн',
+      'Июл','Авг','Сен','Окт','Ноя','Дек'],
+      dayNames: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
+      dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
+      dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+      dateFormat: 'dd.mm.yy',
+      firstDay: 1,
+      isRTL: false
+      };
+      $.datepicker.setDefaults($.datepicker.regional['ru']);
+
+      $('input.datepicker').datepicker({
+      showOn: 'both',
+      buttonImageOnly: true,
+      buttonImage: '/images/026.png'
+      });
+    });
+    </script>
   </head>
 
   <body>

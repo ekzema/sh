@@ -1,5 +1,10 @@
-
-
+.form{
+    max-width: 60%;
+    margin: 5px;
+}
+.control-l{
+    margin-bottom: 0px;
+}
 .sliderImg{
     display: table;
 }
@@ -385,15 +390,15 @@ table{
     width: 100%;
 }
 .autoplay, .autoplay1 {
-    margin: 0px 0px 50px 0px ;
+    margin: 0px 0px 15px 0px ;
     text-align: center !important;
     color: #fff!important;
 }
-.autoplay img, .autoplay1 img{
+/*.autoplay img, .autoplay1 img{
     display: none;
-}
+}*/
 .slick-slide {
-  margin: 5px 15px;
+  margin: 1px 10px;
 }
 
 .slick-slide img {
