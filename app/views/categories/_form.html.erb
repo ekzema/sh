@@ -11,7 +11,7 @@
     </div>
 <% end %>
 
-<div class="form-group">
+<div class="form-group col-md-offset-2">
   <div class="col-sm-2 ">
     <%= f.label 'Основная картинка', class:"control-label" %>
     </div>
@@ -25,50 +25,50 @@
   </div>
 </div>
 
-<div class="form-group">
+<div class="form-group col-md-offset-2">
   <div class="col-sm-2 ">
     <%= f.label 'Название', class:"control-label" %><br />
     </div>
   <div class="col-sm-10 ">
-    <%= f.text_field :name, class:"form-control" %>
+    <%= f.text_field :name, class:"form-control form" %>
   </div>
 </div>
-<div class="form-group">
+<div class="form-group col-md-offset-2">
   <div class="col-sm-2 ">
     <%= f.label 'Описание', class:"control-label" %><br />
     </div>
   <div class="col-sm-10 ">
-    <%= f.text_area :description, class:"form-control" %>
+    <%= f.text_area :description, class:"form-control form" %>
   </div>
 </div>
 
-<h3>SEO</h3>
+<h3 class="text-center">SEO</h3>
 
-<div class="form-group">
+<div class="form-group col-md-offset-2">
   <div class="col-sm-2 ">
     <%= f.label 'Meta заголовок', class:"control-label" %><br />
     </div>
   <div class="col-sm-10 ">
-    <%= f.text_field :meta_title, class:"form-control" %>
+    <%= f.text_field :meta_title, class:"form-control form" %>
   </div>
 </div>
-<div class="form-group">
+<div class="form-group col-md-offset-2">
   <div class="col-sm-2 ">
     <%= f.label 'Meta описание', class:"control-label" %><br />
     </div>
   <div class="col-sm-10 ">
-    <%= f.text_area :meta_desc, class:"form-control" %>
+    <%= f.text_area :meta_desc, class:"form-control form" %>
   </div>
 </div>
-<div class="form-group">
+<div class="form-group col-md-offset-2">
   <div class="col-sm-2 ">
     <%= f.label 'Meta ключи', class:"control-label" %><br />
     </div>
   <div class="col-sm-10 ">
-    <%= f.text_area :meta_key, class:"form-control" %>
+    <%= f.text_area :meta_key, class:"form-control form" %>
   </div>
 </div>
-<div class="form-group">
+<div class="form-group col-md-offset-2">
   <div class="col-sm-2 ">
     <%= f.label 'Картинки для слайдера', class:"control-label" %>
     </div>
@@ -76,15 +76,15 @@
       <% @category.category_slide_images.each do |slide_image| %>
            <ul class="sliderImg imgcat">
           <%= f.fields_for :category_slide_images, slide_image do |slide| %>
-                <li><%= image_tag slide_image.image.url()%></li>
-                <li><%= slide.file_field :image %></li>
-                <li><%= slide.link_to_remove "Удалить" %></li>
+                <li class="sliderImg"><%= image_tag slide_image.image.url()%></li>
+                <li class="sliderImg"><%= slide.file_field :image %></li>
+                <li class="sliderImg"><%= slide.link_to_remove "Удалить" %></li>
           <% end %>
            </ul>
       <% end %>
 </div>
 </div>
-<div class="form-group">
+<div class="form-group col-md-offset-2">
   <div class="col-sm-offset-2 col-sm-10 actions">
   <%= f.link_to_add "Добавить ещё + ", :category_slide_images %>
     <button type="submit" class="btn btn3">Сохранить</button>

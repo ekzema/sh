@@ -4,7 +4,7 @@
 
 <div class="table-responsive">
   <table class="table table-hover">
-  <caption><h1>Созданные категории</h1></caption>  
+  <caption><h1 class="text-center">Созданные категории</h1></caption>  
   <thead>
     <tr class="info">
       <th>Основное фото</th>
@@ -20,9 +20,9 @@
       <tr class="success imgcat">
         <td><%= image_tag category.main_image.url %></td>
         <td><%= category.name %></td>
-        <td><%= link_to 'Перейти', category %></td>
-        <td><%= link_to 'Изменить', edit_category_path(category) %></td>
-        <td><%= link_to 'Удалить', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><button type="button" class="btn btn3"><%= link_to 'Перейти', category %></button></td>
+        <td><button type="button" class="btn btn3"><%= link_to 'Изменить', edit_category_path(category) %></button></td>
+        <td><button type="button" class="btn btn3"><%= link_to 'Удалить', category, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,7 +30,7 @@
 </div>
 
 
-<h1>Добавить новую категорию</h1>
+<h1 class="text-center">Добавить новую категорию</h1>
 <div class="container">
 <div class="table-responsive">
   <%= nested_form_for(@cat, :html => {multipart: true}) do |f| %>
