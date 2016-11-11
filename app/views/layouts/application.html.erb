@@ -16,15 +16,16 @@
     <%= javascript_include_tag '/fancybox/source/jquery.fancybox.pack.js' %>
     <%= javascript_include_tag 'https://code.jquery.com/ui/1.12.1/jquery-ui.js' %>
     
+
     <script>
     var d = new Date(90,0,1);
-    $(function() {
-      $( "#datepicker" ).datepicker({
-                    defaultDate:d, //set the default date to Jan 1st 1990
+    $(document).on('ready turbolinks:load', function(){
+    $( "#datepicker" ).datepicker({
+        defaultDate:d, //set the default date to Jan 1st 1990
         changeMonth: true,
         changeYear: true,
-                    yearRange: '1966:2000', //set the range of years
-                    dateFormat: 'dd-mm-yy', //set the format of the date
+        yearRange: '1966:2000', //set the range of years
+        dateFormat: 'dd-mm-yy', //set the format of the date
 
       });
       $.datepicker.regional['ru'] = {

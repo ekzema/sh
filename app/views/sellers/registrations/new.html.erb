@@ -51,8 +51,7 @@
     <%= f.label 'Дата рождения', class:"control-label control-l form" %>
     </div>
   <div class="col-sm-10">
-  <input type="text" id="datepicker" class="form-control form">
-    
+  <%= f.text_field :date_of_birth, class:"form-control form", id:"datepicker",'data-no-turbolink' => true %>
   </div>
 </div>
 
