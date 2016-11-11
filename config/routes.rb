@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
+  get '/all' => 'welcome#all'
+
   devise_for :sellers, controllers: {
       sessions: "sellers/sessions",
       registrations: "sellers/registrations",
