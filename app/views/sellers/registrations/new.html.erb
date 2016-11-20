@@ -33,7 +33,7 @@
     <%= f.label 'Имя', class:"control-label form" %><br />
     </div>
   <div class="col-sm-10 ">
-    <%= f.text_field :name, class:"form-control form" %>
+    <%= f.text_field :name, class:"form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Имя</span>".html_safe %>
   </div>
 </div>
 
@@ -42,7 +42,7 @@
     <%= f.label 'Фамилия', class:"control-label form" %>
     </div>
   <div class="col-sm-10 ">
-    <%= f.text_field :surname, class:"form-control form" %>
+    <%= f.text_field :surname, class:"form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Фамилию</span>".html_safe %>
   </div>
 </div>
 
@@ -51,7 +51,7 @@
     <%= f.label 'Дата рождения', class:"control-label control-l form" %>
     </div>
   <div class="col-sm-10">
-  <%= f.text_field :date_of_birth, class:"form-control form", id:"datepicker",'data-no-turbolink' => true %>
+  <%= f.text_field :date_of_birth, class:"form-control form", id:"datepicker",'data-no-turbolink' => true, "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Дату рождения</span>".html_safe %>
   </div>
 </div>
 
@@ -60,7 +60,7 @@
     <%= f.label 'Город', class:"control-label form" %>
     </div>
   <div class="col-sm-10 ">
-    <%= f.select(:city, Seller::CITY_TYPES,  {prompt: 'Выберите область'}, class:"form-control form") %>
+    <%= f.select(:city, Seller::CITY_TYPES,  {prompt: 'Выберите область'}, class:"form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Выберите<span style='font-weight: bold;color:#5EBB5E;'>Свою область</span>".html_safe) %>
   </div>
 </div>
 
@@ -81,7 +81,7 @@
     <% end %>
     </div>
   <div class="col-sm-10 ">
-    <%= f.password_field :password, autocomplete: "off", class:"form-control form" %>
+    <%= f.password_field :password, autocomplete: "off", class:"form-control form", "required" => true, "data-parsley-trigger" => "change", 'data-parsley-length' => '[5, 16]',  "data-parsley-error-message" => "Пароль должен быть <span style='font-weight: bold;color:#5EBB5E;'>min 5 - max 16</span>".html_safe %>
   </div>
 </div>
 
@@ -90,7 +90,7 @@
     <%= f.label :password_confirmation, class:"control-label form control-l" %>
     </div>
   <div class="col-sm-10 ">
-    <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control form" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control form", "required" => true, "data-parsley-trigger" => "change", 'data-parsley-length' => '[5, 16]',  "data-parsley-error-message" => "Пароль должен быть <span style='font-weight: bold;color:#5EBB5E;'>min 5 - max 16</span>".html_safe %>
   </div>
 </div>
   

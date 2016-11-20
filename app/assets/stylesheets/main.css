@@ -21,12 +21,9 @@
 .sliderImg li img{
     max-width: 150px;
 }
-/*.alert{    
-    background: aqua;
-    text-align: center;
-    width: 300px;
-}*/
-
+.parsley-errors-list li{
+    margin-left: 20px;
+}
 /*карусель*/
 .carousel-inner > .item > img, .carousel-inner > .item > a > img {
     height: 60%;

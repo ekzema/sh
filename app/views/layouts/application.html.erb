@@ -86,12 +86,13 @@
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                  <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu" data-toggle="dropdown" href="#"><%= seller_signed_in? ? 'Кабинет' : 'Войти' %><b class="caret"></b></a>
+                  <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu" data-toggle="dropdown" href="#"><%= seller_signed_in? ? 'Личный кабинет' : 'Войти' %><b class="caret"></b></a>
                   <ul class="dropdown-menu " role="menu" aria-labelledby="drop001">
                     <% if seller_signed_in? %>
-                        <li><%= link_to('Выйти', destroy_seller_session_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
+                        <li><a href="/">Редактировать данные</a></li>
+                        <li><a href="/">Товары</a></li>
                         <li class="divider"></li>
-                        <li><center><%= current_seller.email %></center ></li>
+                        <li><%= link_to('Выйти', destroy_seller_session_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
                     <% else %>
                         <li><%= link_to('Войти', new_seller_session_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
                         <li class="divider"></li>
