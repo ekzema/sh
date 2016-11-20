@@ -21,11 +21,11 @@
 .sliderImg li img{
     max-width: 150px;
 }
-.alert{    
+/*.alert{    
     background: aqua;
     text-align: center;
     width: 300px;
-}
+}*/
 
 /*карусель*/
 .carousel-inner > .item > img, .carousel-inner > .item > a > img {

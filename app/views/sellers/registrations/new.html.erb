@@ -2,7 +2,7 @@
 <div class="row">
 <h2 class="text-center">Регистрация</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, :html => {"data-parsley-validate" => true}, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
 <div class="form-group col-md-offset-2">
@@ -23,7 +23,7 @@
     <%= f.label :email, class:"control-label form" %>
     </div>
   <div class="col-sm-10 ">
-    <%= f.email_field :email, autofocus: true, class:"form-control form" %>
+      <%= f.email_field :email, autofocus: true, class:"form-control form", "required" => true, "type" => "email", "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свой <span style='font-weight: bold;color:#5EBB5E;'>Email</span>".html_safe %>
   </div>
   
 </div>
