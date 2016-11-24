@@ -6,4 +6,8 @@ class WelcomeController < ApplicationController
     @sellers = Seller.all
     @products = Product.all
   end
+
+  def show; end
+
+
 end

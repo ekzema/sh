@@ -1,0 +1,7 @@
+<center><%= link_to 'Новый товар', new_product_path %></center>
+<%= current_seller.name %>
+<ul>
+  <% current_seller.products.each do |product| %>
+      <li><%= product.name %><%= image_tag product.main_image %></li>
+  <% end %>
+</ul>

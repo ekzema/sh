@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+
+
   root 'welcome#index'
 
   get '/all' => 'welcome#all'
-
+  get 'seller_panel/product'
   devise_for :sellers, controllers: {
       sessions: "sellers/sessions",
       registrations: "sellers/registrations",

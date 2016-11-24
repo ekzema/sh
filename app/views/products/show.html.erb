@@ -8,10 +8,13 @@
   <div class="col-sm-2 col-md-2 col-lg-2 hidden-xs">
     
     <menu class="fot">
-      <li><a class="gallery" rel="group" href="/assets/2.jpg"><img src="/assets/2.jpg"/></a></li>
-      <li><a class="gallery" rel="group" href="/assets/5.jpg"><img src="/assets/5.jpg"/></a></li>
-      <li><a class="gallery" rel="group" href="/assets/4.jpg"><img src="/assets/4.jpg"/></a></li>
-      <li><a class="gallery" rel="group" href="/assets/3.jpg"><img src="/assets/3.jpg"/></a></li>
+      <% @product.product_slide_images.each do |slide| %>
+          <li>
+            <%= link_to(slide.image.to_s, class: 'gallery', rel: 'group') do %>
+                <%= image_tag slide.image %>
+            <% end %>
+          </li>
+      <% end %>
     </menu>
     
   </div>
