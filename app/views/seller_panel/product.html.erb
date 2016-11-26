@@ -16,6 +16,6 @@
 <%= current_seller.name %>
 <ul>
   <% current_seller.products.each do |product| %>
-      <li><%= product.name %><%= image_tag product.main_image %></li>
+      <li><%= product.name %><%= image_tag product.main_image %><%= link_to 'Изменить', edit_product_path(product) %></li>
   <% end %>
 </ul>

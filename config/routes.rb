@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
 
+  get 'admin_panel/product_all'
+
   root 'welcome#index'
 
   get '/all' => 'welcome#all'
   get 'seller_panel/product'
+  get 'admin_panel/product_all'
   devise_for :sellers, controllers: {
       sessions: "sellers/sessions",
       registrations: "sellers/registrations",
