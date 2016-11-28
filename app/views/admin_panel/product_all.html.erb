@@ -1,5 +1,10 @@
+
+
+</div>
+<center><%= link_to 'Новый товар', new_product_path %></center>
+
 <ul>
-<% @product.each do |product| %>
-   <li><%= product.name %></li>
-<% end %>
+  <% @product.each do |product| %>
+      <li><%= product.name %><%= link_to 'Изменить', edit_product_path(product) %></li>
+  <% end %>
 </ul>

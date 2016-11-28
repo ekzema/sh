@@ -8,11 +8,22 @@ class Sellers::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    self.resource = warden.authenticate!(auth_options)
-    set_flash_message!(:notice, :signed_in)
-    sign_in(resource_name, resource)
-    yield resource if block_given?
-    respond_with resource, location: seller_panel_product_path
+    moderation = Seller.find_by_email(params[:seller][:email])
+    if moderation.valid_password?(params[:seller][:password])
+      if moderation.moderation == 1
+      self.resource = warden.authenticate!(auth_options)
+      set_flash_message!(:notice, :signed_in)
+      sign_in(resource_name, resource)
+      yield resource if block_given?
+      respond_with resource, location: seller_panel_product_path
+      else
+        redirect_back(fallback_location: root_path)
+        flash[:error] = 'Ваша заяыка ещё не прошла модерацию'
+      end
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:error] = 'Неверное Имя или Пароль'
+    end
   end
 
   # DELETE /resource/sign_out

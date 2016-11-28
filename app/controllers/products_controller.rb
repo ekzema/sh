@@ -11,6 +11,9 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    unless @product.visible == 1 and @product.moderation == 1
+      redirect_to :root
+    end
   end
 
 

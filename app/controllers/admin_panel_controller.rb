@@ -4,4 +4,6 @@ class AdminPanelController < ApplicationController
     @product = Product.all
   end
 
+  def index; end
+
 end

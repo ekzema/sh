@@ -1,7 +1,12 @@
 <div class="container">
 <div class="row"> 
-<h2 class="text-center">Войти на сайт</h2> 
-
+<h2 class="text-center">Войти на сайт</h2>
+  <% if flash[:error] %>
+      <div class="alert alert-danger text-center" style="margin:10px;">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <span><%= raw flash[:error] %></span>
+      </div>
+  <% end %>
 <%= form_for(resource, as: resource_name, :html => {"data-parsley-validate" => true}, url: session_path(resource_name)) do |f| %>
   <div class="form-group col-md-offset-2">
   <div class="col-sm-2 ">
