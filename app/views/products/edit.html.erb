@@ -2,7 +2,7 @@
 
 <%= render 'form', product: @product %>
 
-<button type="button" class="btn btn3"><%= link_to 'Show', @product %></button>
-<button type="button" class="btn btn3"><%= link_to 'Back', products_path %></button>
+<%= link_to 'Show', @product, :type => 'button', :class => 'btn btn3' %>
+<%= link_to 'Back', products_path, :type => 'button', :class => 'btn btn3' %>
 
 

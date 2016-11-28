@@ -1,8 +1,8 @@
 <div class="container">
-<div class="row">
+<div class="row"> 
 <h2 class="text-center">New Product</h2>
 
 <%= render 'form', product: @product %>
-<button type="button" class="btn btn3"><%= link_to 'Back', products_path %></button>
+<%= link_to 'Back', products_path, :type => 'button', :class => 'btn btn4' %>
 </div>
 </div>

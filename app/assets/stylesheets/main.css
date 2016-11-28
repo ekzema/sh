@@ -412,49 +412,61 @@ body {
 }
 
 /*кнопки цветные*/
+
 .btn1{
-    background-color: #800000;
-    border-color: #111;
+    background-color: #696969!important;
+    border-color: #111!important;
+    color: #111!important;
+    margin-bottom: 2px!important;
 }
 .btn1:hover{
-    background-color: #FF0000;
-}
-.btn1 a:hover{
-    color: #fff!important;
-    text-decoration: none;
-}
-.btn1 a{
+    background-color: #FF0000!important;
     color: #fff!important;
 }
 .btn2{
-    color: #fff;
-    background-color: #008000;
-    border-color: #111;
+    background-color: #696969!important;
+    border-color: #111!important;
+    color: #111!important;
+    margin-bottom: 2px!important;
 }
 .btn2:hover{
-    color: #111;
-    background-color: #00FF00;
-}
-.btn2 a:hover{
     color: #fff!important;
-    text-decoration: none;
+    background-color: #008000!important;
 }
-.btn2 a{
-    color: #fff!important;
-}
+
 .btn3{
-    color: #111;
-    background-color: #fff;
-    border-color: #111;
+    background-color: #696969!important;
+    border-color: #111!important;
+    color: #111!important;
+    margin-bottom: 2px!important;
 }
 .btn3:hover{
-    color: #111;
-    background-color: #696969;
-}
-.btn3 a:hover{
     color: #fff!important;
-    text-decoration: none;
+    background-color: #0000FF!important;
 }
-.btn3 a{
+
+.btn4{
+    background-color: #696969!important;
+    border-color: #111!important;
     color: #111!important;
+    margin-bottom: 2px!important;
+}
+.btn4:hover{
+    color: #111!important;
+    background-color: #C0C0C0!important;
+}
+
+/*страница пользователя*/
+
+.ava {
+    text-transform: uppercase;
+    text-align: center;
+}
+.delo{
+    text-transform: capitalize;
+}
+/*о нас */
+.ia{
+    text-align: justify;
+    font-size: 18px;
 }

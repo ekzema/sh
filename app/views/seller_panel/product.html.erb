@@ -12,10 +12,52 @@
   <% end %>
 
 </div>
-<center><%= link_to 'Новый товар', new_product_path %></center>
-<%= current_seller.name %>
-<ul>
-  <% @seller_products.each do |product| %>
-      <li><%= product.name %><%= image_tag product.main_image %><%= link_to 'Изменить', edit_product_path(product) %></li>
-  <% end %>
-</ul>
+
+<div class="container">
+<div class="row">
+<div class="col-sm-2 ava">
+  <%= image_tag current_seller.avatar, :class => 'img-responsive img-rounded' %>
+  <%= current_seller.name %> <%= current_seller.surname %>
+</div>
+<div class="col-sm-10">
+<div class="table-responsive"> 
+  <table class="table table-hover">
+  <caption><h3 class="text-center">Все товары</h3></caption>  
+    <thead>
+      <tr class="info">
+        <th>Основное фото</th>
+        <th>Название</th>
+        <th>Размер</th>
+        <th>Цена</th>
+        <th>Описание</th>
+        <th>Перейти</th>
+        <th>Изменить</th>
+        <th>Удалить</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @seller_products.each do |product| %>
+      <tr class="success imgcat">
+        <td><%= image_tag product.main_image.url %></td>
+        <td><%= product.name %></td>
+        <td><%= product.size %></td>
+        <td><%= product.price %></td>
+        <td><%= product.description %></td>
+        <td><%= link_to 'Show', product, :type => 'button', :class => 'btn btn2' %></td>
+        <td><%= link_to 'Edit', edit_product_path(product), :type => 'button', :class => 'btn btn3' %></td>
+        <td><%= link_to 'Удалить', product, method: :delete, data: { confirm: 'Are you sure?' }, :type => 'button', :class => 'btn btn1' %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<div>
+  <%= link_to 'Новый товар', new_product_path, :class => 'btn btn2 form' %> 
+</div>
+<div>
+  <%= link_to "На главную", :back, :class => 'btn btn4 form' %>
+</div>
+</div>
+</div>
+</div>
+</div>

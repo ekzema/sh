@@ -7,7 +7,7 @@ class WelcomeController < ApplicationController
     @products = Product.all
   end
 
-  def show; end
-
+  def all
+  end
 
 end
