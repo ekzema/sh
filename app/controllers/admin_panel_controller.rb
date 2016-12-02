@@ -11,14 +11,15 @@ class AdminPanelController < ApplicationController
   end
 
   def edit_seller
-
+    @seller = Seller.find(params[:id])
   end
 
   def update_seller
+    @seller = Seller.find(params[:id])
       if @seller.update(edit_seller_params)
-         redirect_to seller_all_admin_panel_path
+         redirect_to admin_panel_seller_all_path
       else
-        render text: 'ERROR!!!'
+        render :edit_seller
       end
   end
 
