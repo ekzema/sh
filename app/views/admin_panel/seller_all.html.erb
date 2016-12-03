@@ -1,5 +1,5 @@
 <ul>
     <% @sellers.each do |seller| %>
-       <li><%= seller.name %><%= link_to 'Изменить', edit_seller_admin_panel_path(seller) %></li>
+       <li><%= seller.name %><%= link_to 'Изменить', edit_seller_admin_panel_path(seller.id.to_s+'-'+transtlit_name(seller.name)+'-'+transtlit_name(seller.surname)) %></li>
     <% end %>
 </ul>

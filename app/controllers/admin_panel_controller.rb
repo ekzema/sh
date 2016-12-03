@@ -11,11 +11,13 @@ class AdminPanelController < ApplicationController
   end
 
   def edit_seller
-    @seller = Seller.find(params[:id])
+    pars_id =  params[:name].match(/^\d{1,}/).to_s
+    @seller = Seller.find(pars_id)
   end
 
   def update_seller
-    @seller = Seller.find(params[:id])
+    pars_id =  params[:name].match(/^\d{1,}/).to_s
+    @seller = Seller.find(pars_id)
       if @seller.update(edit_seller_params)
          redirect_to admin_panel_seller_all_path
       else

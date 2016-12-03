@@ -7,8 +7,8 @@ Rails.application.routes.draw do
       get 'seller_all'
 
   end
-  get 'admin_panel/:id/edit_seller', to: 'admin_panel#edit_seller', as: 'edit_seller_admin_panel'
-  put 'admin_panel/:id/update_seller', to: 'admin_panel#update_seller', as: 'update_seller_admin_panel'
+  get 'admin_panel/:name/edit_seller', to: 'admin_panel#edit_seller', as: 'edit_seller_admin_panel'
+  put 'admin_panel/:name/update_seller', to: 'admin_panel#update_seller', as: 'update_seller_admin_panel'
 
 
   get '/all' => 'welcome#all'
