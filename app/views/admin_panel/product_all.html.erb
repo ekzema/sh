@@ -5,6 +5,6 @@
 
 <ul>
   <% @product.each do |product| %>
-      <li><%= product.name %><%= link_to 'Изменить', edit_product_path(product) %></li>
-  <% end %>
+      <li><%= product.name %><%= link_to 'Изменить', edit_product_admin_panel_path(product.id.to_s+'-'+transtlit_name(product.name)) %></li>
+<% end %>
 </ul>

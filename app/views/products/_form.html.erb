@@ -1,7 +1,9 @@
 <div class="container">
 <div class="row">
 
+
 <%= nested_form_for(@product, html: { multipart: true }) do |f| %>
+
   <% if product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(product.errors.count, 'ошибка', product.errors.count < 10 ? 'ошибки' : 'ошибок') %> Товар не может быть сохранён:</h2>
@@ -111,26 +113,32 @@
 
 <div class="form-group col-md-offset-2">
   <div class="col-sm-2 ">
-    <%= f.label 'Категории', class:"control-label" %>
+    <%= f.label 'Категория', class:"control-label" %>
     </div>
   <div class="col-sm-10 ">
-    <%= f.select(:category_id, Category.all.collect {|category| [category.name, category.id]}, :include_blank => '- Категории -' ) %>
+    <%= f.select :category_id,  Category.all.collect {|category| [category.name, category.id]}, { :include_blank => '- Категории -'}, :class => 'form-control form' %>
   </div>
 </div>
 
 
-    <div id="twocategory">
-      <% if @twocategories %>
-      <div class="field">
-        <%= select_tag('product[twocategory_id]', options_for_select(@twocategories.collect {|twocategory| [twocategory.name, twocategory.id]}, product.twocategory_id)) %>
-      </div>
-      <% end %>
+    <div id="twocategory" class="form-group col-md-offset-2">
+        <% if @twocategories %>
+        <div class="col-sm-2 ">
+            <%= f.label 'Сезон', class:"control-label" %>
+        </div>
+        <div class="col-sm-10">
+            <%= select_tag('product[twocategory_id]', options_for_select(@twocategories.collect {|twocategory| [twocategory.name, twocategory.id]}, product.twocategory_id), class:"form-control form") %>
+        </div>
+        <% end %>
     </div>
 
-    <div id="threecategory">
+    <div id="threecategory" class="form-group col-md-offset-2">
       <% if @threecategories %>
-          <div class="field">
-            <%= select_tag('product[threecategory_id]', options_for_select(@threecategories.collect {|threecategories| [threecategories.name, threecategories.id]}, product.threecategory_id)) %>
+                <div class="col-sm-2 ">
+                  <%= f.label 'Тип товара', class:"control-label" %>
+                      </div>
+          <div class="col-sm-10">
+            <%= select_tag('product[threecategory_id]', options_for_select(@threecategories.collect {|threecategories| [threecategories.name, threecategories.id]}, product.threecategory_id), class:"form-control form") %>
           </div>
       <% end %>
     </div>
@@ -138,10 +146,6 @@
     <div class="field">
       <%= f.label 'Показать товар' %>
       <%= f.check_box :visible  %>
-    </div>
-    <div class="field">
-      <%= f.label 'Модерация товара' %>
-      <%= f.check_box :moderation  %>
     </div>
 
     <h4>Картинки для слайдера</h4>

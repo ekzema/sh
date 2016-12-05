@@ -1,0 +1,159 @@
+<%= nested_form_for(@product, :as => :product, :url => update_product_admin_panel_path, :method => :put, :html => {"data-parsley-validate" => true}) do |f| %>
+    <div class="form-group col-md-offset-2">
+        <div class="col-sm-2 ">
+            <%= f.label 'Основное фото', class:"control-label"  %>
+        </div>
+        <div class="col-sm-10">
+            <ul class="sliderImg imgcat">
+                <li><%= image_tag @product.main_image.url, title: "#{@product.name}", class: "EditImage" %></li>
+                <li><%= f.file_field :main_image %><% unless @product.main_image_file_name.nil? %></li>
+                <li><%= link_to("Удалить", {action: :delete_attachment, id: @product.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %></li>
+            <% end %>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group col-md-offset-2">
+        <div class="col-sm-2 ">
+            <%= f.label 'Название товара', class:"control-label"  %>
+        </div>
+        <div class="col-sm-10 ">
+            <%= f.text_field :name, class:"form-control form" %>
+        </div>
+    </div>
+
+    <div class="form-group col-md-offset-2">
+        <div class="col-sm-2 ">
+            <%= f.label 'Артикул товара', class:"control-label"  %>
+        </div>
+        <div class="col-sm-10 ">
+            <%= f.text_field :article, class:"form-control form" %>
+        </div>
+    </div>
+
+    <div class="form-group col-md-offset-2">
+        <div class="col-sm-2 ">
+            <%= f.label :size, class:"control-label"  %>
+        </div>
+        <div class="col-sm-10 ">
+            <%= f.text_field :size, class:"form-control form" %>
+        </div>
+    </div>
+
+    <div class="form-group col-md-offset-2">
+        <div class="col-sm-2 ">
+            <%= f.label 'Цена', class:"control-label"  %>
+        </div>
+        <div class="col-sm-10 ">
+            <%= f.number_field :price, class:"form-control form" %>
+        </div>
+    </div>
+
+    <div class="form-group col-md-offset-2">
+        <div class="col-sm-2 ">
+            <%= f.label 'Качество', class:"control-label"  %>
+        </div>
+        <div class="col-sm-10 ">
+            <%= f.text_area :quality, class:"form-control form" %>
+        </div>
+    </div>
+
+    <div class="form-group col-md-offset-2">
+        <div class="col-sm-2 ">
+            <%= f.label 'Описание', class:"control-label"  %>
+        </div>
+        <div class="col-sm-10 ">
+            <%= f.text_area :description, class:"form-control form" %>
+        </div>
+    </div>
+
+    <h3 class="text-center">SEO</h3>
+
+    <div class="form-group col-md-offset-2">
+        <div class="col-sm-2 ">
+            <%= f.label 'Meta заголовок', class:"control-label"  %>
+        </div>
+        <div class="col-sm-10 ">
+            <%= f.text_field :meta_title, class:"form-control form" %>
+        </div>
+    </div>
+    <div class="form-group col-md-offset-2">
+        <div class="col-sm-2 ">
+            <%= f.label 'Meta описание', class:"control-label"  %>
+        </div>
+        <div class="col-sm-10 ">
+            <%= f.text_area :meta_desc, class:"form-control form" %>
+        </div>
+    </div>
+    <div class="form-group col-md-offset-2">
+        <div class="col-sm-2 ">
+            <%= f.label 'Meta ключи', class:"control-label"  %>
+        </div>
+        <div class="col-sm-10 ">
+         <%= f.text_area :meta_key, class:"form-control form" %>
+        </div>
+    </div>
+
+
+<<div class="form-group col-md-offset-2">
+<div class="col-sm-2 ">
+<%= f.label 'Категория', class:"control-label" %>
+</div>
+<div class="col-sm-10 ">
+<%= f.select :category_id,  Category.all.collect {|category| [category.name, category.id]}, { :include_blank => '- Категории -'}, :class => 'form-control form product_category_id' %>
+</div>
+</div>
+
+
+<div id="twocategory" class="form-group col-md-offset-2">
+<% if @twocategories %>
+<div class="col-sm-2 ">
+<%= f.label 'Сезон', class:"control-label" %>
+</div>
+<div class="col-sm-10">
+<%= select_tag('product[twocategory_id]', options_for_select(@twocategories.collect {|twocategory| [twocategory.name, twocategory.id]}, @product.twocategory_id), class:"form-control form product_twocategory_id") %>
+</div>
+<% end %>
+</div>
+
+<div id="threecategory" class="form-group col-md-offset-2">
+<% if @threecategories %>
+<div class="col-sm-2 ">
+<%= f.label 'Тип товара', class:"control-label" %>
+</div>
+<div class="col-sm-10">
+<%= select_tag('product[threecategory_id]', options_for_select(@threecategories.collect {|threecategories| [threecategories.name, threecategories.id]}, @product.threecategory_id), class:"form-control form") %>
+</div>
+<% end %>
+</div>
+
+    <div class="field">
+        <%= f.label 'Показать товар' %>
+        <%= f.check_box :visible  %>
+    </div>
+    <div class="field">
+        <%= f.label 'Модерация товара' %>
+        <%= f.check_box :moderation  %>
+    </div>
+
+    <h4>Картинки для слайдера</h4>
+    <% if params[:action] == 'edit_product' %>
+    <% @product.product_slide_images.each do |slide_image| %>
+    <ul class="sliderImg">
+        <%= f.fields_for :product_slide_images, slide_image do |slide| %>
+        <li><%= image_tag slide_image.image.url()%></li>
+        <li><%= slide.file_field :image %></li>
+        <li><%= slide.link_to_remove "Удалить" %></li>
+    <% end %>
+    </ul>
+    <% end %>
+    <p><%= f.link_to_add "Добавить + ", :product_slide_images %></p>
+    <% else %>
+    <%= f.fields_for :product_slide_images do |slide_images| %>
+    <%= slide_images.file_field :image %>
+    <%= slide_images.link_to_remove "Удалить" %>
+    <% end %>
+    <p><%= f.link_to_add "Добавить + ", :product_slide_images %></p>
+    <% end %>
+    <button type="submit" class="btn btn-default">Изменить</button>
+
+<% end %>

@@ -40,8 +40,8 @@
         <td><%= product.meta_desc %></td>
         <td><%= product.meta_key %></td>
         <td><%= product.visible %></td>
-        <td><%= link_to 'Show', product, :type => 'button', :class => 'btn btn2' %></td>
-        <td><%= link_to 'Edit', edit_product_path(product), :type => 'button', :class => 'btn btn3' %></td>
+        <td><%= link_to 'Show',  show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :type => 'button', :class => 'btn btn2' %></td>
+        <td><%= link_to 'Edit', edit_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :type => 'button', :class => 'btn btn3' %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, :type => 'button', :class => 'btn btn1' %></td> 
       </tr>
     <% end %>

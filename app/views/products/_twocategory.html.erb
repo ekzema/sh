@@ -1,4 +1,7 @@
-<div class="field">
 
-  <%= select_tag('product[twocategory_id]',  options_for_select(twocategory.collect {|twocategory| [twocategory.name, twocategory.id]}), :include_blank => '- Сезон -') %>
-</div>
+  <div class="col-sm-2 ">
+    <%= label_tag 'twocategory', 'Сезон', class:"control-label" %>
+   </div>
+   <div class="col-sm-10">
+    <%= select_tag 'product[twocategory_id]',  options_for_select(twocategory.collect {|twocategory| [twocategory.name, twocategory.id]}), {:include_blank => '- Сезон -', :class => 'form-control form product_twocategory_id'} %>
+  </div>

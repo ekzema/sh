@@ -1,8 +1,9 @@
 $(document).ready(function() {
 
 //    BEGIN ajax add category to ptoduct
+    var img_load = '<center><img src="/loading.gif" alt=""/></center>';
     $(document).on( "click", "#product_category_id", function() {
-        $('#twocategory').html('<img src="/loading.gif" alt=""/>');
+        $('#twocategory').html(img_load);
          $.ajax({
             url: '/products/form_render',
             type: 'POST',
@@ -17,7 +18,7 @@ $(document).ready(function() {
     });
 
 $(document).on( "click", "#product_twocategory_id", function() {
-    $('#threecategory').html('<img src="/loading.gif" alt=""/>');
+    $('#threecategory').html(img_load);
     $.ajax({
         url: '/products/form_render',
         type: 'POST',
@@ -29,6 +30,37 @@ $(document).on( "click", "#product_twocategory_id", function() {
     });
 });
 //    END ajax add category to ptoduct
+
+
+//    BEGIN ajax add category to ptoduct_admin
+    $(document).on( "click", ".product_category_id", function() {
+        $('#twocategory').html(img_load);
+        $.ajax({
+            url: '/admin_panel/form_render',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(result){
+                if(result == '') $('#twocategory' && '#threecategory').html(result);
+                $('#twocategory').html(result);
+                $('#threecategory').html('');
+                console.log(result);
+            }
+        });
+    });
+
+    $(document).on( "click", ".product_twocategory_id", function() {
+        $('#threecategory').html(img_load);
+        $.ajax({
+            url: '/admin_panel/form_render',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(result){
+                $('#threecategory').html(result);
+                console.log(result);
+            }
+        });
+    });
+//    END ajax add category to ptoduct_admin
 
 //BEGIN fancybox
     $(".gallery").fancybox({
