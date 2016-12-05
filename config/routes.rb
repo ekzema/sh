@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 end
 
 devise_for :rootadmins, controllers: {
+
     sessions: "rootadmins/sessions",
     registrations: "rootadmins/registrations",
     unlocks: "rootadmins/unlocks",
@@ -37,8 +38,11 @@ devise_for :rootadmins, controllers: {
     omniauth: "rootadmins/omniauth",
     confirmations: "rootadmins/confirmations"
 } do
+
 get '/rootadmins/sign_out' => 'devise/sessions#destroy'
 end
+
+
 
   resources :products, only: [:index, :destroy, :update, :new] do
     collection do

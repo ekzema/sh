@@ -94,37 +94,37 @@
     </div>
 
 
-<<div class="form-group col-md-offset-2">
-<div class="col-sm-2 ">
-<%= f.label 'Категория', class:"control-label" %>
-</div>
-<div class="col-sm-10 ">
-<%= f.select :category_id,  Category.all.collect {|category| [category.name, category.id]}, { :include_blank => '- Категории -'}, :class => 'form-control form product_category_id' %>
-</div>
-</div>
+    <<div class="form-group col-md-offset-2">
+        <div class="col-sm-2 ">
+            <%= f.label 'Категория', class:"control-label" %>
+        </div>
+        <div class="col-sm-10 ">
+            <%= f.select :category_id,  Category.all.collect {|category| [category.name, category.id]}, { :include_blank => '- Категории -'}, :class => 'form-control form product_category_id' %>
+        </div>
+    </div>
 
 
-<div id="twocategory" class="form-group col-md-offset-2">
-<% if @twocategories %>
-<div class="col-sm-2 ">
-<%= f.label 'Сезон', class:"control-label" %>
-</div>
-<div class="col-sm-10">
-<%= select_tag('product[twocategory_id]', options_for_select(@twocategories.collect {|twocategory| [twocategory.name, twocategory.id]}, @product.twocategory_id), class:"form-control form product_twocategory_id") %>
-</div>
-<% end %>
-</div>
+    <div id="twocategory" class="form-group col-md-offset-2">
+        <% if @twocategories %>
+        <div class="col-sm-2 ">
+            <%= f.label 'Сезон', class:"control-label" %>
+        </div>
+        <div class="col-sm-10">
+            <%= select_tag('product[twocategory_id]', options_for_select(@twocategories.collect {|twocategory| [twocategory.name, twocategory.id]}, @product.twocategory_id), class:"form-control form product_twocategory_id") %>
+        </div>
+        <% end %>
+    </div>
 
-<div id="threecategory" class="form-group col-md-offset-2">
-<% if @threecategories %>
-<div class="col-sm-2 ">
-<%= f.label 'Тип товара', class:"control-label" %>
-</div>
-<div class="col-sm-10">
-<%= select_tag('product[threecategory_id]', options_for_select(@threecategories.collect {|threecategories| [threecategories.name, threecategories.id]}, @product.threecategory_id), class:"form-control form") %>
-</div>
-<% end %>
-</div>
+    <div id="threecategory" class="form-group col-md-offset-2">
+        <% if @threecategories %>
+        <div class="col-sm-2 ">
+            <%= f.label 'Тип товара', class:"control-label" %>
+        </div>
+        <div class="col-sm-10">
+            <%= select_tag('product[threecategory_id]', options_for_select(@threecategories.collect {|threecategories| [threecategories.name, threecategories.id]}, @product.threecategory_id), class:"form-control form") %>
+        </div>
+        <% end %>
+    </div>
 
     <div class="field">
         <%= f.label 'Показать товар' %>
