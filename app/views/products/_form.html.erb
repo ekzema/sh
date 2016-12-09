@@ -1,7 +1,3 @@
-<div class="container">
-<div class="row">
-
-
 <%= nested_form_for(@product, html: { multipart: true }) do |f| %>
 
   <% if product.errors.any? %>
@@ -123,6 +119,7 @@
 
     <div id="twocategory" class="form-group col-md-offset-2">
         <% if @twocategories %>
+
         <div class="col-sm-2 ">
             <%= f.label 'Сезон', class:"control-label" %>
         </div>
@@ -143,10 +140,12 @@
       <% end %>
     </div>
 
+    <% if params[:action] == 'new' %>
     <div class="field">
       <%= f.label 'Показать товар' %>
       <%= f.check_box :visible  %>
     </div>
+    <% end %>
 
     <h4>Картинки для слайдера</h4>
     <% if params[:action] == 'edit' %>
@@ -173,5 +172,3 @@
   <button type="submit" class="btn btn2 actions">Сохранить</button>
 
   <% end %>
-</div>
-</div>

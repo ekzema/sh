@@ -81,7 +81,7 @@ class AdminPanelController < ApplicationController
   end
 
   def edit_product_params
-    params.require(:product).permit(:size, :price, :quality, :category_id, :twocategory_id, :threecategory_id, :description, :meta_desc, :meta_key, :meta_title, :main_image, :name, :article, :visible, :moderarion,
+    params.require(:product).permit(:size, :price, :quality, :category_id, :twocategory_id, :threecategory_id, :description, :meta_desc, :meta_key, :meta_title, :main_image, :name, :article, :visible, :moderation,
     product_slide_images_attributes: [:id, :_destroy, :image]
     )
   end

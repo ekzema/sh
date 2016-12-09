@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :admin_panel do
       get 'product_all'
       get 'seller_all'
-      put 'delete_attachment'
+      get 'delete_attachment'
       post 'form_render'
   end
   get 'admin_panel/:name/edit_seller', to: 'admin_panel#edit_seller', as: 'edit_seller_admin_panel'
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get '/all' => 'welcome#all'
   get 'seller_panel/product'
+  post 'seller_panel/product_visible'
 
   devise_for :sellers, controllers: {
       sessions: "sellers/sessions",
@@ -25,34 +26,32 @@ Rails.application.routes.draw do
       omniauth: "sellers/omniauth",
       confirmations: "sellers/confirmations"
   } do
-  get '/sellers/sign_out' => 'devise/sessions#destroy'
+
   put 'delete_attachment'
 end
 
-devise_for :rootadmins, controllers: {
+  devise_for :rootadmins, controllers: {
 
-    sessions: "rootadmins/sessions",
-    registrations: "rootadmins/registrations",
-    unlocks: "rootadmins/unlocks",
-    passwords: "rootadmins/passwords",
-    omniauth: "rootadmins/omniauth",
-    confirmations: "rootadmins/confirmations"
-} do
+      sessions: "rootadmins/sessions",
+      registrations: "rootadmins/registrations",
+      unlocks: "rootadmins/unlocks",
+      passwords: "rootadmins/passwords",
+      omniauth: "rootadmins/omniauth",
+      confirmations: "rootadmins/confirmations"
+  } do
+  end
 
-get '/rootadmins/sign_out' => 'devise/sessions#destroy'
-end
-
-
+  devise_scope :rootadmin do
+    get "/rootadmins" => "rootadmins/sessions#new"
+  end
 
   resources :products, only: [:index, :destroy, :update, :new] do
     collection do
       put 'delete_attachment'
     end
   end
-get 'products/:name', to: 'products#show', as: 'show_product'
-get 'products/:name/edit', to: 'products#edit', as: 'edit_product'
-
-
+  get 'products/:name', to: 'products#show', as: 'show_product'
+  get 'products/:name/edit', to: 'products#edit', as: 'edit_product'
 
   get 'category_slide_images/create'
 

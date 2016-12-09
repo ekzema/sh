@@ -12,7 +12,6 @@
   <% end %>
 
 </div>
-
 <div class="container">
 <div class="row">
 <div class="col-sm-2 ava">
@@ -33,6 +32,7 @@
         <th>Перейти</th>
         <th>Изменить</th>
         <th>Удалить</th>
+        <th>Показать</th>
       </tr>
     </thead>
     <tbody>
@@ -46,10 +46,35 @@
         <td><%= link_to 'Show', show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :type => 'button', :class => 'btn btn2' %></td>
         <td><%= link_to 'Edit', edit_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :type => 'button', :class => 'btn btn3' %></td>
         <td><%= link_to 'Удалить', product, method: :delete, data: { confirm: 'Are you sure?' }, :type => 'button', :class => 'btn btn1' %></td>
+        <td>
+          <%= form_tag(seller_panel_product_visible_path, method: :post,  class: "product_info", id: "product_visible#{product.id}") do %>
+              <%= hidden_field_tag 'product_id', product.id %>
+              <%= check_box_tag 'visible', 1, product.visible == 1, {id: "product#{product.id}", pr_id: product.id }  %>
+          <%= label_tag "product#{product.id}", '<span></span>'.html_safe %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
+
+
+
     </tbody>
   </table>
+
+  <script type="text/javascript">
+
+      $(function () {
+          $('input[type=checkbox]').change(function () {
+               var check_id = $(this).attr('pr_id');
+              $.ajax({
+                  url: '/seller_panel/product_visible',
+                  type: 'POST',
+                  data: $('#product_visible'+check_id).serialize()
+              });
+          });
+      });
+
+  </script>
 </div>
 <div>
   <%= link_to 'Новый товар', new_product_path, :class => 'btn btn2 form' %> 

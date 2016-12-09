@@ -25,9 +25,14 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    if @product.moderation == 1
     @twocategories = Twocategory.where(category_id: @product.category_id)
     @threecategories = Threecategory.where(twocategory_id: @product.twocategory_id)
     @product.product_slide_images.build
+    else
+      redirect_to seller_panel_product_path
+      flash[:notice] = 'Товар tщё не прошёл модерацию'
+      end
   end
 
   # POST /products
@@ -51,14 +56,20 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1.json
   def update
     @product = Product.find(params[:id])
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
-      else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+    if @product.moderation == 1
+      respond_to do |format|
+        if @product.update(product_params)
+          @product.update(:moderation => 0)
+          format.html { redirect_to seller_panel_product_path, notice: 'Товар успешно обновлён и отправлен на модерацию' }
+          format.json { render :show, status: :ok, location: @product }
+        else
+          format.html { render :edit }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to seller_panel_product_path
+      flash[:notice] = 'Товар tщё не прошёл модерацию'
     end
   end
 

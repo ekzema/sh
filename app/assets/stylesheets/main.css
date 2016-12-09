@@ -470,3 +470,25 @@ body {
     text-align: justify;
     font-size: 18px;
 }
+
+/*BEGIN checkbox product_info*/
+
+.product_info input[type="checkbox"] {
+    display:none;
+}
+
+.product_info input[type="checkbox"] + label span {
+    display:inline-block;
+    width:25px;
+    height:25px;
+    vertical-align: middle;
+    margin: 4px 0 0 0;
+    background:url('/checkbox-border25X25.png') left top no-repeat;
+    cursor:pointer;
+    transition: all .2s
+}
+.product_info input[type="checkbox"]:checked + label span {
+    background:url('/checkbox25X25-green.png') top no-repeat;
+}
+
+/*END checkbox product_info*/
