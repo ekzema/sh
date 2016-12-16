@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sh</title>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag    'adminpanel', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'adminpanel', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+<section id="container" class="">
+
+
+  <header class="header dark-bg">
+    <div class="toggle-nav">
+      <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+    </div>
+
+    <!--logo start-->
+    <a href="index.html" class="logo">Панель <span class="lite">Инструментов</span></a>
+    <!--logo end-->
+
+    <div class="nav search-row" id="top_menu">
+
+    </div>
+
+    <div class="top-nav notification-row">
+      <!-- notificatoin dropdown start-->
+      <ul class="nav pull-right top-menu">
+
+        <!-- user login dropdown start-->
+        <li class="dropdown">
+          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <!--<img alt="" src="img/avatar1_small.jpg">-->
+                            </span>
+            <span class="username"><%= current_rootadmin.name %></span>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu extended logout">
+            <div class="log-arrow-up"></div>
+            <li class="eborder-top">
+              <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Изменить профиль</a>
+            </li>
+            <li>
+              <%= link_to '<i class="fa fa-sign-out" aria-hidden="true"></i> Выход'.html_safe,  destroy_rootadmin_session_path %>
+            </li>
+          </ul>
+        </li>
+        <!-- user login dropdown end -->
+      </ul>
+      <!-- notificatoin dropdown end-->
+    </div>
+  </header>
+  <!--header end-->
+
+  <!--sidebar start-->
+  <aside>
+    <div id="sidebar"  class="nav-collapse ">
+      <!-- sidebar menu start-->
+      <ul class="sidebar-menu">
+        <li class="active">
+          <%= link_to admin_panel_path do %>
+            <i class="icon_house_alt"></i>
+            <span>Главная</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_panel_seller_all_path do %>
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <span>Продавцы</span>
+          <% end %>
+        </li>
+        <li>
+          <a class="" href="index.html">
+            <i class="fa fa-barcode" aria-hidden="true"></i>
+            <span>Товары</span>
+          </a>
+        </li>
+      </ul>
+      <!-- sidebar menu end-->
+    </div>
+  </aside>
+  <!--sidebar end-->
+
+<%= yield %>
+</section>
+
+</body>
+</html>

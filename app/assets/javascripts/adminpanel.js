@@ -14,4 +14,18 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery_nested_form
-//= require_tree ./main
+//= require adminpanel/scripts
+//= require adminpanel/bootstrap
+//= require adminpanel/bootstrap-switch
+//= require adminpanel/bootstrap-wysiwyg
+//= require adminpanel/bootstrap-wysiwyg-custom
+//= require adminpanel/dynamic-table
+//= require adminpanel/form-component
+//= require adminpanel/jquery.autosize.min
+//= require adminpanel/jquery.customSelect.min
+//= require adminpanel/jquery.nicescroll
+//= require adminpanel/jquery.scrollTo.min
+//= require adminpanel/jquery.slimscroll.min
+//= require adminpanel/jquery-ui-1.10.4.min
+//= require adminpanel/jquery-confirm
+

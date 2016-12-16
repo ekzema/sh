@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'product_all'
       get 'seller_all'
       get 'delete_attachment'
+      delete 'delete_seller'
       post 'form_render'
   end
   get 'admin_panel/:name/edit_seller', to: 'admin_panel#edit_seller', as: 'edit_seller_admin_panel'
@@ -31,7 +32,6 @@ Rails.application.routes.draw do
 end
 
   devise_for :rootadmins, controllers: {
-
       sessions: "rootadmins/sessions",
       registrations: "rootadmins/registrations",
       unlocks: "rootadmins/unlocks",

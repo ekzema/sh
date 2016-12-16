@@ -1,12 +1,17 @@
 class AdminPanelController < ApplicationController
-  before_action :set_regular, only: [:edit_seller, :update_seller, :edit_product, :update_product, :delete_attachment]
   before_action :authenticate_rootadmin!
+  before_action :set_regular, only: [:edit_seller, :update_seller, :edit_product, :update_product, :delete_attachment]
+  layout 'adminpanel'
   def product_all
     @product = Product.all
   end
 
-  def index; end
+  def index
+    @sellers = Seller.where(:moderation => 0)
+    @products = Product.where(:moderation => 0)
+  end
 
+  #----BEGIN seller----
   def seller_all
     @sellers = Seller.all
   end
@@ -24,6 +29,15 @@ class AdminPanelController < ApplicationController
       end
   end
 
+  def delete_seller
+    @seller = Seller.find(params[:seller_id])
+    if @seller.destroy
+      render text: 'ok'
+    end
+  end
+  #---END seller---
+
+  #---BEGIN product---
   def edit_product
     @product = Product.find(@pars_id)
     @twocategories = Twocategory.where(category_id: @product.category_id)
@@ -68,7 +82,7 @@ class AdminPanelController < ApplicationController
     end
 
   end
-
+  #---END product---
 
   private
 
