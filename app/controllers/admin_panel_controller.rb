@@ -24,6 +24,7 @@ class AdminPanelController < ApplicationController
     @seller = Seller.find(@pars_id)
       if @seller.update(edit_seller_params)
          redirect_to admin_panel_seller_all_path
+         flash[:notice] = 'Продавец успешно изменён'
       else
         render :edit_seller
       end

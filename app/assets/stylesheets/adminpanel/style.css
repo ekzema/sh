@@ -4945,3 +4945,28 @@ span.customSelect.changed {
     width: 40px;
     height: 40px;
 }
+
+
+.jconfirm{
+    background: rgba(40,32,30, .7);
+}
+
+.panel-heading{
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.editSeller{
+    position: absolute;
+    right: 10px;
+}
+
+.seller_lock-open{
+    color: #34aadc;
+}
+
+.seller_lock-open, .seller_lock-lock{
+    font-size: 18px;
+}
+
