@@ -10,7 +10,7 @@
             <%= form_for(@seller, :as => :seller, :url => update_seller_admin_panel_path, :method => :put, :html => {'data-parsley-validate' => true, :class => 'form-horizontal'}) do |f| %>
                 <div class="form-group">
                     <div class="col-sm-2">
-                        <%= f.label'Фото', class:"col-sm-2 control-label" %>
+                        <%= f.label'Фото', class:"control-label" %>
                     </div>
                     <div class="col-sm-10">
                         <ul class="sliderImg">
@@ -26,7 +26,7 @@
 
                 <div class="form-group">
                     <div class=" col-sm-2 ">
-                        <%= f.label :email, class:"col-sm-2 control-label" %>
+                        <%= f.label :email, class:"control-label" %>
                     </div>
                     <div class="col-sm-10 ">
                         <%= f.email_field :email, autofocus: true, class:"form-control form", "required" => true, "type" => "email", "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свой <span style='font-weight: bold;color:#5EBB5E;'>Email</span>".html_safe %>
@@ -35,7 +35,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-2 ">
-                        <%= f.label 'Имя', class:"col-sm-2 control-label" %><br />
+                        <%= f.label 'Имя', class:"control-label" %><br />
                     </div>
                     <div class="col-sm-10 ">
                         <%= f.text_field :name, class:"form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Имя</span>".html_safe %>
@@ -44,7 +44,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-2 ">
-                        <%= f.label 'Фамилия', class:"col-sm-2 control-label" %>
+                        <%= f.label 'Фамилия', class:"control-label" %>
                     </div>
                     <div class="col-sm-10 ">
                         <%= f.text_field :surname, class:"form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Фамилию</span>".html_safe %>
@@ -53,7 +53,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-2 ">
-                        <%= f.label 'Дата рождения', class:"col-sm-2 control-label" %>
+                        <%= f.label 'Дата рождения', class:"control-label" %>
                     </div>
                     <div class="col-sm-10">
                         <%= f.text_field :date_of_birth, class:"form-control form", id:"datepicker",'data-no-turbolink' => true, "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Дату рождения</span>".html_safe %>
@@ -62,7 +62,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-2 ">
-                        <%= f.label 'Город', class:"col-sm-2 control-label" %>
+                        <%= f.label 'Город', class:"control-label" %>
                     </div>
                     <div class="col-sm-10 ">
                         <%= f.select(:city, Seller::CITY_TYPES,  {prompt: 'Выберите область'}, class:"form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Выберите<span style='font-weight: bold;color:#5EBB5E;'>Свою область</span>".html_safe) %>
@@ -71,7 +71,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-2 ">
-                        <%= f.label 'Промо код', class:"col-sm-2 control-label" %><br />
+                        <%= f.label 'Промо код', class:"control-label" %><br />
                     </div>
                     <div class="col-sm-10 ">
                         <%= f.text_field :promo_code, class:"form-control form" %>
@@ -80,12 +80,13 @@
 
                 <div class="form-group">
                     <div class="col-sm-2 ">
-                        <%= f.label 'Разрешить авторизацию', for: :moderation, class:"col-sm-2 control-label" %>
+                        <%= f.label 'Разрешить авторизацию', for: :moderation, class:" control-label" %>
                     </div>
                     <div class="col-sm-10 ">
                         <%= f.check_box :moderation, id: :moderation  %>
                     </div>
                 </div>
+                <%= f.hidden_field :reset_session, :value => 1 %>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10 actions">
                      <br>

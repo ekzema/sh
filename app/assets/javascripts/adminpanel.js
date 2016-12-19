@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require jquery_nested_form
 //= require adminpanel/scripts
+//= require main/main
 //= require adminpanel/bootstrap
 //= require adminpanel/bootstrap-switch
 //= require adminpanel/bootstrap-wysiwyg

@@ -23,7 +23,7 @@ class AdminPanelController < ApplicationController
   def update_seller
     @seller = Seller.find(@pars_id)
       if @seller.update(edit_seller_params)
-         redirect_to admin_panel_seller_all_path
+        redirect_to admin_panel_seller_all_path
          flash[:notice] = 'Продавец успешно изменён'
       else
         render :edit_seller
@@ -43,7 +43,7 @@ class AdminPanelController < ApplicationController
     @product = Product.find(@pars_id)
     @twocategories = Twocategory.where(category_id: @product.category_id)
     @threecategories = Threecategory.where(twocategory_id: @product.twocategory_id)
-    @product.product_slide_images.build
+    @ooo = @product.product_slide_images.new
   end
 
   def update_product
@@ -81,7 +81,13 @@ class AdminPanelController < ApplicationController
         render :partial => 'products/threecategory', locals: { threecategory: @threecategory }
       end
     end
+  end
 
+  def delete_product
+    @product = Product.find(params[:product_id])
+    if @product.destroy
+      render text: 'ok'
+    end
   end
   #---END product---
 
@@ -92,7 +98,7 @@ class AdminPanelController < ApplicationController
   end
 
   def edit_seller_params
-    params.require(:seller).permit([:name, :surname, :city, :promo_code, :date_of_birth, :avatar, :moderation])
+    params.require(:seller).permit([:name, :surname, :city, :promo_code, :date_of_birth, :avatar, :moderation, :email, :reset_session])
   end
 
   def edit_product_params

@@ -118,3 +118,30 @@ $(document).on('ready turbolinks:load', function(){
             });
         });
     });
+
+$(document).on('ready turbolinks:load', function(){
+    $('.deleteMessage2').on("click", function(){
+        var id = $(this).attr("product_id");
+        $.confirm({
+            confirmButton: 'Да',
+            cancelButton: 'Нет',
+            title: 'Подтверждение!',
+            content: 'Вы уверены что хотите удалить ТОВАР?',
+            confirm: function(){
+                $.ajax({
+                    type: "DELETE",
+                    url: "/admin_panel/delete_product",
+                    data: "product_id="+id,
+                    dataType: "html",
+                    cache: false,
+                    success: function(data) {
+                        if (data == "ok")
+                        {
+                            $('#product_'+id).hide(700);
+                        }
+                    }
+                });
+            }
+        });
+    });
+});

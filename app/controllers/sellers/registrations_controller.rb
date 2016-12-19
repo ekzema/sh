@@ -1,7 +1,7 @@
 class Sellers::RegistrationsController < Devise::RegistrationsController
 before_action :configure_sign_up_params, only: [:create]
 before_action :configure_account_update_params, only: [:update]
-
+before_action :reset_session, only: [:edit, :update]
   # GET /resource/sign_up
   # def new
   #   super
@@ -29,9 +29,9 @@ before_action :configure_account_update_params, only: [:update]
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+     super
+  end
 
   # PUT /resource
   # def update
@@ -59,7 +59,14 @@ before_action :configure_account_update_params, only: [:update]
     redirect_to :back
   end
 
-  # protected
+  protected
+
+  def reset_session
+    if seller_signed_in? && current_seller.reset_session == 1
+      current_seller.update(:reset_session => 0)
+      redirect_to destroy_seller_session_path
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params

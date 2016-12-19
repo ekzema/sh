@@ -9,12 +9,20 @@ class Sellers::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     moderation = Seller.find_by_email(params[:seller][:email])
-      if moderation.moderation == 1
-        super
-        else
+    valid_seller = moderation.valid_password?(params[:seller][:password])
+    if valid_seller && moderation.moderation == 1
+     moderation.update(:reset_session => 0) if moderation.reset_session == 1
+      super
+      elsif valid_seller && moderation.moderation == 0
         redirect_back(fallback_location: root_path)
         flash[:error] = 'Ваша заяыка ещё не прошла модерацию'
+        else
+          moderation.update(:reset_session => 0) if moderation.reset_session == 1
+        flash[:error] = 'Неверный email или пароль!'
+      super
       end
+
+
   end
 
   # DELETE /resource/sign_out
@@ -25,7 +33,8 @@ class Sellers::SessionsController < Devise::SessionsController
     respond_to_on_destroy
   end
 
-  # protected
+  protected
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

@@ -93,7 +93,7 @@
                   <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu" data-toggle="dropdown" href="#"><%= seller_signed_in? ? 'Личный кабинет' : 'Войти' %><b class="caret"></b></a>
                   <ul class="dropdown-menu " role="menu" aria-labelledby="drop001">
                     <% if seller_signed_in? %>
-                        <li><%= link_to 'Редактировать данные', edit_seller_registration_path(current_seller.id) %></li>
+                        <li><%= link_to 'Редактировать данные', edit_seller_registration_path %></li>
                         <li><%= link_to 'Мои товары', seller_panel_product_path %></li>
                         <li class="divider"></li>
                         <li><%= link_to('Выйти', destroy_seller_session_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>

@@ -1,5 +1,6 @@
 class SellerPanelController < ApplicationController
   before_action :authenticate_seller!
+  before_action :reset_session
 
   def product
     @seller_products = current_seller.products.where(:moderation => 1)
@@ -14,6 +15,15 @@ class SellerPanelController < ApplicationController
       head :error
     end
 
+  end
+
+  private
+
+  def reset_session
+    if seller_signed_in? && current_seller.reset_session == 1
+      current_seller.update(:reset_session => 0)
+      redirect_to destroy_seller_session_path
+    end
   end
 
 end

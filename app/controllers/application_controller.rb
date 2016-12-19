@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :nav_main
 
+
   def nav_main
     @catmenu = Category.all
   end
@@ -16,6 +17,5 @@ class ApplicationController < ActionController::Base
       seller_panel_product_path
     end
   end
-
 
 end

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'seller_all'
       get 'delete_attachment'
       delete 'delete_seller'
+      delete 'delete_product'
       post 'form_render'
   end
   get 'admin_panel/:name/edit_seller', to: 'admin_panel#edit_seller', as: 'edit_seller_admin_panel'
@@ -45,7 +46,7 @@ end
     get "/rootadmins" => "rootadmins/sessions#new"
   end
 
-  resources :products, only: [:index, :destroy, :update, :new] do
+  resources :products, only: [:index, :destroy, :update, :new, :create] do
     collection do
       put 'delete_attachment'
     end
