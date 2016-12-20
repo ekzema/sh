@@ -7,7 +7,7 @@
             Изменить данные
           </header>
           <div class="panel-body">
-<%= nested_form_for(@product, :as => :product, :url => update_product_admin_panel_path, :method => :put, :html => {"data-parsley-validate" => true, :class => 'form-horizontal'}) do |f| %>
+<%= nested_form_for(@product, :as => :product, :url => update_product_admin_panel_path, :multipart => true, :method => :put, :html => {"data-parsley-validate" => true, :class => 'form-horizontal'}) do |f| %>
     <div class="form-group">
         <div class="col-sm-2 ">
             <%= f.label 'Основное фото', class:"control-label"  %>
@@ -172,8 +172,21 @@
         <% end %>
         <% end %>
 
-       <%= f.link_to_add "Добавить + ", :product_slide_images %>
 
+
+
+          <%= nested_form_for(Product.new, :url => update_product_admin_panel_path, :method => :put) do |i| %>
+
+        <%= i.fields_for :product_slide_images do |slide_images| %>
+                                  <div class="form-group rowImageSlide newRowSlide">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-10">
+              <%= slide_images.file_field :image %><br>
+              <%= slide_images.link_to_remove '<i class="icon_close_alt2"></i>'.html_safe, class: 'deleteImageSlide btn btn-danger' %>
+                                          </div></div>
+                                      <% end %>
+
+          <%= i.link_to_add "Добавить + ", :product_slide_images %>
 
 
 
@@ -185,6 +198,7 @@
         </div>
     </div>
 <% end %>
+                          <% end %>
           </section>
           </div>
           </div>

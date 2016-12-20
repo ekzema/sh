@@ -62,8 +62,7 @@ before_action :reset_session, only: [:edit, :update]
   protected
 
   def reset_session
-    if seller_signed_in? && current_seller.reset_session == 1
-      current_seller.update(:reset_session => 0)
+    if seller_signed_in? && current_seller.moderation != 1
       redirect_to destroy_seller_session_path
     end
   end

@@ -43,7 +43,7 @@ class AdminPanelController < ApplicationController
     @product = Product.find(@pars_id)
     @twocategories = Twocategory.where(category_id: @product.category_id)
     @threecategories = Threecategory.where(twocategory_id: @product.twocategory_id)
-    @ooo = @product.product_slide_images.new
+    @ooo = @product.product_slide_images
   end
 
   def update_product
