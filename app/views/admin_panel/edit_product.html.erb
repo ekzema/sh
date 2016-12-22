@@ -7,201 +7,200 @@
             Изменить данные
           </header>
           <div class="panel-body">
-<%= nested_form_for(@product, :as => :product, :url => update_product_admin_panel_path, :multipart => true, :method => :put, :html => {"data-parsley-validate" => true, :class => 'form-horizontal'}) do |f| %>
-    <div class="form-group">
-        <div class="col-sm-2 ">
-            <%= f.label 'Основное фото', class:"control-label"  %>
-        </div>
-        <div class="col-sm-10">
-            <ul class="sliderImg imgcat">
-                <li><%= image_tag @product.main_image.url, title: "#{@product.name}", class: "EditImage" %></li>
-                <li><%= f.file_field :main_image %><% unless @product.main_image_file_name.nil? %></li>
-                <li><%= link_to("Удалить", {action: :delete_attachment, id: @product.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %></li>
+            <%= nested_form_for(@product, :as => :product, :url => update_product_admin_panel_path, :multipart => true, :method => :put, :html => {"data-parsley-validate" => true, :class => 'form-horizontal'}) do |f| %>
+                <div class="form-group">
+                  <div class="col-sm-2 ">
+                    <%= f.label 'Основное фото', class: "control-label" %>
+                  </div>
+                  <div class="col-sm-10">
+                    <ul class="sliderImg imgcat">
+                      <li><%= image_tag @product.main_image.url, title: "#{@product.name}", class: "EditImage" %></li>
+                      <li><%= f.file_field :main_image %>
+                        <% unless @product.main_image_file_name.nil? %></li>
+                            <li><%= link_to("Удалить", {action: :delete_attachment, id: @product.id}, method: :put, data: {confirm: 'Вы уверины что хотите удалить?'}) %></li>
+                        <% end %>
+                        </ul>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <%= f.label 'Название товара', class: "control-label" %>
+                  </div>
+                  <div class="col-sm-10">
+                    <%= f.text_field :name, class: "form-control form" %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <%= f.label 'Артикул товара', class: "control-label" %>
+                  </div>
+                  <div class="col-sm-10">
+                    <%= f.text_field :article, class: "form-control form" %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <%= f.label :size, class: "control-label" %>
+                  </div>
+                  <div class="col-sm-10 ">
+                    <%= f.text_field :size, class: "form-control form" %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <%= f.label 'Цена', class: "control-label" %>
+                  </div>
+                  <div class="col-sm-10">
+                    <%= f.number_field :price, class: "form-control form" %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <%= f.label 'Качество', class: "control-label" %>
+                  </div>
+                  <div class="col-sm-10 ">
+                    <%= f.text_area :quality, class: "form-control form" %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-2 ">
+                    <%= f.label 'Описание', class: "control-label" %>
+                  </div>
+                  <div class="col-sm-10 ">
+                    <%= f.text_area :description, class: "form-control form" %>
+                  </div>
+                </div>
+
+                <h3 class="text-center">SEO</h3>
+
+                <div class="form-group">
+                  <div class="col-sm-2 ">
+                    <%= f.label 'Meta заголовок', class: "control-label" %>
+                  </div>
+                  <div class="col-sm-10 ">
+                    <%= f.text_field :meta_title, class: "form-control form" %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-2 ">
+                    <%= f.label 'Meta описание', class: "control-label" %>
+                  </div>
+                  <div class="col-sm-10 ">
+                    <%= f.text_area :meta_desc, class: "form-control form" %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <%= f.label 'Meta ключи', class: "control-label" %>
+                  </div>
+                  <div class="col-sm-10 ">
+                    <%= f.text_area :meta_key, class: "form-control form" %>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <div class="col-sm-2 ">
+                    <%= f.label 'Категория', class: "control-label" %>
+                  </div>
+                  <div class="col-sm-10 ">
+                    <%= f.select :category_id, Category.all.collect { |category| [category.name, category.id] }, {:include_blank => '- Категории -'}, :class => 'form-control form product_category_id' %>
+                  </div>
+                </div>
+
+
+                <div id="twocategory" class="form-group">
+                  <% if @twocategories %>
+                      <div class="col-sm-2 ">
+                        <%= f.label 'Сезон', class: "control-label" %>
+                      </div>
+                      <div class="col-sm-10">
+                        <%= select_tag('product[twocategory_id]', options_for_select(@twocategories.collect { |twocategory| [twocategory.name, twocategory.id] }, @product.twocategory_id), class: "form-control form product_twocategory_id") %>
+                      </div>
+                  <% end %>
+                </div>
+
+                <div id="threecategory" class="form-group">
+                  <% if @threecategories %>
+                      <div class="col-sm-2 ">
+                        <%= f.label 'Тип товара', class: "control-label" %>
+                      </div>
+                      <div class="col-sm-10">
+                        <%= select_tag('product[threecategory_id]', options_for_select(@threecategories.collect { |threecategories| [threecategories.name, threecategories.id] }, @product.threecategory_id), class: "form-control form") %>
+                      </div>
+                  <% end %>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-2 ">
+                    <%= f.label 'Показать товар', for: 'visible' %>
+                  </div>
+                  <div class="col-sm-10 ">
+                    <%= f.check_box :visible, id: 'visible' %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-2 ">
+                    <%= f.label 'Модерация товара', for: 'moderation' %>
+                  </div>
+                  <div class="col-sm-10"
+                  '>
+                  <%= f.check_box :moderation, id: 'moderation' %>
+                </div>
+                </div>
+
+
+                <h4>Картинки для слайдера</h4>
+
+                <% @product.product_slide_images.each do |slide_image| %>
+
+                    <%= f.fields_for :product_slide_images, slide_image do |slide| %>
+                        <div class="form-group rowImageSlide">
+                          <div class="col-sm-2"></div>
+                          <div class="col-sm-10">
+                            <%= image_tag slide_image.image.url(), class: 'slideImagePrduct' %>
+                            <%= slide.file_field :image %>
+
+                            <%= slide.link_to_remove '<i class="icon_close_alt2"></i>'.html_safe, class: 'deleteImageSlide btn btn-danger' %>
+                          </div>
+                        </div>
+                    <% end %>
+                <% end %>
+
+                <%= nested_form_for(Product.new, :url => update_product_admin_panel_path, :method => :put) do |i| %>
+
+                    <%= i.fields_for :product_slide_images do |slide_images| %>
+                        <div class="form-group rowImageSlide newRowSlide">
+                          <div class="col-sm-2"></div>
+                          <div class="col-sm-10">
+                            <%= slide_images.file_field :image %><br>
+                            <%= slide_images.link_to_remove '<i class="icon_close_alt2"></i>'.html_safe, class: 'deleteImageSlide btn btn-danger' %>
+                          </div>
+                        </div>
+
+                    <% end %>
+                    <%= i.link_to_add :product_slide_images do %>
+                        <span type="button" class="btn btn-success btn-block addPhohto"><i class="icon_plus"></i> ДОБАВИТЬ КАРТИНКУ</span>
+                    <% end %>
+
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10 actions">
+                        <br>
+                        <%= link_to 'Назад'.html_safe, admin_panel_product_all_path, class: 'btn btn-primary active' %>
+                        <button type="submit" class="btn btn-primary editProduct">Изменить</button>
+                      </div>
+                    </div>
+                <% end %>
             <% end %>
-            </ul>
-        </div>
+            </section>
+      </div>
     </div>
-    <div class="form-group">
-        <div class="col-sm-2">
-            <%= f.label 'Название товара', class:"control-label"  %>
-        </div>
-        <div class="col-sm-10">
-            <%= f.text_field :name, class:"form-control form" %>
-        </div>
     </div>
-
-    <div class="form-group">
-        <div class="col-sm-2">
-            <%= f.label 'Артикул товара', class:"control-label"  %>
-        </div>
-        <div class="col-sm-10">
-            <%= f.text_field :article, class:"form-control form" %>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-sm-2">
-            <%= f.label :size, class:"control-label"  %>
-        </div>
-        <div class="col-sm-10 ">
-            <%= f.text_field :size, class:"form-control form" %>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-sm-2">
-            <%= f.label 'Цена', class:"control-label"  %>
-        </div>
-        <div class="col-sm-10">
-            <%= f.number_field :price, class:"form-control form" %>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-sm-2">
-            <%= f.label 'Качество', class:"control-label"  %>
-        </div>
-        <div class="col-sm-10 ">
-            <%= f.text_area :quality, class:"form-control form" %>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-sm-2 ">
-            <%= f.label 'Описание', class: "control-label"  %>
-        </div>
-        <div class="col-sm-10 ">
-            <%= f.text_area :description, class: "form-control form" %>
-        </div>
-    </div>
-
-    <h3 class="text-center">SEO</h3>
-
-    <div class="form-group">
-        <div class="col-sm-2 ">
-            <%= f.label 'Meta заголовок', class: "control-label"  %>
-        </div>
-        <div class="col-sm-10 ">
-            <%= f.text_field :meta_title, class: "form-control form" %>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-2 ">
-            <%= f.label 'Meta описание', class: "control-label"  %>
-        </div>
-        <div class="col-sm-10 ">
-            <%= f.text_area :meta_desc, class: "form-control form" %>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-2">
-            <%= f.label 'Meta ключи', class: "control-label"  %>
-        </div>
-        <div class="col-sm-10 ">
-         <%= f.text_area :meta_key, class:"form-control form" %>
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        <div class="col-sm-2 ">
-            <%= f.label 'Категория', class:"control-label" %>
-        </div>
-        <div class="col-sm-10 ">
-            <%= f.select :category_id,  Category.all.collect {|category| [category.name, category.id]}, { :include_blank => '- Категории -'}, :class => 'form-control form product_category_id' %>
-        </div>
-    </div>
-
-
-    <div id="twocategory" class="form-group">
-        <% if @twocategories %>
-        <div class="col-sm-2 ">
-            <%= f.label 'Сезон', class:"control-label" %>
-        </div>
-        <div class="col-sm-10">
-            <%= select_tag('product[twocategory_id]', options_for_select(@twocategories.collect {|twocategory| [twocategory.name, twocategory.id]}, @product.twocategory_id), class:"form-control form product_twocategory_id") %>
-        </div>
-        <% end %>
-    </div>
-
-    <div id="threecategory" class="form-group">
-        <% if @threecategories %>
-        <div class="col-sm-2 ">
-            <%= f.label 'Тип товара', class:"control-label" %>
-        </div>
-        <div class="col-sm-10">
-            <%= select_tag('product[threecategory_id]', options_for_select(@threecategories.collect {|threecategories| [threecategories.name, threecategories.id]}, @product.threecategory_id), class:"form-control form") %>
-        </div>
-        <% end %>
-    </div>
-
-    <div class="form-group">
-        <div class="col-sm-2 ">
-            <%= f.label 'Показать товар', for: 'visible' %>
-        </div>
-        <div class="col-sm-10 ">
-            <%= f.check_box :visible, id: 'visible'   %>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-sm-2 ">
-          <%= f.label 'Модерация товара', for: 'moderation' %>
-        </div>
-        <div class="col-sm-10"'>
-            <%= f.check_box :moderation, id: 'moderation' %>
-        </div>
-    </div>
-
-
-        <h4>Картинки для слайдера</h4>
-
-
-
-        <% @product.product_slide_images.each do |slide_image| %>
-
-            <%= f.fields_for :product_slide_images, slide_image do |slide| %>
-                      <div class="form-group rowImageSlide">
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-10">
-            <%= image_tag slide_image.image.url(), class: 'slideImagePrduct' %>
-            <%= slide.file_field :image %>
-
-            <%= slide.link_to_remove '<i class="icon_close_alt2"></i>'.html_safe, class: 'deleteImageSlide btn btn-danger' %>
-                                  </div></div>
-        <% end %>
-        <% end %>
-
-
-
-
-          <%= nested_form_for(Product.new, :url => update_product_admin_panel_path, :method => :put) do |i| %>
-
-        <%= i.fields_for :product_slide_images do |slide_images| %>
-                                  <div class="form-group rowImageSlide newRowSlide">
-                                    <div class="col-sm-2"></div>
-                                    <div class="col-sm-10">
-              <%= slide_images.file_field :image %><br>
-              <%= slide_images.link_to_remove '<i class="icon_close_alt2"></i>'.html_safe, class: 'deleteImageSlide btn btn-danger' %>
-                                          </div></div>
-                                      <% end %>
-
-          <%= i.link_to_add "Добавить + ", :product_slide_images %>
-
-
-
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10 actions">
-            <br>
-            <%= link_to 'Назад', admin_panel_product_all_path, class: 'btn btn-primary' %>
-            <button type="submit" class="btn btn-success editProduct">Изменить</button>
-        </div>
-    </div>
-<% end %>
-                          <% end %>
-          </section>
-          </div>
-          </div>
-          </div>
-          </section>
-          </section>
+  </section>
+</section>

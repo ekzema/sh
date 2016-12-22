@@ -15,7 +15,7 @@ before_action :reset_session, only: [:edit, :update]
     if resource.persisted?
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
-        respond_with resource, location: after_sign_up_path_for(resource)
+        redirect_to  :root
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!

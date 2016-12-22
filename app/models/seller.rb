@@ -5,7 +5,7 @@ class Seller < ApplicationRecord
   validates :surname, :presence => {message: '(укажите свою фамилию)'}
   validates :date_of_birth, :presence => {message: '(укажите свою дату рождения)'}
   validates :city, :presence => {message: '(укажите свою область)'}
-  validates_inclusion_of :city, :in => CITY_TYPES + [''], :message => 'Выбран не верный формат области'
+  # validates_inclusion_of :city, :in => CITY_TYPES + [''], :message => 'Выбран не верный формат области'
   validates :promo_code, presence: true
 
   # Include default devise modules. Others available are:
