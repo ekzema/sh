@@ -9,6 +9,7 @@ Website: http://geekslabs.com/
 @import url(http://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
 @import url(line-icons.css);
 
+
 body {
     color: #797979;
     background: #eeeeee;
@@ -72,22 +73,8 @@ table tr th { color: #688a7e;}
 .login-body {
     background-color: #f1f2f7;
 }
-.login-img-body{
-  background: url('../img/bg-1.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-.login-img2-body{
-  background: url('../img/bg-1.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
 .login-img3-body{
-  background: url('../img/bg-1.jpg') no-repeat center center fixed; 
+  background: url('/login/5.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -5004,4 +4991,37 @@ span.customSelect.changed {
 
 .addPhohto{
     margin-top: 20px;
+}
+
+.rootReg span{
+    color: white;
+}
+
+#error_explanation{
+    max-width: 550px;
+    margin: 20px auto;
+    background-color: #b6b6b6;
+    padding: 0  15px 15px 15px;
+    opacity: 0.7;
+}
+
+#error_explanation:before{
+    display: block;
+    margin: 0 auto;
+    width: 40px;
+    color: red;
+    font-size: 40px;
+    font-family: FontAwesome;
+    content: "\f06a";
+}
+
+#error_explanation h2{
+    font-size: 20px;
+    color: black;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+#error_explanation ul li{
+    color: red;
 }

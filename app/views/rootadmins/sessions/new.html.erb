@@ -1,26 +1,25 @@
-<h2>Log in</h2>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'login-form'}) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="login-wrap">
+      <p class="login-img"><i class="icon_lock_alt"></i></p>
+      <span>Логин:</span>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="icon_profile"></i></span>
+        <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Имя' %>
+      </div>
+      <span>Пароль:</span>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Пароль' %>
+      </div>
+      <label class="checkbox">
+        <%= f.check_box :remember_me %> <%= f.label 'Запомнить', for: :rootadmin_remember_me %>
+        <span class="pull-right"> <%= link_to 'Забыли пароль?', new_rootadmin_password_path %></span>
+      </label>
+      <%= f.submit "Войти", class: 'btn btn-primary btn-lg btn-block' %>
+      <%= link_to new_rootadmin_registration_path, class: 'btn btn-info btn-lg btn-block rootReg' do %>
+          <span>Регистрация</span>
+      <% end %>
     </div>
-  <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
 <% end %>
-
-<%= render "rootadmins/shared/links" %>

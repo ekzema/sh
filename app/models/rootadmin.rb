@@ -3,5 +3,5 @@ class Rootadmin < ApplicationRecord
   #  and :omniauthable, :confirmable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :lockable, :authentication_keys => [:name]
-
+  validates :name, presence: true
 end
