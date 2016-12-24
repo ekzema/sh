@@ -1,6 +1,35 @@
 <section id="main-content">
   <section class="wrapper">
     <div class="container">
+
+
+      <div class="container">
+
+        <div class="dropdown">
+          <a class="btn btn-primary active adminDropMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+            <i class="fa fa-caret-down" aria-hidden="true"></i> Сртировать продавцов по:
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="people_btn">
+            <li>
+              <%= link_to 'Прошедшие модеацию', admin_panel_seller_all_path(moderation: 1) %>
+            </li>
+            <li>
+              <%= link_to 'Не прошедшие модерацию', admin_panel_seller_all_path(moderation: 0) %>
+            </li>
+            <li>
+              <%= link_to 'Все', admin_panel_seller_all_path %>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+
+
+
+
+
+
       <% if flash[:alert] %>
           <div class="alert alert-error" class="text-center">
             <button type="button" class="close" data-dismiss="alert">&times;</button>

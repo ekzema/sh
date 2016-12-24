@@ -14,6 +14,9 @@ class AdminPanelController < ApplicationController
   #----BEGIN seller----
   def seller_all
     @sellers = Seller.all
+    if params[:moderation]
+      @sellers = Seller.where(moderation: params[:moderation])
+    end
   end
 
   def edit_seller

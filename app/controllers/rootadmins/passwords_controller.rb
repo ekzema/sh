@@ -1,4 +1,6 @@
 class Rootadmins::PasswordsController < Devise::PasswordsController
+  layout 'rootadmin-login'
+
   # GET /resource/password/new
   # def new
   #   super

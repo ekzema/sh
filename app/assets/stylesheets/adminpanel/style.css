@@ -5025,3 +5025,11 @@ span.customSelect.changed {
 #error_explanation ul li{
     color: red;
 }
+
+.adminDropMenu{
+    border-color: silver !important;
+}
+
+.adminDropMenu > i{
+    color: black;
+}
