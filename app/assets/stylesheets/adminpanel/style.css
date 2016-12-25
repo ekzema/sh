@@ -5026,6 +5026,16 @@ span.customSelect.changed {
     color: red;
 }
 
+.wrapDrop{
+    position: relative;
+    height: 40px;
+}
+
+.dropdown{
+    position: absolute;
+    left: 15px;
+}
+
 .adminDropMenu{
     border-color: silver !important;
 }
@@ -5033,3 +5043,46 @@ span.customSelect.changed {
 .adminDropMenu > i{
     color: black;
 }
+
+/*Paginate BEGIN*/
+.pagination{
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.pagination > .previous_page, .pagination > .next_page{
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.pagination > .current{
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+    background-color: #007aff;
+    padding: 5px 10px;
+    color: white;
+}
+
+.pagination a{
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.pagination a:hover{
+    color: black;
+    background: none;
+    border-color: #A9A9A9;
+}
+
+.pagination .adminPag{
+    color: #394a59;
+}
+
+.pagination .disabled i{
+    color: silver;
+}
+/*Paginate END*/

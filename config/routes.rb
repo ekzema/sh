@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   namespace :admin_panel do
       get 'product_all'
       get 'seller_all'
-      get 'delete_attachment'
+      delete 'delete_attachment_product'
+      delete 'delete_attachment_seller'
       delete 'delete_seller'
       delete 'delete_product'
       post 'form_render'

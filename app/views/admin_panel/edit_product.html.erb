@@ -17,7 +17,7 @@
                       <li><%= image_tag @product.main_image.url, title: "#{@product.name}", class: "EditImage" %></li>
                       <li><%= f.file_field :main_image %>
                         <% unless @product.main_image_file_name.nil? %></li>
-                            <li><%= link_to("Удалить", {action: :delete_attachment, id: @product.id}, method: :put, data: {confirm: 'Вы уверины что хотите удалить?'}) %></li>
+                            <li><%= link_to("Удалить", {action: :delete_attachment_product, id: @product.id}, method: :delete, data: {confirm: 'Вы уверины что хотите удалить?'}) %></li>
                         <% end %>
                         </ul>
                   </div>
@@ -192,7 +192,7 @@
                     <div class="form-group">
                       <div class="col-sm-offset-2 col-sm-10 actions">
                         <br>
-                        <%= link_to 'Назад'.html_safe, admin_panel_product_all_path, class: 'btn btn-primary active' %>
+                        <%= link_to 'Назад'.html_safe, :back, class: 'btn btn-primary active' %>
                         <button type="submit" class="btn btn-primary editProduct">Изменить</button>
                       </div>
                     </div>

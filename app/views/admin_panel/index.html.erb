@@ -13,19 +13,23 @@
 
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <%= link_to admin_panel_seller_all_path(moderation: 0) do %>
         <div class="info-box blue-bg">
           <i class="fa fa-users" aria-hidden="true"></i>
           <div class="count"><%= @sellers.count %></div>
           <div class="title">Продавцы на модерацию</div>
         </div><!--/.info-box-->
+        <% end %>
       </div><!--/.col-->
 
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <%= link_to admin_panel_product_all_path(moderation: 0) do %>
         <div class="info-box brown-bg">
           <i class="fa fa-barcode" aria-hidden="true"></i>
           <div class="count"><%= @products.count %></div>
           <div class="title">Товары на модерацию</div>
         </div><!--/.info-box-->
+        <% end %>
       </div><!--/.col-->
 
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">

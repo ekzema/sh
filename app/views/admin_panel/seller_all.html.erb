@@ -1,13 +1,36 @@
 <section id="main-content">
   <section class="wrapper">
-    <div class="container">
 
 
-      <div class="container">
+
+      <div class="container-fluid">
+        <% if flash[:alert] %>
+            <div class="alert alert-error" class="text-center">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <%= flash[:alert] %></div>
+        <% end %>
+        <% if flash[:notice] %>
+            <div class="alert alert-info" class="text-center">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <%= flash[:notice] %>
+            </div>
+        <% end %>
+<div class="row">
+  <div class="wrapDrop">
 
         <div class="dropdown">
           <a class="btn btn-primary active adminDropMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-            <i class="fa fa-caret-down" aria-hidden="true"></i> Сртировать продавцов по:
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+            <% case @sort %>
+            <% when '0' %>
+                <%= 'Не прошедшие модерацию' %>
+            <% when '1' %>
+                <%= 'Прошедшие модерацию' %>
+            <% when 'all' %>
+                <%= 'Все продавцы' %>
+            <% else %>
+                <%= 'Сртировать продавцов по:' %>
+            <% end %>
           </a>
 
           <ul class="dropdown-menu" aria-labelledby="people_btn">
@@ -18,30 +41,15 @@
               <%= link_to 'Не прошедшие модерацию', admin_panel_seller_all_path(moderation: 0) %>
             </li>
             <li>
-              <%= link_to 'Все', admin_panel_seller_all_path %>
+              <%= link_to 'Все продавцы', admin_panel_seller_all_path(moderation: 'all') %>
             </li>
           </ul>
 
         </div>
       </div>
+      </div>
+      </div>
 
-
-
-
-
-
-      <% if flash[:alert] %>
-          <div class="alert alert-error" class="text-center">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <%= flash[:alert] %></div>
-      <% end %>
-      <% if flash[:notice] %>
-          <div class="alert alert-info" class="text-center">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <%= flash[:notice] %>
-          </div>
-      <% end %>
-    </div>
     <div class="row">
       <div class="col-lg-12">
         <section class="panel">
@@ -80,7 +88,8 @@
             </tbody>
           </table>
         </section>
-      </div>
+        <p><%= will_paginate @sellers, previous_label: '<i class="fa fa-chevron-circle-left fa-lg adminPag"></i>'.html_safe, next_label: '<i class="fa fa-chevron-circle-right fa-lg adminPag"></i>'.html_safe %></p>
+       </div>
     </div>
   </section>
 </section>

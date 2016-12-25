@@ -9,19 +9,18 @@
           <div class="panel-body">
             <%= form_for(@seller, :as => :seller, :url => update_seller_admin_panel_path, :method => :put, :html => {'data-parsley-validate' => true, :class => 'form-horizontal'}) do |f| %>
                 <div class="form-group">
-                    <div class="col-sm-2">
-                        <%= f.label'Фото', class:"control-label" %>
-                    </div>
-                    <div class="col-sm-10">
-                        <ul class="sliderImg">
-                          <% if @seller.avatar_file_name.nil? %>
-                            <li><%= image_tag 'no_photo_mini.jpg', title: "no avatar", class: "no_avatar" %></li>
-                          <% else %>
-                            <%= image_tag @seller.avatar, style: 'height:100px;' %>
-                          <% end %>
-                            <li><%= f.file_field :avatar %>
+                  <div class="col-sm-2 ">
+                    <%= f.label 'Основное фото', class: "control-label" %>
+                  </div>
+                  <div class="col-sm-10">
+                    <ul class="sliderImg imgcat">
+                      <li><%= image_tag @seller.avatar.url, title: "#{@seller.name}", class: "EditImage", style: 'height: 100px;' %></li>
+                      <li><%= f.file_field :avatar %>
+                        <% unless @seller.avatar_file_name.nil? %></li>
+                            <li><%= link_to("Удалить", {action: :delete_attachment_seller, id: @seller.id}, method: :delete, data: {confirm: 'Вы уверины что хотите удалить?'}) %></li>
+                        <% end %>
                         </ul>
-                    </div>
+                  </div>
                 </div>
 
                 <div class="form-group">
@@ -90,7 +89,7 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10 actions">
                      <br>
-                      <%= link_to 'Назад', admin_panel_seller_all_path, class: 'btn btn-primary' %>
+                      <%= link_to 'Назад', :back, class: 'btn btn-primary' %>
                         <button type="submit" class="btn btn-success editSeller">Изменить</button>
                     </div>
                 </div>

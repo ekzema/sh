@@ -3,7 +3,13 @@ class AdminPanelController < ApplicationController
   before_action :set_regular, only: [:edit_seller, :update_seller, :edit_product, :update_product, :delete_attachment]
   layout 'adminpanel'
   def product_all
-    @product = Product.all
+    @product = Product.paginate(:page => params[:page], :per_page => 20)
+    @sort = params[:moderation]
+    if @sort == 'all'
+      @product
+    elsif @sort
+      @product = Product.where(moderation: params[:moderation]).paginate(:page => params[:page], :per_page => 20)
+    end
   end
 
   def index
@@ -13,9 +19,12 @@ class AdminPanelController < ApplicationController
 
   #----BEGIN seller----
   def seller_all
-    @sellers = Seller.all
-    if params[:moderation]
-      @sellers = Seller.where(moderation: params[:moderation])
+    @sellers = Seller.paginate(:page => params[:page], :per_page => 20)
+    @sort = params[:moderation]
+    if @sort == 'all'
+      @sellers
+      elsif @sort
+      @sellers = Seller.where(moderation: params[:moderation]).paginate(:page => params[:page], :per_page => 20)
     end
   end
 
@@ -31,6 +40,14 @@ class AdminPanelController < ApplicationController
       else
         render :edit_seller
       end
+  end
+
+
+  def delete_attachment_seller
+    @seller = Seller.find(params[:id])
+    @seller.avatar = nil
+    @seller.save
+    redirect_to :back
   end
 
   def delete_seller
@@ -58,8 +75,8 @@ class AdminPanelController < ApplicationController
     end
   end
 
-  def delete_attachment
-    @product = Product.find(@pars_id)
+  def delete_attachment_product
+    @product = Product.find(params[:id])
     @product.main_image = nil
     @product.save
     redirect_to :back
