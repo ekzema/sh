@@ -32,29 +32,29 @@ before_action :reset_session, only: [:edit, :update]
   def edit
      super
   end
-
+# fields_change = ['email', 'name', 'surname', 'city', 'promo_code', 'date_of_birth']
+# fields_change.each { |f| break render text: 'exit' if resource.previous_changes.keys.include?(f)}
   # PUT /resource
-  def update
-    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
-    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
-    resource_updated = update_resource(resource, account_update_params)
-    yield resource if block_given?
-    if resource_updated
-      # render text: resource.previous_changes.keys
-      if is_flashing_format?
-        flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
-            :update_needs_confirmation : :updated
-        set_flash_message :notice, flash_key
+    def update
+      self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+      prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+      resource_updated = update_resource(resource, account_update_params)
+      yield resource if block_given?
+      if resource_updated
+        i = 0
+        fields_change = ['email', 'name', 'surname', 'city', 'promo_code', 'date_of_birth']
+        fields_change.each { |f| i+=1 if resource.previous_changes.keys.include?(f) }
+        if i > 0
+          resource.update(:moderation => 0)
+          Devise.sign_out_all_scopes ? sign_out(current_seller) : sign_out(resource_name)
+          redirect_to :root, :notice => 'Ваш акаунт был изменён и отпрален на модерцию'
+        else
+          redirect_to seller_panel_product_path
+        end
       end
-      bypass_sign_in resource, scope: resource_name
-      respond_with resource, location: after_update_path_for(resource)
-    else
-      clean_up_passwords resource
-      set_minimum_password_length
-      respond_with resource
     end
-  end
+
 
   # DELETE /resource
   # def destroy

@@ -9,25 +9,27 @@ class Sellers::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     moderation = Seller.find_by_email(params[:seller][:email])
-    valid_seller = moderation.valid_password?(params[:seller][:password])
-    if valid_seller && moderation.moderation == 1
-     moderation.update(:reset_session => 0) if moderation.reset_session == 1
-      super
-      elsif valid_seller && moderation.moderation == 0
-        redirect_back(fallback_location: root_path)
-        flash[:error] = 'Ваша заяыка ещё не прошла модерацию'
-        else
-          moderation.update(:reset_session => 0) if moderation.reset_session == 1
-        flash[:error] = 'Неверный email или пароль!'
-      super
-      end
-
-
+    if moderation.nil?
+      redirect_back(fallback_location: root_path)
+      flash[:error] = 'Неверный email или пароль!'
+    else
+      valid_seller = moderation.valid_password?(params[:seller][:password])
+      if valid_seller && moderation.moderation == 1
+        super
+        elsif valid_seller && moderation.moderation == 0
+          redirect_back(fallback_location: root_path)
+          flash[:error] = 'Ваша заяыка ещё не прошла модерацию'
+         else
+          redirect_back(fallback_location: root_path)
+          flash[:error] = 'Неверный email или пароль!'
+        super
+        end
+    end
   end
 
   # DELETE /resource/sign_out
   def destroy
-    signed_out = (Devise.sign_out_all_scopes ? sign_out(current_seller) : sign_out(resource_name))
+      signed_out = (Devise.sign_out_all_scopes ? sign_out(current_seller) : sign_out(resource_name))
     set_flash_message! :notice, :signed_out if signed_out
     yield if block_given?
     respond_to_on_destroy
