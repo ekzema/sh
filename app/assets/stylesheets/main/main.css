@@ -458,7 +458,10 @@ body {
 
 .ava {
     text-transform: uppercase;
-    text-align: center;
+    /*text-align: center;*/
+}
+.ava img{
+    max-height: 140px;
 }
 .delo{
     text-transform: capitalize;
@@ -509,4 +512,8 @@ body {
     display: -webkit-flex;
     display: flex;
     flex:1 0 auto;
+}
+.names{
+    font-size: 20px;
+    text-transform: capitalize;
 }

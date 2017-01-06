@@ -19,7 +19,13 @@
     
   </div>
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 glf text-center">
-    <%= image_tag(@product.main_image) %>
+    <ul class="pager">
+    <li class="previous"><a href="#">&larr; Предыдущий</a></li>
+    <li class="next"><a href="#">Cледующий &rarr;</a></li>
+    </ul>
+    <p><%= image_tag(@product.main_image) %></p>
+    <p class="names"><%= @product.name %></p>
+
   </div> 
   <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 glf">
     <div id="MainMenu">
@@ -69,11 +75,14 @@
 <p>
   <strong>Twocategory:</strong>
   <%= @product.twocategory_id %>
-</p>
+</p> 
 
 <p>
   <strong>Threecategory:</strong>
   <%= @product.threecategory_id %>
 </p> -->
-<button type="button" class="btn btn3"><%= link_to 'Edit', edit_product_path(@product.id.to_s+'-'+transtlit_name(@product.name)) %></button>
-<button type="button" class="btn btn3"><%= link_to 'Back', products_path %></button>
+
+<%= link_to 'Edit', edit_product_path(@product.id.to_s+'-'+transtlit_name(@product.name)), :type => 'button', :class => 'btn btn3' %>
+<%= link_to 'Back', products_path, :type => 'button', :class => 'btn btn4' %>
+
+
