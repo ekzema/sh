@@ -10,4 +10,7 @@ class WelcomeController < ApplicationController
   def all
   end
 
+  def vip  	
+  end
+
 end

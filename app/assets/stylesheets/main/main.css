@@ -359,9 +359,7 @@ table{
     text-align: center !important;
     color: #fff!important;
 }
-/*.autoplay img, .autoplay1 img{
-    display: none;
-}*/
+
 .slick-slide {
   margin: 1px 10px;
 }
@@ -399,7 +397,7 @@ body {
   height: 50px;
 }
 .tofooter{
-    margin-bottom: 55px;
+    margin-bottom: 65px;
 }
 /*футер вниз страницы*/
 .navbar-inverse {
@@ -492,3 +490,23 @@ body {
 }
 
 /*END checkbox product_info*/
+/*нижняя панель на главной странице*/
+.niz{
+  background-color: #333;
+  color: #fff; 
+  margin-bottom: 20px !important; 
+}
+.niz2{
+    padding: 0 40px 40px 40px;
+    text-align: justify;
+    font-size: 16px;
+}
+/*вип-стрмница*/
+.equal, .equal > div[class*='col-'] {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex:1 0 auto;
+}

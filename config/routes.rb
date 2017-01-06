@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   put 'admin_panel/:name/update_product', to: 'admin_panel#update_product', as: 'update_product_admin_panel'
 
   get '/all' => 'welcome#all'
+  get '/vip' => 'welcome#vip'
   get 'seller_panel/product'
   post 'seller_panel/product_visible'
 
