@@ -1,56 +1,61 @@
-<h2 class="text-center delo">Редактирование данных <%= current_seller.name %> <%= current_seller.surname %></h2>
-<h3>После изменения данных ваш акаунт автоматически будет отправлен на модерацию!</h3>
+<div class="container">
+  <div class="row">
+  <h3 class="text-center delo">Редактирование данных <%= current_seller.name %> <%= current_seller.surname %></h3>
+  <p class="text-center">После изменения данных ваш акаунт автоматически будет отправлен на модерацию!</p>  
+  </div>
+</div>
+
 <%= form_for(resource, as: resource_name, html: { "data-parsley-validate" => true, :method => :put }, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
  
-  <div class="form-group col-md-offset-2">
+  <div class="form-group col-sm-offset-2">
     <div class="col-sm-2 ">
-      <%= f.label :email, class:"control-label"  %>
+      <%= f.label :email, class:"control-label form2"  %>
     </div> 
     <div class="col-sm-10 "> 
       <%= f.email_field :email, autofocus: true, class:"form-control form" %>
     </div>
   </div>
 
-    <div class="form-group col-md-offset-2">
-        <div class="col-sm-2 ">
-            <%= f.label 'Имя', class:"control-label form" %><br />
+    <div class="form-group col-sm-offset-2">
+        <div class="col-sm-2 "> 
+            <%= f.label 'Имя', class:"control-label form2" %><br />
          </div>
         <div class="col-sm-10 ">
             <%= f.text_field :name, class:"form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Имя</span>".html_safe %>
         </div>
     </div>
 
-    <div class="form-group col-md-offset-2">
+    <div class="form-group col-sm-offset-2">
         <div class="col-sm-2 ">
-            <%= f.label 'Фамилия', class:"control-label form" %>
+            <%= f.label 'Фамилия', class:"control-label form2" %>
         </div>
         <div class="col-sm-10 ">
             <%= f.text_field :surname, class:"form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Фамилию</span>".html_safe %>
         </div>
     </div>
 
-    <div class="form-group col-md-offset-2">
+    <div class="form-group col-sm-offset-2">
         <div class="col-sm-2 ">
-            <%= f.label 'Дата рождения', class:"control-label control-l form" %>
+            <%= f.label 'Дата рождения', class:"control-label control-l form1" %>
         </div>
         <div class="col-sm-10">
             <%= f.text_field :date_of_birth, class:"form-control form", id:"datepicker",'data-no-turbolink' => true, "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Дату рождения</span>".html_safe %>
         </div>
     </div>
 
-    <div class="form-group col-md-offset-2">
+    <div class="form-group col-sm-offset-2">
         <div class="col-sm-2 ">
-            <%= f.label 'Город', class:"control-label form" %>
+            <%= f.label 'Город', class:"control-label form2" %>
         </div>
         <div class="col-sm-10 ">
             <%= f.select(:city, Seller::CITY_TYPES,  {prompt: 'Выберите область'}, class:"form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Выберите<span style='font-weight: bold;color:#5EBB5E;'>Свою область</span>".html_safe) %>
         </div>
     </div>
 
-    <div class="form-group col-md-offset-2">
+    <div class="form-group col-sm-offset-2">
         <div class="col-sm-2 ">
-            <%= f.label 'Промо код', class:"control-label form control-l" %><br />
+            <%= f.label 'Промо код', class:"control-label control-l form2" %><br />
         </div>
         <div class="col-sm-10 ">
             <%= f.text_field :promo_code, class:"form-control form" %>
@@ -61,42 +66,42 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="form-group col-md-offset-2">
+  <div class="form-group col-sm-offset-2">
     <div class="col-sm-2">
-      <%= f.label "Новый пароль", class:"control-label"  %>
+      <%= f.label "Новый пароль", class:"control-label form2"  %>
     </div> 
     <div class="col-sm-10">
-      <%= f.password_field :password, autocomplete:"off", class:"form-control form" %>
+      <%= f.password_field :password, autocomplete:"off", class:"form-control form " %>
       <% if @minimum_password_length %>
-      <em><%= @minimum_password_length %> minimum</em>
+      <em ><%= @minimum_password_length %> minimum</em>
       <% end %> 
     </div>
   </div></br>
 
 
-  <div class="form-group col-md-offset-2">
+  <div class="form-group col-sm-offset-2">
     <div class="col-sm-2">
-      <%= f.label "Повторите новый пароль", class:"control-label" %>
+      <%= f.label "Повторите пароль", class:"control-label form1" %>
       </div> 
       <div class="col-sm-10 ">
-      <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control form" %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control form form2" %>
     </div>
   </div>
 
-  <div class="form-group col-md-offset-2">
+  <div class="form-group col-sm-offset-2">
     <div class="col-sm-2">
-    <%= f.label "Текущий пароль", class:"control-label" %>
+    <%= f.label "Текущий пароль", class:"control-label form1" %>
     </div> 
     <div class="col-sm-10 ">
     <%= f.password_field :current_password, autocomplete: "off", class:"form-control form" %>
     </div>
   </div>
 
-  <div class="actions col-md-offset-4 ">
+  <div class="actions col-sm-offset-4 ">
     <%= f.submit "Обновить", :class => 'btn btn2 form' %>
   </div>
 <% end %>
-<div class="actions col-md-offset-4 ">
+<div class="actions col-sm-offset-6 ">
 <%= button_to "Удалить аккаунт", registration_path(resource_name), data: { confirm: "Вы уверены?" }, method: :delete, :class => 'btn btn1 text-center form' %>
 <div class="form" >
 <%= link_to "Назад", :back, :class => 'btn btn4' %>
