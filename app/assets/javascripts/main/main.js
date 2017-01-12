@@ -101,3 +101,28 @@ $(document).on('ready turbolinks:load', function(){
 
 });
 
+$(document).on('ready turbolinks:load', function(){
+    $('.auto').not('.slick-initialized').slick({
+        slidesToShow: 8,
+        slidesToScroll: 1,
+        autoplay: true,
+        pauseOnHover: false,
+        adaptiveHeight: true,
+        arrows: false,
+        autoplaySpeed: 2500
+    });
+
+});
+
+$(document).on('ready turbolinks:load', function(){
+    $('.auto1').not('.slick-initialized').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: true,
+        pauseOnHover: false,
+        adaptiveHeight: true,
+        arrows: false,
+        autoplaySpeed: 4000
+    });
+
+});

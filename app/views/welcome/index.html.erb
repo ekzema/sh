@@ -172,7 +172,7 @@
 
 
 <!-- среднее меню -->
-<div class="container-fluid ">
+<!-- <div class="container-fluid ">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
     <div class="row">  
@@ -220,9 +220,9 @@
     </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- нижнее меню -->
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
     <div class="row">
@@ -285,7 +285,47 @@
         </div>
     </div>
 </div>
+</div> -->
+
+
+<div class="container-fluid niz1">
+  <div class="row">
+  <h2 class="text-center">Лучшие продавцы</h2>
+  <div class="col-xs-12 ">
+    <div class="row">
+      <section class="auto">
+            <% @sellers.each do | seller | %>
+            <div>
+              <%= image_tag seller.avatar(:medium) %>
+              <div class="sld1"><p ><%= seller.name %></p></div>
+            </div>
+            <% end %>
+        </section>
+        </div>
+    </div>  
+  </div>
 </div>
+
+<div class="container-fluid niz1">
+  <div class="row">
+  <h2 class="text-center">Популярные разделы</h2>
+  <div class="col-xs-12 ">
+    <div class="row">
+      <section class="auto1">
+            <% @category.each do |category| %>
+              <% category.category_slide_images.each do |slide| %>
+              <a href="/">
+              <%= image_tag slide.image %>
+              <p class="qqq"><%= slide.category.description %></p>
+              </a>
+            <% end %>
+            <% end %>
+        </section>
+        </div>
+    </div>  
+  </div>
+</div>
+
 <div class="container-fluid niz">
   <div class="row">
   <h2 class="text-center">Представляем Вам проект Stockmarket.com.ua!</h2>
