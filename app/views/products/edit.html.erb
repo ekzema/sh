@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-<h1>Editing Product</h1>
+<h3 class="text-center">Редактирование товара</h3>
 
 <%= render 'form', product: @product %>
     <div class="form-group col-md-offset-2">
@@ -28,8 +28,11 @@
 </script>
 </div>
       </div>
+      <div class="form-group col-md-offset-4">
+    
+    
 <%= link_to 'Show', @product, :type => 'button', :class => 'btn btn3' %>
 <%= link_to 'Back', products_path, :type => 'button', :class => 'btn btn3' %>
-
+</div>
   </div>
 </div>

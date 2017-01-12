@@ -21,7 +21,7 @@
     <ul class="sliderImg imgcat">
       <li><%= image_tag @product.main_image.url, title: "#{@product.name}", class: "EditImage" %></li>
       <li><%= f.file_field :main_image %><% unless @product.main_image_file_name.nil? %></li>
-      <li><%= link_to("Удалить", {action: :delete_attachment, id: @product.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %></li>
+      <li><%= link_to(" ", {action: :delete_attachment, id: @product.id}, :type => 'button', :class => 'btn btn1 glyphicon glyphicon-trash', method: :put,data: { confirm: 'Вы уверены что хотите удалить?' }) %></li>
       <% end %>
     </ul>
   </div>
@@ -142,38 +142,51 @@
  
     <% if params[:action] == 'new' %>
     <div class="form-group col-md-offset-2">
-      <%= f.label 'Показать товар' %>
-      <%= f.check_box :visible  %>
+    <div class="col-sm-2 ">
+            <%= f.label 'Показать товар' %>
+        </div>
+        <div class="col-sm-10 masd">
+            <%= f.check_box :visible %>
+        </div>
+      
+      
     </div>
     <% end %>
 
-    <h3 class="text-center">Картинки для слайдера</h3>
     <div class="form-group col-md-offset-2">
+    <div class="col-sm-2 ">
+    <%= f.label 'Картинки для слайдера', class:"control-label"  %>
+    </div>
+    <div class="form-group col-sm-10">
     <% if params[:action] == 'edit' %>
     
         <% @product.product_slide_images.each do |slide_image| %>
             <ul class="sliderImg">
               <%= f.fields_for :product_slide_images, slide_image do |slide| %>
-                  <li><%= image_tag slide_image.image.url()%></li>
+                  <li class="imgcat2"><%= image_tag slide_image.image.url()%></li>
                   <li><%= slide.file_field :image %></li>
-                  <li><%= slide.link_to_remove "Удалить" %></li>
+                  <li><%= slide.link_to_remove "",:type => 'button', :class => 'btn btn1 glyphicon glyphicon-trash' %></li>
               <% end %>
             </ul>
         <% end %>
-        
-        <p><%= f.link_to_add "Добавить + ", :product_slide_images %></p>
+       
+        <p><%= f.link_to_add "Добавить + ", :product_slide_images,:type => 'button', :class => 'btn btn2 btn0' %></p>
         
     <% else %>
+    <div class="form-group col-md-offset-2">
+<ul class="sliderImg ">
         <%= f.fields_for :product_slide_images do |slide_images| %>
-            <%= slide_images.file_field :image %>
-            <%= slide_images.link_to_remove "Удалить картинку для слайдера", :type => 'button', :class => 'btn btn1' %>
+        
+            <li class="imgcat3"><%= slide_images.file_field :image %></li>
+            <li><%= slide_images.link_to_remove " ", :type => 'button', :class => 'btn btn1 glyphicon glyphicon-trash' %></li>
         <% end %>
         <%= f.link_to_add "Добавить картинку", :product_slide_images, :type => 'button', :class => 'btn btn3' %>
-
+        </ul>
     <% end %>
     </div>
-  
-    <div class="form-group col-md-offset-2">
-    <button type="submit" class="btn btn2 actions">Сохранить</button>
-    </div> 
+    </div>
+    </div>
+    
+    <button type="submit" class="btn btn2 actions col-xs-offset-2">Сохранить</button>
+   
   <% end %>

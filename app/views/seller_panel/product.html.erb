@@ -12,40 +12,41 @@
   <% end %>
 
 </div>
-<div class="container">
+<div class="container-fluid">
 <div class="row">
-<div class="col-sm-12 ava">
+<div class="col-sm-12 ava hidden-xs hidden-sm">
   <%= image_tag current_seller.avatar, :class => 'img-responsive img-rounded' %>
   <%= current_seller.name %> <%= current_seller.surname %>
 </div>
 <div class="col-sm-12">
-<div class="table-responsive"> 
+<h3 class="text-center">Все товары</h3>
+<div class="table- responsive"> 
   <table class="table table-hover">
-  <caption><h3 class="text-center">Все товары</h3></caption>  
+  <!-- <caption><h3 class="text-center">Все товары</h3></caption>  --> 
     <thead>
       <tr class="info">
-        <th>Основное фото</th>
-        <th>Название</th>
-        <th>Размер</th>
-        <th>Цена</th>
-        <th>Описание</th>
-        <th>Перейти</th>
-        <th>Изменить</th>
-        <th>Удалить</th>
-        <th>Показать</th>
+        <th class="text-center">Фото</th>
+        <th class="hidden-xs text-center">Название</th>
+        <th class="hidden-xs text-center">Размер</th>
+        <th class="hidden-xs text-center">Цена</th>
+        <th class="hidden-xs text-center">Описание</th>
+        <th class="hidden-xs text-center">Show</th>
+        <th class="text-center">Edit</th>
+        <th class="text-center">Delete</th>
+        <th class="text-center">Показать</th>
       </tr>
     </thead>
     <tbody>
     <% @seller_products.each do |product| %>
       <tr class="success imgcat">
         <td><%= image_tag product.main_image.url %></td>
-        <td><%= product.name %></td>
-        <td><%= product.size %></td>
-        <td><%= product.price %></td>
-        <td><%= product.description %></td>
-        <td><%= link_to 'Show', show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :type => 'button', :class => 'btn btn2' %></td>
-        <td><%= link_to 'Edit', edit_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :type => 'button', :class => 'btn btn3' %></td>
-        <td><%= link_to 'Удалить', product, method: :delete, data: { confirm: 'Are you sure?' }, :type => 'button', :class => 'btn btn1' %></td>
+        <td class="hidden-xs "><%= product.name %></td>
+        <td class="hidden-xs"><%= product.size %></td>
+        <td class="hidden-xs"><%= product.price %></td>
+        <td class="hidden-xs "><%= product.description %></td>
+        <td class="hidden-xs "><%= link_to ' ', show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :type => 'button', :class => ' btn btn2 glyphicon glyphicon-zoom-in' %></td>
+        <td><%= link_to ' ', edit_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :type => 'button', :class => 'btn btn3 glyphicon glyphicon-pencil' %></td>
+        <td><%= link_to ' ', product, method: :delete, data: { confirm: 'Are you sure?' }, :type => 'button', :class => 'btn btn1 glyphicon glyphicon-trash' %></td>
         <td>
           <%= form_tag(seller_panel_product_visible_path, method: :post,  class: "product_info", id: "product_visible#{product.id}") do %>
               <%= hidden_field_tag 'product_id', product.id %>

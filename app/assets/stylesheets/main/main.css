@@ -13,9 +13,14 @@
     padding-top: 4.5px;
 }
 
-@media only screen and (max-width: 750px) {
-    .form{ max-width: 100%;}
+@media only screen and (max-width: 500px) {
+    .form{ max-width: 90%;}
 }
+
+.masd {
+    margin-bottom: 20px;
+}
+
 
 .control-l{
     margin-bottom: 0px;
@@ -29,9 +34,51 @@
     vertical-align: middle;
 }
 
-.sliderImg li img{
-    max-width: 150px;
+.imgcat img{
+    
+    max-width: 200px;
+    max-height: 100px;
 }
+.imgcat2 img{
+    margin-left: -20px!important;
+    max-width: 200px;
+    max-height: 100px;
+}
+.imgcat3 img{
+    margin: 50px!important;
+    max-width: 200px;
+    max-height: 100px;
+
+}
+.imgcat3 {
+    margin-left: : 40px;
+   
+
+}
+.fields{
+    display: table;
+    margin-bottom: 10px;
+}
+.btn0{
+    margin-left: 20px;
+}
+.fields li{
+    display: table-cell;
+    vertical-align: middle;
+    margin-left: 20px!important;
+}
+
+#product_main_image, 
+#product_product_slide_images_attributes_0_image,
+#product_product_slide_images_attributes_1_image,
+#product_product_slide_images_attributes_2_image,
+#product_product_slide_images_attributes_3_image,
+#product_product_slide_images_attributes_4_image,
+#product_product_slide_images_attributes_5_image
+{
+    max-width: 220px;
+}
+
 .parsley-errors-list li{
     margin-left: 20px;
 }
@@ -415,11 +462,15 @@ body {
     background-color: #333!important;
 }
 
-.imgcat img{
-    max-width: 200px;
-    max-height: 100px;
-}
 
+
+@media only screen and (max-width: 991px) {
+    .imgcat img{
+    max-width: 150px;
+    max-height: 80px;
+}
+    .info{font-size: 12px;}
+}
 /*кнопки цветные*/
 
 .btn1{
