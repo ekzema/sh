@@ -11,10 +11,14 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+     # добавил из welkome controller две строки:
+    @sellers = Seller.all
+    @products = Product.all
+    
     twocategories_id =  @category.twocategories.ids
     @twocategories = Twocategory.where(:id => twocategories_id)
   end
-
+ 
   # GET/categories/new
   def new
     @category = Category.new

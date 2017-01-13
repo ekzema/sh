@@ -4,6 +4,11 @@ class TwocategoriesController < ApplicationController
   # GET /twocategories
   # GET /twocategories.json
   def index
+    @sellers = Seller.all
+    @products = Product.all
+    @category = Category.all
+    @categories = Category.all
+    
     @twocategory = Twocategory.all
   end
 

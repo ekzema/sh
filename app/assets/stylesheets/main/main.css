@@ -178,6 +178,22 @@ p {
     font-size: 18px;
     text-transform: capitalize;
 }
+.tmenu3 {
+    color: #fff;
+    font-size: 18px;
+    text-transform: capitalize;
+    padding: 10px;
+
+}
+.tmenu3 a{
+    color: #777;
+}
+.tmenu3 a:hover, a:focus{
+    color: #CD423C;
+    background-color: transparent;
+    text-transform: capitalize;
+    text-decoration: none; 
+}
 
 .navbar {
     border-radius: 0px !important;
@@ -397,6 +413,9 @@ table{
 .sld1 {
     background: rgba(0, 0, 0, 0.4);
     padding: 5px 0;
+}
+@media only screen and (max-width: 1050px) {
+    .sld1 {padding: 3px 0;}
 }
 .sld2 {
     position: absolute;

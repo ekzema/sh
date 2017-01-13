@@ -90,9 +90,9 @@
               <% else %>
               <li><%= link_to 'Вход АДМИН',  new_rootadmin_session_path %></li>
               <% end %>
-                <li><a href="/">Главная</a></li>
-                <li><a href="/categories">categories <!-- Новости сайта --></a></li>
-                <li><a href="/products">products <!-- VIP-Статус --></a></li>
+                <!-- <li><a href="/">Главная</a></li>
+                <li><a href="/categories">categories  Новости сайта</a></li>
+                <li><a href="/products">VIP-Статус </a></li> --> 
                 <li><a href="/all">О нас</a></li>
                 <li><a href="/vip">VIP-Статус</a></li>
               </ul>
@@ -130,7 +130,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand brand visible-xs" href="/">МЕНЮ</a>
+          <a class="navbar-brand brand visible-xs" href="/">КАТЕГОРИИ ТОВАРОВ</a>
         </div>
         <div class="collapse navbar-collapse" id="responsive-menu1">
 
@@ -138,15 +138,15 @@
 
             <% @catmenu.each do |category| %>
                 <li class="dropdown">
-                  <a type="button" id="<%= category.id %>" role="button" class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#"><%= category.name %>
+                  <a type="button" id="<%= category.id %>" role="button" class="dropdown-toggle navbar-brand " data-toggle="dropdown" href="#"><%= category.name %>
                     <b class="caret"></b></a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="drop001">
                     <% category.twocategories.each do |twocategory| %>
                         <li class="dropdown-submenu">
-                          <a tabindex="-1" href="#"><%= twocategory.name %></a>
+                          <a tabindex="-1" href="/twocategories"><%= twocategory.name %></a>
                           <ul class="dropdown-menu">
                             <% twocategory.threecategories.each do |threecategory| %>
-                                <li><a tabindex="-1" href="#"><%= threecategory.name %></a></li>
+                                <li><a tabindex="-1" href="/threecategories"><%= threecategory.name %></a></li>
                             <% end %>
                           </ul>
                         </li>
@@ -176,11 +176,11 @@
 
     <!-- footer -->
     <div class="tofooter"></div>
-    <footer class="navbar navbar-inverse navbar-default " id="footer">
+   <!--  <footer class="navbar navbar-inverse navbar-default " id="footer">
     
       
         <div class="container ">
-          <div class="row">
+          <div class="row ">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive">
               <span class="sr-only">open</span>
               <span class="icon-bar"></span>
@@ -190,15 +190,26 @@
           </div>
           <div class="collapse navbar-collapse tmenu1" id="responsive">
             <ul class="nav navbar-nav">
-              <li><a href="#">рейтинг продавцов</a></li>
-              <li><a href="#">популярные товары</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
+           <li><a href="#">рейтинг продавцов</a></li>
+            <li><a href="#">популярные товары</a></li> 
+            <ul class="nav navbar-nav ">
               <li><a href="http://labsites.org" target="_blank">сайт разработан labsites.org</a></li>
             </ul>
+            <a href="http://labsites.org" target="_blank">сайт разработан labsites.org</a> 
           </div>
         </div>
      
+    </footer> -->
+
+    <footer class="navbar navbar-inverse" id="footer">
+    <div class="container-fluid">
+    <div class="col-xs-12 col-sm-6">
+    <p class="tmenu3 text-center">Stockmarket.com.ua © 2017</p>
+    </div>
+    <div class="hidden-xs col-sm-6">
+    <p class="tmenu3 text-center">сайт разработан<a href="http://labsites.org" target="_blank"> labsites.org</a></p>
+    </div>
+    </div>
     </footer>
 
   </body>
