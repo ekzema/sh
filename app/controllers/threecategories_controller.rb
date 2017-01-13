@@ -8,7 +8,7 @@ class ThreecategoriesController < ApplicationController
     @categories = Category.all
     @twocategory = Twocategory.all
     @twocategories = Twocategory.all
-    
+
 
 
     @threecategory = Threecategory.all

@@ -1,28 +1,27 @@
-
-<ul>
-<% @categories.each do |category| %>
-	<li><%= category.name %></li>
-	<% @twocategories.each do |twocategory| %>
-	<li><ul>
-
-		<li><%= twocategory.name %></li>
-<% twocategory.threecategories.each do |threecategory| %>
-		<li><ul>
-			
-			<li><%= threecategory.name %></li>
-			
-
-			</ul>
-<% end %>
-		</li>
-
-
-		</ul>
-<% end %>
-	</li>
-<% end %>
-
+<ul >
+  <% @categories.each do |category| %>
+      <li>
+        <%= category.name %>
+        <ul>
+          <% category.twocategories.each do |twocategory| %>
+              <li>
+                <%= twocategory.name %>
+                <ul>
+                  <% twocategory.threecategories.each do |threecategory| %>
+                      <li><%= threecategory.name %></li>
+                  <% end %>
+                </ul>
+              </li>
+          <% end %>
+        </ul>
+      </li>
+  <% end %>
 </ul>
+
+
+
+
+
 
 
 <!-- 
