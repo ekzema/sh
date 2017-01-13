@@ -424,6 +424,7 @@ table{
     width: 100%;
     padding: 5px 0;
 }
+
 .sld5 {
     margin: 0;
     padding: 0 10px;
@@ -456,6 +457,22 @@ table{
 .prov a:focus, .prov a:hover{
     color: #fff;
 }
+/* общая форма*/
+.all0 ul{
+    list-style-type: none;
+    border: 1px solid #111;
+    color: #111;
+}
+.all1{
+    background-color:  #fff;
+}
+.all2{
+    background-color: #fff;
+}
+.all3{
+    background-color: #fff;
+}
+
 
 /*футер вниз страницы*/
 html {

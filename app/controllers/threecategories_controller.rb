@@ -2,6 +2,15 @@ class ThreecategoriesController < ApplicationController
   before_action :set_threecategory, only: [:show, :edit, :update, :destroy]
 
   def index
+    @sellers = Seller.all
+    @products = Product.all
+    @category = Category.all
+    @categories = Category.all
+    @twocategory = Twocategory.all
+    @twocategories = Twocategory.all
+    
+
+
     @threecategory = Threecategory.all
   end
 
