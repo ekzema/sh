@@ -5,6 +5,7 @@
         <ul>
           <% category.twocategories.each do |twocategory| %>
               <li>
+                <%= image_tag twocategory.image.url %>
                 <%= twocategory.name %>
                 <ul>
                   <% twocategory.threecategories.each do |threecategory| %>

@@ -83,7 +83,7 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:name, :description, :meta_desc, :meta_key, :meta_title, :main_image,
       category_slide_images_attributes: [:id, :_destroy, :image],
-      twocategories_attributes: [:id, :_destroy, :name, :description, :meta_desc, :meta_key, :meta_title,
+      twocategories_attributes: [:id, :_destroy, :name, :description, :meta_desc, :meta_key, :meta_title, :image,
             threecategories_attributes: [:id, :_destroy, :name, :description, :meta_desc, :meta_key, :meta_title]
       ]
 
