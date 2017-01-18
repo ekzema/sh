@@ -1,15 +1,18 @@
-<ul >
+<div class="container-fluid">
+<div class="row">
+	<div class="col-xs-12 col-sm-3 ">
+<div class="ul1">
+<ul class="ul2">
   <% @categories.each do |category| %>
-      <li>
+      <li class="li1">
         <%= category.name %>
-        <ul>
+        <ul >
           <% category.twocategories.each do |twocategory| %>
-              <li>
-                <%= image_tag twocategory.image.url %>
+              <li class="li2">
                 <%= twocategory.name %>
                 <ul>
                   <% twocategory.threecategories.each do |threecategory| %>
-                      <li><%= threecategory.name %></li>
+                      <li class="li3"><%= threecategory.name %></li>
                   <% end %>
                 </ul>
               </li>
@@ -18,6 +21,7 @@
       </li>
   <% end %>
 </ul>
+</div>
 
 
 
@@ -25,31 +29,7 @@
 
 
 
-<!-- 
-<div>
-
-<% @categories.each do |category| %>
-
-<%= category.name %>
-
-<% @twocategories.each do |twocategory| %>
-<%= twocategory.name %>
-	    
-<% twocategory.threecategories.each do |threecategory| %>
-
-<%= threecategory.name %>
-
-<% end %>
-<% end %>
-<% end %>
-</div> -->
-
-
-
-<div class="container-fluid">
-<div class="row">
-	<div class="col-xs-12 col-sm-3 ">
-	    <div id="MainMenu">
+<!-- 	    <div id="MainMenu">
 	    <menu class="list-group panel">
 	    <% @twocategories.each do |twocategory| %>
 	    <li><a href="#demo5" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"><%= twocategory.name %><i class="fa fa-caret-down"></i></a>
@@ -61,7 +41,7 @@
 	    </div>
 	    </li>
 	    </menu>
-	    </div>
+	    </div> -->
 	</div>  
   	<div class="col-xs-12 col-sm-9 ">
         <div class="row">

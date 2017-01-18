@@ -15,8 +15,8 @@ class ThreecategoriesController < ApplicationController
   end
 
   def show
-  end
-
+  end 
+  
   def new
     @threecategory = Threecategory.new
   end

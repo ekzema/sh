@@ -10,8 +10,8 @@ class TwocategoriesController < ApplicationController
     @categories = Category.all
     @image_count =  CategorySlideImage.count
     @i = 1
-    
-  
+    @twocategories = Twocategory.all
+   
     
     @twocategory = Twocategory.all
   end
