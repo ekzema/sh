@@ -19,6 +19,9 @@ class TwocategoriesController < ApplicationController
   # GET /twocategories/1
   # GET /twocategories/1.json
   def show
+    @showcat = @twocategory.category
+    @sellers = Seller.all
+
     threecategories_id =  @twocategory.threecategories.ids
     @threecategories = Threecategory.where(:id => threecategories_id)
   end
