@@ -81,16 +81,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand brand visible-xs" href="/">Stockmarket.com.ua</a>
+              <a class="navbar-brand visible-xs logo" href="/"><%= image_tag '001.png' %></a>
             </div>
             <div class="collapse navbar-collapse " id="responsive-menu">
               <ul class="nav navbar-nav tmenu">
-              <% if rootadmin_signed_in? %>
-              <li><%= link_to 'Выход АДМИН',  destroy_rootadmin_session_path %></li>
-              <% else %>
-              <li><%= link_to 'Вход АДМИН',  new_rootadmin_session_path %></li>
-              <% end %>
-                <!-- <li><a href="/">Главная</a></li>
+              
+              <a  class="logo hidden-xs hidden-sm" href="/"><%= image_tag '001.png' %></a>
+                <!-- 
                 <li><a href="/categories">categories  Новости сайта</a></li>
                 <li><a href="/products">VIP-Статус </a></li> --> 
                 <li><a href="/all">О нас</a></li>
@@ -143,11 +140,14 @@
                   <ul class="dropdown-menu" role="menu" aria-labelledby="drop001">
                     <% category.twocategories.each do |twocategory| %>
                         <li class="dropdown-submenu">
-                          <a tabindex="-1" href="/twocategories"><%= twocategory.name %></a>
+                          <!-- <a tabindex="-1" href="/twocategories"><%= twocategory.name %></a> -->
                           <%= link_to twocategory.name, twocategory_path( twocategory.id) %>
                           <ul class="dropdown-menu">
                             <% twocategory.threecategories.each do |threecategory| %>
-                                <li><a tabindex="-1" href="/threecategories"><%= threecategory.name %></a></li>
+                                <li><!-- <a tabindex="-1" href="/threecategories"><%= threecategory.name %></a> -->
+                                  <%= link_to threecategory.name, threecategory_path( threecategory.id) %>
+                                </li>
+
                             <% end %>
                           </ul>
                         </li>
@@ -157,14 +157,18 @@
             <% end %>
 
             <li>
-              <form class="navbar-form navbar-left hidden-sm hidden-xs" role="search">
+              <form class="navbar-form navbar-left " role="search">
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="Поиск">
                 </div>
                 <button type="submit" class="btn btn-default">Найти</button>
               </form>
             </li>
-            <li><a class="navbar-brand brand hidden-xs" href="/">Stockmarket.com.ua</a></li>
+            <% if rootadmin_signed_in? %>
+              <li><%= link_to 'Выход АДМИН',  destroy_rootadmin_session_path %></li>
+              <% else %>
+              <li><%= link_to 'Вход АДМИН',  new_rootadmin_session_path %></li>
+              <% end %>
           </ul>
 
         </div>

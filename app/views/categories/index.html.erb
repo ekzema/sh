@@ -130,6 +130,12 @@
 <table class="col-sm-offset-2 table table-hover">
   <caption><h4>Категория третьего уровня</h4></caption>
   <tr class="info">
+      <th>Основная картинка</th>
+      <td>
+        <%= twocat.file_field :image %>
+      </td>
+    </tr>
+  <tr class="info">
       <th>Название</th>
       <td><%= threecat.text_field :name %></td>
     </tr>

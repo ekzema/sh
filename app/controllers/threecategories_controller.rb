@@ -15,6 +15,9 @@ class ThreecategoriesController < ApplicationController
   end
 
   def show
+    @products = Product.all
+    @showca = @threecategory.twocategory
+    @sellers = Seller.all
   end 
   
   def new
