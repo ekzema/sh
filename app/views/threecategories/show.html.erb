@@ -4,21 +4,25 @@
     <div class="ul1">
       <ul class="ul2 ">
       <li class="li1">
-      <p><%= @showca.name %></p>
+      <% @cater.twocategories.each do |twocategory | %>
+      <p><%= twocategory.name %></p>
+
+
       <ul>
-      <% @showca.threecategories.each do |threecategory| %>
+      <% twocategory.threecategories.each do | threecategory | %>
       <li class="li2">
-      <p><%= threecategory.name %></p>
+      <p><%= link_to threecategory.name, threecategory_path( threecategory.id) %></p>
       </li>
       <% end %>
       </ul>
-      </li>
-      </ul>
+      <% end %>
+
+      
     </div>
     </div>  
     <div class="col-sm-12 col-md-9">
       <div class="text-center">
-        <% @products.each do |product| %>
+        <% @threecategory.products.each do |product| %>
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 product">
         <div class="row">
         <%= image_tag product.main_image %>

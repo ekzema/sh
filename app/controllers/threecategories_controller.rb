@@ -15,6 +15,8 @@ class ThreecategoriesController < ApplicationController
   end
 
   def show
+    @cater = @threecategory.twocategory.category
+    # @twocategories = Twocategory.where(id: @cater)
     @products = Product.all
     @showca = @threecategory.twocategory
     @sellers = Seller.all
@@ -47,6 +49,13 @@ class ThreecategoriesController < ApplicationController
 
   def destroy
     @threecategory.destroy
+    redirect_to :back
+  end
+
+  def delete_attachment
+    @threecategory= Threecategory.find(params[:id])
+    @threecategory.image = nil
+    @threecategory.save
     redirect_to :back
   end
 

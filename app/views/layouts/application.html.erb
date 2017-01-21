@@ -143,7 +143,7 @@
                           <!-- <a tabindex="-1" href="/twocategories"><%= twocategory.name %></a> -->
                           <%= link_to twocategory.name, twocategory_path( twocategory.id) %>
                           <ul class="dropdown-menu">
-                            <% twocategory.threecategories.each do |threecategory| %>
+                            <% twocategory.threecategories.each do |threecategory| %> 
                                 <li><!-- <a tabindex="-1" href="/threecategories"><%= threecategory.name %></a> -->
                                   <%= link_to threecategory.name, threecategory_path( threecategory.id) %>
                                 </li>

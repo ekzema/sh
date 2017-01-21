@@ -71,8 +71,14 @@ end
 
   resources :twocategories, :only => [:index, :show, :edit, :update, :destroy] do
     resources :threecategories, :only => :create
+    collection do
+      put 'delete_attachment'
+    end
   end
 
-  resources :threecategories, :only => [:index, :show, :edit, :update, :destroy]
-
+  resources :threecategories, :only => [:index, :show, :edit, :update, :destroy] do
+  collection do
+      put 'delete_attachment'
+    end
+    end
 end

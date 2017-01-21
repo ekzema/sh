@@ -12,7 +12,19 @@
   <% end %>
 
   
-
+<div class="form-group col-md-offset-2">
+  <div class="col-sm-2 ">
+    <%= f.label 'Основная картинка', class:"control-label" %>
+    </div>
+  <div class="col-sm-10 ">
+    <ul class="sliderImg imgcat">
+    <li><%= image_tag @twocategory.image.url, title: "#{@twocategory.name}", class: "EditImage" %></li>
+     <li><%= f.file_field :image %><% unless @twocategory.image_file_name.nil? %></li>
+    <li><%= link_to("Удалить", {action: :delete_attachment, id: @twocategory.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %></li>
+<% end %>
+</ul> 
+  </div>
+</div>
 
   <div class="field">
     <%= f.label :name %>

@@ -17,9 +17,9 @@
     </div>
   <div class="col-sm-10 ">
     <ul class="sliderImg imgcat">
-    <li><%= image_tag @twocategory.image.url, title: "#{@twocategory.name}", class: "EditImage" %></li>
-     <li><%= f.file_field :main_image %><% unless @twocategory.image_file_name.nil? %></li>
-    <li><%= link_to("Удалить", {action: :delete_attachment, id: @twocategory.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %></li>
+    <li><%= image_tag @category.main_image.url, title: "#{@category.name}", class: "EditImage" %></li>
+     <li><%= f.file_field :main_image %><% unless @category.main_image_file_name.nil? %></li>
+    <li><%= link_to("Удалить", {action: :delete_attachment, id: @category.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %></li>
 <% end %>
 </ul> 
   </div>

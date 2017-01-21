@@ -12,7 +12,7 @@
       <ul >
       <% @showcat.twocategories.each do |twocategory| %>
       <li class="li2">
-      <a href="#"><p><%= twocategory.name %></p></a>
+      <p><%= link_to twocategory.name, twocategory_path( twocategory.id) %></p>
       </li>
       <% end %> 
       </ul>
