@@ -198,12 +198,12 @@ p {
 
 .tmenu1 a{
     font-size: 18px;
-    text-transform: capitalize;
+    
 }
 .tmenu3 {
     color: #fff;
     font-size: 18px;
-    text-transform: capitalize;
+    
     padding: 10px;
 
 }
@@ -213,7 +213,7 @@ p {
 .tmenu3 a:hover, a:focus{
     color: #CD423C;
     background-color: transparent;
-    text-transform: capitalize;
+    
     text-decoration: none; 
 }
 
@@ -345,6 +345,10 @@ a.list-group-item-success, a.list-group-item-success, button.list-group-item-suc
 .saq li{
     margin:5px;
 
+}
+.qqq a:focus, .qqq a:hover {
+  color: #999 !important;
+  text-decoration: none !important; 
 }
 
 label {
@@ -504,7 +508,7 @@ table{
 
 
 .li1 p{
-    padding: 10px 20px 10px 20px!important;
+    padding: 5px 20px;
 }
 
 .li3{
@@ -514,8 +518,8 @@ table{
 }
 .li2{
     background-color: #e7e7e7;
-    margin: -1px;
     margin-left: -2px;
+
     
 }
 /* product*/
@@ -674,20 +678,79 @@ body {
   color: #111!important; 
 }
 .niz2{
-    padding: 0 40px 40px 40px;
+    padding: 5px;
     text-align: justify;
     font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #CD423C;
+    margin: 0px 10px 10px 10px;
+    background-color: #CD423C!important;
+}
+.niz0{
+    padding: 5px;
+    text-align: justify;
+    font-size: 16px;
+    margin: 0px 10px 10px 10px;
+    background-color: #333!important;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.niz3{
+    background-color: #fff!important;
+    margin: 0px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.niz5{
+    background-color: #CD423C!important;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.niz4{
+    margin-bottom: 0px!important;
+    
+}
+.niz6{
+    text-align: justify;
 }
 /*вип-стрмница*/
-.equal, .equal > div[class*='col-'] {
+/*.equal, .equal > div[class*='col-'] {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
     flex:1 0 auto;
-}
+}*/
 .names{
     font-size: 20px;
     text-transform: capitalize;
+}
+
+/*о нас*/
+.onas1{
+    border: 1px solid #CD423C;
+}
+.onas{
+    font-size: 16px;
+}
+.onas3{
+    background-color: #FFB5C5!important;
+}
+.onas li{
+    list-style-type: none;
+    margin: 0px;
+    padding: 10px;
+    border: 1px solid #CD423C;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.onas ul{
+    background-color: #CD423C;
+    border-radius: 10px;
+    padding: 5px;
+}
+.three{
+    height: 120px;
 }

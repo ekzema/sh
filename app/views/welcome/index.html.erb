@@ -359,7 +359,7 @@
 </div> -->
 
 
-<div class="container-fluid niz1">
+<div class="container-fluid niz1 hidden-xs">
   <div class="row">
   <h2 class="text-center">Лучшие продавцы</h2>
   <div class="col-xs-12 ">
@@ -382,12 +382,12 @@
   <h2 class="text-center">Популярные разделы</h2>
   <div class="col-xs-12 ">
     <div class="row">
-      <section class="auto1">
+      <section class="auto1 qqq">
             <% @category.each do |category| %>
               <% category.category_slide_images.each do |slide| %>
               <a href="/">
               <%= image_tag slide.image %>
-              <p class="qqq text-center"><%= slide.category.description %></p>
+              <p class="text-center"><%= slide.category.description %></p>
               </a>
             <% end %>
             <% end %>
@@ -400,7 +400,7 @@
 <div class="container-fluid niz">
   <div class="row">
   <h2 class="text-center">Представляем Вам проект Stockmarket.com.ua!</h2>
-<p class="niz2">  
+<p class="niz0">  
 
 
   Данный проект прекрасно подойдёт как продавцам, так и покупателям.

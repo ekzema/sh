@@ -8,8 +8,7 @@ class TwocategoriesController < ApplicationController
     @products = Product.all
     @category = Category.all
     @categories = Category.all
-    @image_count =  CategorySlideImage.count
-    @i = 1
+    
     @twocategories = Twocategory.all
    
     

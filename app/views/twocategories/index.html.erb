@@ -1,142 +1,25 @@
-
 <p id="notice"><%= notice %></p>
-
 <div class="container-fluid">
-  <div class="row">
- 
-    <div class="col-xs-12 col-sm-3 ">
-       <!-- меню -->
-    <div class="ul1">
+<div class="row">
+<div class="col-xs-12 col-sm-4">
+<!-- меню -->
+<div class="ul1">
 <ul class="ul2">
-  <% @categories.each do |category| %>
-      <li class="li1">
-        <%= category.name %>
-        <ul >
-          <% category.twocategories.each do |twocategory| %>
-              <li class="li2">
-                <%= twocategory.name %>
-              </li>
-          <% end %>
-        </ul>
-      </li>
-  <% end %>
+<% @categories.each do |category| %>
+<li class="li1">
+<%= category.name %>
+<ul >
+<% category.twocategories.each do |twocategory| %>
+<li class="li2 imgcat three">
+<p class="col-sm-4"><%= image_tag twocategory.image.url %></p>
+<p class="col-sm-4"><%= twocategory.name %></p>
+<p class="col-sm-4"><%= link_to 'Изменить', edit_twocategory_path(twocategory), :type => 'button', :class => 'btn btn3' %></p>
+</li>
+<% end %>
+</ul>
+</li>
+<% end %>
 </ul>
 </div>
-
-
-<ul >
-  <% @categories.each do |category| %>
-      <li>
-        <%= category.name %>
-        <ul>
-          <% category.twocategories.each do |twocategory| %>
-              <li>
-                <%= image_tag twocategory.image.url %>
-                <%= twocategory.name %>
-               <!--  <ul>
-                  <% twocategory.threecategories.each do |threecategory| %>
-                      <li><%= threecategory.name %></li>
-                  <% end %>
-                </ul> -->
-              </li>
-          <% end %>
-        </ul>
-      </li>
-  <% end %>
-</ul> 
-
-<!-- 
-
-
-    <div id="MainMenu">
-      <menu class="list-group panel">
-        <li><a class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"><%= @category.name %></a>
-        </li>
-        <li><a href="#demo2" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Самый популярные<i class="fa fa-caret-down"></i></a>
-          <div class="collapse in" id="demo2">
-            <label class="list-group-item">футболка</label>
-            <label class="list-group-item">поло</label>
-            <label class="list-group-item">шорты</label>
-          </div>
-        </li>
-        <li><a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Одежда<i class="fa fa-caret-down"></i></a>
-          <div class="collapse in" id="demo3">
-            <label class="list-group-item">футболки</label>
-            <label class="list-group-item">поло</label>
-            <label class="list-group-item">шведки</label>
-            <label class="list-group-item">рубашки</label>
-            <label class="list-group-item">бриджи</label>
-            <label class="list-group-item">шорты</label>
-            <label class="list-group-item">брюки</label>
-            <label class="list-group-item">джинсы</label>
-            <label class="list-group-item">кофты</label>
-            <label class="list-group-item">ветровки</label>
-            <label class="list-group-item">куртки</label>
-            <label class="list-group-item">пальто</label>
-            <label class="list-group-item">пуховики</label>
-        </div>
-        </li>
-        <li><a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Обувь<i class="fa fa-caret-down"></i></a>
-          <div class="collapse in" id="demo4">
-            <label class="list-group-item">спорт</label>
-            <label class="list-group-item">классика</label>
-            <label class="list-group-item">кежуал</label>
-            <label class="list-group-item">лето</label>
-            <label class="list-group-item">зима</label>
-        </div>
-        </li>
-    </menu>
-    </div> -->
-
-    </div>
-
-
-    <div class="col-xs-12 col-sm-9 ">
-    <div class="row">
-
-    
-
-
-      <div class="row">
-      <% @products.each do |product| %>
-      <div class="col-lg-4">
-      <%= image_tag product.main_image %>
-      <div class="sld1"><p class=""><%= product.name %></p></div>
-      </div>
-      <% end %>
-      </div>
-
-    <div class="container-fluid niz1">
-      <div class="row">
-      <h2 class="text-center">Другие категории</h2>
-      <div class="col-xs-12 ">
-        <div class="row">
-          <section class="auto">
-                <% @sellers.each do | seller | %>
-                <div>
-                  <%= image_tag seller.avatar(:medium) %>
-                  <div class="sld1 text-center"><p ><%= seller.name %></p></div>
-                </div>
-                <% end %>
-            </section>
-            </div>
-        </div>
-        <h2 class="text-center">Товары лучших продавцов</h2>
-        <div class="col-xs-12 ">
-        <div class="row">
-          <section class="auto">
-                <% @sellers.each do | seller | %>
-                <div>
-                  <%= image_tag seller.avatar(:medium) %>
-                  <div class="sld1 text-center"><p ><%= seller.name %></p></div>
-                </div>
-                <% end %>
-            </section>
-            </div>
-        </div>  
-      </div>
-    </div>
-    </div>
-
 </div>
 </div>

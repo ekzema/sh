@@ -6,8 +6,6 @@
       <li class="li1">
       <% @cater.twocategories.each do |twocategory | %>
       <p><%= twocategory.name %></p>
-
-
       <ul>
       <% twocategory.threecategories.each do | threecategory | %>
       <li class="li2">
@@ -15,8 +13,9 @@
       </li>
       <% end %>
       </ul>
-      <% end %>
-
+      <% end %> 
+      </li>
+      </ul>
       
     </div>
     </div>  
