@@ -7,10 +7,13 @@ class WelcomeController < ApplicationController
     @products = Product.all
   end
 
-  def all
+  def about
   end
 
   def vip  	
+  end
+
+  def comment   
   end
 
 end
