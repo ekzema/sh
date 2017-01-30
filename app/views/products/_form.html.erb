@@ -174,7 +174,7 @@
         
     <% else %>
     <div class="form-group col-md-offset-2">
-<ul class="sliderImg ">
+        <ul class="sliderImg ">
         <%= f.fields_for :product_slide_images do |slide_images| %>
         
             <li class="imgcat3"><%= slide_images.file_field :image %></li>
@@ -184,9 +184,9 @@
         </ul>
     <% end %>
     </div>
+
     </div>
-    </div>
+    <%= f.submit "Сохранить", :class => 'btn btn2 actions col-md-offset-4' %>
     
-    <button type="submit" class="btn btn2 actions col-xs-offset-2">Сохранить</button>
-   
-  <% end %>
+    </div> 
+  <% end %> 

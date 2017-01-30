@@ -14,10 +14,10 @@
 </div>
 <div class="container-fluid">
 <div class="row">
-<div class="col-sm-12 ava hidden-xs hidden-sm">
+<!-- <div class="col-sm-12 ava hidden-xs hidden-sm">
   <%= image_tag current_seller.avatar, :class => 'img-responsive img-rounded' %>
   <%= current_seller.name %> <%= current_seller.surname %>
-</div>
+</div> -->
 <div class="col-sm-12">
 <h3 class="text-center">Все товары</h3>
 <div class="table- responsive"> 
@@ -38,7 +38,7 @@
     </thead>
     <tbody>
     <% @seller_products.each do |product| %>
-      <tr class="success imgcat">
+      <tr class="success imgcat text-center">
         <td><%= image_tag product.main_image.url %></td>
         <td class="hidden-xs "><%= product.name %></td>
         <td class="hidden-xs"><%= product.size %></td>
@@ -81,7 +81,7 @@
   <%= link_to 'Новый товар', new_product_path, :class => 'btn btn2 form' %> 
 </div>
 <div>
-  <%= link_to "На главную", :back, :class => 'btn btn4 form' %>
+  <%= link_to "На главную", root_path, :class => 'btn btn4 form' %>
 </div>
 </div>
 </div>

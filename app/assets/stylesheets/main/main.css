@@ -484,7 +484,7 @@ table{
     color: #fff;
 }
 
-/* общая форма*/
+/* левое меню*/
 .ul1 ul {
     list-style-type: none;
     color: #111;
@@ -522,6 +522,18 @@ table{
 
     
 }
+.li1 a{
+    color: #333;
+    display: block; /* Ссылка как блочный элемент */
+    height: 100%; /* Высота на весь слой */
+}
+.li1 a:hover, .li1 a:focus{
+    color: #333!important;
+    font-weight: 600!important;
+    text-decoration: none; 
+}
+
+
 /* product*/
 .product{
     padding: 10px;
@@ -538,6 +550,16 @@ table{
 .size{
     padding-top: 5px;
 }
+
+.size1 a{
+    color: #fff;
+    }
+.size1 a:hover, .size1 a:focus{
+    color: #fff!important;
+    font-weight: 700!important;
+    text-decoration: none; 
+}
+
 @media only screen and (min-width: 400px) and (max-width: 991px) {
    .product{ border: 20px solid #CD423C;}
 }
@@ -681,7 +703,7 @@ body {
     padding: 5px;
     text-align: justify;
     font-size: 16px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid #CD423C;
     margin: 0px 10px 10px 10px;
     background-color: #CD423C!important;
@@ -740,15 +762,15 @@ body {
 }*/
 .onas li{
     list-style-type: none;
-    margin: 0px;
+    margin: 0px 10px 10px 0px;
     padding: 10px;
     border: 1px solid #CD423C;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: #fff;
 }
 .onas ul{
     background-color: #CD423C;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px;
 }
 .three{

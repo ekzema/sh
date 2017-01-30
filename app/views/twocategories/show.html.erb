@@ -24,7 +24,7 @@
     <div class="text-center">
     <% @twocategory.threecategories.each do | threecategory | %>
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 product">
-    <div class="row">
+    <div class="row size1">
     <%= link_to threecategory_path(threecategory.id) do %>
     <%= image_tag threecategory.image.url %>
     <p class="size"><%= threecategory.name %></p> 
