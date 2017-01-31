@@ -549,6 +549,7 @@ table{
 
 .size{
     padding-top: 5px;
+    margin-bottom: 20px;
 }
 
 .size1 a{
@@ -775,4 +776,12 @@ body {
 }
 .three{
     height: 120px;
+}
+.img-pro img{
+ 
+  width: 100%;
+    
+}
+.pro{
+   margin-bottom: 40px; 
 }
