@@ -90,19 +90,26 @@
                 <!-- 
                 <li><a href="/categories">categories  Новости сайта</a></li>
                 <li><a href="/products">VIP-Статус </a></li> --> 
-                <!--image_tag current_seller.avatar-->
                 <li><a href="/about">О нас</a></li>
                 <li><a href="/vip">VIP-Статус</a></li>
                 <li><a href="/comment">Помощь</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                  <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu" data-toggle="dropdown" href="#"><%= seller_signed_in? ? '   Личный кабинет' : 'Войти' %><b class="caret"></b></a>
+                  <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu" data-toggle="dropdown" href="#">
+
+                  <% if seller_signed_in? %>
+                  <%= image_tag current_seller.avatar, class: 'wwww', alt: current_seller.name %>
+                  Личный кабинет
+                  <% else %>
+                  Войти
+                  <% end %>
+                  <b class="caret"></b></a>
                   <ul class="dropdown-menu " role="menu" aria-labelledby="drop001">
                     <% if seller_signed_in? %>
                         <li><%= link_to 'Редактировать данные', edit_seller_registration_path %></li>
                         <li><%= link_to 'Мои товары', seller_panel_product_path %></li>
-                        <li><%= link_to 'Мой VIP-Статус', seller_panel_product_path %></li>
+                        <li><%= link_to 'Мой VIP-Статус', seller_panel_vipstatus_path %></li>
                         <li class="divider"></li>
                         <li><%= link_to('Выйти', destroy_seller_session_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
                     <% else %>
@@ -138,8 +145,10 @@
 
             <% @catmenu.each do |category| %>
                 <li class="dropdown">
-                  <a type="button" id="<%= category.id %>" role="button" class="dropdown-toggle navbar-brand " data-toggle="dropdown" href="#"><%= category.name %>
-                  <b class="caret"></b></a>
+                <%= link_to category_path(category.id), type: "button", id: category.id, role: "button", class: "dropdown-toggle navbar-brand ", data_toggle: "dropdown" do %> 
+                  <%= category.name %>             
+                  <b class="caret"></b> 
+                  <% end %>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="drop001">
                     <% category.twocategories.each do |twocategory| %>
                         <li class="dropdown-submenu">

@@ -13,8 +13,8 @@ class CategoriesController < ApplicationController
   def show
      # добавил из welkome controller две строки:
     @sellers = Seller.all
-    @products = Product.all
-    
+    @products = @category.products.where(visible: 1, moderation: 1)
+     
     twocategories_id =  @category.twocategories.ids
     @twocategories = Twocategory.where(:id => twocategories_id)
   end

@@ -44,7 +44,8 @@
         <td class="hidden-xs"><%= product.size %></td>
         <td class="hidden-xs"><%= product.price %></td>
         <td class="hidden-xs "><%= product.description %></td>
-        <td class="hidden-xs "><%= link_to ' ', show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :type => 'button', :class => ' btn btn2 glyphicon glyphicon-zoom-in' %></td>
+        <td class="hidden-xs ">
+        <%= link_to ' ', showproduct_seller_panel_path(product.id.to_s+'-'+transtlit_name(product.name)), :type => 'button', :class => ' btn btn2 glyphicon glyphicon-zoom-in' %></td>
         <td><%= link_to ' ', edit_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :type => 'button', :class => 'btn btn3 glyphicon glyphicon-pencil' %></td>
         <td><%= link_to ' ', product, method: :delete, data: { confirm: 'Are you sure?' }, :type => 'button', :class => 'btn btn1 glyphicon glyphicon-trash' %></td>
         <td>

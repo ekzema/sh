@@ -20,7 +20,10 @@ Rails.application.routes.draw do
   get '/about' => 'welcome#about'
   get '/vip' => 'welcome#vip'
   get '/comment' => 'welcome#comment'
+
   get 'seller_panel/product'
+  get 'seller_panel/vipstatus'
+  get 'seller_panel/:name/showproduct', to: 'seller_panel#showproduct', as: 'showproduct_seller_panel'
   post 'seller_panel/product_visible'
 
   devise_for :sellers, controllers: {
