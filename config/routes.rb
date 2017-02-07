@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'admin_panel', to: 'admin_panel#index'
 
+  namespace :search do
+    get 'autocomplete'
+    get 'result'
+  end
+
   namespace :admin_panel do
       get 'product_all'
       get 'seller_all'

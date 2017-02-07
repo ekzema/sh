@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery_nested_form
+//= require jquery-ui/widgets/datepicker
+//= require jquery-ui/widgets/autocomplete
 //= require_tree ./main

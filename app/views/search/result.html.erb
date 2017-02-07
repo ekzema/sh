@@ -1,0 +1,7 @@
+<h1>Вы искали: <%= params[:q] %></h1>
+
+<% @products.each do |product| %>
+    <%= image_tag product.main_image %><br>
+    <strong>Название:</strong> <%= product.name %><br>
+    <strong>Цена:</strong> <%= product.price %>
+<% end %>

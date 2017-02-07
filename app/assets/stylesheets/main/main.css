@@ -785,3 +785,14 @@ body {
 .pro{
    margin-bottom: 40px; 
 }
+
+/*BEGIN ui autocomplete*/
+.ui-menu{
+    padding: 0;
+}
+
+.ui-menu li{
+    list-style: none;
+    text-indent: 10px;
+}
+/*END ui autocomplete*/
