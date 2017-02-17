@@ -40,8 +40,12 @@ Rails.application.routes.draw do
       confirmations: "sellers/confirmations"
   } do
 
-  put 'delete_attachment'
-end
+  end
+
+  devise_scope :seller do
+    delete 'delete_attachment' => 'sellers/registrations#delete_attachment'
+
+  end
 
   devise_for :rootadmins, controllers: {
       sessions: "rootadmins/sessions",

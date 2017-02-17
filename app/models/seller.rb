@@ -13,9 +13,9 @@ class Seller < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :lockable
 
-  has_attached_file :avatar, :styles => { medium: "300x400#" }, :default_url => "no_photo.jpg"
+  has_attached_file :avatar, :styles => { :medium => "300x300", :mini => "100x100" }, :default_url => "no_photo.jpg"
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   validates_attachment_file_name :avatar, matches: [/png\z/, /jpe?g\z/, /gif\z/]
-
+  crop_attached_file :avatar
 end

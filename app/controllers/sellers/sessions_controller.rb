@@ -7,25 +7,9 @@ class Sellers::SessionsController < Devise::SessionsController
   #end
 
   # POST /resource/sign_in
-  def create
-    moderation = Seller.find_by_email(params[:seller][:email])
-    if moderation.nil?
-      redirect_back(fallback_location: root_path)
-      flash[:error] = 'Неверный email или пароль!'
-    else
-      valid_seller = moderation.valid_password?(params[:seller][:password])
-      if valid_seller && moderation.moderation == 1
-        super
-        elsif valid_seller && moderation.moderation == 0
-          redirect_back(fallback_location: root_path)
-          flash[:error] = 'Ваша заяыка ещё не прошла модерацию'
-         else
-          redirect_back(fallback_location: root_path)
-          flash[:error] = 'Неверный email или пароль!'
-        super
-        end
-    end
-  end
+  # def create
+  #   super
+  # end
 
   # DELETE /resource/sign_out
   def destroy

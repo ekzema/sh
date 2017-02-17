@@ -13,7 +13,7 @@ Devise.setup do |config|
   config.mailer_sender = 'xxx.zp@mail.ru'
 
   # Configure the class responsible to send e-mails.
-  config.mailer = 'MyMailer'
+  # config.mailer = 'MyMailer'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -122,7 +122,7 @@ Devise.setup do |config|
   config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
-  # config.confirmation_keys = [ :email ]
+  config.confirmation_keys = [ :email ]
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.

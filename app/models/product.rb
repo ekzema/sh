@@ -9,11 +9,11 @@ class Product < ApplicationRecord
                                 :allow_destroy => true,
                                 :reject_if => :all_blank
 
-  has_attached_file :main_image, :default_url => "noimage.png"
+
+  has_attached_file :main_image, :styles => { :medium => "250x250", :thumb => "70x70" }, :default_url => "noimage.png"
   validates_attachment_content_type :main_image, content_type: /\Aimage\/.*\z/
   validates_attachment_file_name :main_image, matches: [/png\z/, /jpe?g\z/, /gif\z/]
-
+  crop_attached_file :main_image
   validates :name, :presence => { :message => 'не может быть пустым' }
-
 
 end

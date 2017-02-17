@@ -1,0 +1,15 @@
+<div class="page-header"></div>
+<div class="formCrop">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true }) do |f| %>
+    <div class="landscape-crop-preview">    
+      <%= f.crop_preview :avatar %>
+    </div>
+    <div class="landscape-crop-area">
+      <%= f.cropbox :avatar, :width => 600 %>
+    </div>
+    <div class="clear"></div>
+    <div class="actions">
+      <%= f.submit 'Далее', class: "btn btn-success cropSubmit" %>
+    </div>
+  <% end %>
+</div>

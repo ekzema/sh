@@ -1,32 +1,17 @@
 class Sellers::RegistrationsController < Devise::RegistrationsController
 before_action :configure_sign_up_params, only: [:create]
 before_action :configure_account_update_params, only: [:update]
-before_action :reset_session, only: [:edit, :update]
+
+# before_action :reset_session, only: [:edit, :update]
   # GET /resource/sign_up
   # def new
   #   super
   # end
 
   # POST /resource
-  def create
-    build_resource(sign_up_params)
-    resource.save
-    yield resource if block_given?
-    if resource.persisted?
-      if resource.active_for_authentication?
-        set_flash_message! :notice, :signed_up
-        redirect_to  :root
-      else
-        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
-        expire_data_after_sign_in!
-        respond_with resource, location: after_inactive_sign_up_path_for(resource)
-      end
-    else
-      clean_up_passwords resource
-      set_minimum_password_length
-      respond_with resource
-    end
-  end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   def edit
@@ -36,24 +21,28 @@ before_action :reset_session, only: [:edit, :update]
 # fields_change.each { |f| break render text: 'exit' if resource.previous_changes.keys.include?(f)}
   # PUT /resource
 
-    def update
-      self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
-      prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+
+        # resource.update_without_password(params[resource_name].permit(:avatar_original_w, :avatar_original_h, :avatar_box_w, :avatar_aspect, :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h))
+
+  def update
+    if params[:seller][:avatar_original_w].present?
+      Seller.find(current_seller.id).update(seller_avatar_params)
+      return redirect_to seller_panel_product_path, notice: 'Ваша учётная запись успешно обовлена'
+    end
+    if params[resource_name][:avatar].blank?
+      super
+    else
       resource_updated = update_resource(resource, account_update_params)
       yield resource if block_given?
       if resource_updated
-        i = 0
-        fields_change = ['email', 'name', 'surname', 'city', 'promo_code', 'date_of_birth']
-        fields_change.each { |f| i+=1 if resource.previous_changes.keys.include?(f) }
-        if i > 0
-          resource.update(:moderation => 0)
-          Devise.sign_out_all_scopes ? sign_out(current_seller) : sign_out(resource_name)
-          redirect_to :root, :notice => 'Ваш акаунт был изменён и отпрален на модерцию'
-        else
-          redirect_to seller_panel_product_path
-        end
+      render :action => 'crop'
+      else
+        clean_up_passwords resource
+        set_minimum_password_length
+        respond_with resource
       end
     end
+  end
 
 
   # DELETE /resource
@@ -77,13 +66,18 @@ before_action :reset_session, only: [:edit, :update]
     redirect_to :back
   end
 
+  private
+  def seller_avatar_params
+    params.require(:seller).permit(:avatar, :avatar_original_w, :avatar_original_h, :avatar_box_w, :avatar_aspect, :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h)
+  end
+
   protected
 
-  def reset_session
-    if seller_signed_in? && current_seller.moderation != 1
-      redirect_to destroy_seller_session_path
-    end
-  end
+  # def reset_session
+  #   if seller_signed_in? && current_seller.moderation != 1
+  #     redirect_to destroy_seller_session_path
+  #   end
+  # end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
@@ -92,7 +86,9 @@ before_action :reset_session, only: [:edit, :update]
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :surname, :city, :promo_code, :date_of_birth, :avatar])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :surname, :city, :promo_code, :date_of_birth, :avatar,
+     :avatar_original_w, :avatar_original_h, :avatar_box_w, :avatar_aspect, :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h
+     ])
   end
 
   # The path used after sign up.

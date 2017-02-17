@@ -16,4 +16,6 @@
 //= require jquery_nested_form
 //= require jquery-ui/widgets/datepicker
 //= require jquery-ui/widgets/autocomplete
+//= require jquery.jcrop
+//= require papercrop
 //= require_tree ./main

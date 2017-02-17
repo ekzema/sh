@@ -44,6 +44,9 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
+        if params[:product][:main_image].present?
+          format.html { render :crop }
+        end
         format.html { redirect_to seller_panel_product_path, notice: 'После прохождения модерации товар появится на сайте.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -57,9 +60,12 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1.json
   def update
     @product = Product.find(params[:id])
-    if @product.moderation == 1
+    if @product.moderation == 1 or params[:product][:main_image_original_w].present?
       respond_to do |format|
         if @product.update(product_params)
+          if params[:product][:main_image].present?
+            format.html { render :crop }
+          end
           @product.update(:moderation => 0)
           format.html { redirect_to seller_panel_product_path, notice: 'Товар успешно обновлён и отправлен на модерацию' }
           format.json { render :show, status: :ok, location: @product }
@@ -70,7 +76,7 @@ class ProductsController < ApplicationController
       end
     else
       redirect_to seller_panel_product_path
-      flash[:notice] = 'Товар tщё не прошёл модерацию'
+      flash[:notice] = 'Товар ещё не прошёл модерацию'
     end
   end
 
@@ -128,9 +134,9 @@ class ProductsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def product_params
-      params.require(:product).permit(:size, :price, :quality, :category_id, :twocategory_id, :threecategory_id, :description, :meta_desc, :meta_key, :meta_title, :main_image, :name, :article, :visible,
-      product_slide_images_attributes: [:id, :_destroy, :image]
-      )
-    end
+  def product_params
+    params.require(:product).permit(:size, :price, :quality, :category_id, :twocategory_id, :threecategory_id, :description, :meta_desc, :meta_key, :meta_title, :main_image, :name, :article, :visible, :main_image_original_w, :main_image_original_h, :main_image_box_w, :main_image_aspect, :main_image_crop_x, :main_image_crop_y, :main_image_crop_w, :main_image_crop_h,
+                                    product_slide_images_attributes: [:id, :_destroy, :image]
+    )
+  end
 end
