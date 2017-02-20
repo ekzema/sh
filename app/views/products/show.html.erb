@@ -18,36 +18,56 @@
     </menu>
      
   </div>
-  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 glf text-center">
-    <ul class="pager">
-    <li class="previous"><a href="#">&larr; Предыдущий</a></li>
-    <li class="next"><a href="#">Cледующий &rarr;</a></li>
-    </ul>
-    <p><%= image_tag(@product.main_image) %></p>
-    <p class="names"><%= @product.name %></p>
+  <div class="col-xs-12 col-sm-8 glf text-center">
 
-  </div> 
-  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 glf">
+    <p><%= image_tag(@product.main_image) %></p>
+    <!-- <p class="names"><%= @product.name %></p> -->
     <div id="MainMenu">
       <ul class="list-group panel list">
-        <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">КАТЕГОРИЯ: <%= @product.category_id %></li>
-        <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ПОДКАТЕГОРИЯ: <%= @product.twocategory_id %></li>
-        <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ВИД ТОВАРА: <%= @product.threecategory_id %></li>
+        <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"><%= @product.name %></li>
         <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">СТОИМОСТЬ: <%= @product.price %> ГРН.</li>
         <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">РАЗМЕР: <%= @product.size %></li>
-        <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ЦВЕТ: </li>
-        <li><a href="#demo1" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ПОДРОБНОЕ ОПИСАНИЕ<i class="fa fa-caret-down"></i></a>
+        <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ПОДРОБНОЕ ОПИСАНИЕ: <%= @product.description %></li>
+        <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ПРОДАВЕЦ <%= @product.seller.name %></li>
+        <li><a href="#demo1" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">СВЯЗАТЬСЯ: <%= @product.seller.name %><i class="fa fa-caret-down"></i></a>
           <div class="collapse" id="demo1">
-            <p class="list-group-item ">Бла бла бла...Бла бла бла...Бла бла бла...Бла бла бла...Бла бла бла...</p>
-          </div>
-        </li>
-        <li><a href="#demo2" class="list-group-item list-group-item-success list" data-toggle="collapse" data-parent="#MainMenu">ПРОДАВЕЦ<i class="fa fa-caret-down"></i></a>
-          <div class="collapse" id="demo2">
-            <p class="list-group-item">Я ВАСЯ, КРУТОЙ ПРОДАВЕЦ! ПОКУПАЙТЕ! </p>
-            <p class="list-group-item">Мой телефон 101</p>
+            <p class="list-group-item ">Мой телефон 101</p>
           </div>
         </li>
       </ul>
+    </div>
+  </div> 
+  <div class="col-xs-12 col-sm-2 glf">
+    <div class="row">
+      <h4 class="text-center">Другие товары этого продавца</h4>
+      <section class="autoplay">
+          <% @products.each do |product| %>
+          <div>
+            <%= image_tag product.main_image.url(:medium) %>
+            <div class="sld1"><p class=""><%= product.name %></p></div>
+            
+          </div>
+          <% end %>
+      </section>
+      <h4 class="text-center">Похожие товары </h4>
+      <section class="autoplay">
+          <% @products.each do |product| %>
+          <div>
+            <%= image_tag product.main_image.url(:medium) %>
+            <div class="sld1"><p class=""><%= product.name %></p></div>
+            
+          </div>
+          <% end %>
+      </section>
+      <h4 class="text-center">Лучшие продавцы</h4>
+      <section class="autoplay">
+            <% @sellers.each do | seller | %>
+            <div>
+              <%= image_tag seller.avatar(:medium) %>
+              <div class="sld1"><p ><%= seller.name %></p></div>
+            </div>
+            <% end %>
+        </section>
     </div>
   </div>
   </div> 

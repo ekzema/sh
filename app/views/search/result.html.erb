@@ -1,7 +1,44 @@
-<h1>Вы искали: <%= params[:q] %></h1>
+<div class="container-fluid">
+<div class="row">
+    <div class="hidden-sm hidden-xs col-sm-3 ">
+    <div class="ul1">
+      <% @catmenu.each do |category| %>
+                <li class="dropdown">
+                <%= link_to category_path(category.id), type: "button", id: category.id, role: "button", class: "dropdown-toggle navbar-brand ", data_toggle: "dropdown" do %> 
+                  <%= category.name %>             
+                  <b class="caret"></b> 
+                  <% end %>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop001">
+                    <% category.twocategories.each do |twocategory| %>
+                        <li class="dropdown-submenu">
+                          <!-- <a tabindex="-1" href="/twocategories"><%= twocategory.name %></a> -->
+                          <%= link_to twocategory.name, twocategory_path( twocategory.id) %>
+                          <ul class="dropdown-menu">
+                            <% twocategory.threecategories.each do |threecategory| %> 
+                                <li><!-- <a tabindex="-1" href="/threecategories"><%= threecategory.name %></a> -->
+                                  <%= link_to threecategory.name, threecategory_path( threecategory.id) %>
+                                </li>
+                            <% end %>
+                          </ul>
+                        </li>
+                    <% end %>
+                  </ul>
+                </li>
+            <% end %>
+       
+    </div> 
+    </div>   
+    <div class="col-xs-12 col-md-9">
+      <div class="text-center">
+        <h1>Вы искали: <%= params[:q] %></h1>
 
-<% @products.each do |product| %>
-    <%= image_tag product.main_image %><br>
-    <strong>Название:</strong> <%= product.name %><br>
-    <strong>Цена:</strong> <%= product.price %>
-<% end %>
+        <% @products.each do |product| %>
+            <%= image_tag product.main_image %><br>
+            <strong>Название:</strong> <%= product.name %><br>
+            <strong>Цена:</strong> <%= product.price %>
+        <% end %> 
+      </div>
+
+    </div>
+</div>
+</div>

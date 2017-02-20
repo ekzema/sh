@@ -1,6 +1,7 @@
 class SearchController < ApplicationController
 
   def result
+    
     if params[:q].blank?
       redirect_to :back, notice: 'Введите текст для поиска!'
     else

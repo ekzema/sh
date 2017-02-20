@@ -106,10 +106,10 @@
                   <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu" data-toggle="dropdown" href="#">
 
                   <% if seller_signed_in? %>
-                  <%= image_tag current_seller.avatar, class: 'wwww', alt: current_seller.name %>
+                  <%= image_tag current_seller.avatar.url(:medium), class: 'fotoava', alt: current_seller.name %>
                   Личный кабинет
                   <% else %>
-                  Войти
+                  Войти 
                   <% end %>
                   <b class="caret"></b></a>
                   <ul class="dropdown-menu " role="menu" aria-labelledby="drop001">
