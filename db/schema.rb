@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170118210837) do
+ActiveRecord::Schema.define(version: 20170220210520) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 20170118210837) do
     t.integer  "category_id"
     t.integer  "twocategory_id"
     t.integer  "threecategory_id"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
     t.string   "meta_desc"
     t.string   "meta_key"
     t.string   "meta_title"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20170118210837) do
     t.datetime "main_image_updated_at"
     t.string   "name"
     t.string   "article"
-    t.integer  "moderation"
+    t.integer  "moderation",                            default: 0
     t.integer  "visible"
     t.integer  "seller_id"
   end
@@ -126,8 +126,9 @@ ActiveRecord::Schema.define(version: 20170118210837) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.integer  "moderation"
+    t.integer  "moderation",             default: 0
     t.integer  "reset_session",          default: 1
+    t.string   "phone"
     t.index ["email"], name: "index_sellers_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_sellers_on_reset_password_token", unique: true, using: :btree
   end
