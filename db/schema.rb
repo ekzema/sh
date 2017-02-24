@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 20170220210520) do
     t.integer  "category_id"
     t.integer  "twocategory_id"
     t.integer  "threecategory_id"
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "meta_desc"
     t.string   "meta_key"
     t.string   "meta_title"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20170220210520) do
     t.datetime "main_image_updated_at"
     t.string   "name"
     t.string   "article"
-    t.integer  "moderation",                            default: 0
+    t.integer  "moderation"
     t.integer  "visible"
     t.integer  "seller_id"
   end
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 20170220210520) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.integer  "moderation",             default: 0
+    t.integer  "moderation"
     t.integer  "reset_session",          default: 1
     t.string   "phone"
     t.index ["email"], name: "index_sellers_on_email", unique: true, using: :btree

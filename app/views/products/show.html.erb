@@ -8,6 +8,7 @@
   <div class="col-sm-2 col-md-2 col-lg-2 hidden-xs">
     
     <menu class="fot">
+    <h4 class="text-center">Другие фото этого товара</h4>
       <% @product.product_slide_images.each do |slide| %>
           <li>
             <%= link_to(slide.image.to_s, class: 'gallery', rel: 'group') do %>
@@ -20,7 +21,7 @@
   </div>
   <div class="col-xs-12 col-sm-8 glf text-center">
 
-    <p><%= image_tag(@product.main_image) %></p>
+    <p><%= image_tag(@product.main_image(:medium), class: 'fotomain') %></p>
     <!-- <p class="names"><%= @product.name %></p> -->
     <div id="MainMenu">
       <ul class="list-group panel list">
@@ -31,7 +32,7 @@
         <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ПРОДАВЕЦ <%= @product.seller.name %></li>
         <li><a href="#demo1" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">СВЯЗАТЬСЯ: <%= @product.seller.name %><i class="fa fa-caret-down"></i></a>
           <div class="collapse" id="demo1">
-            <p class="list-group-item ">Мой телефон 101</p>
+            <p class="list-group-item "><%= @product.seller.phone %></p>
           </div>
         </li>
       </ul>

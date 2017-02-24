@@ -133,10 +133,11 @@
         <!-- слайдер для рекламы-товара -->
         <section class="autoplay">
             <% @products.each do |product| %>
-            <div>
+            <div class="">
+            <%= link_to product_path(product.id) do %>
               <%= image_tag product.main_image.url(:medium) %>
-              <div class="sld1"><p class=""><%= product.name %></p></div>
-              
+              <div class="sld1"><p class="size"><%= product.name %></p></div>
+              <% end %>
             </div>
             <% end %>
         </section>
@@ -181,10 +182,11 @@
       <section class="auto1 qqq hidden-xs hidden-sm">
             <% @category.each do |category| %>
               <% category.category_slide_images.each do |slide| %>
-              <a href="/">
+              <%= link_to category_path(category.id) do %>
               <%= image_tag slide.image %>
               <p class="text-center"><%= slide.category.description %></p>
-              </a>
+              <% end %>
+              
             <% end %>
             <% end %>
         </section>

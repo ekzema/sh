@@ -1,21 +1,26 @@
 <div class="container-fluid">
 <div class="row">
     <div class="hidden-sm hidden-xs col-sm-3 ">
+
+
+  
+
     <div class="ul1">
+
       <% @catmenu.each do |category| %>
-                <li class="dropdown">
+                <li class="li1">
                 <%= link_to category_path(category.id), type: "button", id: category.id, role: "button", class: "dropdown-toggle navbar-brand ", data_toggle: "dropdown" do %> 
                   <%= category.name %>             
                   <b class="caret"></b> 
                   <% end %>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="drop001">
                     <% category.twocategories.each do |twocategory| %>
-                        <li class="dropdown-submenu">
-                          <!-- <a tabindex="-1" href="/twocategories"><%= twocategory.name %></a> -->
+                        <li class="li2">
+                          
                           <%= link_to twocategory.name, twocategory_path( twocategory.id) %>
                           <ul class="dropdown-menu">
                             <% twocategory.threecategories.each do |threecategory| %> 
-                                <li><!-- <a tabindex="-1" href="/threecategories"><%= threecategory.name %></a> -->
+                                <li>
                                   <%= link_to threecategory.name, threecategory_path( threecategory.id) %>
                                 </li>
                             <% end %>
@@ -24,7 +29,7 @@
                     <% end %>
                   </ul>
                 </li>
-            <% end %>
+            <% end %> 
        
     </div> 
     </div>   
