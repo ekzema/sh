@@ -16,4 +16,8 @@ class WelcomeController < ApplicationController
   def comment   
   end
 
+  def seller_products
+    @seller = Seller.find(params[:id])
+  end
+
 end

@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get '/about' => 'welcome#about'
   get '/vip' => 'welcome#vip'
   get '/comment' => 'welcome#comment'
+  get 'seller_products/:id', to: 'welcome#seller_products', as: 'seller_products'
+
 
   get 'seller_panel/product'
   get 'seller_panel/vipstatus'

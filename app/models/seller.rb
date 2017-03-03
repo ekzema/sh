@@ -9,9 +9,9 @@ class Seller < ApplicationRecord
   validates :promo_code, presence: true
 
   # Include default devise modules. Others available are:
-  #  and :omniauthable
+  #  and :omniauthable , :confirmable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :lockable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :lockable   
 
   has_attached_file :avatar, :styles => { :medium => "300x300", :mini => "100x100" }, :default_url => "no_photo.jpg"
 
