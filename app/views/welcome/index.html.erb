@@ -87,7 +87,7 @@
 
               <p>О нас</p>
             </div>
-          </div>
+          </div> 
           <% @category.each do |category| %>
               <% category.category_slide_images.each do |slide| %>
                   <div class="item">
@@ -134,9 +134,9 @@
         <section class="autoplay">
             <% @products.each do |product| %>
             <div class="">
-            <%= link_to product_path(product.id) do %>
-              <%= image_tag product.main_image.url(:medium) %>
-              <div class="sld1"><p class="size"><%= product.name %></p></div>
+            <%= link_to product_path(product.id), :class => 'size2' do %>
+              <%= image_tag product.main_image.url(:medium) %> 
+              <p class="size3"><%= product.name %></p>
               <% end %>
             </div>
             <% end %>

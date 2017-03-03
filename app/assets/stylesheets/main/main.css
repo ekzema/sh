@@ -579,6 +579,23 @@ table{
     text-decoration: none; 
 }
 
+.size2 {
+
+    background-color: #333!important;
+    color: #fff!important;
+    }
+
+.size3 {
+background-color: #333!important;
+padding: 5px;
+}
+
+.size2:hover, .size2:focus{
+    color: #fff!important;
+    font-weight: 700!important;
+    text-decoration: none!important; 
+}
+
 @media only screen and (min-width: 400px) and (max-width: 991px) {
    .product{ border: 20px solid #CD423C;}
 }
