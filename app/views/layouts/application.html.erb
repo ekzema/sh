@@ -176,7 +176,7 @@
             <li class="hidden-xs">
               <%= form_tag({:controller => "/search", :action => "result"}, method: "get", class: "navbar-form navbar-left", "role" => "search") do %>
                   <div class="form-group">
-                    <%= text_field_tag(:q, nil, placeholder: "Поиск", class: "form-control searchInput") %>
+                    <%= text_field_tag(:q, nil, placeholder: "Поиск товара", class: "form-control searchInput") %>
                   </div>
                   <%= button_tag 'Найти', class: 'btn btn-default' %>
               <% end %>

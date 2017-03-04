@@ -12,6 +12,9 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @category = Category.find( @product.category_id)
+    twocategories_id =  @category.twocategories.ids
+    @twocategories = Twocategory.where(:id => twocategories_id)
     @sellers = Seller.all
     @products = Product.all
     

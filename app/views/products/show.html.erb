@@ -8,6 +8,8 @@
   <div class="col-sm-2 col-md-2 col-lg-2 hidden-xs">
     
     <menu class="fot">
+<% if @product.product_slide_images.present? %>
+
     <h4 class="text-center">Другие фото этого товара</h4>
       <% @product.product_slide_images.each do |slide| %>
           <li>
@@ -16,7 +18,28 @@
             <% end %>
           </li>
       <% end %>
-    </menu>
+
+<% else %>
+
+      <ul class="ul2 ">
+    <p class=""><%= @category.name %></p>
+    <li class="li1">
+    <% @category.twocategories.each do |twocategory | %>
+      <p><%= twocategory.name %></p>
+      <ul>
+        <% twocategory.threecategories.each do | threecategory | %>
+        <li class="li2">
+          <p><%= link_to threecategory.name, threecategory_path( threecategory.id) %></p>
+        </li>
+        <% end %>
+      </ul>
+    <% end %> 
+    </li>
+  </ul>
+
+    
+<% end %>
+    </menu> 
      
   </div>
   <div class="col-xs-12 col-sm-8 glf text-center">

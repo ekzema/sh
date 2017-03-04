@@ -82,7 +82,7 @@ $(document).on('ready turbolinks:load', function(){
         pauseOnHover: false,
         adaptiveHeight: true,
         arrows: false,
-        autoplaySpeed: 2000
+        autoplaySpeed: 8000
     });
 
 });
@@ -121,7 +121,7 @@ $(document).on('ready turbolinks:load', function(){
         autoplay: true,
         pauseOnHover: false,
         adaptiveHeight: true,
-        arrows: false,
+        arrows: false, 
         autoplaySpeed: 4000
     });
 
