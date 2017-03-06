@@ -200,6 +200,10 @@ p {
     margin-right: 10px;
     border-radius: 100%;
 }
+.fotoava2{
+    width: 90%;
+    border-radius: 100%;
+}
 .tmenu a{
     font-size: 18px;
     text-transform: capitalize;
@@ -503,6 +507,11 @@ table{
 }
 
 /* левое меню*/
+.category{
+    padding: 5px 20px;
+    font-size: large;
+    border: 1px solid #111!important;
+}
 .ul1 ul {
     list-style-type: none;
     color: #111;
@@ -583,13 +592,24 @@ table{
 
     background-color: #333!important;
     color: #fff!important;
-    }
+}
+
+.size5 {
+    text-transform: uppercase!important;
+}
 
 .size3 {
 background-color: #333!important;
 padding: 5px;
 }
-
+.size4 {
+    background-color: #555!important;
+    padding: 5px;
+    color: #fff;
+    text-align: center;
+    margin-left: 10px!important;
+    margin-right: 10px!important;
+}
 .size2:hover, .size2:focus{
     color: #fff!important;
     font-weight: 700!important;
@@ -793,9 +813,9 @@ body {
 .onas{
     font-size: 16px;
 }
-/*.onas3{
-    background-color: #FFB5C5!important;
-}*/
+.onas3{
+    background-color: #f8f8f8!important;
+}
 .onas li{
     list-style-type: none;
     margin: 0px 10px 10px 0px;
@@ -827,3 +847,8 @@ body {
     text-indent: 10px;
 }
 /*END ui autocomplete*/
+.page-header {
+    padding-bottom: 0px!important;
+    margin: 40px 0 20px;
+    border-bottom: 0px !important;
+}

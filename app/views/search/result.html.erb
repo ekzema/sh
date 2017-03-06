@@ -1,49 +1,40 @@
 <div class="container-fluid">
 <div class="row">
-    <div class="hidden-sm hidden-xs col-sm-3 ">
-
-
-  
-
-    <div class="ul1">
-
-      <% @catmenu.each do |category| %>
-                <li class="li1">
-                <%= link_to category_path(category.id), type: "button", id: category.id, role: "button", class: "dropdown-toggle navbar-brand ", data_toggle: "dropdown" do %> 
-                  <%= category.name %>             
-                  <b class="caret"></b> 
-                  <% end %>
-                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop001">
-                    <% category.twocategories.each do |twocategory| %>
-                        <li class="li2">
-                          
-                          <%= link_to twocategory.name, twocategory_path( twocategory.id) %>
-                          <ul class="dropdown-menu">
-                            <% twocategory.threecategories.each do |threecategory| %> 
-                                <li>
-                                  <%= link_to threecategory.name, threecategory_path( threecategory.id) %>
-                                </li>
-                            <% end %>
-                          </ul>
-                        </li>
-                    <% end %>
-                  </ul>
-                </li>
-            <% end %> 
-       
-    </div> 
-    </div>   
-    <div class="col-xs-12 col-md-9">
+    <div class="col-xs-12 col-md-10">
       <div class="text-center">
-        <h1>Вы искали: <%= params[:q] %></h1>
+        <h4>Вы искали: <%= params[:q] %></h4>
 
         <% @products.each do |product| %>
-            <%= image_tag product.main_image %><br>
-            <strong>Название:</strong> <%= product.name %><br>
-            <strong>Цена:</strong> <%= product.price %>
-        <% end %> 
+            <div class="col-xs-6 col-sm-4 col-lg-3  product">
+              <div class="row size1">
+                <%= link_to product_path(product.id) do %>
+            <%= image_tag product.main_image(:medium) %><br>
+            <%= product.name %><br>
+            <strong>Размер:</strong> <%= product.size %>
+        <% end %>
+              </div>
+            </div>
+
+        <% end %>
+
+
+
+
       </div>
 
+    </div>
+  <div class="col-sm-2 ">
+    <p class="size4">Популярные товары</p>
+    <section class="autoplaydr">
+      <% @prs.each do |product| %>
+          <div>
+            <%= link_to product_path(product.id), :class => 'size2' do %>
+                <%= image_tag product.main_image(:medium) %>
+                <p class="size3"><%= product.name %></p>
+            <% end %>
+          </div>
+      <% end %>
+    </section>
     </div>
 </div>
 </div>

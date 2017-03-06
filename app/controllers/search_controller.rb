@@ -7,6 +7,7 @@ class SearchController < ApplicationController
     else
       @products = Product.order(:name).where("name LIKE ?", "%#{params[:q]}%")
     end
+    @prs = Product.all
   end
 
   def autocomplete

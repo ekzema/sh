@@ -121,18 +121,8 @@
      
     <div class="col-xs-0 col-sm-2 ">
     <div class="row">
-      <!-- слайдер для рекламы-продавца -->
-        <section class="autoplay">
-          <% @sellers.each do | seller | %>
-            <div>
-            <%= link_to seller_products_path(seller.id), :class => 'size2' do %>
-              <%= image_tag seller.avatar(:medium) %> 
-              <p class="size3"><%= seller.name %></p>
-              <% end %>
-            </div>
-            <% end %>
-        </section>
-        <!-- слайдер для рекламы-товара -->
+            <!-- слайдер для рекламы-товара -->
+      <p class="size4">Новинки</p>
         <section class="autoplay">
             <% @products.each do |product| %>
             <div class="">
@@ -143,6 +133,18 @@
             </div>
             <% end %>
         </section>
+      <!-- слайдер для рекламы-продавца -->
+      <p class="size4">Наши продавцы</p>
+      <section class="autoplay">
+        <% @sellers.each do | seller | %>
+            <div>
+              <%= link_to seller_products_path(seller.id), :class => 'size2' do %>
+                  <%= image_tag seller.avatar(:medium) %>
+                  <p class="size3"><%= seller.name %></p>
+              <% end %>
+            </div>
+        <% end %>
+      </section>
     </div>
     </div>
   </div>

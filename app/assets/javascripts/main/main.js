@@ -82,7 +82,7 @@ $(document).on('ready turbolinks:load', function(){
         pauseOnHover: false,
         adaptiveHeight: true,
         arrows: false,
-        autoplaySpeed: 8000
+        autoplaySpeed: 6000
     });
 
 });
@@ -149,6 +149,33 @@ $(document).on('ready turbolinks:load', function(){
         adaptiveHeight: true,
         arrows: false,
         autoplaySpeed: 2500
+    });
+
+});
+
+$(document).on('ready turbolinks:load', function(){
+    $('.autoplayproduct').not('.slick-initialized').slick({
+        slidesToShow: 8,
+        slidesToScroll: 1,
+        autoplay: true,
+        pauseOnHover: false,
+        adaptiveHeight: true,
+        arrows: false,
+        autoplaySpeed: 5000
+    });
+
+});
+
+$(document).on('ready turbolinks:load', function(){
+    $('.autoplaydr').not('.slick-initialized').slick({
+        vertical: true,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: true,
+        pauseOnHover: false,
+        adaptiveHeight: true,
+        arrows: false,
+        autoplaySpeed: 6000
     });
 
 });
