@@ -1,16 +1,16 @@
 <div class="container-fluid">
 <div class="row">
-  <div class="col-xs-12 col-sm-10 text-center">
-    <div class="col-xs-3">
+  <div class="col-xs-12 text-center">
+    <div class="col-xs-3 col-sm-2">
       <h4>Немного о продавце:</h4>
       <p><%= image_tag @seller.avatar(:medium), class: 'fotoava2' %></p>
       <p><%= @seller.name %></p>
       Его группа ВК:
       </div>
-    <div class="col-xs-9">
+    <div class="col-xs-9 col-sm-8">
       <h4>Все его товары:</h4>
     <% @seller.products.each do |product| %>
-        <div class="col-xs-6 col-sm-4 col-lg-3  product">
+        <div class="col-xs-6 col-sm-4 col-lg-3 product">
           <div class="row size1">
             <%= link_to product_path(product.id) do %>
                 <%= image_tag product.main_image.url(:medium), title: product.name, alt: product.name %>
@@ -21,18 +21,14 @@
         </div>
     <% end %>
     </div>
-
-
-  </div>
-
-  <div class="col-xs-6 col-sm-2 ">
+  <div class="hidden-xs col-sm-2">
   <p class="size4">Другие продавцы</p>
   <section class="autoplaydr">
     <% @sellers.each do | seller | %>
         <div>
           <%= link_to seller_products_path(seller.id), :class => 'size2' do %>
               <%= image_tag seller.avatar(:medium) %>
-              <p class="size3"><%= seller.name %></p>
+              <p class="size3 text-center"><%= seller.name %></p>
           <% end %>
         </div>
     <% end %>
@@ -40,14 +36,10 @@
   </div>
 </div>
 </div>
-
-
-
-
+</div>
 
 <div class="container-fluid niz1">
   <div class="row">
-
     <h4 class="size4">Популярные товары на сайте</h4>
     <section class="autoplayproduct">
       <% @products.each do |product| %>

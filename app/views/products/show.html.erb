@@ -60,17 +60,26 @@
         </li>
       </ul>
     </div>
-          <p class="size4">Другие товары этого продавца</p>
-          <section class="autoplayproduct">
-            <% @products.each do |product| %>
-                <div class="">
-                  <%= link_to product_path(product.id), :class => 'size2' do %>
-                      <%= image_tag product.main_image.url(:medium) %>
-                      <p class="size3"><%= product.name %></p>
-                  <% end %>
+
+          <div class="container-fluid niz1">
+            <div class="row">
+              <h2 class="text-center">Другие товары этого продавца</h2>
+              <div class="col-xs-12 ">
+                <div class="row">
+                  <section class="productseller">
+                    <% @products.each do |product| %>
+                        <div class="">
+                          <%= link_to product_path(product.id), :class => 'size2' do %>
+                              <%= image_tag product.main_image.url(:medium) %>
+                              <p class="size3"><%= product.name %></p>
+                          <% end %>
+                        </div>
+                    <% end %>
+                  </section>
                 </div>
-            <% end %>
-          </section>
+              </div>
+            </div>
+          </div>
   </div> 
   <div class="col-xs-12 col-sm-2 glf">
     <div class="row">

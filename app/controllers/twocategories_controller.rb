@@ -18,6 +18,7 @@ class TwocategoriesController < ApplicationController
   # GET /twocategories/1
   # GET /twocategories/1.json
   def show
+    @products = Product.all
     @showcat = @twocategory.category
     @sellers = Seller.all
 

@@ -165,6 +165,12 @@ body {
 
 
 }
+/*@media only screen and (min-width: 970px) and (max-width: 2500px) {*/
+    /*body{ font-size: 14px!important;}*/
+/*}*/
+@media only screen and (min-width: 350px) and (max-width: 992px) {
+    body{ font-size: 10px!important;}
+}
 p {
     margin: 0px !important;
 }
@@ -816,6 +822,9 @@ body {
 .onas3{
     background-color: #f8f8f8!important;
 }
+.onas2{
+    text-align: justify!important;
+}
 .onas li{
     list-style-type: none;
     margin: 0px 10px 10px 0px;
@@ -851,4 +860,7 @@ body {
     padding-bottom: 0px!important;
     margin: 40px 0 20px;
     border-bottom: 0px !important;
+}
+.formn{
+    margin: 30px!important;
 }

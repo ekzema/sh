@@ -179,3 +179,16 @@ $(document).on('ready turbolinks:load', function(){
     });
 
 });
+
+$(document).on('ready turbolinks:load', function(){
+    $('.productseller').not('.slick-initialized').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: true,
+        pauseOnHover: false,
+        adaptiveHeight: true,
+        arrows: false,
+        autoplaySpeed: 5000
+    });
+
+});
