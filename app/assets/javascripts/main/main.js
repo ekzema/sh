@@ -116,7 +116,7 @@ $(document).on('ready turbolinks:load', function(){
 
 $(document).on('ready turbolinks:load', function(){
     $('.auto1').not('.slick-initialized').slick({
-        slidesToShow: 4,
+        slidesToShow: 5,
         slidesToScroll: 1,
         autoplay: true,
         pauseOnHover: false,
@@ -129,7 +129,7 @@ $(document).on('ready turbolinks:load', function(){
 
 $(document).on('ready turbolinks:load', function(){
     $('.auto2').not('.slick-initialized').slick({
-        slidesToShow: 2,
+        slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
         pauseOnHover: false,
@@ -142,13 +142,13 @@ $(document).on('ready turbolinks:load', function(){
 
 $(document).on('ready turbolinks:load', function(){
     $('.auto3').not('.slick-initialized').slick({
-        slidesToShow: 4,
+        slidesToShow: 5,
         slidesToScroll: 1,
         autoplay: true,
         pauseOnHover: false,
         adaptiveHeight: true,
         arrows: false,
-        autoplaySpeed: 2500
+        autoplaySpeed: 5000
     });
 
 });
@@ -162,6 +162,19 @@ $(document).on('ready turbolinks:load', function(){
         adaptiveHeight: true,
         arrows: false,
         autoplaySpeed: 5000
+    });
+
+});
+
+$(document).on('ready turbolinks:load', function(){
+    $('.autoplayproduct2').not('.slick-initialized').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: true,
+        pauseOnHover: false,
+        adaptiveHeight: true,
+        arrows: false,
+        autoplaySpeed: 7000
     });
 
 });

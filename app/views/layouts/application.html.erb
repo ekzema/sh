@@ -151,7 +151,7 @@
 
             <% @catmenu.each do |category| %>
                 <li class="dropdown">
-                <%= link_to category_path(category.id), type: "button", id: category.id, role: "button", class: "dropdown-toggle navbar-brand ", data_toggle: "dropdown" do %> 
+                <%= link_to category_path(category.id), type: "button", id: category.id, role: "button", class: "dropdown-toggle navbar-brand ", data_toggle: "dropdown" do %>
                   <%= category.name %>             
                   <b class="caret"></b> 
                   <% end %>
