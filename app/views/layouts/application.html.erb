@@ -102,7 +102,9 @@
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                  <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu" data-toggle="dropdown" href="#">
+
+                  <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu"
+                     data-toggle="dropdown" href="#">
 
                   <% if seller_signed_in? %>
                   <%= image_tag current_seller.avatar.url(:medium), class: 'fotoava', alt: current_seller.name %>
@@ -143,23 +145,27 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand brand visible-xs" href="/">КАТЕГОРИИ ТОВАРОВ</a>
+          <a class="navbar-brand brand visible-xs" href="/"> <%= form_tag({:controller => "/search", :action => "result"}, method: "get", class: "navbar-form navbar-left", "role" => "search") do %>
+                <div class="form-group">
+                  <%= text_field_tag(:q, nil, placeholder: "Поиск товара", class: "form-control searchInput") %>
+                      </div>
+                      <%= button_tag 'Найти', class: 'btn btn-default' %>
+                      <% end %></a>
         </div>
         <div class="collapse navbar-collapse" id="responsive-menu1">
-
           <ul class="nav navbar-nav">
 
             <% @catmenu.each do |category| %>
                 <li class="dropdown">
-                <%= link_to category_path(category.id), type: "button", id: category.id, role: "button", class: "dropdown-toggle navbar-brand ", data_toggle: "dropdown" do %>
+                 <%= link_to category_path(category.id), type: "button", id: category.id, role: "button",
+                    class: "dropdown-toggle navbar-brand ", data_toggle: "dropdown" do %>
                   <%= category.name %>             
                   <b class="caret"></b> 
                   <% end %>
-                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop001">
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="<%= category.id %>">
                     <% category.twocategories.each do |twocategory| %>
                         <li class="dropdown-submenu">
-                          <!-- <a tabindex="-1" href="/twocategories"><%= twocategory.name %></a> -->
-                          <%= link_to twocategory.name, twocategory_path( twocategory.id) %>
+                        <%= link_to twocategory.name, twocategory_path( twocategory.id) %>
                           <ul class="dropdown-menu">
                             <% twocategory.threecategories.each do |threecategory| %> 
                                 <li><!-- <a tabindex="-1" href="/threecategories"><%= threecategory.name %></a> -->
