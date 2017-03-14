@@ -137,6 +137,15 @@ nav#topMenu {
     margin-top: 5px;
     margin-right: -10px;
 }
+@media only screen and (max-width: 767px) {
+    .dropdown-menu {
+        position: relative!important;
+        clear: left!important;
+    }
+    .dropdown-submenu>.dropdown-menu {
+        left: 10%!important;
+    }
+}
 
 .dropdown-submenu:hover>a:after {
     border-left-color: #fff;
@@ -153,11 +162,10 @@ nav#topMenu {
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
 }
-
-@media only screen and (min-width: 767px) and (max-width: 1500px) {
+ /*767*/
+@media only screen and (min-width: 111px) and (max-width: 1500px) {
     .dropdown:hover > .dropdown-menu { display: block!important; }
 }
-
 
 body {
     font-family: florence!important;
