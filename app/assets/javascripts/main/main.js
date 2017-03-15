@@ -209,3 +209,46 @@ $(document).on('ready turbolinks:load', function(){
 $(document).on('turbolinks:load', function() {
     $('form').parsley().validate();
 });
+
+
+
+
+var d = new Date(90,0,1);
+$(document).on('ready turbolinks:load', function(){
+    $( "#datepicker" ).datepicker({
+        defaultDate:d, //set the default date to Jan 1st 1990
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '1966:2000', //set the range of years
+        dateFormat: 'dd-mm-yy', //set the format of the date
+    });
+    $.datepicker.regional['ru'] = {
+        closeText: 'Закрыть',
+        prevText: '&#x3c;Пред',
+        nextText: 'След&#x3e;',
+        currentText: 'Сегодня',
+        monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь',
+            'Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+        monthNamesShort: ['Янв','Фев','Мар','Апр','Май','Июн',
+            'Июл','Авг','Сен','Окт','Ноя','Дек'],
+        dayNames: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
+        dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
+        dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+        dateFormat: 'dd.mm.yy',
+        firstDay: 1,
+        isRTL: false
+    };
+    $.datepicker.setDefaults($.datepicker.regional['ru']);
+    $('input.datepicker').datepicker({
+        showOn: 'both',
+        buttonImageOnly: true,
+        buttonImage: '/images/026.png'
+    });
+    $('.searchInput').autocomplete({
+        minLength: 3,
+        delay: 600,
+        source: '/search/autocomplete.json'
+    });
+    $('.ui-helper-hidden-accessible').hide(); //hide result message in div classes ui-helper-hidden-accessible
+});
+
