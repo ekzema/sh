@@ -139,13 +139,17 @@ nav#topMenu {
 }
 @media only screen and (max-width: 767px) {
     .dropdown-menu {
+        width: 100%;
         position: relative!important;
         clear: left!important;
     }
     .dropdown-submenu>.dropdown-menu {
-        left: 10%!important;
+        left: 0!important;
+        background-color: #777;
     }
+    .dropdown:hover > .dropdown-menu { display: block!important; }
 }
+
 
 .dropdown-submenu:hover>a:after {
     border-left-color: #fff;
@@ -163,7 +167,7 @@ nav#topMenu {
     border-radius: 6px 0 6px 6px;
 }
  /*767*/
-@media only screen and (min-width: 111px) and (max-width: 1500px) {
+@media only screen and (min-width: 767px) and (max-width: 1500px) {
     .dropdown:hover > .dropdown-menu { display: block!important; }
 }
 
@@ -325,6 +329,7 @@ menu{
 @media only screen and (min-width: 767px) and (max-width: 995px) {
     .men img{width: 78px;margin: 0 5px;}
     .navbar-brand{padding-left: 0px;}
+
 }
 @media only screen and (max-width: 766px) {
     .men img{width: 50px;margin: 0 5px;}

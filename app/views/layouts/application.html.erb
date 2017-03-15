@@ -14,15 +14,9 @@
     <%= javascript_include_tag '/slick/js/slick.js' %>
     <%= javascript_include_tag '/fancybox/lib/jquery.mousewheel-3.0.6.pack.js' %>
     <%= javascript_include_tag '/fancybox/source/jquery.fancybox.pack.js' %>
-
     <%= javascript_include_tag '/parsley/parsley.min.js'%>
-    
-    <script>
-      $(document).on('ready turbolinks:load', function(){
-        $('#form').parsley();
-    });
-    </script>
-    <script>
+
+     <script>
     var d = new Date(90,0,1);
     $(document).on('ready turbolinks:load', function(){
     $( "#datepicker" ).datepicker({
@@ -66,7 +60,6 @@
     });
     </script>
   </head>
-
   <body>
 <!-- 
 <% if rootadmin_signed_in? %>
@@ -93,9 +86,8 @@
               <ul class="nav navbar-nav tmenu">
               
               <a  class="logo hidden-xs hidden-sm" href="/"><%= image_tag '001.png' %></a>
-                <!-- 
-                <li><a href="/categories">categories  Новости сайта</a></li>
-                <li><a href="/products">VIP-Статус </a></li> --> 
+
+                <li><a href="/categories">Новости</a></li>
                 <li><a href="/about">О нас</a></li>
                 <li><a href="/vip">VIP-Статус</a></li>
                 <li><a href="/comment">Помощь</a></li>
@@ -145,17 +137,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-
+          <a class="navbar-brand brand visible-xs " href="#">Разделы сайта</a>
         </div>
         <div class="collapse navbar-collapse" id="responsive-menu1">
-          <ul class="nav navbar-nav">
-
+          <ul class="nav navbar-nav dropdown1">
             <% @catmenu.each do |category| %>
-                <li class="dropdown">
+                <li class="dropdown ">
                  <%= link_to category_path(category.id), type: "button", id: category.id, role: "button",
                     class: "dropdown-toggle navbar-brand ", data_toggle: "dropdown" do %>
                   <%= category.name %>             
-                  <b class="caret"></b> 
+                  <b class="caret"></b>
                   <% end %>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="<%= category.id %>">
                     <% category.twocategories.each do |twocategory| %>
