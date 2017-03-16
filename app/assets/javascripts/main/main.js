@@ -211,16 +211,17 @@ $(document).on('turbolinks:load', function() {
 });
 
 
-
-
+ //date
 var d = new Date(90,0,1);
-$(document).on('ready turbolinks:load', function(){
+document.addEventListener("turbolinks:load", function() {
+
     $( "#datepicker" ).datepicker({
         defaultDate:d, //set the default date to Jan 1st 1990
         changeMonth: true,
         changeYear: true,
         yearRange: '1966:2000', //set the range of years
-        dateFormat: 'dd-mm-yy', //set the format of the date
+        dateFormat: 'dd-mm-yy' //set the format of the date
+
     });
     $.datepicker.regional['ru'] = {
         closeText: 'Закрыть',
@@ -239,16 +240,18 @@ $(document).on('ready turbolinks:load', function(){
         isRTL: false
     };
     $.datepicker.setDefaults($.datepicker.regional['ru']);
+
     $('input.datepicker').datepicker({
         showOn: 'both',
         buttonImageOnly: true,
         buttonImage: '/images/026.png'
     });
-    $('.searchInput').autocomplete({
-        minLength: 3,
-        delay: 600,
-        source: '/search/autocomplete.json'
-    });
-    $('.ui-helper-hidden-accessible').hide(); //hide result message in div classes ui-helper-hidden-accessible
-});
 
+
+$('.searchInput').autocomplete({
+    minLength: 3,
+    delay: 600,
+    source: '/search/autocomplete.json'
+});
+$('.ui-helper-hidden-accessible').hide(); //hide result message in div classes ui-helper-hidden-accessible
+});

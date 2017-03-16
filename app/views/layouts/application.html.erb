@@ -1,164 +1,165 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Stockmarket.com.ua</title>
-  <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_link_tag    '/bootstrap/css/bootstrap.css' %>
-  <%= stylesheet_link_tag    '/slick/css/slick.css' %>
-  <%= stylesheet_link_tag    '/slick/css/slick-theme.css' %>
-  <%= stylesheet_link_tag    '/fancybox/source/jquery.fancybox.css' %>
-  <%= stylesheet_link_tag    '/parsley/parsley.css' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag '/bootstrap/js/bootstrap.js' %>
-  <%= javascript_include_tag '/slick/js/slick.js' %>
-  <%= javascript_include_tag '/fancybox/lib/jquery.mousewheel-3.0.6.pack.js' %>
-  <%= javascript_include_tag '/fancybox/source/jquery.fancybox.pack.js' %>
-  <%= javascript_include_tag '/parsley/parsley.min.js'%>
-
-
+    <title>Stockmarket.com.ua</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    '/bootstrap/css/bootstrap.css' %>
+    <%= stylesheet_link_tag    '/slick/css/slick.css' %>
+    <%= stylesheet_link_tag    '/slick/css/slick-theme.css' %>
+    <%= stylesheet_link_tag    '/fancybox/source/jquery.fancybox.css' %>
+    <%= stylesheet_link_tag    '/parsley/parsley.css' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag '/bootstrap/js/bootstrap.js' %>
+    <%= javascript_include_tag '/slick/js/slick.js' %>
+    <%= javascript_include_tag '/fancybox/lib/jquery.mousewheel-3.0.6.pack.js' %>
+    <%= javascript_include_tag '/fancybox/source/jquery.fancybox.pack.js' %>
+    <%= javascript_include_tag '/parsley/parsley.min.js'%>
 </head>
 <body>
-<!-- 
-<% if rootadmin_signed_in? %>
-  <h1><%= link_to 'Выход',  destroy_rootadmin_session_path %></h1>
-      <% else %>
- <h1> <%= link_to 'Войти',  new_rootadmin_session_path %></h1>
-      <% end %> -->
-
 <header>
-<!-- меню11 -->
-
 <div class="navbar navbar-inverse navbar-default navbar-static-top">
 <div class="container">
-<div class="navbar-header">
-<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
-<span class="sr-only">open</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a class="navbar-brand brand visible-xs " href="/">Stockmarket.com.ua</a>
-</div>
-<div class="collapse navbar-collapse " id="responsive-menu">
-<ul class="nav navbar-nav tmenu">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
+        <span class="sr-only">open</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand brand visible-xs " href="/">Stockmarket.com.ua</a>
+    </div>
+    <div class="collapse navbar-collapse " id="responsive-menu">
+    <ul class="nav navbar-nav tmenu">
+    <a  class="logo hidden-xs hidden-sm" href="/"><%= image_tag '001.png' %></a>
+    <!--    <li><a href="/categories">categories  Новости сайта</a></li>    -->
+        <li><a href="/about">О нас</a></li>
+        <li><a href="/vip">VIP-Статус</a></li>
+        <li><a href="/comment">Помощь</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+        <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu"
+        data-toggle="dropdown" href="#">
+        <% if seller_signed_in? %>
+        <%= image_tag current_seller.avatar.url(:medium), class: 'fotoava', alt: current_seller.name %>
+        Личный кабинет
+        <% else %>
+        Войти
+        <% end %>
+        <b class="caret"></b></a>
+            <ul class="dropdown-menu " role="menu" aria-labelledby="drop001">
+            <% if seller_signed_in? %>
 
-<a  class="logo hidden-xs hidden-sm" href="/"><%= image_tag '001.png' %></a>
+                <li><%= link_to 'Редактировать данные', edit_seller_registration_path %></li>
+                <li><%= link_to 'Мои товары', seller_panel_product_path %></li>
+                <li><%= link_to 'Мой VIP-Статус', seller_panel_vipstatus_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to('Выйти', destroy_seller_session_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
 
-<li><a href="/categories">Новости</a></li>
-<li><a href="/about">О нас</a></li>
-<li><a href="/vip">VIP-Статус</a></li>
-<li><a href="/comment">Помощь</a></li>
-</ul>
-<ul class="nav navbar-nav navbar-right">
-<li class="dropdown">
+                <% else %>
 
-<a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu"
-data-toggle="dropdown" href="#">
+                <li><%= link_to('Войти', new_seller_session_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
+                <li class="divider"></li>
+                <li><%= link_to('Регистрация', new_seller_registration_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
 
-<% if seller_signed_in? %>
-<%= image_tag current_seller.avatar.url(:medium), class: 'fotoava', alt: current_seller.name %>
-Личный кабинет
-<% else %>
-Войти
-<% end %>
-<b class="caret"></b></a>
-<ul class="dropdown-menu " role="menu" aria-labelledby="drop001">
-<% if seller_signed_in? %>
-<li><%= link_to 'Редактировать данные', edit_seller_registration_path %></li>
-<li><%= link_to 'Мои товары', seller_panel_product_path %></li>
-<li><%= link_to 'Мой VIP-Статус', seller_panel_vipstatus_path %></li>
-<li class="divider"></li>
-<li><%= link_to('Выйти', destroy_seller_session_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
-<% else %>
-<li><%= link_to('Войти', new_seller_session_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
-<li class="divider"></li>
-<li><%= link_to('Регистрация', new_seller_registration_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
-<% end %>
-</ul>
-</li>
-</ul>
-</div>
+            <% end %>
+
+            </ul>
+        </li>
+    </ul>
+    </div>
 </div>
 </div>
 </header>
-<!-- основное меню  -->
 <header>
 <div class="navbar navbar-default smenu">
-<div class="container">
-<div class="row">
+    <div class="container">
+    <div class="row">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu1">
+        <span class="sr-only">open</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand brand visible-xs " href="#">Разделы сайта</a>
+        </div>
+        <div class="collapse navbar-collapse" id="responsive-menu1">
+        <ul class="nav navbar-nav dropdown1">
 
-<div class="navbar-header">
-<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu1">
-  <span class="sr-only">open</span>
-  <span class="icon-bar"></span>
-  <span class="icon-bar"></span>
-  <span class="icon-bar"></span>
-</button>
-<a class="navbar-brand brand visible-xs " href="#">Разделы сайта</a>
-</div>
-<div class="collapse navbar-collapse" id="responsive-menu1">
-<ul class="nav navbar-nav dropdown1">
-  <% @catmenu.each do |category| %>
-      <li class="dropdown ">
-        <%= link_to category_path(category.id), type: "button", id: category.id, role: "button",
+            <% @catmenu.each do |category| %>
+
+            <li class="dropdown ">
+
+            <%= link_to category_path(category.id), type: "button", id: category.id, role: "button",
             class: "dropdown-toggle navbar-brand ", data_toggle: "dropdown" do %>
             <%= category.name %>
             <b class="caret"></b>
-        <% end %>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="<%= category.id %>">
-          <% category.twocategories.each do |twocategory| %>
-              <li class="dropdown-submenu">
-                <%= link_to twocategory.name, twocategory_path( twocategory.id), tabindex: "-1" %>
-                <ul class="dropdown-menu">
-                  <% twocategory.threecategories.each do |threecategory| %>
-                      <li><!-- <a tabindex="-1" href="/threecategories"><%= threecategory.name %></a> -->
-                        <%= link_to threecategory.name, threecategory_path( threecategory.id) %>
-                      </li>
-                  <% end %>
+
+            <% end %>
+
+                <ul class="dropdown-menu" role="menu" aria-labelledby="<%= category.id %>">
+                <% category.twocategories.each do |twocategory| %>
+                    <li class="dropdown-submenu">
+                    <%= link_to twocategory.name, twocategory_path( twocategory.id), tabindex: "-1" %>
+                        <ul class="dropdown-menu">
+                        <% twocategory.threecategories.each do |threecategory| %>
+                            <li><!-- <a tabindex="-1" href="/threecategories"><%= threecategory.name %></a> -->
+                            <%= link_to threecategory.name, threecategory_path( threecategory.id) %>
+                            </li>
+
+                        <% end %>
+
+                        </ul>
+                    </li>
+
+                <% end %>
+
                 </ul>
-              </li>
-          <% end %>
-        </ul>
-      </li>
-  <% end %>
+            </li>
 
-  <li class="hidden-xs">
-    <%= form_tag({:controller => "/search", :action => "result"}, method: "get", class: "navbar-form navbar-left", "role" => "search") do %>
-        <div class="form-group">
-          <%= text_field_tag(:q, nil, placeholder: "Поиск товара", class: "form-control searchInput") %>
-              </div>
-              <%= button_tag 'Найти', class: 'btn btn-default' %>
-              <% end %>
-              </li>
+            <% end %>
 
-              </ul>
-
-              </div>
-              </div>
-              </div>
-              </div>
-              </header>
-
-              <%= yield %>
-
-              <!-- footer -->
-              <div class="tofooter"><% if rootadmin_signed_in? %>
-                    <li><%= link_to 'Выход АДМИН',  destroy_rootadmin_session_path %></li>
-                <% else %>
-                    <li><%= link_to 'Вход АДМИН',  new_rootadmin_session_path %></li>
-                <% end %></div>
-
-              <footer class="navbar navbar-inverse" id="footer">
-                <div class="container-fluid">
-                  <div class="col-xs-12 col-sm-6">
-                    <p class="tmenu3 text-center">Stockmarket.com.ua © 2017</p>
-                  </div>
-                  <div class="hidden-xs col-sm-6">
-                    <p class="tmenu3 text-center">Сайт разработан<a href="http://labsites.org/en/" target="_blank"> Labsites.org</a></p>
-                  </div>
+            <li class="hidden-xs">
+                <%= form_tag({:controller => "/search", :action => "result"}, method: "get", class: "navbar-form navbar-left", "role" => "search") do %>
+                <div class="form-group">
+                <%= text_field_tag(:q, nil, placeholder: "Поиск товара", class: "form-control searchInput") %>
                 </div>
-              </footer>
+                <%= button_tag 'Найти', class: 'btn btn-default' %>
 
-              </body>
-              </html>
+                <% end %>
+            </li>
+        </ul>
+        </div>
+    </div>
+    </div>
+</div>
+</header>
+
+    <%= yield %>
+
+    <!-- footer -->
+<div class="tofooter">
+  <% if rootadmin_signed_in? %>
+          <li><%= link_to 'Выход АДМИН',  destroy_rootadmin_session_path %></li>
+
+          <% else %>
+
+          <li><%= link_to 'Вход АДМИН',  new_rootadmin_session_path %></li>
+
+          <% end %>
+
+</div>
+<footer class="navbar navbar-inverse" id="footer">
+    <div class="container-fluid">
+        <div class="col-xs-12 col-sm-6">
+        <p class="tmenu3 text-center">Stockmarket.com.ua © 2017</p>
+        </div>
+        <div class="hidden-xs col-sm-6">
+        <p class="tmenu3 text-center">Сайт разработан<a href="http://labsites.org/en/" target="_blank"> Labsites.org</a></p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
