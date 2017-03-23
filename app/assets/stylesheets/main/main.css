@@ -620,6 +620,13 @@ table{
 background-color: #333!important;
 padding: 5px;
 }
+@media only screen and (min-width: 300px) and (max-width: 767px) {
+    .size3 {font-size: 10px!important; }
+    .tmenu3{font-size: 14px!important; }
+    p{font-size: 10px!important;}
+    h2{font-size: 18px!important;}
+    .padp{padding-left: 5px!important; padding-right:5px!important; }
+}
 .size4 {
     background-color: #555!important;
     padding: 5px;
@@ -875,4 +882,15 @@ body {
 }
 .formn{
     margin: 30px!important;
+}
+.vk{
+    width: 35px!important;
+    margin: 10px;
+    float: left!important;
+    opacity:0.6;
+    -moz-opacity:0.6;
+}
+.vk:hover {
+    opacity:1;
+    -moz-opacity:1;
 }

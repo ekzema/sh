@@ -55,7 +55,7 @@
 
 <div class="form-group col-md-offset-2">
   <div class="col-sm-2 ">
-    <%= f.label 'Город', class:"control-label form" %>
+    <%= f.label 'Область', class:"control-label form" %>
     </div>
   <div class="col-sm-10 ">
     <%= f.select(:city, Seller::CITY_TYPES,  {prompt: 'Выберите область'}, class:"form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Выберите<span style='font-weight: bold;color:#5EBB5E;'>Свою область</span>".html_safe) %>

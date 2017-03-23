@@ -170,8 +170,10 @@
         <section class="auto3 visible-xs visible-sm">
             <% @sellers.each do | seller | %>
             <div>
+              <%= link_to seller_products_path(seller.id), :class => 'size2' do %>
               <%= image_tag seller.avatar(:medium) %>
               <div class="sld1 text-center"><p ><%= seller.name %></p></div>
+              <% end %>
             </div>
             <% end %>
         </section>
@@ -201,7 +203,7 @@
               <% category.category_slide_images.each do |slide| %>
               <a href="/">
               <%= image_tag slide.image %>
-              <p class="text-center"><%= slide.category.description %></p>
+              <div class="sld1 text-center padp"><p ><%= slide.category.description %></p></div>
               </a>
             <% end %>
             <% end %>
@@ -210,20 +212,3 @@
     </div>  
   </div>
 </div>
-<!-- 
-<div class="container-fluid niz">
-  <div class="row">
-  <h2 class="text-center">Представляем Вам проект Stockmarket.com.ua!</h2>
-<p class="niz0">  
-Проект Stockmarket является молодым и оригинальным интернет магазином стоковой одежды и обуви в Украине. Мы предложим высококачественный продукт и отличный сервис.
-Для покупателя не составит большого труда смотреть весь ассортимент сайта. Мы создали умную систему навигации и поиск товаров на сайте по наименованию, акциям, цене, а также по последним поступлениям на сайт.
-Для продавцов представлена прекрасная возможность зарегистрироваться и легко добавлять свои товары.
-На сайте вы не увидите никаких подделок и реплик!
-Каждая позиция товара проходит модерацию, прежде чем попасть на страницы сайта.
-Вы не столкнетесь с грубостью и неуважением при общении на нашем сайте.
-Stockmarket разработан очень грамотно и слаженно разработчиками профессионалами, надеемся Вам понравиться!
-</p> 
-
-  </div>
-</div>
- -->
