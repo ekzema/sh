@@ -883,14 +883,25 @@ body {
 .formn{
     margin: 30px!important;
 }
-.vk{
-    width: 35px!important;
-    margin: 10px;
-    float: left!important;
+.vk img{
+    width: 38px!important;
+    margin-top: 6px!important;
     opacity:0.6;
     -moz-opacity:0.6;
 }
 .vk:hover {
     opacity:1;
     -moz-opacity:1;
+}
+.vk a{
+   padding: 0px!important;
+
+}
+.navbar-form {
+    margin-top: 8px!important;
+    margin-bottom: 8px!important;
+
+}
+.form-group{
+    height: 34px!important;
 }
