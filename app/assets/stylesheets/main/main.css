@@ -181,6 +181,20 @@ body {
 }
 @media only screen and (min-width: 768px) and (max-width: 992px) {
     body{ font-size: 12px!important;}
+    .navbar-nav > li > a {padding-left: 10px!important; padding-right:10px!important; }
+    .caret { margin-left: -4px!important; }
+    .navbar-brand{ font-size: 16px!important;}
+    .tmenu a { font-size:16px!important;}
+    .navbar-brand, .navbar > .container-fluid .navbar-brand { margin-left: 0px!important;}
+    .text-vk { padding-right: 0px!important;}
+    .menuonas{ margin-left: 45px!important;}
+}
+@media only screen and (min-width: 200px) and (max-width: 767px) {
+    .navbar-brand{ font-size: 14px!important;}
+    .tmenu a { font-size:14px!important;}
+    .logo{margin-top: -15px!important; margin-left: -15px!important;}
+    .form{margin-bottom: -10px!important; }
+
 }
 p {
     margin: 0px !important;
@@ -390,7 +404,9 @@ a.list-group-item-success, a.list-group-item-success, button.list-group-item-suc
   color: #999 !important;
   text-decoration: none !important; 
 }
-
+.qqq{
+    margin-top: -1px!important;
+}
 label {
     margin-bottom: 0px;
 
@@ -803,6 +819,7 @@ body {
     margin: 0px;
     border-radius: 5px;
     padding: 10px;
+    font-size: 14px!important;
 }
 .niz5{
     background-color: #CD423C!important;
@@ -817,15 +834,7 @@ body {
 .niz6{
     text-align: justify;
 }
-/*вип-стрмница*/
-/*.equal, .equal > div[class*='col-'] {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex:1 0 auto;
-}*/
+
 .names{
     font-size: 20px;
     text-transform: capitalize;
@@ -840,9 +849,11 @@ body {
 }
 .onas3{
     background-color: #f8f8f8!important;
+    font-size: 14px!important;
 }
 .onas2{
     text-align: justify!important;
+    font-size: 14px!important;
 }
 .onas li{
     list-style-type: none;
@@ -889,14 +900,35 @@ body {
     opacity:0.6;
     -moz-opacity:0.6;
 }
+.vk2 img{
+    padding: 3px!important;
+    width: 29px!important;
+    margin-top: 6px!important;
+    opacity:0.6;
+    -moz-opacity:0.6;
+}
+.vk2 a{
+    padding: 0px!important;
+    font-size: 14px!important;
+}
+.vk3{
+    padding-left: 5px!important;
+    padding-right: 5px!important;
+}
+.vk4{
+    font-size: 18px;
+    padding-top: 15px!important;
+    padding-bottom: 15px!important;
+}
 .vk:hover {
     opacity:1;
     -moz-opacity:1;
 }
 .vk a{
-   padding: 0px!important;
+    padding: 0px!important;
 
 }
+
 .navbar-form {
     margin-top: 8px!important;
     margin-bottom: 8px!important;
@@ -904,4 +936,9 @@ body {
 }
 .form-group{
     height: 34px!important;
+}
+.text-vk{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 5px;
 }

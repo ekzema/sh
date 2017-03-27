@@ -27,15 +27,33 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand brand visible-xs " href="/">Stockmarket.com.ua</a>
+        <a class="navbar-brand brand visible-xs logo" href="/"><%= image_tag '001.png', class:'visible-xs' %></a>
     </div>
     <div class="collapse navbar-collapse " id="responsive-menu">
     <ul class="nav navbar-nav tmenu">
-    <a  class="logo hidden-xs hidden-sm" href="/"><%= image_tag '001.png' %></a>
+    <a class="logo " href="/"><%= image_tag '001.png', class:'hidden-xs hidden-sm' %><%= image_tag 'logo2.png', class:'visible-sm' %></a>
     <!--    <li><a href="/categories">categories  Новости сайта</a></li>    -->
-        <li><a href="/about">О нас</a></li>
-        <li><a href="/vip">VIP-Статус</a></li>
-        <li><a href="/comment">Помощь</a></li>
+        <li class="menuonas"><a href="/about">О нас</a></li>
+        <li class="hidden-xs"><a href="/vip">VIP-Статус</a></li>
+        <li class="hidden-xs">
+          <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+          <a type="button" id="drop01" role="button" class="dropdown-toggle navbar-brand tmenu"
+          data-toggle="dropdown" href="#">
+          Помощь
+          <b class="caret"></b></a>
+          <ul class="dropdown-menu " role="menu" aria-labelledby="drop01">
+            <li class="vk2"><a href="/comment" >
+               <%= image_tag 'pismo.jpg', class: 'vk' %><span class="vk3">отправить E-mail</span></a>
+            </li>
+            <li class="vk2"><a href="https://vk.com/im?media=&sel=-126921609" target="_blank">
+
+              <%= image_tag 'VK.png', class: 'vk' %><span class="vk3">сообщение ВК</span></a>
+            </li>
+          </ul>
+          </li>
+          </ul>
+        </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -130,7 +148,10 @@
 
                 <% end %>
             </li>
-            <li class="vk"><a href="https://vk.com/ukrstock" target="_blank" >
+          <li>
+            <p class="text-vk hidden-xs hidden-sm">Наша группа в ВК:</p>
+            <p class="text-vk visible-sm">Мы в ВК:</p>
+            <li class="vk hidden-xs"><a href="https://vk.com/ukrstock" target="_blank" >
               <%= image_tag 'VK.png', class: 'vk' %></a>
             </li>
         </ul>

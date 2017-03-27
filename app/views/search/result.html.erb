@@ -3,7 +3,6 @@
     <div class="col-xs-12 col-md-10">
       <div class="text-center">
         <h4>Вы искали: <%= params[:q] %></h4>
-
         <% @products.each do |product| %>
             <div class="col-xs-6 col-sm-4 col-lg-3  product">
               <div class="row size1">
@@ -14,27 +13,23 @@
         <% end %>
               </div>
             </div>
-
         <% end %>
-
-
-
-
       </div>
-
     </div>
-  <div class="col-sm-2 ">
-    <p class="size4">Популярные товары</p>
+  <div class="col-sm-2">
+    <div class="row">
+    <p class="size4">Популярное</p>
     <section class="autoplaydr">
       <% @prs.each do |product| %>
-          <div>
+
             <%= link_to product_path(product.id), :class => 'size2' do %>
                 <%= image_tag product.main_image(:medium) %>
-                <p class="size3"><%= product.name %></p>
+                <p class="size3 text-center"><%= product.name %></p>
             <% end %>
-          </div>
+
       <% end %>
     </section>
     </div>
+  </div>
 </div>
 </div>
