@@ -50,7 +50,7 @@
     </div>
     <div class="form-group col-md-offset-2">
       <div class="col-sm-2 ">
-        <%= f.label 'Название товара', class:"control-label"  %>
+        <%= f.label 'Название', class:"control-label"  %>
       </div>
       <div class="col-sm-10 ">
         <%= f.text_field :name, class:"form-control form" %>
@@ -68,7 +68,7 @@
 
     <div class="form-group col-md-offset-2">
       <div class="col-sm-2 ">
-        <%= f.label :size, class:"control-label"  %>
+        <%= f.label 'Размер', class:"control-label"  %>
       </div>
       <div class="col-sm-10 ">
         <%= f.text_field :size, class:"form-control form" %>
@@ -134,7 +134,7 @@
         <%= f.label 'Категория', class:"control-label" %>
       </div>
       <div class="col-sm-10 ">
-        <%= f.select :category_id,  Category.all.collect {|category| [category.name, category.id]}, { :include_blank => '- Категории -'}, :class => 'form-control form' %>
+        <%= f.select :category_id,  Category.all.collect {|category| [category.name, category.id]}, { :include_blank => '- Выбор категории -'}, :class => 'form-control form' %>
       </div>
     </div>
 
