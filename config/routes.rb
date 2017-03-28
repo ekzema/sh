@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   namespace :admin_panel do
       get 'product_all'
       get 'seller_all'
+      get 'categories'
+      get 'twocategories'
+      get 'threecategories'
       delete 'delete_attachment_product'
       delete 'delete_attachment_seller'
       delete 'delete_seller'
@@ -84,14 +87,14 @@ Rails.application.routes.draw do
 
   end
 
-  resources :twocategories, :only => [:index, :show, :edit, :update, :destroy] do
+  resources :twocategories do
     resources :threecategories, :only => :create
     collection do
       put 'delete_attachment'
     end
   end
 
-  resources :threecategories, :only => [:index, :show, :edit, :update, :destroy] do
+  resources :threecategories do
   collection do
       put 'delete_attachment'
     end

@@ -1,5 +1,6 @@
 class TwocategoriesController < ApplicationController
   before_action :set_twocategory, only: [:show, :edit, :update, :destroy]
+  layout 'adminpanel', only: [:edit, :new]
 
   # GET /twocategories
   # GET /twocategories.json
@@ -38,9 +39,17 @@ class TwocategoriesController < ApplicationController
   # POST /twocategories
   # POST /twocategories.json
   def create
-    @category = Category.find(params[:category_id])
-    @category.twocategories.create(twocategory_params)
-    redirect_to :back
+    @twocategory = Twocategory.new(twocategory_params)
+
+    respond_to do |format|
+      if @twocategory.save
+        format.html { redirect_to admin_panel_twocategories_path, notice: "Подкатегория #{@twocategory.name} успешно создана" }
+        format.json { render :show, status: :created, location: admin_panel_twocategories_path }
+      else
+        format.html { render :new }
+        format.json { render json: @twocategory.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /twocategories/1
@@ -48,8 +57,8 @@ class TwocategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @twocategory.update(twocategory_params)
-        format.html { redirect_to @twocategory, notice: 'Twocategory was successfully updated.' }
-        format.json { render :show, status: :ok, location: @twocategory }
+        format.html { redirect_to admin_panel_twocategories_path, notice: 'Twocategory was successfully updated.' }
+        format.json { render :show, status: :ok, location: admin_panel_twocategories_path }
       else
         format.html { render :edit }
         format.json { render json: @twocategory.errors, status: :unprocessable_entity }

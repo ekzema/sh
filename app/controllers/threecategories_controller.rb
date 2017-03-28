@@ -1,5 +1,6 @@
 class ThreecategoriesController < ApplicationController
   before_action :set_threecategory, only: [:show, :edit, :update, :destroy]
+  layout 'adminpanel', only: [:edit, :new]
 
   def index
     @sellers = Seller.all
@@ -30,16 +31,24 @@ class ThreecategoriesController < ApplicationController
   end
 
   def create
-    @twocategory = Twocategory.find(params[:twocategory_id])
-    @twocategory.threecategories.create(threecategory_params)
-    redirect_to :back
+    @threecategory = Threecategory.new(threecategory_params)
+
+    respond_to do |format|
+      if @threecategory.save
+        format.html { redirect_to admin_panel_threecategories_path, notice: "Подкатегория #{@threecategory.name} успешно создана" }
+        format.json { render :show, status: :created, location: admin_panel_threecategories_path }
+      else
+        format.html { render :new }
+        format.json { render json: @threecategory.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update
     respond_to do |format|
       if @threecategory.update(threecategory_params)
-        format.html { redirect_to @threecategory, notice: 'threecategory was successfully updated.' }
-        format.json { render :show, status: :ok, location: @threecategory }
+        format.html { redirect_to admin_panel_threecategories_path, notice: 'threecategory was successfully updated.' }
+        format.json { render :show, status: :ok, location: admin_panel_threecategories_path }
       else
         format.html { render :edit }
         format.json { render json: @threecategory.errors, status: :unprocessable_entity }
@@ -67,6 +76,6 @@ class ThreecategoriesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def threecategory_params
-    params.require(:threecategory).permit(:name, :description, :meta_desc, :meta_key, :meta_title, :image)
+    params.require(:threecategory).permit(:name, :description, :meta_desc, :meta_key, :meta_title, :image, :twocategory_id)
   end
 end

@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
     @category = Category.find( @product.category_id)
     twocategories_id =  @category.twocategories.ids
     @twocategories = Twocategory.where(:id => twocategories_id)
+    @seller = @product.seller
     @sellers = Seller.all
     @products = Product.all
     

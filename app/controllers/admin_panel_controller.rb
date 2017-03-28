@@ -111,6 +111,24 @@ class AdminPanelController < ApplicationController
   end
   #---END product---
 
+  # BEGIN categories
+  def categories
+    @category = Category.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+  end
+  # END categories
+
+  # BEGIN twocategories
+  def twocategories
+    @twocategory = Twocategory.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+  end
+  # END twocategories
+
+  # BEGIN threecategories
+  def threecategories
+    @threecategory = Threecategory.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+  end
+  # END threecategories
+
   private
 
   def set_regular
