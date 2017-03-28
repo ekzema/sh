@@ -1,4 +1,5 @@
-.form{ 
+ /*формы отправки*/
+.form{
     max-width: 60%;
     margin-bottom: 12px;
 }
@@ -51,7 +52,7 @@
 
 }
 .imgcat3 {
-    margin-left: : 40px;
+    margin-left: 40px;
    
 
 }
@@ -82,20 +83,21 @@
 .parsley-errors-list li{
     margin-left: 20px;
 }
+
 /*карусель*/
 .carousel-inner > .item > img, .carousel-inner > .item > a > img {
     height: 60%;
     width: 100%;
-
-
 }
 .carousel{
     margin: 0px -15px 20px -15px;
 }
 .carousel-caption{
-
     background-color: rgba(0,0,0,0.4);
 }
+ .shrift{
+     font-size: 20px;
+ }
 nav#topMenu {
     max-width: 100%;
     margin: 0;
@@ -150,7 +152,6 @@ nav#topMenu {
     .dropdown:hover > .dropdown-menu { display: block!important; }
 }
 
-
 .dropdown-submenu:hover>a:after {
     border-left-color: #fff;
 }
@@ -187,15 +188,21 @@ body {
     .tmenu a { font-size:16px!important;}
     .navbar-brand, .navbar > .container-fluid .navbar-brand { margin-left: 0px!important;}
     .text-vk { padding-right: 0px!important;}
-    .menuonas{ margin-left: 45px!important;}
+
 }
 @media only screen and (min-width: 200px) and (max-width: 767px) {
     .navbar-brand{ font-size: 14px!important;}
     .tmenu a { font-size:14px!important;}
     .logo{margin-top: -15px!important; margin-left: -15px!important;}
     .form{margin-bottom: -10px!important; }
+    .carousel-caption{padding: 0px!important;}
 
+    .shrift{font-size: 14px!important; margin-bottom: 20px!important;}
 }
+@media only screen and (min-width: 767px) and (max-width: 799px) {
+    .menuonas{ margin-left: 40px!important;}
+}
+
 p {
     margin: 0px !important;
 }
@@ -214,13 +221,11 @@ p {
         height: 40px;
 }
 
-   
 }
 .logo img{
     height: 45px;
     margin-top: 3px!important;
     float: left;
-
 }
 
 .fotoava{
@@ -278,10 +283,34 @@ p {
     text-transform: uppercase;
 }
 
+ /*showproduct*/
+ .showproduct img{
+    width: 95%;
+ }
+ .showproduct ul li{
+     list-style:none;
+ }
+.showproduct ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    font-size: 0; /* убираем нежелательные отсутпы у дочерних элементов */
+    width: 50%;
+    margin: auto!important;
+}
+ .showproduct li{
+     background: #333;
+     color: #fff;
+     padding: 5px;
+     font-size: 16px; /* возвращаем размер шрифта */
+     display: block;
+
+ }
+
 #MainMenu{
     width: 50%!important;
     margin: auto!important;
-
 }
 
 #mainmenu {
@@ -297,7 +326,7 @@ p {
     position: relative;
     left:50%;
     float:left;
-    font:14px;
+    font-size:14px;
     height:30px;
 }
 #mainmenu ul li {
@@ -308,13 +337,19 @@ p {
     height:30px;
 }
 #mainmenu ul li a{
-
     float:left !important;
-
 }
 .fotomain{
     border-radius: 4px;
+    margin: 5px;
 }
+ .glf img{
+     max-height: 400px;
+ }
+
+ .glf{
+     margin-top:  15px;
+ }
 .list {
     list-style-type: none;
 }
@@ -323,13 +358,12 @@ menu > li{
     display: inline;
 }
 
-
 menu{
     padding: 0px;
     margin: 10px;
-
 }
 
+/*меню картинок 8 штук*/
 
 @media only screen and (min-width: 1250px) {
     .men img{width: 120px;margin: 0 10px;}
@@ -343,12 +377,21 @@ menu{
 @media only screen and (min-width: 767px) and (max-width: 995px) {
     .men img{width: 78px;margin: 0 5px;}
     .navbar-brand{padding-left: 0px;}
-
 }
 @media only screen and (max-width: 766px) {
     .men img{width: 50px;margin: 0 5px;}
-
 }
+ .saq > .dropdown-menu {
+     top: 0 ;
+     margin-top: 40px;
+     margin-left: 5px;
+     cursor: pointer;
+ }
+ .saq li{
+     margin:5px;
+
+ }
+
 @media only screen and (max-width: 375px) {
     .navbar-brand {font-size: 14px; padding-left: 30px !important;}
 }
@@ -390,23 +433,7 @@ a.list-group-item-success, a.list-group-item-success, button.list-group-item-suc
     color: #777;
 }
 
-.saq > .dropdown-menu {
-    top: 0 ;
-    margin-top: 40px;
-    margin-left: 5px;
-    cursor: pointer;
-}
-.saq li{
-    margin:5px;
 
-}
-.qqq a:focus, .qqq a:hover {
-  color: #999 !important;
-  text-decoration: none !important; 
-}
-.qqq{
-    margin-top: -1px!important;
-}
 label {
     margin-bottom: 0px;
 
@@ -425,18 +452,8 @@ input[type="checkbox"] {
     padding:0;
     display: block;
 }
-.glf img{
-    max-height: 400px;
-}
 
-.glf{
-    
-    margin-top:  15px;
-}
-/*корзина*/
-.corzina  {
-    margin-bottom: 250px;
-}
+
 table{
     background: #fff !important;
     width: 100%;
@@ -491,10 +508,17 @@ table{
     margin-bottom: 150px;
 }
 /*слайдер*/
+.sld{
+    text-transform: capitalize;
+}
+ .sld0{
+     text-transform: uppercase!important;
+ }
 
 .sld1 {
     background: rgba(0, 0, 0, 0.4);
     padding: 5px 0;
+
 }
 @media only screen and (max-width: 1050px) {
     .sld1 {padding: 3px 0;}
@@ -506,32 +530,34 @@ table{
     width: 100%;
     padding: 5px 0;
 }
-
 .sld5 {
     margin: 0;
     padding: 0 10px;
 }
+
 .slick-track{
     width: 100%;
 }
+
 .autoplay, .autoplay1 {
     margin: 0px 0px 15px 0px ;
     text-align: center !important;
     color: #fff!important;
 }
-
 .slick-slide {
-  margin: 1px 10px;
+  margin: 0px 10px;
 }
 
 .slick-slide img {
   width: 100%;
 }
 
+
 .slick-prev:before,
 .slick-next:before {
     color: black;
 }
+
 .prov a{
     color: #333;
     font-size: 12px;
@@ -551,22 +577,18 @@ table{
     color: #111;
     padding: 0px;
     background-color: #555!important;
-    
-
-}
+ }
 
 .ul1 li {
     border: 1px solid #111;
     padding: 0px;
-    
-}
+ }
+
 .li1{
     background-color:  #333;
     color: #fff;
     margin: 0px;
-    
 }
-
 
 .li1 p{
     padding: 5px 20px;
@@ -577,65 +599,66 @@ table{
     margin: -1px -2px -2px -1px;
     padding-left: 20px!important;
 }
+
 .li2{
     background-color: #e7e7e7;
-    margin-left: -2px;
+    /*margin-left: -2px;*/
+ }
 
-    
-}
 .li1 a{
     color: #333;
     display: block; /* Ссылка как блочный элемент */
     height: 100%; /* Высота на весь слой */
 }
+
 .li1 a:hover, .li1 a:focus{
     color: #333!important;
     font-weight: 600!important;
     text-decoration: none; 
 }
 
-
 /* product*/
 .product{
-    padding: 10px;
+    padding: 5px 0px;
     border: 4px solid #CD423C;
     margin-bottom: 10px;
     background-color: #333;
-    color: #fff;
-
 }
 .product img{
     width: 95%;
 }
-
-.size{
+.product1{
     padding-top: 5px;
-    margin-bottom: 20px;
-}
 
-.size1 a{
-    color: #fff;
-    }
-.size1 a:hover, .size1 a:focus{
+}
+.size1 {color: #fff!important;}
+
+.size1:hover, .size1:focus{
     color: #fff!important;
     font-weight: 600!important;
-    text-decoration: none; 
-}
-
-.size2 {
-
-    background-color: #333!important;
-    color: #fff!important;
-}
-
-.size5 {
-    text-transform: uppercase!important;
+    text-decoration: none!important;
 }
 
 .size3 {
-background-color: #333!important;
-padding: 5px;
+ background-color: #333!important;
+ color: #fff!important;
+ padding: 5px 10px;
+ text-transform: capitalize;
+ white-space: nowrap!important;
+ overflow: hidden!important;
+ text-overflow: ellipsis!important;
 }
+
+.size2 {
+ background: rgba(0, 0, 0, 0.4);
+ color: #fff!important;
+ padding: 5px 10px;
+ text-transform: capitalize;
+ white-space: nowrap!important;
+ overflow: hidden!important;
+ text-overflow: ellipsis!important;
+}
+
 @media only screen and (min-width: 300px) and (max-width: 767px) {
     .size3 {font-size: 10px!important; }
     .tmenu3{font-size: 14px!important; }
@@ -651,11 +674,7 @@ padding: 5px;
     margin-left: 10px!important;
     margin-right: 10px!important;
 }
-.size2:hover, .size2:focus{
-    color: #fff!important;
-    font-weight: 600!important;
-    text-decoration: none!important; 
-}
+
 
 @media only screen and (min-width: 400px) and (max-width: 991px) {
    .product{ border: 10px solid #CD423C;}
@@ -678,7 +697,7 @@ body {
   height: 50px;
 }
 .tofooter{
-    margin-bottom: 65px;
+    margin-bottom: 65px!important;
 }
 /*футер вниз страницы*/
 .navbar-inverse {
@@ -894,6 +913,8 @@ body {
 .formn{
     margin: 30px!important;
 }
+
+/*В контакте*/
 .vk img{
     width: 38px!important;
     margin-top: 6px!important;
@@ -926,17 +947,17 @@ body {
 }
 .vk a{
     padding: 0px!important;
-
 }
 
 .navbar-form {
     margin-top: 8px!important;
     margin-bottom: 8px!important;
+}
 
-}
-.form-group{
-    height: 34px!important;
-}
+/*.form-group{*/
+    /*height: 34px!important;*/
+/*}*/
+
 .text-vk{
     padding-top: 15px;
     padding-bottom: 15px;

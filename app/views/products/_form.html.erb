@@ -1,61 +1,62 @@
 <%= nested_form_for(@product, html: { multipart: true }) do |f| %>
 
-    <% if product.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(product.errors.count, 'ошибка', product.errors.count < 10 ? 'ошибки' : 'ошибок') %> Товар не может быть сохранён:</h2>
+<% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, 'ошибка', product.errors.count < 10 ? 'ошибки' : 'ошибок') %> Товар не может быть сохранён:</h2>
 
-          <ul>
-            <% product.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+      <ul>
+        <% product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
 
-    <script>
-        $(document).on('ready turbolinks:load', function(){
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
+<script>
+    $(document).on('ready turbolinks:load', function(){
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
-                    reader.onload = function (e) {
-                        $('#avatarSeller').attr('src', e.target.result);
-                    }
-
-                    reader.readAsDataURL(input.files[0]);
+                reader.onload = function (e) {
+                    $('#avatarSeller').attr('src', e.target.result);
                 }
+
+                reader.readAsDataURL(input.files[0]);
             }
+        }
 
-            $("#imgInp").change(function(){
-                readURL(this);
-            });
+        $("#imgInp").change(function(){
+            readURL(this);
         });
-    </script>
-    <div class="form-group col-md-offset-2">
-      <div class="col-sm-2 ">
-        <%= f.label 'Основное фото', class:"control-label"  %>
-      </div>
-      <div class="col-sm-10">
-        <ul class="sliderImg imgcat">
-          <li><%= image_tag @product.main_image.url, title: "#{@product.name}", id:'avatarSeller', class: "EditImage jcrop-tracker" %></li>
+    });
+</script>
+<div>
+<div class="form-group col-md-offset-2">
+  <div class="col-sm-2 ">
+    <%= f.label 'Основное фото', class:"control-label"  %>
+  </div>
+  <div class="col-sm-10">
+    <ul class="sliderImg imgcat">
+      <li><%= image_tag @product.main_image.url, title: "#{@product.name}", id:'avatarSeller', class: "EditImage jcrop-tracker" %></li>
 
 
-          <li><%= f.file_field :main_image, id: 'imgInp' %></li>
+      <li><%= f.file_field :main_image, id: 'imgInp' %></li>
 
-            <% unless @product.main_image_file_name.nil? %></li>
-                <li><%= link_to(" ", {action: :delete_attachment, id: @product.id}, :type => 'button', :class => 'btn btn1 glyphicon glyphicon-trash', method: :put,data: { confirm: 'Вы уверены что хотите удалить?' }) %></li>
-            <% end %>
-            </ul>
-      </div>
-    </div>
-    <div class="form-group col-md-offset-2">
-      <div class="col-sm-2 ">
-        <%= f.label 'Название', class:"control-label"  %>
-      </div>
-      <div class="col-sm-10 ">
-        <%= f.text_field :name, class:"form-control form" %>
-      </div>
-    </div>
+        <% unless @product.main_image_file_name.nil? %></li>
+            <li><%= link_to(" ", {action: :delete_attachment, id: @product.id}, :type => 'button', :class => 'btn btn1 glyphicon glyphicon-trash', method: :put,data: { confirm: 'Вы уверены что хотите удалить?' }) %></li>
+        <% end %>
+        </ul>
+  </div>
+</div>
+<div class="form-group col-md-offset-2">
+  <div class="col-sm-2 ">
+    <%= f.label 'Название', class:"control-label"  %>
+  </div>
+  <div class="col-sm-10 ">
+    <%= f.text_field :name, class:"form-control form" %>
+  </div>
+</div>
 
   <!--   <div class="form-group col-md-offset-2">
       <div class="col-sm-2 ">
@@ -66,41 +67,41 @@
       </div>
     </div> -->
 
-    <div class="form-group col-md-offset-2">
-      <div class="col-sm-2 ">
-        <%= f.label 'Размер', class:"control-label"  %>
-      </div>
-      <div class="col-sm-10 ">
-        <%= f.text_field :size, class:"form-control form" %>
-      </div>
-    </div>
+<div class="form-group col-md-offset-2">
+  <div class="col-sm-2 ">
+    <%= f.label 'Размер', class:"control-label"  %>
+  </div>
+  <div class="col-sm-10 ">
+    <%= f.text_field :size, class:"form-control form" %>
+  </div>
+</div>
 
-    <div class="form-group col-md-offset-2">
-      <div class="col-sm-2 ">
-        <%= f.label 'Цена', class:"control-label"  %>
-      </div>
-      <div class="col-sm-10 ">
-        <%= f.number_field :price, class:"form-control form" %>
-      </div>
-    </div>
+<div class="form-group col-md-offset-2">
+  <div class="col-sm-2 ">
+    <%= f.label 'Цена', class:"control-label"  %>
+  </div>
+  <div class="col-sm-10 ">
+    <%= f.number_field :price, class:"form-control form" %>
+  </div>
+</div>
 
-    <div class="form-group col-md-offset-2">
-      <div class="col-sm-2 ">
-        <%= f.label 'Качество', class:"control-label"  %>
-      </div>
-      <div class="col-sm-10 ">
-        <%= f.text_area :quality, class:"form-control form" %>
-      </div>
-    </div>
+<div class="form-group col-md-offset-2">
+  <div class="col-sm-2 ">
+    <%= f.label 'Качество', class:"control-label"  %>
+  </div>
+  <div class="col-sm-10 ">
+    <%= f.text_area :quality, class:"form-control form" %>
+  </div>
+</div>
 
-    <div class="form-group col-md-offset-2">
-      <div class="col-sm-2 ">
-        <%= f.label 'Описание', class:"control-label"  %>
-      </div>
-      <div class="col-sm-10 ">
-        <%= f.text_area :description, class:"form-control form" %>
-      </div>
-    </div>
+<div class="form-group col-md-offset-2">
+  <div class="col-sm-2 ">
+    <%= f.label 'Описание', class:"control-label"  %>
+  </div>
+  <div class="col-sm-10 ">
+    <%= f.text_area :description, class:"form-control form" %>
+  </div>
+</div>
 
  <!--    <h3 class="text-center">SEO</h3>
 
@@ -208,7 +209,12 @@
         </div>
 
       </div>
-      <%= f.submit "Сохранить", :class => 'btn btn2 actions col-md-offset-4' %>
+
 
     </div>
+
+
+
+<%= f.submit "Сохранить", :class => 'btn btn2 actions col-md-offset-4' %>
 <% end %>
+</div>

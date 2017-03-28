@@ -33,7 +33,7 @@
     <ul class="nav navbar-nav tmenu">
     <a class="logo " href="/"><%= image_tag '001.png', class:'hidden-xs hidden-sm' %><%= image_tag 'logo2.png', class:'visible-sm' %></a>
         <li class="menuonas"><a href="/about">О нас</a></li>
-        <li><a href="/categories">Новости сайта</a></li>
+        <li><a href="/categories">Новоcти</a></li>
         <li class="hidden-xs"><a href="/vip">VIP-Статус</a></li>
         <li class="hidden-xs">
           <ul class="nav navbar-nav navbar-right">
@@ -165,14 +165,14 @@
 
     <!-- footer -->
 <div class="tofooter">
-  <% if rootadmin_signed_in? %>
-          <li><%= link_to 'Выход АДМИН',  destroy_rootadmin_session_path %></li>
+  <!--<% if rootadmin_signed_in? %>-->
+          <!--<li><%= link_to 'Выход АДМИН',  destroy_rootadmin_session_path %></li>-->
 
-          <% else %>
+          <!--<% else %>-->
 
-          <li><%= link_to 'Вход АДМИН',  new_rootadmin_session_path %></li>
+          <!--<li><%= link_to 'Вход АДМИН',  new_rootadmin_session_path %></li>-->
 
-          <% end %>
+          <!--<% end %>-->
 
 </div>
 <footer class="navbar navbar-inverse" id="footer">
