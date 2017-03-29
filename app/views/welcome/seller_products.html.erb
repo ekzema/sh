@@ -16,8 +16,8 @@
         <h4>Все его товары:</h4>
         <% @seller.products.each do |product| %>
         <div class="col-xs-6 col-sm-4 col-lg-3 product">
-          <div class="row size1 ">
-            <%= link_to product_path(product.id) do %>
+          <div class="row">
+            <%= link_to product_path(product.id), class:'size1' do %>
                 <%= image_tag product.main_image.url(:medium), title: product.name, alt: product.name %>
                 <p class="size3"><%= product.name %></p>
                 <p class="sld0"><%= product.size %></p>
@@ -26,14 +26,14 @@
         </div>
         <% end %>
     </div>
-    <div class="hidden-xs col-sm-2">
+    <div class="hidden-xs col-sm-2 text-center">
         <p class="size4">Другие продавцы</p>
         <section class="autoplaydr">
         <% @sellers.each do | seller | %>
         <div>
-        <%= link_to seller_products_path(seller.id), :class => 'size2' do %>
+        <%= link_to seller_products_path(seller.id), :class => 'size1' do %>
         <%= image_tag seller.avatar(:medium) %>
-        <p class="size3 text-center"><%= seller.name %></p>
+        <p class="size3"><%= seller.name %></p>
         <% end %>
         </div>
         <% end %>
@@ -48,7 +48,7 @@
     <section class="autoplayproduct hidden-xs">
       <% @products.each do |product| %>
           <div class="">
-            <%= link_to product_path(product.id), :class => 'size2' do %>
+            <%= link_to product_path(product.id), :class => 'size1' do %>
                 <%= image_tag product.main_image.url(:medium) %>
                 <p class="size3"><%= product.name %></p>
             <% end %>

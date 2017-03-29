@@ -59,20 +59,38 @@
       <ul class="sidebar-menu">
         <li>
           <%= link_to admin_panel_path do %>
-            <i class="icon_house_alt"></i>
-            <span>Главная</span>
+              <i class="icon_house_alt"></i>
+              <span>Главная</span>
           <% end %>
         </li>
         <li>
           <%= link_to admin_panel_seller_all_path do %>
-            <i class="fa fa-users" aria-hidden="true"></i>
-            <span>Продавцы</span>
+              <i class="fa fa-users" aria-hidden="true"></i>
+              <span>Продавцы</span>
           <% end %>
         </li>
         <li>
           <%= link_to admin_panel_product_all_path do %>
-            <i class="fa fa-barcode" aria-hidden="true"></i>
-            <span>Товары</span>
+              <i class="fa fa-barcode" aria-hidden="true"></i>
+              <span>Товары</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_panel_categories_path do %>
+              <i class="fa fa-barcode" aria-hidden="true"></i>
+              <span>Категории</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_panel_twocategories_path do %>
+              <i class="fa fa-barcode" aria-hidden="true"></i>
+              <span>Категории(2)</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_panel_threecategories_path do %>
+              <i class="fa fa-barcode" aria-hidden="true"></i>
+              <span>Категории(3)</span>
           <% end %>
         </li>
       </ul>
@@ -81,7 +99,7 @@
   </aside>
   <!--sidebar end-->
 
-<%= yield %>
+  <%= yield %>
 </section>
 </body>
 </html>

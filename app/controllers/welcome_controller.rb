@@ -5,15 +5,16 @@ class WelcomeController < ApplicationController
     @i = 1
     @sellers = Seller.all
     @products = Product.all
+    @twocategories = Twocategory.all
   end
 
   def about
   end
 
-  def vip  	
+  def vip
   end
 
-  def comment   
+  def comment
   end
 
   def seller_products

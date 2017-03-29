@@ -15,9 +15,10 @@ class ProductsController < ApplicationController
     @category = Category.find( @product.category_id)
     twocategories_id =  @category.twocategories.ids
     @twocategories = Twocategory.where(:id => twocategories_id)
+    @seller = @product.seller
     @sellers = Seller.all
     @products = Product.all
-    
+
     unless @product.visible == 1 and @product.moderation == 1
       redirect_to :root
     end
@@ -33,13 +34,13 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     if @product.moderation == 1
-    @twocategories = Twocategory.where(category_id: @product.category_id)
-    @threecategories = Threecategory.where(twocategory_id: @product.twocategory_id)
-    @product.product_slide_images.build
+      @twocategories = Twocategory.where(category_id: @product.category_id)
+      @threecategories = Threecategory.where(twocategory_id: @product.twocategory_id)
+      @product.product_slide_images.build
     else
       redirect_to seller_panel_product_path
       flash[:notice] = 'Товар tщё не прошёл модерацию'
-      end
+    end
   end
 
   # POST /products
@@ -104,9 +105,9 @@ class ProductsController < ApplicationController
     if params[:product][:category_id]
       if params[:product][:category_id].blank?
         render text: ''
-    else
-      render :partial => 'twocategory', locals: { twocategory: @twocategory }
-    end
+      else
+        render :partial => 'twocategory', locals: { twocategory: @twocategory }
+      end
     end
 
     if params[:product][:twocategory_id]
@@ -114,7 +115,7 @@ class ProductsController < ApplicationController
         render text: ''
       else
         render :partial => 'threecategory', locals: { threecategory: @threecategory }
-    end
+      end
     end
 
   end
@@ -133,13 +134,13 @@ class ProductsController < ApplicationController
     end
   end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @pars_id =  params[:name].match(/^\d{1,}/).to_s
-      @product = Product.find(@pars_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @pars_id =  params[:name].match(/^\d{1,}/).to_s
+    @product = Product.find(@pars_id)
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+  # Never trust parameters from the scary internet, only allow the white list through.
   def product_params
     params.require(:product).permit(:size, :price, :quality, :category_id, :twocategory_id, :threecategory_id, :description, :meta_desc, :meta_key, :meta_title, :main_image, :name, :article, :visible, :main_image_original_w, :main_image_original_h, :main_image_box_w, :main_image_aspect, :main_image_crop_x, :main_image_crop_y, :main_image_crop_w, :main_image_crop_h,
                                     product_slide_images_attributes: [:id, :_destroy, :image]

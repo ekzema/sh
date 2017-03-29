@@ -1,41 +1,42 @@
-  
 <p id="notice"><%= notice %></p>
 
 <div class="container-fluid">
-<div class="row">
-  <div class="hidden-sm hidden-xs col-sm-3 ">
-    <!-- меню -->
-    <div class="ul1">
-      <ul class="ul2">
-      <li class="li1">
-      <p class=""><%= @showcat.name %></p>
-      <ul >
-      <% @showcat.twocategories.each do |twocategory| %>
-      <li class="li2">
-      <p><%= link_to twocategory.name, twocategory_path( twocategory.id) %></p>
-      </li>
-      <% end %> 
-      </ul>
-      </li>
-      </ul>
+  <div class="row">
+    <div class="hidden-sm hidden-xs col-sm-3 ">
+      <!-- меню -->
+      <div class="ul1">
+        <ul class="ul2">
+          <li class="li1">
+            <p class=""><%= @showcat.name %></p>
+            <ul >
+              <% @showcat.twocategories.each do |twocategory| %>
+                  <li class="li2">
+                    <p><%= link_to twocategory.name, twocategory_path( twocategory.id) %></p>
+                  </li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-  <div class="col-sm-12 col-md-9">
-    <div class="text-center">
-    <% @twocategory.threecategories.each do | threecategory | %>
-    <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 product">
-    <div class="row size1">
-    <%= link_to threecategory_path(threecategory.id) do %>
-    <%= image_tag threecategory.image.url %>
-    <p class="size"><%= threecategory.name %></p> 
-    <% end %>
-    </div>
-    </div>
-    <% end %>
-    </div>
+    <div class="col-sm-12 col-md-9">
+      <div class="text-center">
+        <% @twocategory.threecategories.each do | threecategory | %>
+            <% threecategory.products.each do |product| %>
+                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 product">
+                  <div class="row size1">
+                    <%= link_to product_path(product.id) do %>
+                        <%= image_tag product.main_image.url %>
+                        <p class="size"><%= product.name %></p>
+                    <% end %>
+                  </div>
+                </div>
+            <% end %>
+        <% end %>
+      </div>
 
+    </div>
   </div>
-</div>
 </div>
 <div class="container-fluid niz1">
   <div class="row">

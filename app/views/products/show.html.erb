@@ -3,131 +3,131 @@
 <!-- центральное меню -->
 
 <div class="container-fluid">
-<div class="row">
-<div class="col-sm-2 col-md-2 col-lg-2 hidden-xs">
-    
-    <menu class="fot">
-    <% if @product.product_slide_images.present? %>
+  <div class="row">
+    <div class="col-sm-2 col-md-2 col-lg-2 hidden-xs">
 
-    <h4 class="text-center">Другие фото этого товара</h4>
-    <% @product.product_slide_images.each do |slide| %>
-        <li>
-        <%= link_to(slide.image.to_s, class: 'gallery', rel: 'group') do %>
-        <%= image_tag slide.image %>
-        <% end %>
-        </li>
-    <% end %>
+      <menu class="fot">
+        <% if @product.product_slide_images.present? %>
 
-    <% else %>
-
-    <div class="ul1">
-    <ul class="ul2 ">
-    <p class="category"><%= @category.name %></p>
-        <li class="li1">
-        <% @category.twocategories.each do |twocategory | %>
-        <p><%= twocategory.name %></p>
-            <ul>
-            <% twocategory.threecategories.each do | threecategory | %>
-                <li class="li2">
-                <p><%= link_to threecategory.name, threecategory_path( threecategory.id) %></p>
+            <h4 class="text-center">Другие фото этого товара</h4>
+            <% @product.product_slide_images.each do |slide| %>
+                <li>
+                  <%= link_to(slide.image.to_s, class: 'gallery', rel: 'group') do %>
+                      <%= image_tag slide.image %>
+                  <% end %>
                 </li>
             <% end %>
-            </ul>
+
+        <% else %>
+
+            <div class="ul1">
+              <ul class="ul2 ">
+                <p class="category"><%= @category.name %></p>
+                <li class="li1">
+                  <% @category.twocategories.each do |twocategory | %>
+                      <p><%= twocategory.name %></p>
+                      <ul>
+                        <% twocategory.threecategories.each do | threecategory | %>
+                            <li class="li2">
+                              <p><%= link_to threecategory.name, threecategory_path( threecategory.id) %></p>
+                            </li>
+                        <% end %>
+                      </ul>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+
         <% end %>
-        </li>
-    </ul>
+
+      </menu>
+
     </div>
-
-    <% end %>
-
-    </menu>
-     
-</div>
-  <div class="col-xs-12 col-sm-8 text-center showproduct">
-
+    <div class="col-xs-12 col-sm-8 text-center showproduct">
+    <div class="row formaul">
       <ul class="">
         <li><%= image_tag(@product.main_image) %></li>
         <li><%= @product.name %></li>
         <li>СТОИМОСТЬ: <%= @product.price %> ГРН.</li>
         <li>РАЗМЕР: <%= @product.size %></li>
         <li>ОПИСАНИЕ: <%= @product.description %></li>
-        <li><a href="#demo1" class="" data-toggle="collapse" data-parent=".showproduct">ПРОДАВЕЦ <%= @product.seller.name %>, СВЯЗАТЬСЯ<i class="fa fa-caret-down"></i></a>
+        <li>ПРОДАВЕЦ <%= @product.seller.name %></li>
+        <li><a href="#demo1" class="" data-toggle="collapse" data-parent=".showproduct">СВЯЗАТЬСЯ C ПРОДАВЦОМ<i class="fa fa-caret-down"></i></a>
           <div class="collapse" id="demo1">
             <p class=""><%= @product.seller.phone %></p>
           </div>
         </li>
       </ul>
+    </div>
 
-
-    <!--<p><%= image_tag(@product.main_image(:medium), class: 'fotomain') %></p>-->
-    <!--&lt;!&ndash; <p class="names"><%= @product.name %></p> &ndash;&gt;-->
-    <!--<div id="MainMenu">-->
+      <!--<p><%= image_tag(@product.main_image(:medium), class: 'fotomain') %></p>-->
+      <!--&lt;!&ndash; <p class="names"><%= @product.name %></p> &ndash;&gt;-->
+      <!--<div id="MainMenu">-->
       <!--<ul class="list-group panel list">-->
-        <!--<li class="list-group-item list-group-item-success sld" data-toggle="collapse" data-parent="#MainMenu"><%= @product.name %></li>-->
-        <!--<li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">СТОИМОСТЬ: <%= @product.price %> ГРН.</li>-->
-        <!--<li class="list-group-item list-group-item-success sld0" data-toggle="collapse" data-parent="#MainMenu">РАЗМЕР: <%= @product.size %></li>-->
-        <!--<li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ОПИСАНИЕ: <%= @product.description %></li>-->
-         <!--<li><a href="#demo1" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ПРОДАВЕЦ <%= @product.seller.name %>, СВЯЗАТЬСЯ<i class="fa fa-caret-down"></i></a>-->
-          <!--<div class="collapse" id="demo1">-->
-            <!--<p class="list-group-item "><%= @product.seller.phone %></p>-->
-          <!--</div>-->
-        <!--</li>-->
+      <!--<li class="list-group-item list-group-item-success sld" data-toggle="collapse" data-parent="#MainMenu"><%= @product.name %></li>-->
+      <!--<li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">СТОИМОСТЬ: <%= @product.price %> ГРН.</li>-->
+      <!--<li class="list-group-item list-group-item-success sld0" data-toggle="collapse" data-parent="#MainMenu">РАЗМЕР: <%= @product.size %></li>-->
+      <!--<li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ОПИСАНИЕ: <%= @product.description %></li>-->
+      <!--<li><a href="#demo1" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ПРОДАВЕЦ <%= @product.seller.name %>, СВЯЗАТЬСЯ<i class="fa fa-caret-down"></i></a>-->
+      <!--<div class="collapse" id="demo1">-->
+      <!--<p class="list-group-item "><%= @product.seller.phone %></p>-->
+      <!--</div>-->
+      <!--</li>-->
       <!--</ul>-->
-    <!--</div>-->
+      <!--</div>-->
 
-          <div class="container-fluid niz1">
+      <div class="container-fluid niz1">
+        <div class="row">
+          <h2 class="text-center">Другие товары этого продавца</h2>
+          <div class="col-xs-12 ">
             <div class="row">
-              <h2 class="text-center">Другие товары этого продавца</h2>
-              <div class="col-xs-12 ">
-                <div class="row">
-                  <section class="productseller">
-                    <% @products.each do |product| %>
-                        <div class="">
-                          <%= link_to product_path(product.id), :class => 'size1' do %>
-                              <%= image_tag product.main_image.url(:medium) %>
-                              <p class="size2"><%= product.name %></p>
-                          <% end %>
-                        </div>
-                    <% end %>
-                  </section>
-                </div>
-              </div>
+              <section class="productseller">
+                <% @seller.products.each do |product| %>
+                    <div class="">
+                      <%= link_to product_path(product.id), :class => 'size1' do %>
+                          <%= image_tag product.main_image.url(:medium) %>
+                          <p class="size2"><%= product.name %></p>
+                      <% end %>
+                    </div>
+                <% end %>
+              </section>
             </div>
           </div>
-  </div> 
-  <div class="col-xs-12 col-sm-2 glf">
-    <div class="row">
-      <p class="size4">Подобные товары</p>
-      <!--<h4 class="text-center">Другие товары этого продавца</h4>-->
-      <section class="autoplay">
-        <% @products.each do |product| %>
-            <div class="">
-              <%= link_to product_path(product.id), :class => 'size1' do %>
-                  <%= image_tag product.main_image.url(:medium) %>
-                  <p class="size3 sld"><%= product.name %></p>
-              <% end %>
-            </div>
-        <% end %>
-      </section>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-2 glf">
+      <div class="row">
+        <p class="size4">Подобные товары</p>
+        <!--<h4 class="text-center">Другие товары этого продавца</h4>-->
+        <section class="autoplay">
+          <% @products.each do |product| %>
+              <div class="">
+                <%= link_to product_path(product.id), :class => 'size1' do %>
+                    <%= image_tag product.main_image.url(:medium) %>
+                    <p class="size3 sld"><%= product.name %></p>
+                <% end %>
+              </div>
+          <% end %>
+        </section>
 
-      <p class="size4">Лучшие продавцы</p>
-      <section class="autoplay">
-        <% @sellers.each do | seller | %>
-            <div>
-              <%= link_to seller_products_path(seller.id), :class => 'size1' do %>
-                  <%= image_tag seller.avatar(:medium) %>
-                  <p class="size3 sld"><%= seller.name %></p>
-              <% end %>
-            </div>
-        <% end %>
-      </section>
+        <p class="size4">Лучшие продавцы</p>
+        <section class="autoplay">
+          <% @sellers.each do | seller | %>
+              <div>
+                <%= link_to seller_products_path(seller.id), :class => 'size1' do %>
+                    <%= image_tag seller.avatar(:medium) %>
+                    <p class="size3 sld"><%= seller.name %></p>
+                <% end %>
+              </div>
+          <% end %>
+        </section>
+      </div>
     </div>
   </div>
-  </div> 
-</div> 
+</div>
 
-<!-- 
+<!--
 <%= link_to 'Редактировать', edit_product_path(@product.id.to_s+'-'+transtlit_name(@product.name)), :type => 'button', :class => 'btn btn3' %>
 <%= link_to 'Назад', seller_panel_product_path, :type => 'button', :class => 'btn btn4' %>
 <%= link_to "На главную", root_path, :class => 'btn btn4 form' %>-->
-

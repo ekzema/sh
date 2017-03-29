@@ -1,29 +1,29 @@
 <script type="text/javascript">
-       $(document).ready(function() {
+    $(document).ready(function() {
         $('.carousel').carousel({
-          interval: 2500
+            interval: 2500
         })
-       });
-      
-    </script>
+    });
 
-   
-     <div class="container">
-        <% if flash[:alert] %>          
-          <div class="alert alert-error" class="text-center">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <%= flash[:alert] %></div>
-        <% end %>
-        <% if flash[:notice] %>          
-          <div class="alert alert-success" class="text-center">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <%= flash[:notice] %>
-          </div>
-        <% end %>
-        
-          </div>
+</script>
 
-   
+
+<div class="container">
+  <% if flash[:alert] %>
+      <div class="alert alert-error" class="text-center">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:alert] %></div>
+  <% end %>
+  <% if flash[:notice] %>
+      <div class="alert alert-success" class="text-center">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:notice] %>
+      </div>
+  <% end %>
+
+</div>
+
+
 <!-- иконки-меню -->
 <div class="container-fluid">
   <div class="row">
@@ -58,7 +58,7 @@
     <!-- слайдер -->
 
     <div class="col-xs-12 col-sm-10">
-    
+
       <div id="carousel" class="carousel slide " data-ride="carousel" data-no-turbolink="false">
         <ol class="carousel-indicators">
           <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -76,14 +76,14 @@
 
               <p class="hidden-xs">О нас</p>
             </div>
-          </div> 
+          </div>
           <% @category.each do |category| %>
               <% category.category_slide_images.each do |slide| %>
                   <div class="item">
-                  <%= link_to category_path(category.id) do %>
-                  <%= image_tag slide.image %> 
-                  <% end %>
-                  <!--   <a href="/a.html">
+                    <%= link_to category_path(category.id) do %>
+                        <%= image_tag slide.image %>
+                    <% end %>
+                    <!--   <a href="/a.html">
                       <%= image_tag slide.image %>
                     </a> -->
 
@@ -102,39 +102,39 @@
         <a class="carousel-control right" href="#carousel" data-slide="next">
           <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
-      </div> 
+      </div>
     </div>
 
     <!-- реклама продавца
      -->
-     
+
     <div class="hidden-xs col-sm-2 ">
-    <div class="row">
-            <!-- слайдер для рекламы-товара -->
-      <p class="size4">Новинки</p>
+      <div class="row">
+        <!-- слайдер для рекламы-товара -->
+        <p class="size4">Новинки</p>
         <section class="autoplay">
-            <% @products.each do |product| %>
-            <div>
-            <%= link_to product_path(product.id), :class => 'size1' do %>
-              <%= image_tag product.main_image.url(:medium) %> 
-              <p class="size3 sld"><%= product.name %></p>
-              <% end %>
-            </div>
-            <% end %>
+          <% @products.each do |product| %>
+              <div>
+                <%= link_to product_path(product.id), :class => 'size1' do %>
+                    <%= image_tag product.main_image.url(:medium) %>
+                    <p class="size3 sld"><%= product.name %></p>
+                <% end %>
+              </div>
+          <% end %>
         </section>
-      <!-- слайдер для рекламы-продавца -->
-      <p class="size4">Продавцы</p>
-      <section class="autoplay">
-        <% @sellers.each do | seller | %>
-            <div>
-              <%= link_to seller_products_path(seller.id), :class => 'size1' do %>
-                  <%= image_tag seller.avatar(:medium) %>
-                  <p class="size3 sld"><%= seller.name %></p>
-              <% end %>
-            </div>
-        <% end %>
-      </section>
-    </div>
+        <!-- слайдер для рекламы-продавца -->
+        <p class="size4">Продавцы</p>
+        <section class="autoplay">
+          <% @sellers.each do | seller | %>
+              <div>
+                <%= link_to seller_products_path(seller.id), :class => 'size1' do %>
+                    <%= image_tag seller.avatar(:medium) %>
+                    <p class="size3 sld"><%= seller.name %></p>
+                <% end %>
+              </div>
+          <% end %>
+        </section>
+      </div>
     </div>
   </div>
 </div>
@@ -143,62 +143,60 @@
 
 <div class="container-fluid niz1">
   <div class="row">
-  <h4 class="text-center">Лучшие продавцы</h4>
-  <div class="col-xs-12 ">
-    <div class="row">
-      <section class="auto hidden-xs hidden-sm">
-            <% @sellers.each do | seller | %>
-            <div>
-            <%= link_to seller_products_path(seller.id), :class => 'size1' do %>
-              <%= image_tag seller.avatar(:medium) %> 
-              <p class="sld1 sld text-center"><%= seller.name %></p>
-              <% end %>
-            </div>
-            <% end %>
+    <h4 class="text-center">Лучшие продавцы</h4>
+    <div class="col-xs-12 ">
+      <div class="row">
+        <section class="auto hidden-xs hidden-sm">
+          <% @sellers.each do | seller | %>
+              <div>
+                <%= link_to seller_products_path(seller.id), :class => 'size1' do %>
+                    <%= image_tag seller.avatar(:medium) %>
+                    <p class="sld1 sld text-center"><%= seller.name %></p>
+                <% end %>
+              </div>
+          <% end %>
         </section>
         <section class="auto3 visible-xs visible-sm">
-            <% @sellers.each do | seller | %>
-            <div>
-              <%= link_to seller_products_path(seller.id), :class => 'size1' do %>
-              <%= image_tag seller.avatar(:medium) %>
-              <div class="sld1 sld text-center"><p ><%= seller.name %></p></div>
-              <% end %>
-            </div>
-            <% end %>
+          <% @sellers.each do | seller | %>
+              <div>
+                <%= link_to seller_products_path(seller.id), :class => 'size1' do %>
+                    <%= image_tag seller.avatar(:medium) %>
+                    <div class="sld1 sld text-center"><p ><%= seller.name %></p></div>
+                <% end %>
+              </div>
+          <% end %>
         </section>
-        </div>
-    </div>  
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="container-fluid niz1">
   <div class="row">
-  <h4 class="text-center">Популярные разделы</h4>
-  <div class="col-xs-12 ">
-    <div class="row">
-      <section class="auto1 hidden-xs hidden-sm ">
-            <% @category.each do |category| %>
-              <% category.category_slide_images.each do |slide| %>
-              <%= link_to category_path(category.id), class:'size1' do %>
-              <%= image_tag slide.image %>
-              <p class="text-center sld1 "><%= slide.category.description %></p>
+    <h4 class="text-center">Популярные разделы</h4>
+    <div class="col-xs-12 ">
+      <div class="row">
+        <section class="auto1 hidden-xs hidden-sm ">
+          <% @twocategories.each do |twocategory| %>
+              <%= link_to twocategory_path(twocategory.id), class:'size1' do %>
+                  <%= image_tag twocategory.image %>
+                  <p class="text-center sld1 "><%= twocategory.description %></p>
               <% end %>
-              
-            <% end %>
-            <% end %>
+
+          <% end %>
         </section>
         <section class="auto2 visible-xs visible-sm">
-            <% @category.each do |category| %>
+          <% @category.each do |category| %>
               <% category.category_slide_images.each do |slide| %>
                   <%= link_to category_path(category.id), class:'size1' do %>
                       <%= image_tag slide.image %>
                       <p class="text-center sld1 padp"><%= slide.category.description %></p>
                   <% end %>
 
-            <% end %>
-            <% end %>
+              <% end %>
+          <% end %>
         </section>
-        </div>
-    </div>  
+      </div>
+    </div>
   </div>
 </div>

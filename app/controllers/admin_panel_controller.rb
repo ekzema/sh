@@ -23,7 +23,7 @@ class AdminPanelController < ApplicationController
     @sort = params[:moderation]
     if @sort == 'all'
       @sellers
-      elsif @sort
+    elsif @sort
       @sellers = Seller.where(moderation: params[:moderation]).paginate(:page => params[:page], :per_page => 20)
     end
   end
@@ -34,12 +34,12 @@ class AdminPanelController < ApplicationController
 
   def update_seller
     @seller = Seller.find(@pars_id)
-      if @seller.update(edit_seller_params)
-        redirect_to admin_panel_seller_all_path
-         flash[:notice] = 'Продавец успешно изменён'
-      else
-        render :edit_seller
-      end
+    if @seller.update(edit_seller_params)
+      redirect_to admin_panel_seller_all_path
+      flash[:notice] = 'Продавец успешно изменён'
+    else
+      render :edit_seller
+    end
   end
 
 
@@ -111,6 +111,24 @@ class AdminPanelController < ApplicationController
   end
   #---END product---
 
+  # BEGIN categories
+  def categories
+    @category = Category.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+  end
+  # END categories
+
+  # BEGIN twocategories
+  def twocategories
+    @twocategory = Twocategory.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+  end
+  # END twocategories
+
+  # BEGIN threecategories
+  def threecategories
+    @threecategory = Threecategory.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+  end
+  # END threecategories
+
   private
 
   def set_regular
@@ -123,7 +141,7 @@ class AdminPanelController < ApplicationController
 
   def edit_product_params
     params.require(:product).permit(:size, :price, :quality, :category_id, :twocategory_id, :threecategory_id, :description, :meta_desc, :meta_key, :meta_title, :main_image, :name, :article, :visible, :moderation,
-    product_slide_images_attributes: [:id, :_destroy, :image]
+                                    product_slide_images_attributes: [:id, :_destroy, :image]
     )
   end
 
