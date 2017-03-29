@@ -9,16 +9,16 @@ Rails.application.routes.draw do
   end
 
   namespace :admin_panel do
-    get 'product_all'
-    get 'seller_all'
-    get 'categories'
-    get 'twocategories'
-    get 'threecategories'
-    delete 'delete_attachment_product'
-    delete 'delete_attachment_seller'
-    delete 'delete_seller'
-    delete 'delete_product'
-    post 'form_render'
+      get 'product_all'
+      get 'seller_all'
+      get 'categories'
+      get 'twocategories'
+      get 'threecategories'
+      delete 'delete_attachment_product'
+      delete 'delete_attachment_seller'
+      delete 'delete_seller'
+      delete 'delete_product'
+      post 'form_render'
   end
   get 'admin_panel/:name/edit_seller', to: 'admin_panel#edit_seller', as: 'edit_seller_admin_panel'
   put 'admin_panel/:name/update_seller', to: 'admin_panel#update_seller', as: 'update_seller_admin_panel'
@@ -95,8 +95,8 @@ Rails.application.routes.draw do
   end
 
   resources :threecategories do
-    collection do
+  collection do
       put 'delete_attachment'
     end
-  end
+    end
 end

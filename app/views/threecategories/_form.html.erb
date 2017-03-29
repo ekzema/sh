@@ -1,15 +1,15 @@
 <%= form_for(threecategory, :html => {:class => 'form-horizontal', multipart: true}) do |f| %>
-    <% if threecategory.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(threecategory.errors.count, "error") %> prohibited this threecategory from being saved:</h2>
+  <% if threecategory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(threecategory.errors.count, "error") %> prohibited this threecategory from being saved:</h2>
 
-          <ul>
-            <% threecategory.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+      <ul>
+      <% threecategory.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
     <div class="form-group">
       <div class="col-sm-2 ">
