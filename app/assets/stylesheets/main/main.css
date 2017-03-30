@@ -1,3 +1,22 @@
+ /*шрифт фон*/
+body {
+     font-family: Florence!important;
+     background: #CD423C !important;
+     font-size: 12px!important;
+}
+.navbar-brand {
+    font-size: 16px!important;
+}
+.tmenu a {
+ font-size: 16px!important;
+}
+
+ .sh16{
+     font-size: 16px;
+ }
+ .sh14{
+     font-size: 14px;
+ }
  /*формы отправки*/
 .form{
     max-width: 60%;
@@ -95,9 +114,7 @@
 .carousel-caption{
     background-color: rgba(0,0,0,0.4);
 }
- .shrift{
-     font-size: 20px;
- }
+
 nav#topMenu {
     max-width: 100%;
     margin: 0;
@@ -172,10 +189,7 @@ nav#topMenu {
     .dropdown:hover > .dropdown-menu { display: block!important; }
 }
 
-body {
-    font-family: florence!important;
-    background: #CD423C !important;
-}
+
 @media only screen and (min-width: 350px) and (max-width: 767px) {
     h4{ font-size: 14px!important;}
     .fotoava2{ width: 100px!important;border-radius: 0%!important;}
@@ -252,11 +266,9 @@ p {
 }
 .tmenu3 {
     color: #fff;
-    font-size: 18px;
-    
-    padding: 10px;
-
+    padding: 13px;
 }
+
 .tmenu3 a{
     color: #777;
 }
@@ -553,7 +565,7 @@ table{
 /* левое меню*/
 .category{
     padding: 5px 20px;
-    font-size: large;
+    font-size: 16px;
     border: 1px solid #111!important;
 }
 .ul1 ul {

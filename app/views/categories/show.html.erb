@@ -9,7 +9,7 @@
     <p class="category"><%= @category.name %></p>
       <li class="li1">
       <% @category.twocategories.each do |twocategory | %>
-      <p><%= twocategory.name %></p>
+      <p class="sh14"><%= twocategory.name %></p>
         <ul>
         <% twocategory.threecategories.each do | threecategory | %>
           <li class="li2">
@@ -30,8 +30,8 @@
       <%= link_to product_path(product.id), class:'size1' do %>
       <%= image_tag product.main_image(:medium)  %>
         <p class="size3 sld"><%= product.name %></p>
-        <p class="sld0 col-xs-4"><%= product.size %></p>
-        <p class="col-xs-8"><%= product.price %> грн.</p>
+        <p class="sld0 col-xs-6"><%= product.size %></p>
+        <p class="col-xs-6"><%= product.price %> грн.</p>
         <% end %>
       </div>
       </div>
