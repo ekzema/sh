@@ -33,7 +33,7 @@
     <ul class="nav navbar-nav tmenu">
     <a class="logo " href="/"><%= image_tag '001.png', class:'hidden-xs hidden-sm' %><%= image_tag 'logo2.png', class:'visible-sm' %></a>
         <li class="menuonas"><a href="/about">О нас</a></li>
-        <li><a href="/categories">Новоcти</a></li>
+        <!--<li><a href="/categories">Новоcти</a></li>-->
         <li class="hidden-xs"><a href="/vip">VIP-Статус</a></li>
         <li class="hidden-xs">
           <ul class="nav navbar-nav navbar-right">
@@ -61,9 +61,9 @@
         data-toggle="dropdown" href="#">
         <% if seller_signed_in? %>
         <%= image_tag current_seller.avatar.url(:medium), class: 'fotoava', alt: current_seller.name %>
-        Личный кабинет
+        <%= current_seller.name %>
         <% else %>
-        Войти
+        Личный кабинет
         <% end %>
         <b class="caret"></b></a>
             <ul class="dropdown-menu " role="menu" aria-labelledby="drop001">

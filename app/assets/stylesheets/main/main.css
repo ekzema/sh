@@ -168,7 +168,7 @@ nav#topMenu {
     border-radius: 6px 0 6px 6px;
 }
  /*767*/
-@media only screen and (min-width: 767px) and (max-width: 1500px) {
+@media only screen and (min-width: 767px) {
     .dropdown:hover > .dropdown-menu { display: block!important; }
 }
 
@@ -195,8 +195,9 @@ body {
     .tmenu a { font-size:14px!important;}
     .logo{margin-top: -15px!important; margin-left: -15px!important;}
     .form{margin-bottom: -10px!important; }
-    .carousel-caption{padding: 0px!important;}
-
+    .carousel-caption{padding: 0px}
+    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+        padding: 4px!important; font-size: 11px!important;}
     .shrift{font-size: 14px!important; margin-bottom: 20px!important;}
 }
 @media only screen and (min-width: 767px) and (max-width: 799px) {
@@ -290,15 +291,18 @@ p {
  .showproduct ul li{
      list-style:none;
  }
-.showproduct ul{
-    padding: 0;
-    list-style: none;
-    text-align: center;
-    font-size: 0; /* убираем нежелательные отсутпы у дочерних элементов */
-    width: 50%;
-    margin: auto!important;
+ .showproduct ul{
+     padding: 0;
+     list-style: none;
+     text-align: center;
+     font-size: 0; /* убираем нежелательные отсутпы у дочерних элементов */
+     width: 50%;
+     margin: auto!important;
 
-}
+ }
+ .showproduct2 ul{
+     width: 80%!important;
+ }
  .showproduct li{
      background: #333;
      color: #fff;
@@ -310,41 +314,7 @@ p {
 .formaul ul{
     margin-bottom: 20px!important;
 }
-#MainMenu{
-    width: 50%!important;
-    margin: auto!important;
-}
 
-#mainmenu {
-    position: relative;
-    overflow:hidden;
-    height:70px !important;
-    float: left !important;
-}
-#mainmenu ul {
-    list-style:none;
-    margin:0;
-    padding:0;
-    position: relative;
-    left:50%;
-    float:left;
-    font-size:14px;
-    height:30px;
-}
-#mainmenu ul li {
-    position:relative;
-    left:-50%;
-    float:left !important;
-    margin:0 5px;
-    height:30px;
-}
-#mainmenu ul li a{
-    float:left !important;
-}
-.fotomain{
-    border-radius: 4px;
-    margin: 5px;
-}
  .glf img{
      max-height: 400px;
  }
@@ -409,23 +379,23 @@ p{
     display: block;
     width: 100px;
 }
-a.list-group-item-success:hover, a.list-group-item-success:focus, button.list-group-item-success:hover, button.list-group-item-success:focus, .list-group-item-success {
-    color: #fff!important;
-    background-color: #565656!important;
-}
-a.list-group-item-success, a.list-group-item-success, button.list-group-item-success, button.list-group-item-success:focus {
-    color: #fff!important;
-    background-color: #ACACAC!important;
-}
-.list-group-item {
-    padding: 3px !important;
-}
-.list-group-item-success{
-    padding: 10px !important;
-}
-.list-group-submenu {
-    margin-left:20px !important;
-}
+/*a.list-group-item-success:hover, a.list-group-item-success:focus, button.list-group-item-success:hover, button.list-group-item-success:focus, .list-group-item-success {*/
+    /*color: #fff!important;*/
+    /*background-color: #565656!important;*/
+/*}*/
+/*a.list-group-item-success, a.list-group-item-success, button.list-group-item-success, button.list-group-item-success:focus {*/
+    /*color: #fff!important;*/
+    /*background-color: #ACACAC!important;*/
+/*}*/
+/*.list-group-item {*/
+    /*padding: 3px !important;*/
+/*}*/
+/*.list-group-item-success{*/
+    /*padding: 10px !important;*/
+/*}*/
+/*.list-group-submenu {*/
+    /*margin-left:20px !important;*/
+/*}*/
 .wwww{
     float: left;
     padding: 15px 15px;
@@ -513,14 +483,20 @@ table{
 .sld{
     text-transform: capitalize;
 }
- .sld0{
-     text-transform: uppercase!important;
+.sld0{
+ text-transform: uppercase!important;
+}
+ .sld00{
+     text-align: justify;
  }
 
+.sld01{
+    text-align: justify;
+    padding: 0px 15px;
+}
 .sld1 {
     background: rgba(0, 0, 0, 0.4);
     padding: 5px 0;
-
 }
 @media only screen and (max-width: 1050px) {
     .sld1 {padding: 3px 0;}
@@ -542,10 +518,16 @@ table{
 }
 
 .autoplay, .autoplay1 {
-    margin: 0px 0px 15px 0px ;
+    margin: 0px 0px 10px 0px ;
     text-align: center !important;
     color: #fff!important;
 }
+
+ @media only screen and (min-width: 767px) and (max-width: 995px) {
+     .autoplay, .autoplay1 {margin: 0px 0px 7px 0px;}
+     .size3 { padding: 2px 8px!important;}
+ }
+
 .slick-slide {
   margin: 0px 10px;
 }
@@ -854,6 +836,11 @@ body {
 }
 .niz6{
     text-align: justify;
+    padding: 5px 10px;
+}
+.vip img{
+ margin-top: 10px!important;
+    width: 95%!important;
 }
 
 .names{
@@ -952,14 +939,12 @@ body {
 }
 
 .navbar-form {
-    margin-top: 8px!important;
-    margin-bottom: 8px!important;
+    margin-top: 6px!important;
+    margin-bottom: 0px!important;
 }
-
-/*.form-group{*/
-    /*height: 34px!important;*/
-/*}*/
-
+.form-group{
+    margin-top: 3px;
+}
 .text-vk{
     padding-top: 15px;
     padding-bottom: 15px;

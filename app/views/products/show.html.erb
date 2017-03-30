@@ -43,57 +43,42 @@
     </menu>
      
 </div>
-  <div class="col-xs-12 col-sm-8 text-center showproduct">
-<div></div>
-      <ul class="">
-        <li><%= image_tag(@product.main_image) %></li>
-        <li><%= @product.name %></li>
-        <li>СТОИМОСТЬ: <%= @product.price %> ГРН.</li>
-        <li>РАЗМЕР: <%= @product.size %></li>
-        <li>ОПИСАНИЕ: <%= @product.description %></li>
-        <li><a href="#demo1" class="" data-toggle="collapse" data-parent=".showproduct">ПРОДАВЕЦ <%= @product.seller.name %>, СВЯЗАТЬСЯ<i class="fa fa-caret-down"></i></a>
-          <div class="collapse" id="demo1">
-            <p class=""><%= @product.seller.phone %></p>
-          </div>
-        </li>
-      </ul>
+<div class="col-xs-12 col-sm-8 text-center showproduct">
+<div class="formaul">
+<ul>
+  <li><%= image_tag(@product.main_image) %></li>
+  <li class="sld"><%= @product.name %></li>
+  <li>СТОИМОСТЬ: <%= @product.price %> ГРН.</li>
+  <li class="sld0">РАЗМЕР: <%= @product.size %></li>
+  <li class="sld00">ОПИСАНИЕ: <%= @product.description %></li>
+  <li>ПРОДАВЕЦ <%= @product.seller.name %></li>
+  <li><a href="#demo1" class="size1" data-toggle="collapse" data-parent=".showproduct">СВЯЗАТЬСЯ С ПРОДАВЦОМ<i class="fa fa-caret-down"></i></a>
+    <div class="collapse" id="demo1">
+    <p class=""><%= @product.seller.phone %></p>
+    </div>
+  </li>
+</ul>
+</div>
 
-
-    <!--<p><%= image_tag(@product.main_image(:medium), class: 'fotomain') %></p>-->
-    <!--&lt;!&ndash; <p class="names"><%= @product.name %></p> &ndash;&gt;-->
-    <!--<div id="MainMenu">-->
-      <!--<ul class="list-group panel list">-->
-        <!--<li class="list-group-item list-group-item-success sld" data-toggle="collapse" data-parent="#MainMenu"><%= @product.name %></li>-->
-        <!--<li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">СТОИМОСТЬ: <%= @product.price %> ГРН.</li>-->
-        <!--<li class="list-group-item list-group-item-success sld0" data-toggle="collapse" data-parent="#MainMenu">РАЗМЕР: <%= @product.size %></li>-->
-        <!--<li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ОПИСАНИЕ: <%= @product.description %></li>-->
-         <!--<li><a href="#demo1" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ПРОДАВЕЦ <%= @product.seller.name %>, СВЯЗАТЬСЯ<i class="fa fa-caret-down"></i></a>-->
-          <!--<div class="collapse" id="demo1">-->
-            <!--<p class="list-group-item "><%= @product.seller.phone %></p>-->
-          <!--</div>-->
-        <!--</li>-->
-      <!--</ul>-->
-    <!--</div>-->
-
-          <div class="container-fluid niz1">
-            <div class="row">
-              <h2 class="text-center">Другие товары этого продавца</h2>
-              <div class="col-xs-12 ">
-                <div class="row">
-                  <section class="productseller">
-                    <% @seller.products.each do |product| %>
-                        <div class="">
-                          <%= link_to product_path(product.id), :class => 'size1' do %>
-                              <%= image_tag product.main_image.url(:medium) %>
-                              <p class="size2"><%= product.name %></p>
-                          <% end %>
-                        </div>
-                    <% end %>
-                  </section>
-                </div>
+<div class="container-fluid niz1">
+  <div class="row">
+    <h2 class="text-center">Другие товары этого продавца</h2>
+    <div class="col-xs-12 ">
+      <div class="row">
+        <section class="productseller">
+          <% @seller.products.each do |product| %>
+              <div class="">
+                <%= link_to product_path(product.id), :class => 'size1' do %>
+                    <%= image_tag product.main_image.url(:medium) %>
+                    <p class="size2"><%= product.name %></p>
+                <% end %>
               </div>
-            </div>
-          </div>
+          <% end %>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
   </div> 
   <div class="col-xs-12 col-sm-2 glf">
     <div class="row">

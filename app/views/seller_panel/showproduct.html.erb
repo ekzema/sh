@@ -18,22 +18,22 @@
     </menu>
      
   </div>
-  <div class="col-xs-12 col-sm-5 glf text-center">
+  <div class="col-xs-12 col-sm-5 showproduct text-center">
 
     <p><%= image_tag(@product.main_image) %></p>
-    <p class="names"><%= @product.name %></p>
+
 
   </div> 
-  <div class="col-xs-12 col-sm-5 glf">
-    <div id="MainMenu">
-        <ul class="list-group panel list">
-          <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"><%= @product.name %></li>
-          <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">СТОИМОСТЬ: <%= @product.price %> ГРН.</li>
-          <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">РАЗМЕР: <%= @product.size %></li>
-          <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ОПИСАНИЕ: <%= @product.description %></li>
-          <li class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">ПРОДАВЕЦ <%= @product.seller.name %></li>
-        </ul>
-    </div>
+  <div class="col-xs-12 col-sm-5 showproduct showproduct2">
+    <ul>
+      <li><%= @product.name %></li>
+      <li>СТОИМОСТЬ: <%= @product.price %> ГРН.</li>
+      <li>РАЗМЕР: <%= @product.size %></li>
+      <li>ОПИСАНИЕ: <%= @product.description %></li>
+    </ul>
+
+
+
   </div>
   </div> 
 </div> 

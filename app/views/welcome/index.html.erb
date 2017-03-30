@@ -173,14 +173,14 @@
 
 <div class="container-fluid niz1">
   <div class="row">
-  <h4 class="text-center">Популярные разделы</h4>
+  <h4 class="text-center">Популярные разделы сайта</h4>
   <div class="col-xs-12 ">
     <div class="row">
       <section class="auto1 hidden-xs hidden-sm ">
             <% @twocategories.each do |twocategory| %>
               <%= link_to twocategory_path(twocategory.id), class:'size1' do %>
               <%= image_tag twocategory.image %>
-              <p class="text-center sld1 "><%= twocategory.description %></p>
+              <p class="text-center sld1 "><%= twocategory.name %></p>
               <% end %>
 
             <% end %>

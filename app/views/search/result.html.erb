@@ -5,11 +5,11 @@
         <h4>Вы искали: <%= params[:q] %></h4>
         <% @products.each do |product| %>
             <div class="col-xs-6 col-sm-4 col-lg-3  product">
-              <div class="row size1">
-                <%= link_to product_path(product.id) do %>
+              <div class="row">
+                <%= link_to product_path(product.id), class:'size1' do %>
             <%= image_tag product.main_image(:medium) %><br>
-            <%= product.name %><br>
-            <strong>Размер:</strong> <%= product.size %>
+                    <p class=" size3 "><%= product.name %><br></p>
+                    <p class="size3 sld0"><%= product.size %></p>
         <% end %>
               </div>
             </div>
@@ -17,14 +17,14 @@
       </div>
     </div>
   <div class="col-sm-2">
-    <div class="row">
+    <div class="row text-center">
     <p class="size4">Популярное</p>
     <section class="autoplaydr">
       <% @prs.each do |product| %>
 
-            <%= link_to product_path(product.id), :class => 'size2' do %>
+            <%= link_to product_path(product.id), :class => 'size1' do %>
                 <%= image_tag product.main_image(:medium) %>
-                <p class="size3 text-center"><%= product.name %></p>
+                <p class="size3"><%= product.name %></p>
             <% end %>
 
       <% end %>
