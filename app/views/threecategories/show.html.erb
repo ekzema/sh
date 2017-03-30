@@ -29,8 +29,9 @@
         <%= link_to product_path(product.id), class:'size1' do %>
         <%= image_tag product.main_image(:medium) %>
         <div>
-        <p class="size product1">Размер <%= product.size %><p>
-        </p><%= product.price %> грн.</p>
+        <p class="size3 sld"><%= product.name %></p>
+        <p class="sld0 col-xs-4"><%= product.size %></p>
+        <p class="col-xs-8"><%= product.price %> грн.</p>
         </div>
 
 <% end %>
