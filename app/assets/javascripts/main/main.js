@@ -255,3 +255,6 @@ $('.searchInput').autocomplete({
 });
 $('.ui-helper-hidden-accessible').hide(); //hide result message in div classes ui-helper-hidden-accessible
 });
+
+
+

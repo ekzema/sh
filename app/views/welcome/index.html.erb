@@ -1,14 +1,16 @@
 <script type="text/javascript">
        $(document).ready(function() {
         $('.carousel').carousel({
-          interval: 2500
+          interval: 3500
         })
        });
       
-    </script>
-
+</script>
+<script type="text/javascript">
+    setTimeout(function(){$('.box').fadeOut(3000)},3000);
+</script>
    
-     <div class="container">
+     <div class="container box">
         <% if flash[:alert] %>          
           <div class="alert alert-error" class="text-center">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -21,7 +23,7 @@
           </div>
         <% end %>
         
-          </div>
+     </div>
 
    
 <!-- иконки-меню -->
