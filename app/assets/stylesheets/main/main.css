@@ -14,9 +14,13 @@ body {
  .sh16{
      font-size: 16px!important;
  }
- .sh14{
+.sh14{
+ font-size: 14px!important;
+}
+ .sh14 li{
      font-size: 14px!important;
  }
+
  /*формы отправки*/
 .form{
     max-width: 60%;

@@ -9,7 +9,7 @@
     <menu class="fot">
     <% if @product.product_slide_images.present? %>
 
-    <h4 class="text-center">Другие фото этого товара</h4>
+    <h4 class="text-center sh16">Другие фото этого товара</h4>
     <% @product.product_slide_images.each do |slide| %>
         <li>
         <%= link_to(slide.image.to_s, class: 'gallery', rel: 'group') do %>
@@ -45,14 +45,14 @@
 </div>
 <div class="col-xs-12 col-sm-8 text-center showproduct">
 <div class="formaul">
-<ul>
+<ul class="sh14">
   <li><%= image_tag(@product.main_image) %></li>
   <li class="sld"><%= @product.name %></li>
-  <li>СТОИМОСТЬ: <%= @product.price %> ГРН.</li>
-  <li class="sld0">РАЗМЕР: <%= @product.size %></li>
-  <li>ОПИСАНИЕ: <%= @product.description %></li>
-  <li>ПРОДАВЕЦ <%= @product.seller.name %></li>
-  <li><a href="#demo1" class="size1" data-toggle="collapse" data-parent=".showproduct">СВЯЗАТЬСЯ С ПРОДАВЦОМ<i class="fa fa-caret-down"></i></a>
+  <li>Стоимость: <%= @product.price %> ГРН.</li>
+  <li>Размер: <%= @product.size %></li>
+  <li>Описание: <%= @product.description %></li>
+  <li>Продавец <%= @product.seller.name %></li>
+  <li><a href="#demo1" class="size1" data-toggle="collapse" data-parent=".showproduct">Связаться с продавцом<i class="fa fa-caret-down"></i></a>
     <div class="collapse" id="demo1">
     <p class=""><%= @product.seller.phone %></p>
     </div>
@@ -62,7 +62,7 @@
 
 <div class="container-fluid niz1">
   <div class="row">
-    <h2 class="text-center">Другие товары этого продавца</h2>
+    <h4 class="text-center sh16">Другие товары этого продавца</h4>
     <div class="col-xs-12 ">
       <div class="row">
         <section class="productseller">
