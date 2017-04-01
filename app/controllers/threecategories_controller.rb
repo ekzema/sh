@@ -57,8 +57,9 @@ class ThreecategoriesController < ApplicationController
   end
 
   def destroy
-    @threecategory.destroy
-    redirect_to :back
+    if @threecategory.destroy
+      render text: 'ok'
+    end
   end
 
   def delete_attachment

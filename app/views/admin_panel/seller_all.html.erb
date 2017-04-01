@@ -69,7 +69,7 @@
               <th><i class="icon_key"></i></th>
             </tr>
             <% @sellers.each do |seller| %>
-                <tr id="seller_<%= seller.id %>">
+                <tr id="product_<%= seller.id %>">
                   <td><%= seller.id %></td>
                   <td><span class="profile-ava sellerAvatar"><%= image_tag seller.avatar %></span></td>
                   <td><%= seller.surname %>. <%= seller.name.first %></td>
@@ -80,8 +80,7 @@
                   <td>
                     <div class="btn-group">
                       <%= link_to '<i class="icon_pencil"></i>'.html_safe, edit_seller_admin_panel_path(seller.id.to_s+'-'+transtlit_name(seller.name)+'-'+transtlit_name(seller.surname)), class: 'btn btn-success' %>
-                      <span class='btn btn-danger deleteMessage' seller_id='<%= seller.id %>'><i class="icon_close_alt2"></i></span>
-                    </div>
+                      <span class='btn btn-danger deleteMessage2' accon='/admin_panel/delete_seller/' orr_id='<%= seller.id %>'><i class="icon_close_alt2"></i></span>
                   </td>
                 </tr>
             <% end %>

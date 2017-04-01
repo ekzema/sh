@@ -22,7 +22,6 @@ class TwocategoriesController < ApplicationController
     @products = Product.all
     @showcat = @twocategory.category
     @sellers = Seller.all
-
     threecategories_id =  @twocategory.threecategories.ids
     @threecategories = Threecategory.where(:id => threecategories_id)
   end
@@ -69,7 +68,15 @@ class TwocategoriesController < ApplicationController
   # DELETE /twocategories/1
   # DELETE /twocategories/1.json
   def destroy
-    @twocategory.destroy
+    if @twocategory.destroy
+      render text: 'ok'
+    end
+  end
+
+  def delete_attachment
+    @twocategory= Threecategory.find(params[:id])
+    @twocategory.image = nil
+    @twocategory.save
     redirect_to :back
   end
 

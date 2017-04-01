@@ -7,9 +7,9 @@ function initializeJS() {
     jQuery('.popovers').popover();
 
     //custom scrollbar
-        //for html
+    //for html
 
-    document.addEventListener("turbolinks:load", function() {
+    document.addEventListener("turbolinks:load", function () {
         $("html").getNiceScroll().remove()
         $("html").niceScroll({
             styler: "fb",
@@ -22,10 +22,24 @@ function initializeJS() {
         });
     });
 
-        //for sidebar
-    jQuery("#sidebar").niceScroll({styler:"fb",cursorcolor:"#007AFF", cursorwidth: '3', cursorborderradius: '10px', background: '#F7F7F7', cursorborder: ''});
-        // for scroll panel
-    jQuery(".scroll-panel").niceScroll({styler:"fb",cursorcolor:"#007AFF", cursorwidth: '3', cursorborderradius: '10px', background: '#F7F7F7', cursorborder: ''});
+    //for sidebar
+    jQuery("#sidebar").niceScroll({
+        styler: "fb",
+        cursorcolor: "#007AFF",
+        cursorwidth: '3',
+        cursorborderradius: '10px',
+        background: '#F7F7F7',
+        cursorborder: ''
+    });
+    // for scroll panel
+    jQuery(".scroll-panel").niceScroll({
+        styler: "fb",
+        cursorcolor: "#007AFF",
+        cursorwidth: '3',
+        cursorborderradius: '10px',
+        background: '#F7F7F7',
+        cursorborder: ''
+    });
 
     //sidebar dropdown menu
     jQuery('#sidebar .sub-menu > a').click(function () {
@@ -42,14 +56,14 @@ function initializeJS() {
         }
         var o = (jQuery(this).offset());
         diff = 200 - o.top;
-        if(diff>0)
-            jQuery("#sidebar").scrollTo("-="+Math.abs(diff),500);
+        if (diff > 0)
+            jQuery("#sidebar").scrollTo("-=" + Math.abs(diff), 500);
         else
-            jQuery("#sidebar").scrollTo("+="+Math.abs(diff),500);
+            jQuery("#sidebar").scrollTo("+=" + Math.abs(diff), 500);
     });
 
     // sidebar menu toggle
-    jQuery(function() {
+    jQuery(function () {
         function responsiveView() {
             var wSize = jQuery(window).width();
             if (wSize <= 768) {
@@ -62,11 +76,12 @@ function initializeJS() {
                 jQuery('#sidebar > ul').show();
             }
         }
+
         jQuery(window).on('load', responsiveView);
         jQuery(window).on('resize', responsiveView);
     });
 
-    document.addEventListener("turbolinks:load", function() {
+    document.addEventListener("turbolinks:load", function () {
         jQuery('.toggle-nav').click(function () {
             if (jQuery('#sidebar > ul').is(":visible") === true) {
                 jQuery('#main-content').css({
@@ -103,56 +118,29 @@ function initializeJS() {
 
 }
 
-jQuery(document).ready(function(){
+jQuery(document).ready(function () {
     initializeJS();
 });
 
-$(document).on('ready turbolinks:load', function(){
-        $('.deleteMessage').on("click", function(){
-            var id = $(this).attr("seller_id");
-            $.confirm({
-                confirmButton: 'Да',
-                cancelButton: 'Нет',
-                title: 'Подтверждение!',
-                content: 'Вы уверены что хотите удалить ПРОДАВЦА?',
-                confirm: function(){
-                    $.ajax({
-                        type: "DELETE",
-                        url: "/admin_panel/delete_seller",
-                        data: "seller_id="+id,
-                        dataType: "html",
-                        cache: false,
-                        success: function(data) {
-                            if (data == "ok")
-                            {
-                                $('#seller_'+id).hide(700);
-                            }
-                        }
-                    });
-                }
-            });
-        });
-    });
+$(document).on('ready turbolinks:load', function () {
 
-$(document).on('ready turbolinks:load', function(){
-    $('.deleteMessage2').on("click", function(){
-        var id = $(this).attr("product_id");
+    $('.deleteMessage2').on("click", function () {
+        var id = $(this).attr("orr_id");
+        var accon = $(this).attr("accon");
         $.confirm({
             confirmButton: 'Да',
             cancelButton: 'Нет',
             title: 'Подтверждение!',
-            content: 'Вы уверены что хотите удалить ТОВАР?',
-            confirm: function(){
+            content: 'Вы уверены что хотите удалить эту запись?',
+            confirm: function () {
                 $.ajax({
-                    type: "DELETE",
-                    url: "/admin_panel/delete_product",
-                    data: "product_id="+id,
-                    dataType: "html",
+                    type: "delete",
+                    url: "/" + accon + "/" + id,
+                    data: "id=" + id,
                     cache: false,
-                    success: function(data) {
-                        if (data == "ok")
-                        {
-                            $('#product_'+id).hide(700);
+                    success: function (data) {
+                        if (data == "ok") {
+                            $('#product_' + id).hide(700);
                         }
                     }
                 });
@@ -160,3 +148,4 @@ $(document).on('ready turbolinks:load', function(){
         });
     });
 });
+

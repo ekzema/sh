@@ -1,94 +1,67 @@
-<%= nested_form_for(@category, html: { multipart: true }) do |f| %>
-<% if category.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
 
-      <ul>
-        <% category.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+<%= nested_form_for(category, :html => {'data-parsley-validate' => true, :class => 'form-horizontal', multipart: true}) do |f| %>
+    <% if category.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+          <ul>
+            <% category.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <div class="col-sm-2 ">
+        <%= f.label 'Основное фото', class: "control-label" %>
+      </div>
+      <div class="col-sm-10">
+        <ul class="sliderImg imgcat">
+          <li><%= image_tag category.main_image.url, title: "#{category.name}", id: 'imagePreload', class: "EditImage", height: 100 %></li>
+          <li><%= f.file_field :main_image, id: 'imgInp' %>
+            <% unless category.main_image_file_name.nil? %></li>
+                <li><%= link_to("Удалить", {action: :delete_attachment, id: category.id}, method: :delete, data: {confirm: 'Вы уверины что хотите удалить?'}) %></li>
+            <% end %>
+            </ul>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class=" col-sm-2">
+        <%= f.label 'Название', class:"control-label" %>
+      </div>
+      <div class="col-sm-10 ">
+        <%= f.text_field :name, autofocus: true, class: "form-control form", "required" => true %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-offset-2">
+      <div class="col-sm-2 ">
+        <%= f.label 'Картинки для слайдера', class:"control-label" %>
+      </div>
+      <div class="col-sm-10 ">
+        <% @category.category_slide_images.each do |slide_image| %>
+            <ul class="sliderImg imgcat">
+              <%= f.fields_for :category_slide_images, slide_image do |slide| %>
+                  <li class="sliderImg"><%= image_tag slide_image.image.url()%></li>
+                  <li class="sliderImg"><%= slide.file_field :image %></li>
+                  <li class="sliderImg"><%= slide.link_to_remove "Удалить" %></li>
+              <% end %>
+              <%= f.link_to_add "Добавить ещё + ", :category_slide_images %>
+            </ul>
+
         <% end %>
-      </ul>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10 actions">
+        <br>
+        <%= link_to 'Назад', admin_panel_categories_path, class: 'btn btn-primary' %>
+        <button type="submit" class="btn btn-success editSeller">Сохранить</button>
+      </div>
     </div>
 <% end %>
 
-<div class="form-group col-md-offset-2">
-  <div class="col-sm-2 ">
-    <%= f.label 'Основная картинка', class:"control-label" %>
-    </div>
-  <div class="col-sm-10 ">
-    <ul class="sliderImg imgcat">
-    <li><%= image_tag @category.main_image.url, title: "#{@category.name}", class: "EditImage" %></li>
-     <li><%= f.file_field :main_image %><% unless @category.main_image_file_name.nil? %></li>
-    <li><%= link_to("Удалить", {action: :delete_attachment, id: @category.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %></li>
-<% end %>
-</ul> 
-  </div>
-</div>
 
-<div class="form-group col-md-offset-2">
-  <div class="col-sm-2 ">
-    <%= f.label 'Название', class:"control-label" %><br />
-    </div>
-  <div class="col-sm-10 ">
-    <%= f.text_field :name, class:"form-control form" %>
-  </div>
-</div>
-<div class="form-group col-md-offset-2">
-  <div class="col-sm-2 ">
-    <%= f.label 'Описание', class:"control-label" %><br />
-    </div>
-  <div class="col-sm-10 ">
-    <%= f.text_area :description, class:"form-control form" %>
-  </div>
-</div>
-
-<h3 class="text-center">SEO</h3>
-
-<div class="form-group col-md-offset-2">
-  <div class="col-sm-2 ">
-    <%= f.label 'Meta заголовок', class:"control-label" %><br />
-    </div>
-  <div class="col-sm-10 ">
-    <%= f.text_field :meta_title, class:"form-control form" %>
-  </div>
-</div>
-<div class="form-group col-md-offset-2">
-  <div class="col-sm-2 ">
-    <%= f.label 'Meta описание', class:"control-label" %><br />
-    </div>
-  <div class="col-sm-10 ">
-    <%= f.text_area :meta_desc, class:"form-control form" %>
-  </div>
-</div>
-<div class="form-group col-md-offset-2">
-  <div class="col-sm-2 ">
-    <%= f.label 'Meta ключи', class:"control-label" %><br />
-    </div>
-  <div class="col-sm-10 ">
-    <%= f.text_area :meta_key, class:"form-control form" %>
-  </div>
-</div>
-<div class="form-group col-md-offset-2">
-  <div class="col-sm-2 ">
-    <%= f.label 'Картинки для слайдера', class:"control-label" %>
-    </div>
-  <div class="col-sm-10 ">
-      <% @category.category_slide_images.each do |slide_image| %>
-           <ul class="sliderImg imgcat">
-          <%= f.fields_for :category_slide_images, slide_image do |slide| %>
-                <li class="sliderImg"><%= image_tag slide_image.image.url()%></li>
-                <li class="sliderImg"><%= slide.file_field :image %></li>
-                <li class="sliderImg"><%= slide.link_to_remove "Удалить" %></li>
-          <% end %>
-           </ul>
-      <% end %>
-</div>
-</div>
-<div class="form-group col-md-offset-2">
-  <div class="col-sm-offset-2 col-sm-10 actions">
-  <%= f.link_to_add "Добавить ещё + ", :category_slide_images %>
-    <button type="submit" class="btn btn3">Сохранить</button>
-  </div>
-</div>
-
-<% end %>

@@ -81,13 +81,12 @@ before_action :configure_account_update_params, only: [:update]
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :surname, :city, :promo_code, :date_of_birth, :avatar, :phone])
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :surname, :city, :promo_code, :date_of_birth, :avatar, :phone, :description])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :surname, :city, :promo_code, :date_of_birth, :avatar, :phone,
-     :avatar_original_w, :avatar_original_h, :avatar_box_w, :avatar_aspect, :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h
+     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :surname, :city, :promo_code, :date_of_birth, :avatar, :phone, :description, :avatar_original_w, :avatar_original_h, :avatar_box_w, :avatar_aspect, :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h
      ])
   end
 

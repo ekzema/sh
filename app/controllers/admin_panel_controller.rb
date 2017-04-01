@@ -3,28 +3,29 @@ class AdminPanelController < ApplicationController
   before_action :set_regular, only: [:edit_seller, :update_seller, :edit_product, :update_product, :delete_attachment]
   layout 'adminpanel'
   def product_all
-    @product = Product.paginate(:page => params[:page], :per_page => 20)
+    @product = Product.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
     @sort = params[:moderation]
     if @sort == 'all'
       @product
     elsif @sort
-      @product = Product.where(moderation: params[:moderation]).paginate(:page => params[:page], :per_page => 20)
+      @product = Product.where(moderation: params[:moderation]).paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
     end
   end
 
   def index
     @sellers = Seller.where(:moderation => 0)
     @products = Product.where(:moderation => 0)
+    @feeds = Feed.where(:moderation => 0)
   end
 
   #----BEGIN seller----
   def seller_all
-    @sellers = Seller.paginate(:page => params[:page], :per_page => 20)
+    @sellers = Seller.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
     @sort = params[:moderation]
     if @sort == 'all'
       @sellers
     elsif @sort
-      @sellers = Seller.where(moderation: params[:moderation]).paginate(:page => params[:page], :per_page => 20)
+      @sellers = Seller.where(moderation: params[:moderation]).paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
     end
   end
 
@@ -128,6 +129,18 @@ class AdminPanelController < ApplicationController
     @threecategory = Threecategory.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
   end
   # END threecategories
+
+  # BEGIN feed
+  def feedback
+    @feed = Feed.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+    @sort = params[:moderation]
+    if @sort == 'all'
+      @feed
+    elsif @sort
+      @feed = Feed.where(moderation: params[:moderation]).paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+    end
+  end
+  # END feed
 
   private
 

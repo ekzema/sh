@@ -1,14 +1,14 @@
 <div class="container">
 <div class="row">
 <h4 class="sld01 sh16 text-center">Если у вас возникли вопросы по сайту или есть какие-то предложения, то оставляйте свои отзывы:</h4>
-<%= form_for seller_panel_product_url, :html => {"data-parsley-validate" => true} do |f| %>
+<%= form_for @feed, :html => {"data-parsley-validate" => true} do |f| %>
 
 <div class="form-group col-md-offset-2">
 <div class="col-sm-2 ">
 <%= f.label 'Имя', class:"control-label form" %><br />
 </div>
 <div class="col-sm-10 ">
-<%= f.text_field :name, class:"form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Имя</span>".html_safe %>
+<%= f.text_field :name, autofocus: true, class:"form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Имя</span>".html_safe %>
 </div>
 </div>
 
@@ -17,7 +17,7 @@
 <%= f.label :email, class:"control-label form" %>
 </div>
 <div class="col-sm-10 ">
-<%= f.email_field :email, autofocus: true, class:"form-control form", "required" => true, "type" => "email", "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свой <span style='font-weight: bold;color:#5EBB5E;'>Email</span>".html_safe %>
+<%= f.email_field :email, class:"form-control form", "required" => true, "type" => "email", "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свой <span style='font-weight: bold;color:#5EBB5E;'>Email</span>".html_safe %>
 </div>
 </div>
 

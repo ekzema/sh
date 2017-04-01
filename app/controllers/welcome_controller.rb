@@ -14,7 +14,8 @@ class WelcomeController < ApplicationController
   def vip
   end
 
-  def comment
+  def feedback
+    @feed = Feed.new
   end
 
   def seller_products

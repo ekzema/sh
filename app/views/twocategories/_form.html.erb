@@ -20,7 +20,7 @@
     <ul class="sliderImg imgcat">
     <li><%= image_tag @twocategory.image.url, title: "#{@twocategory.name}", class: "EditImage" %></li>
      <li><%= f.file_field :image %><% unless @twocategory.image_file_name.nil? %></li>
-    <li><%= link_to("Удалить", {action: :delete_attachment, id: @twocategory.id}, method: :put,data: { confirm: 'Вы уверины что хотите удалить?' }) %></li>
+    <li><%= link_to("Удалить", {action: :delete_attachment, id: @twocategory.id}, method: :delete, data: { confirm: 'Вы уверины что хотите удалить?' }) %></li>
 <% end %>
 </ul> 
   </div>

@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  layout 'adminpanel', only: [:edit, :new]
 
   # GET /categories
   # GET /categories.json
@@ -22,6 +23,7 @@ class CategoriesController < ApplicationController
   # GET/categories/new
   def new
     @category = Category.new
+    @category.category_slide_images.build
   end
 
   # GET /categories/1/edit
@@ -33,13 +35,16 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(category_params)
+
+    respond_to do |format|
       if @category.save
-        redirect_to categories_path, notice: "УСПЕХ!"
+        format.html { redirect_to admin_panel_categories_path, notice: "Категория #{@category.name} успешно создана" }
+        format.json { render :show, status: :created, location: admin_panel_categories_path }
       else
-        redirect_to categories_path, notice: "ПРОИЗОШЛА ОШИБКА!"
-
+        format.html { render :new }
+        format.json { render json: @category.errors, status: :unprocessable_entity }
       end
-
+    end
   end
 
   # PATCH/PUT /categories/1
@@ -47,10 +52,10 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
-        format.json { render :show, status: :ok, location: @category }
+        format.html { redirect_to admin_panel_categories_path, notice: "Категория #{@category.name} успешно обновлена" }
+        format.json { render :show, status: :created, location: admin_panel_categories_path }
       else
-        format.html { render :edit }
+        format.html { render :new }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
@@ -59,15 +64,13 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
-    @category.destroy
-    respond_to do |format|
-      format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
-      format.json { head :no_content }
+    if @category.destroy
+      render text: 'ok'
     end
   end
 
   def delete_attachment
-    @category= Category.find(params[:id])
+    @category = Category.find(params[:id])
     @category.main_image = nil
     @category.save
     redirect_to :back

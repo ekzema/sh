@@ -32,7 +32,7 @@
               <th><i class="icon_calendar"></i> Создан</th>
             </tr>
             <% @twocategory.each do |twocategory| %>
-                <tr id="twocategory_<%= twocategory.id %>">
+                <tr id="product_<%= twocategory.id %>">
                   <td><%= twocategory.id %></td>
                   <td><span class="profile-ava sellerAvatar"><%= image_tag twocategory.image %></span></td>
                   <td><%= twocategory.name %></td>
@@ -41,8 +41,7 @@
                   <td><%= twocategory.created_at.strftime('%F') %></td>
                   <td>
                     <div class="btn-group">
-                      <%= link_to '<i class="icon_pencil"></i>'.html_safe, edit_twocategory_path(twocategory), class: 'btn btn-success' %>
-                      <span class='btn btn-danger deleteMessage2' twocategory_id='<%= twocategory.id %>'><i class="icon_close_alt2"></i></span>
+                      <%= link_to '<i class="icon_pencil"></i>'.html_safe, edit_twocategory_path(twocategory), class: 'btn btn-success' %><span class='btn btn-danger deleteMessage2' accon='twocategories' orr_id='<%= twocategory.id %>'><i class="icon_close_alt2"></i></span>
                     </div>
                   </td>
                 </tr>

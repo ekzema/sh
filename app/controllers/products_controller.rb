@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit]
   before_action :authenticate_seller!, except: [:index, :show]
-  before_action :reset_session, only: [:new, :create, :edit, :update, :destroy]
+  # before_action :reset_session, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /products
   # GET /products.json
@@ -128,11 +128,11 @@ class ProductsController < ApplicationController
   end
   private
 
-  def reset_session
-    if seller_signed_in? && current_seller.moderation != 1
-      redirect_to destroy_seller_session_path
-    end
-  end
+  # def reset_session
+  #   if seller_signed_in? && current_seller.moderation != 1
+  #     redirect_to destroy_seller_session_path
+  #   end
+  # end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_product
