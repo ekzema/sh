@@ -149,3 +149,30 @@ $(document).on('ready turbolinks:load', function () {
     });
 });
 
+// $(document).on('ready turbolinks:load', function () {
+//
+//     $('.deleteMessage').on("click", function(){
+//         var id = $(this).attr("seller_id");
+//         $.confirm({
+//             confirmButton: 'Да',
+//             cancelButton: 'Нет',
+//             title: 'Подтверждение!',
+//             content: 'Вы уверены что хотите удалить ПРОДАВЦА?',
+//             confirm: function(){
+//                 $.ajax({
+//                     type: "DELETE",
+//                     url: "/admin_panel/delete_seller",
+//                     data: "id="+id,
+//                     dataType: "html",
+//                     cache: false,
+//                     success: function(data) {
+//                         if (data == "ok")
+//                         {
+//                             $('#seller_'+id).hide(700);
+//                         }
+//                     }
+//                 });
+//             }
+//         });
+//     });
+// });

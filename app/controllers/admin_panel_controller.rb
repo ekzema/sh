@@ -52,7 +52,7 @@ class AdminPanelController < ApplicationController
   end
 
   def delete_seller
-    @seller = Seller.find(params[:seller_id])
+    @seller = Seller.find(params[:id])
     if @seller.destroy
       render text: 'ok'
     end
@@ -105,7 +105,7 @@ class AdminPanelController < ApplicationController
   end
 
   def delete_product
-    @product = Product.find(params[:product_id])
+    @product = Product.find(params[:id])
     if @product.destroy
       render text: 'ok'
     end

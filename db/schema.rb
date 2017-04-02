@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170331222616) do
+ActiveRecord::Schema.define(version: 20170402012910) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170331222616) do
     t.string   "main_image_content_type"
     t.integer  "main_image_file_size"
     t.datetime "main_image_updated_at"
+    t.string   "translit_url"
   end
 
   create_table "category_slide_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -157,6 +158,7 @@ ActiveRecord::Schema.define(version: 20170331222616) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "translit_url"
     t.index ["twocategory_id"], name: "index_threecategories_on_twocategory_id", using: :btree
   end
 
@@ -173,6 +175,7 @@ ActiveRecord::Schema.define(version: 20170331222616) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "translit_url"
     t.index ["category_id"], name: "index_twocategories_on_category_id", using: :btree
   end
 

@@ -14,6 +14,7 @@
       <% end %>
     </div>
     <div class="row">
+      <center><%= link_to 'Создать категорию', new_category_path, class: 'btn btn-info btn-lg buttonNew' %></center>
       <div class="col-lg-12">
         <section class="panel">
           <header class="panel-heading">
@@ -30,7 +31,7 @@
               <th><i class="icon_calendar"></i> Создан</th>
             </tr>
             <% @category.each do |category| %>
-                <tr id="category_<%= category.id %>">
+                <tr id="product_<%= category.id %>">
                   <td><%= category.id %></td>
                   <td><span class="profile-ava sellerAvatar"><%= image_tag category.main_image %></span></td>
                   <td><%= category.name %></td>
@@ -39,7 +40,7 @@
                   <td>
                     <div class="btn-group">
                       <%= link_to '<i class="icon_pencil"></i>'.html_safe, edit_category_path(category), class: 'btn btn-success' %>
-                      <span class='btn btn-danger deleteMessage2' category_id='<%= category.id %>'><i class="icon_close_alt2"></i></span>
+                      <span class='btn btn-danger deleteMessage2' accon='categories' orr_id='<%= category.id %>'><i class="icon_close_alt2"></i></span>
                     </div>
                   </td>
                 </tr>

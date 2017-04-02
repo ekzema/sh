@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:edit, :update, :destroy]
+  before_action :set_category_translit, only: [:show]
   layout 'adminpanel', only: [:edit, :new]
 
   # GET /categories
@@ -82,9 +83,13 @@ class CategoriesController < ApplicationController
       @category = Category.find(params[:id])
     end
 
+  def set_category_translit
+    @category = Category.find_by_name(params[:name])
+  end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:name, :description, :meta_desc, :meta_key, :meta_title, :main_image,
+      params.require(:category).permit(:name, :description, :meta_desc, :meta_key, :meta_title, :main_image, :translit_url,
       category_slide_images_attributes: [:id, :_destroy, :image],
       twocategories_attributes: [:id, :_destroy, :name, :description, :meta_desc, :meta_key, :meta_title, :image,
             threecategories_attributes: [:id, :_destroy, :name, :description, :meta_desc, :meta_key, :meta_title]

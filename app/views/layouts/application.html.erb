@@ -108,24 +108,22 @@
         <ul class="nav navbar-nav dropdown1">
 
             <% @catmenu.each do |category| %>
-
             <li class="dropdown ">
-
-            <%= link_to category_path(category.id), type: "button", id: category.id, role: "button",
+            <%= link_to showcat_path(category.translit_url), type: "button", id: category.id, role: "button",
             class: "dropdown-toggle navbar-brand ", data_toggle: "dropdown" do %>
             <%= category.name %>
             <b class="caret"></b>
-
             <% end %>
 
                 <ul class="dropdown-menu" role="menu" aria-labelledby="<%= category.id %>">
                 <% category.twocategories.each do |twocategory| %>
                     <li class="dropdown-submenu">
-                    <%= link_to twocategory.name, twocategory_path( twocategory.id), tabindex: "-1" %>
+                    <%= link_to twocategory.name, showtwocat_path(twocategory.category.translit_url, twocategory.translit_url), tabindex: "-1" %>
                         <ul class="dropdown-menu">
                         <% twocategory.threecategories.each do |threecategory| %>
                             <li><!-- <a tabindex="-1" href="/threecategories"><%= threecategory.name %></a> -->
-                            <%= link_to threecategory.name, threecategory_path( threecategory.id) %>
+                            <%= link_to threecategory.name, showthreecat_path( twocategory.category.translit_url, twocategory.translit_url, threecategory.translit_url) %>
+
                             </li>
 
                         <% end %>

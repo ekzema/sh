@@ -9,7 +9,8 @@ class Category < ApplicationRecord
   accepts_nested_attributes_for :category_slide_images,
                                 :allow_destroy => true,
                                 :reject_if => :all_blank
-
+  validates :translit_url, :presence => {message: '(укажите название для ссылки)'}
+  validates :name, :presence => {message: '(укажите название категории)'}
 
 
   has_attached_file :main_image, :default_url => "noimage.png"

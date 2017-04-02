@@ -180,7 +180,7 @@
     <div class="row">
       <section class="auto1 hidden-xs hidden-sm ">
             <% @twocategories.each do |twocategory| %>
-              <%= link_to twocategory_path(twocategory.id), class:'size1' do %>
+              <%= link_to showtwocat_path(twocategory.category.translit_url, twocategory.translit_url), class:'size1' do %>
               <%= image_tag twocategory.image %>
               <p class="text-center sld1 "><%= twocategory.name %></p>
               <% end %>

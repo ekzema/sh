@@ -1,5 +1,6 @@
 class ThreecategoriesController < ApplicationController
-  before_action :set_threecategory, only: [:show, :edit, :update, :destroy]
+  before_action :set_threecategory, only: [ :edit, :update, :destroy]
+  before_action :set_threecategory_translit, only: [:show]
   layout 'adminpanel', only: [:edit, :new]
 
   def index
@@ -75,8 +76,14 @@ class ThreecategoriesController < ApplicationController
     @threecategory = Threecategory.find(params[:id])
   end
 
+  def set_threecategory_translit
+    @category = Category.find_by_translit_url(params[:category_name])
+    @twocategory = Twocategory.find_by(category_id: @category.id, translit_url: params[:twocategory_name])
+    @threecategory = Threecategory.find_by(twocategory_id: @twocategory.id, translit_url: params[:name])
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def threecategory_params
-    params.require(:threecategory).permit(:name, :description, :meta_desc, :meta_key, :meta_title, :image, :twocategory_id)
+    params.require(:threecategory).permit(:name, :description, :meta_desc, :meta_key, :meta_title, :image, :twocategory_id, :translit_url)
   end
 end

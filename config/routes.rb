@@ -18,10 +18,12 @@ Rails.application.routes.draw do
     get 'feedback'
     delete 'delete_attachment_product'
     delete 'delete_attachment_seller'
-    delete 'delete_seller'
-    delete 'delete_product'
     post 'form_render'
   end
+
+  delete 'admin_panel/delete_seller/:id', to: 'admin_panel#delete_seller'
+  delete 'admin_panel/delete_product/:id', to: 'admin_panel#delete_product'
+
   get 'admin_panel/:name/edit_seller', to: 'admin_panel#edit_seller', as: 'edit_seller_admin_panel'
   put 'admin_panel/:name/update_seller', to: 'admin_panel#update_seller', as: 'update_seller_admin_panel'
   get 'admin_panel/:name/edit_product', to: 'admin_panel#edit_product', as: 'edit_product_admin_panel'
@@ -81,22 +83,25 @@ Rails.application.routes.draw do
   get 'twocategories/index'
   post 'products/form_render'
 
-  resources :categories do
+  resources :categories, except: [:show] do
     collection do
       delete 'delete_attachment'
     end
   end
+  get 'category/:name', to: 'categories#show', as: 'showcat'
 
-  resources :twocategories do
+  resources :twocategories, except: [:show] do
     collection do
       delete 'delete_attachment'
     end
-    end
-
-    resources :threecategories do
-      collection do
-        delete 'delete_attachment'
-      end
-    end
-
   end
+  get 'category/:category_name/:name', to: 'twocategories#show', as: 'showtwocat'
+
+  resources :threecategories, except: [:show] do
+    collection do
+      delete 'delete_attachment'
+    end
+  end
+  get 'category/:category_name/:twocategory_name/:name', to: 'threecategories#show', as: 'showthreecat'
+
+end

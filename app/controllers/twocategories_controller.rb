@@ -1,5 +1,6 @@
 class TwocategoriesController < ApplicationController
-  before_action :set_twocategory, only: [:show, :edit, :update, :destroy]
+  before_action :set_twocategory, only: [ :edit, :update, :destroy]
+  before_action :set_twocategory_translit, only: [:show]
   layout 'adminpanel', only: [:edit, :new]
 
   # GET /twocategories
@@ -86,8 +87,12 @@ class TwocategoriesController < ApplicationController
     @twocategory = Twocategory.find(params[:id])
   end
 
+  def set_twocategory_translit
+    @category = Category.find_by_translit_url(params[:category_name])
+    @twocategory = Twocategory.find_by(category_id: @category.id, translit_url: params[:name])
+  end
   # Never trust parameters from the scary internet, only allow the white list through.
   def twocategory_params
-    params.require(:twocategory).permit(:name, :category_id, :description, :meta_desc, :meta_key, :meta_title, :image)
+    params.require(:twocategory).permit(:name, :category_id, :description, :meta_desc, :meta_key, :meta_title, :image, :translit_url)
   end
 end
