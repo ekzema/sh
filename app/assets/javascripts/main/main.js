@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 //    BEGIN ajax add category to ptoduct
     var img_load = '<center><img src="/loading.gif" alt=""/></center>';
-    $(document).on( "click", "#product_category_id", function() {
+    $(document).on( "change", "#product_category_id", function() {
         $('#twocategory').html(img_load);
          $.ajax({
             url: '/products/form_render',
@@ -17,7 +17,7 @@ $(document).ready(function() {
         });
     });
 
-$(document).on( "click", "#product_twocategory_id", function() {
+$(document).on( "change", "#product_twocategory_id", function() {
     $('#threecategory').html(img_load);
     $.ajax({
         url: '/products/form_render',
@@ -33,7 +33,7 @@ $(document).on( "click", "#product_twocategory_id", function() {
 
 
 //    BEGIN ajax add category to ptoduct_admin
-    $(document).on( "click", ".product_category_id", function() {
+    $(document).on( "change", ".product_category_id", function() {
         $('#twocategory').html(img_load);
         $.ajax({
             url: '/admin_panel/form_render',
@@ -48,7 +48,7 @@ $(document).on( "click", "#product_twocategory_id", function() {
         });
     });
 
-    $(document).on( "click", ".product_twocategory_id", function() {
+    $(document).on( "change", ".product_twocategory_id", function() {
         $('#threecategory').html(img_load);
         $.ajax({
             url: '/admin_panel/form_render',
@@ -255,6 +255,8 @@ $('.searchInput').autocomplete({
 });
 $('.ui-helper-hidden-accessible').hide(); //hide result message in div classes ui-helper-hidden-accessible
 });
+
+
 
 
 

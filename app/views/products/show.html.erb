@@ -29,7 +29,7 @@
             <ul>
             <% twocategory.threecategories.each do | threecategory | %>
                 <li class="li2">
-                <p><%= link_to threecategory.name, threecategory_path( threecategory.id) %></p>
+                <p><%= link_to threecategory.name, showthreecat_path(@category.translit_url, twocategory.translit_url, threecategory.translit_url) %></p>
                 </li>
             <% end %>
             </ul>
@@ -68,7 +68,7 @@
         <section class="productseller">
           <% @seller.products.each do |product| %>
               <div class="">
-                <%= link_to product_path(product.id), :class => 'size1' do %>
+                <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :class => 'size1' do %>
                     <%= image_tag product.main_image.url(:medium) %>
                     <p class="size2"><%= product.name %></p>
                 <% end %>
@@ -87,7 +87,7 @@
       <section class="autoplay">
         <% @products.each do |product| %>
             <div class="">
-              <%= link_to product_path(product.id), :class => 'size1' do %>
+              <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :class => 'size1' do %>
                   <%= image_tag product.main_image.url(:medium) %>
                   <p class="size3 sld"><%= product.name %></p>
               <% end %>

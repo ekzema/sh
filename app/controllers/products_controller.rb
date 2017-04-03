@@ -6,19 +6,19 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.where(:visible => 1, :moderation => 1)
+    # @products = Product.where(:visible => 1, :moderation => 1).order(created_at: :desc)
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+
     @category = Category.find( @product.category_id)
     twocategories_id =  @category.twocategories.ids
-    @twocategories = Twocategory.where(:id => twocategories_id)
+    @twocategories = Twocategory.where(:id => twocategories_id).order(created_at: :desc)
     @seller = @product.seller
-    @sellers = Seller.all
-    @products = Product.all
-
+    @sellers = Seller.all.order(created_at: :desc)
+    @products = Product.all.order(created_at: :desc)
     unless @product.visible == 1 and @product.moderation == 1
       redirect_to :root
     end
@@ -28,14 +28,15 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    @category = Category.all
+    @category = Category.all.order(created_at: :desc)
   end
 
   # GET /products/1/edit
   def edit
+    return redirect_back(fallback_location: root_path), flash[:notice] = 'Данный товар не найден' if @product.seller_id != current_seller.id
     if @product.moderation == 1
-      @twocategories = Twocategory.where(category_id: @product.category_id)
-      @threecategories = Threecategory.where(twocategory_id: @product.twocategory_id)
+      @twocategories = Twocategory.where(category_id: @product.category_id).order(created_at: :desc)
+      @threecategories = Threecategory.where(twocategory_id: @product.twocategory_id).order(created_at: :desc)
       @product.product_slide_images.build
     else
       redirect_to seller_panel_product_path

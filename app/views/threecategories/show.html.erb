@@ -9,7 +9,7 @@
                 <ul>
                   <% twocategory.threecategories.each do |threecategory| %>
                       <li class="li2">
-                        <p><%= link_to threecategory.name, threecategory_path(threecategory.id) %></p>
+                        <p><%= link_to threecategory.name, showthreecat_path(@cater.translit_url, twocategory.translit_url, threecategory.translit_url) %></p>
                       </li>
                   <% end %>
                 </ul>
@@ -27,7 +27,7 @@
             <% if product.visible == 1 and product.moderation == 1 %>
                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 product ">
                   <div class="row ">
-                    <%= link_to product_path(product.id), class: 'size1' do %>
+                    <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), class: 'size1' do %>
                         <%= image_tag product.main_image(:medium) %>
                         <div>
                           <p class="size3 sld"><%= product.name %></p>
@@ -55,7 +55,7 @@
         <section class="autoplayproduct hidden-xs hidden-sm">
           <% @products.each do |product| %>
               <div class="">
-                <%= link_to product_path(product.id), :class => 'size1' do %>
+                <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :class => 'size1' do %>
                     <%= image_tag product.main_image.url(:medium) %>
                     <p class="size2"><%= product.name %></p>
                 <% end %>
@@ -65,7 +65,7 @@
         <section class="productseller visible-xs visible-sm">
           <% @products.each do |product| %>
               <div class="">
-                <%= link_to product_path(product.id), :class => 'size1' do %>
+                <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :class => 'size1' do %>
                     <%= image_tag product.main_image.url(:medium) %>
                     <p class="size2"><%= product.name %></p>
                 <% end %>

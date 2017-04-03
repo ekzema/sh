@@ -1,11 +1,11 @@
 class WelcomeController < ApplicationController
   def index
-    @category = Category.all
+    @category = Category.all.order(created_at: :desc)
     @image_count =  CategorySlideImage.count
     @i = 1
-    @sellers = Seller.all
-    @products = Product.all
-    @twocategories = Twocategory.all
+    @sellers = Seller.all.order(created_at: :desc)
+    @products = Product.all.order(created_at: :desc)
+    @twocategories = Twocategory.all.order(created_at: :desc)
   end
 
   def about
@@ -19,12 +19,12 @@ class WelcomeController < ApplicationController
   end
 
   def seller_products
-    @category = Category.all
+    @category = Category.all.order(created_at: :desc)
     @image_count =  CategorySlideImage.count
     @i = 1
-    @products = Product.all
+    @products = Product.all.order(created_at: :desc)
     @seller = Seller.find(params[:id])
-    @sellers = Seller.all
+    @sellers = Seller.all.order(created_at: :desc)
   end
 
 end

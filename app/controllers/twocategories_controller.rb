@@ -1,4 +1,5 @@
 class TwocategoriesController < ApplicationController
+  before_action :authenticate_rootadmin!, except: [:show]
   before_action :set_twocategory, only: [ :edit, :update, :destroy]
   before_action :set_twocategory_translit, only: [:show]
   layout 'adminpanel', only: [:edit, :new]
@@ -6,15 +7,12 @@ class TwocategoriesController < ApplicationController
   # GET /twocategories
   # GET /twocategories.json
   def index
-    @sellers = Seller.all
-    @products = Product.all
-    @category = Category.all
-    @categories = Category.all
-
-    @twocategories = Twocategory.all
-
-
-    @twocategory = Twocategory.all
+    @sellers = Seller.all.order(created_at: :desc)
+    @products = Product.all.order(created_at: :desc)
+    @category = Category.all.order(created_at: :desc)
+    @categories = Category.all.order(created_at: :desc)
+    @twocategories = Twocategory.all.order(created_at: :desc)
+    @twocategory = Twocategory.all.order(created_at: :desc)
   end
 
   # GET /twocategories/1

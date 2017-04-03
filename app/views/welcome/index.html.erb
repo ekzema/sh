@@ -82,8 +82,8 @@
           <% @category.each do |category| %>
               <% category.category_slide_images.each do |slide| %>
                   <div class="item">
-                  <%= link_to category_path(category.id) do %>
-                  <%= image_tag slide.image %> 
+                  <%= link_to showcat_path(category.translit_url) do %>
+                  <%= image_tag slide.image %>
                   <% end %>
                   <!--   <a href="/a.html">
                       <%= image_tag slide.image %>
@@ -117,8 +117,8 @@
         <section class="autoplay">
             <% @products.each do |product| %>
             <div>
-            <%= link_to product_path(product.id), :class => 'size1' do %>
-              <%= image_tag product.main_image.url(:medium) %> 
+              <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :class => 'size1' do %>
+              <%= image_tag product.main_image.url(:medium) %>
               <p class="size3 sld"><%= product.name %></p>
               <% end %>
             </div>
@@ -140,8 +140,6 @@
     </div>
   </div>
 </div>
-
-
 
 <div class="container-fluid niz1 text-center">
   <div class="row">

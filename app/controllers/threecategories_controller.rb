@@ -1,27 +1,25 @@
 class ThreecategoriesController < ApplicationController
+  before_action :authenticate_rootadmin!, except: [:show]
   before_action :set_threecategory, only: [ :edit, :update, :destroy]
   before_action :set_threecategory_translit, only: [:show]
   layout 'adminpanel', only: [:edit, :new]
 
   def index
-    @sellers = Seller.all
-    @products = Product.all
-    @category = Category.all
-    @categories = Category.all
-    @twocategory = Twocategory.all
-    @twocategories = Twocategory.all
-
-
-
+    @sellers = Seller.all.order(created_at: :desc)
+    @products = Product.all.order(created_at: :desc)
+    @category = Category.all.order(created_at: :desc)
+    @categories = Category.all.order(created_at: :desc)
+    @twocategory = Twocategory.all.order(created_at: :desc)
+    @twocategories = Twocategory.all.order(created_at: :desc)
     @threecategory = Threecategory.all
   end
 
   def show
     @cater = @threecategory.twocategory.category
     # @twocategories = Twocategory.where(id: @cater)
-    @products = Product.all
+    @products = Product.all.order(created_at: :desc)
     @showca = @threecategory.twocategory
-    @sellers = Seller.all
+    @sellers = Seller.all.order(created_at: :desc)
   end
 
   def new
@@ -33,7 +31,6 @@ class ThreecategoriesController < ApplicationController
 
   def create
     @threecategory = Threecategory.new(threecategory_params)
-
     respond_to do |format|
       if @threecategory.save
         format.html { redirect_to admin_panel_threecategories_path, notice: "Подкатегория #{@threecategory.name} успешно создана" }

@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_rootadmin!, except: [:show]
   before_action :set_category, only: [:edit, :update, :destroy]
   before_action :set_category_translit, only: [:show]
   layout 'adminpanel', only: [:edit, :new]
@@ -6,7 +7,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.all.order(created_at: :desc)
     @cat = Category.new
   end
 
@@ -14,11 +15,11 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   def show
      # добавил из welkome controller две строки:
-    @sellers = Seller.all
-    @products = @category.products.where(visible: 1, moderation: 1)
+    @sellers = Seller.all.order(created_at: :desc)
+    @products = @category.products.where(visible: 1, moderation: 1).order(created_at: :desc)
      
     twocategories_id =  @category.twocategories.ids
-    @twocategories = Twocategory.where(:id => twocategories_id)
+    @twocategories = Twocategory.where(:id => twocategories_id).order(created_at: :desc)
   end
  
   # GET/categories/new

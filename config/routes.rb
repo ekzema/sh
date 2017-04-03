@@ -70,12 +70,12 @@ Rails.application.routes.draw do
     get "/rootadmins" => "rootadmins/sessions#new"
   end
 
-  resources :products, only: [:index, :destroy, :update, :new, :create] do
+  resources :products, only: [:destroy, :update, :new, :create] do
     collection do
       put 'delete_attachment'
     end
   end
-  get 'products/:name', to: 'products#show', as: 'show_product'
+  get 'product/:name', to: 'products#show', as: 'show_product'
   get 'products/:name/edit', to: 'products#edit', as: 'edit_product'
 
   get 'category_slide_images/create'
@@ -83,21 +83,21 @@ Rails.application.routes.draw do
   get 'twocategories/index'
   post 'products/form_render'
 
-  resources :categories, except: [:show] do
+  resources :categories, except: [:show, :index] do
     collection do
       delete 'delete_attachment'
     end
   end
   get 'category/:name', to: 'categories#show', as: 'showcat'
 
-  resources :twocategories, except: [:show] do
+  resources :twocategories, except: [:show, :index] do
     collection do
       delete 'delete_attachment'
     end
   end
   get 'category/:category_name/:name', to: 'twocategories#show', as: 'showtwocat'
 
-  resources :threecategories, except: [:show] do
+  resources :threecategories, except: [:show, :index] do
     collection do
       delete 'delete_attachment'
     end

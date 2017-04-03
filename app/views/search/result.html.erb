@@ -1,36 +1,35 @@
 <div class="container-fluid">
-<div class="row">
+  <div class="row">
     <div class="col-xs-12 col-md-10">
       <div class="text-center">
         <h4>Вы искали: <%= params[:q] %></h4>
         <% @products.each do |product| %>
             <div class="col-xs-6 col-sm-4 col-lg-3  product">
               <div class="row">
-                <%= link_to product_path(product.id), class:'size1' do %>
-            <%= image_tag product.main_image(:medium) %><br>
+                <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), class: 'size1' do %>
+                    <%= image_tag product.main_image(:medium) %><br>
                     <p class="size3"><%= product.name %><br></p>
                     <p class="sld0 col-xs-4"><%= product.size %></p>
                     <p class="col-xs-8"><%= product.price %> грн.</p>
-        <% end %>
+                <% end %>
               </div>
             </div>
         <% end %>
       </div>
     </div>
-  <div class="hidden-xs hidden-sm col-md-2">
-    <div class="row text-center">
-      <p class="size4 sh14">Популярное</p>
-    <section class="autoplaydr">
-      <% @prs.each do |product| %>
+    <div class="hidden-xs hidden-sm col-md-2">
+      <div class="row text-center">
+        <p class="size4 sh14">Популярное</p>
+        <section class="autoplaydr">
+          <% @prs.each do |product| %>
+              <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :class => 'size1' do %>
+                  <%= image_tag product.main_image(:medium) %>
+                  <p class="size3"><%= product.name %></p>
+              <% end %>
 
-            <%= link_to product_path(product.id), :class => 'size1' do %>
-                <%= image_tag product.main_image(:medium) %>
-                <p class="size3"><%= product.name %></p>
-            <% end %>
-
-      <% end %>
-    </section>
+          <% end %>
+        </section>
+      </div>
     </div>
   </div>
-</div>
 </div>
