@@ -45,6 +45,33 @@
       </div>
     </div>
 
+    <div class="form-group">
+      <div class=" col-sm-2">
+        <%= f.label 'Мета загоовок', class:"control-label" %>
+      </div>
+      <div class="col-sm-10 ">
+        <%= f.text_field :meta_title, class: "form-control form" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class=" col-sm-2">
+        <%= f.label 'Мета описание', class:"control-label" %>
+      </div>
+      <div class="col-sm-10 ">
+        <%= f.text_area :meta_desc, class: "form-control form" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class=" col-sm-2">
+        <%= f.label 'Мета ключи(через запятую)', class:"control-label" %>
+      </div>
+      <div class="col-sm-10 ">
+        <%= f.text_area :meta_key, class: "form-control form" %>
+      </div>
+    </div>
+
     <div class="form-group col-md-offset-2">
       <div class="col-sm-2 ">
         <%= f.label 'Картинки для слайдера', class:"control-label" %>

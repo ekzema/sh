@@ -18,6 +18,9 @@ class TwocategoriesController < ApplicationController
   # GET /twocategories/1
   # GET /twocategories/1.json
   def show
+    @title = @twocategory.meta_title unless @twocategory.meta_title.blank?
+    @description = @twocategory.meta_desc unless @twocategory.meta_desc.blank?
+    @keywords = @twocategory.meta_key unless @twocategory.meta_key.blank?
     @products = Product.all
     @showcat = @twocategory.category
     @sellers = Seller.all

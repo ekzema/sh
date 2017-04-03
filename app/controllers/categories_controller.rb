@@ -14,7 +14,9 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-     # добавил из welkome controller две строки:
+    @title = @category.meta_title unless @category.meta_title.blank?
+    @description = @category.meta_desc unless @category.meta_desc.blank?
+    @keywords = @category.meta_key unless @category.meta_key.blank?
     @sellers = Seller.all.order(created_at: :desc)
     @products = @category.products.where(visible: 1, moderation: 1).order(created_at: :desc)
      

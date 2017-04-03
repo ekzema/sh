@@ -1,4 +1,13 @@
 class Product < ApplicationRecord
+  validates :main_image, :presence => { :message => 'укажите фотографию товара' }
+  validates :name, :presence => { :message => 'не может быть пустым' }
+  validates :size, :presence => { :message => 'укажите размер товара' }
+  validates :price, :presence => { :message => 'укажите цену' }
+  validates :quality, :presence => { :message => 'укажите состояние(качество) товара' }
+  validates :description, :presence => { :message => 'опишите товар' }
+  validates :category, :presence => {message: 'выберите категорию'}
+  validates :twocategory, :presence => {message: 'выберите сезон'}
+  validates :threecategory, :presence => {message: 'выберите тип товара'}
 
   belongs_to :seller
   belongs_to :category
@@ -14,6 +23,5 @@ class Product < ApplicationRecord
   validates_attachment_content_type :main_image, content_type: /\Aimage\/.*\z/
   validates_attachment_file_name :main_image, matches: [/png\z/, /jpe?g\z/, /gif\z/]
   crop_attached_file :main_image
-  validates :name, :presence => { :message => 'не может быть пустым' }
 
 end

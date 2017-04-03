@@ -21,7 +21,7 @@
       <li><%= image_tag @product.main_image.url, title: "#{@product.name}", id:'avatarSeller', class: "EditImage jcrop-tracker" %></li>
 
 
-      <li><%= f.file_field :main_image, id: 'imgInp' %></li>
+      <li><%= f.file_field :main_image, id: 'imgInp', "required" => true %></li>
 
         <% unless @product.main_image_file_name.nil? %></li>
             <li><%= link_to(" ", {action: :delete_attachment, id: @product.id}, :type => 'button', :class => 'btn btn1 glyphicon glyphicon-trash', method: :put,data: { confirm: 'Вы уверены что хотите удалить?' }) %></li>
@@ -34,7 +34,7 @@
     <%= f.label 'Название', class:"control-label"  %>
   </div>
   <div class="col-sm-10 ">
-    <%= f.text_field :name, class:"form-control form" %>
+    <%= f.text_field :name, class:"form-control form", "required" => true %>
   </div>
 </div>
 
@@ -52,7 +52,7 @@
     <%= f.label 'Размер', class:"control-label"  %>
   </div>
   <div class="col-sm-10 ">
-    <%= f.text_field :size, class:"form-control form" %>
+    <%= f.text_field :size, class:"form-control form", "required" => true %>
   </div>
 </div>
 
@@ -61,7 +61,7 @@
     <%= f.label 'Цена', class:"control-label"  %>
   </div>
   <div class="col-sm-10 ">
-    <%= f.number_field :price, class:"form-control form" %>
+    <%= f.number_field :price, class:"form-control form", "required" => true %>
   </div>
 </div>
 
@@ -70,7 +70,7 @@
     <%= f.label 'Качество', class:"control-label"  %>
   </div>
   <div class="col-sm-10 ">
-    <%= f.text_area :quality, class:"form-control form" %>
+    <%= f.text_area :quality, class:"form-control form", "required" => true %>
   </div>
 </div>
 
@@ -79,7 +79,7 @@
     <%= f.label 'Описание', class:"control-label"  %>
   </div>
   <div class="col-sm-10 ">
-    <%= f.text_area :description, class:"form-control form" %>
+    <%= f.text_area :description, class:"form-control form", "required" => true %>
   </div>
 </div>
 
@@ -115,7 +115,7 @@
         <%= f.label 'Категория', class:"control-label" %>
       </div>
       <div class="col-sm-10 ">
-        <%= f.select :category_id,  Category.all.collect {|category| [category.name, category.id]}, { :include_blank => '- Выбор категории -'}, :class => 'form-control form' %>
+        <%= f.select :category_id,  Category.all.collect {|category| [category.name, category.id]}, { :include_blank => '- Выбор категории -'}, :class => 'form-control form', "required" => true %>
       </div>
     </div>
 
@@ -127,7 +127,7 @@
             <%= f.label 'Сезон', class:"control-label" %>
           </div>
           <div class="col-sm-10">
-            <%= select_tag('product[twocategory_id]', options_for_select(@twocategories.collect {|twocategory| [twocategory.name, twocategory.id]}, product.twocategory_id), class:"form-control form") %>
+            <%= select_tag('product[twocategory_id]', options_for_select(@twocategories.collect {|twocategory| [twocategory.name, twocategory.id]}, product.twocategory_id), class:"form-control form", "required" => true) %>
           </div>
       <% end %>
     </div>
@@ -138,7 +138,7 @@
             <%= f.label 'Тип товара', class:"control-label" %>
           </div>
           <div class="col-sm-10">
-            <%= select_tag('product[threecategory_id]', options_for_select(@threecategories.collect {|threecategories| [threecategories.name, threecategories.id]}, product.threecategory_id), class:"form-control form") %>
+            <%= select_tag('product[threecategory_id]', options_for_select(@threecategories.collect {|threecategories| [threecategories.name, threecategories.id]}, product.threecategory_id), class:"form-control form", "required" => true) %>
           </div>
       <% end %>
     </div>

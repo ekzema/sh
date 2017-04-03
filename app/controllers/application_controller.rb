@@ -1,11 +1,23 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :nav_main
+  before_action :nav_main, :setting_site, :metateg
 
 
   def nav_main
     @catmenu = Category.all
   end
+
+  def setting_site
+    @domen = 'stockmarket.com.ua'
+  end
+
+  def metateg
+    @title = 'Стокавая одежда недорого на сайте: ' + @domen
+    @description = 'Мужская, женская и детская стоковая одежда от ведущих мировых брендов по сомым низким ценам в Украине на сайте: ' + @domen
+    @keywords = 'стоковая детская одежда, одежда секондхенд, стоковая женская одежда, сток оптом, одежда секондхенд украина, женская одежда secondhand украина, купить одежду secondhand, детская одежда secondhand, одежда secondhand, стоковая одежда оптом,  брендовая стоковая одежда, дешевая одежда secondhand, сток одежда оптом, купить сток одежду, сток украина'
+  end
+
+
 
   # def after_sign_in_path_for(resource)
   #   # check for the class of the object to determine what type it is

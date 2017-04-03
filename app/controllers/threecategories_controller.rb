@@ -15,6 +15,9 @@ class ThreecategoriesController < ApplicationController
   end
 
   def show
+    @title = @threecategory.meta_title unless @threecategory.meta_title.blank?
+    @description = @threecategory.meta_desc unless @threecategory.meta_desc.blank?
+    @keywords = @threecategory.meta_key unless @threecategory.meta_key.blank?
     @cater = @threecategory.twocategory.category
     # @twocategories = Twocategory.where(id: @cater)
     @products = Product.all.order(created_at: :desc)

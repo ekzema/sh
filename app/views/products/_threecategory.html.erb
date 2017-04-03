@@ -2,5 +2,5 @@
   <%= label_tag 'threecategory', 'Тип товара', class:"control-label" %>
       </div>
       <div class="col-sm-10">
- <%= select_tag('product[threecategory_id]',  options_for_select(threecategory.collect {|threecategory| [threecategory.name, threecategory.id]}), {:include_blank => '- Тип товара -', :class => 'form-control form'}) %>
+ <%= select_tag('product[threecategory_id]',  options_for_select(threecategory.collect {|threecategory| [threecategory.name, threecategory.id]}), {:include_blank => '- Тип товара -', :class => 'form-control form', "required" => true}) %>
       </div>

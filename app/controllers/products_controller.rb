@@ -12,7 +12,8 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-
+    @title = @product.name.capitalize + ' | Stockmarket'
+    @description = 'Купить недорого ' + @product.name.capitalize + ' стоковая цена от ' + @product.price.to_s + ' грн.'+ ' Доставка по Украине во все города'
     @category = Category.find( @product.category_id)
     twocategories_id =  @category.twocategories.ids
     @twocategories = Twocategory.where(:id => twocategories_id).order(created_at: :desc)

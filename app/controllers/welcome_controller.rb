@@ -25,6 +25,8 @@ class WelcomeController < ApplicationController
     @products = Product.all.order(created_at: :desc)
     @seller = Seller.find(params[:id])
     @sellers = Seller.all.order(created_at: :desc)
+    @title = 'Продавец: ' + @seller.name.capitalize + ' ' + @seller.surname.capitalize + ' | Stockmarket'
+    @description = 'Продавец: ' + @seller.name.capitalize + ' ' + @seller.surname.capitalize + ', Украина' + "(#{@seller.city} область)"
   end
 
 end
