@@ -108,7 +108,6 @@
         </div>
         <div class="collapse navbar-collapse" id="responsive-menu1">
           <ul class="nav navbar-nav dropdown1">
-
             <% @catmenu.each do |category| %>
                 <li class="dropdown ">
                   <%= link_to showcat_path(category.translit_url), type: "button", id: category.id, role: "button",
@@ -116,7 +115,6 @@
                       <%= category.name %>
                       <b class="caret"></b>
                   <% end %>
-
                   <ul class="dropdown-menu" role="menu" aria-labelledby="<%= category.id %>">
                     <% category.twocategories.each do |twocategory| %>
                         <li class="dropdown-submenu">
@@ -146,7 +144,6 @@
                     <%= text_field_tag(:q, nil, placeholder: "Поиск товара", class: "form-control searchInput") %>
                   </div>
                   <%= button_tag 'Найти', class: 'btn btn-default' %>
-
               <% end %>
             </li>
             <li>
@@ -163,21 +160,16 @@
 </header>
 
 <%= yield %>
-
 <!-- footer -->
 <div class="tofooter">
   <!--
   <% if rootadmin_signed_in? %>-->
       <!--<li><%= link_to 'Выход АДМИН', destroy_rootadmin_session_path %></li>-->
-
       <!--
   <% else %>-->
-
       <!--<li><%= link_to 'Вход АДМИН', new_rootadmin_session_path %></li>-->
-
       <!--
   <% end %>-->
-
 </div>
 <footer class="navbar navbar-inverse" id="footer">
   <div class="container-fluid text-center">
