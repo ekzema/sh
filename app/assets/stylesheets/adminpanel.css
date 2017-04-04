@@ -20,3 +20,6 @@
  *= require adminpanel/jquery-confirm
  */
 
+.sliderImg img{
+    max-width: 50%!important;
+}

@@ -76,9 +76,9 @@
       <div class="col-sm-2 ">
         <%= f.label 'Картинки для слайдера', class:"control-label" %>
       </div>
-      <div class="col-sm-10 ">
+      <div class="col-sm-8 dass">
         <% @category.category_slide_images.each do |slide_image| %>
-            <ul class="sliderImg imgcat">
+            <ul class="sliderImg">
               <%= f.fields_for :category_slide_images, slide_image do |slide| %>
                   <li class="sliderImg"><%= image_tag slide_image.image.url()%></li>
                   <li class="sliderImg"><%= slide.file_field :image %></li>

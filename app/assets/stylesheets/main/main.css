@@ -45,29 +45,27 @@ body {
     margin-bottom: 20px;
 }
 
-
 .control-l{
     margin-bottom: 0px;
 }
 .sliderImg{
     display: table;
-}
+ }
 
 .sliderImg li{
     display: table-cell;
     vertical-align: middle;
 }
+ .imgcat2 img{
+     margin-left: -20px!important;
+     max-width: 200px;
+     max-height: 100px;
+ }
+ .imgcat img{
 
-.imgcat img{
-    
-    max-width: 200px;
-    max-height: 100px;
-}
-.imgcat2 img{
-    margin-left: -20px!important;
-    max-width: 200px;
-    max-height: 100px;
-}
+     max-width: 100px;
+     max-height: 100px;
+ }
 .imgcat3 img{
     margin: 50px!important;
     max-width: 200px;
