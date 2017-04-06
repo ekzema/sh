@@ -4,28 +4,28 @@
           interval: 3500
         })
        });
-      
+
 </script>
 <script type="text/javascript">
     setTimeout(function(){$('.box').fadeOut(3000)},3000);
 </script>
-   
+
      <div class="container box">
-        <% if flash[:alert] %>          
+        <% if flash[:alert] %>
           <div class="alert alert-error" class="text-center">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <%= flash[:alert] %></div>
         <% end %>
-        <% if flash[:notice] %>          
+        <% if flash[:notice] %>
           <div class="alert alert-success" class="text-center">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <%= flash[:notice] %>
           </div>
         <% end %>
-        
+
      </div>
 
-   
+
 <!-- иконки-меню -->
 <div class="container-fluid">
   <div class="row">
@@ -60,7 +60,7 @@
     <!-- слайдер -->
 
     <div class="col-xs-12 col-sm-10">
-    
+
       <div id="carousel" class="carousel slide " data-ride="carousel" data-no-turbolink="false">
         <ol class="carousel-indicators">
           <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -78,7 +78,7 @@
 
               <p class="hidden-xs">О нас</p>
             </div>
-          </div> 
+          </div>
           <% @category.each do |category| %>
               <% category.category_slide_images.each do |slide| %>
                   <div class="item">
@@ -104,7 +104,7 @@
         <a class="carousel-control right" href="#carousel" data-slide="next">
           <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
-      </div> 
+      </div>
     </div>
     <!-- реклама продавца -->
     <div class="hidden-xs col-sm-2 ">
@@ -146,7 +146,7 @@
             <% @sellers.each do | seller | %>
             <div>
             <%= link_to seller_products_path(seller.id), :class => 'size1' do %>
-              <%= image_tag seller.avatar(:medium) %> 
+              <%= image_tag seller.avatar(:medium) %>
               <p class="sld1 sld text-center"><%= seller.name %></p>
               <% end %>
             </div>
@@ -163,7 +163,7 @@
             <% end %>
         </section>
         </div>
-    </div>  
+    </div>
   </div>
 </div>
 <div class="container-fluid niz1 text-center">
@@ -208,6 +208,6 @@
           <% end %>
         </section>
         </div>
-    </div>  
+    </div>
   </div>
 </div>

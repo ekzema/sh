@@ -74,7 +74,7 @@ body {
 }
 .imgcat3 {
     margin-left: 40px;
-   
+
 
 }
 .fields{
@@ -90,7 +90,7 @@ body {
     margin-left: 20px!important;
 }
 
-#product_main_image, 
+#product_main_image,
 #product_product_slide_images_attributes_0_image,
 #product_product_slide_images_attributes_1_image,
 #product_product_slide_images_attributes_2_image,
@@ -142,7 +142,7 @@ nav#topMenu {
 }
 
 .dropdown-submenu:hover>.dropdown-menu {
-    display: block;
+    display: block!important;
 }
 
 .dropdown-submenu>a:after {
@@ -168,7 +168,8 @@ nav#topMenu {
         left: 0!important;
         background-color: #777;
     }
-    .dropdown:hover > .dropdown-menu { display: block!important; }
+    .dropdown-menu:hover > .dropdown-menu { display: block!important; }
+    .dropdown-toggle:hover > dropdown { display: block!important; }
 }
 
 .dropdown-submenu:hover>a:after {
@@ -264,7 +265,7 @@ p {
 
 .tmenu1 a{
     font-size: 18px;
-    
+
 }
 .tmenu3 {
     color: #fff;
@@ -277,8 +278,8 @@ p {
 .tmenu3 a:hover, a:focus{
     color: #CD423C;
     background-color: transparent;
-    
-    text-decoration: none; 
+
+    text-decoration: none;
 }
 
 .navbar {
@@ -612,7 +613,7 @@ table{
 .li1 a:hover, .li1 a:focus{
     color: #333!important;
     font-weight: 600!important;
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 /* product*/
@@ -796,20 +797,20 @@ body {
 /*нижняя панель на главной странице*/
 .niz{
   background-color: #333;
-  color: #fff; 
-  margin-bottom: 20px !important; 
+  color: #fff;
+  margin-bottom: 20px !important;
 }
 .niz1{
   background-color: #333;
-  color: #fff; 
-  margin-bottom: 20px !important; 
+  color: #fff;
+  margin-bottom: 20px !important;
 }
 .niz1 a{
   color: #fff;
-  text-decoration: none; 
+  text-decoration: none;
 }
 .niz1:focus {
-  color: #111!important; 
+  color: #111!important;
 }
 .niz2{
     padding: 5px;
@@ -843,7 +844,7 @@ body {
 }
 .niz4{
     margin-bottom: 0px!important;
-    
+
 }
 .niz6{
     text-align: justify;
@@ -892,7 +893,7 @@ body {
 }
 
 .pro{
-   margin-bottom: 40px; 
+   margin-bottom: 40px;
 }
 
 /*BEGIN ui autocomplete*/
