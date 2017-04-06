@@ -16,6 +16,7 @@
 //= require jquery_nested_form
 //= require adminpanel/scripts
 //= require main/main
+//= require adminpanel/jquery-confirm
 //= require adminpanel/bootstrap
 //= require adminpanel/bootstrap-switch
 //= require adminpanel/bootstrap-wysiwyg
@@ -28,5 +29,5 @@
 //= require adminpanel/jquery.scrollTo.min
 //= require adminpanel/jquery.slimscroll.min
 //= require adminpanel/jquery-ui-1.10.4.min
-//= require adminpanel/jquery-confirm
+
 
