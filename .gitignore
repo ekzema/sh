@@ -12,6 +12,7 @@
 /log/*
 /tmp/*
 /public/system/*
+/public/assets/*
 !/log/.keep
 !/tmp/.keep
 
