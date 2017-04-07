@@ -258,6 +258,7 @@ $('.ui-helper-hidden-accessible').hide(); //hide result message in div classes u
 
 
 
+
 (function($){
     $(document).ready(function(){
         $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
@@ -268,3 +269,6 @@ $('.ui-helper-hidden-accessible').hide(); //hide result message in div classes u
         });
     });
 })(jQuery);
+
+
+
