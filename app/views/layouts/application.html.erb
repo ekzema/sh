@@ -108,11 +108,11 @@
           <a class="navbar-brand brand visible-xs " href="#">Разделы сайта</a>
         </div>
         <div class="collapse navbar-collapse" id="responsive-menu1">
-          <ul class="nav navbar-nav dropdown1">
+          <ul class="nav navbar-nav dropdown1 hidden-xs">
             <% @catmenu.each do |category| %>
                 <li class="dropdown ">
                   <%= link_to showcat_path(category.translit_url), type: "button", id: category.id, role: "button",
-                              class: "dropdown-toggle navbar-brand ", data_toggle: "dropdown" do %>
+                              class: "dropdown-toggle navbar-brand block", data_toggle: "dropdown" do %>
                       <%= category.name %>
                       <b class="caret"></b>
                   <% end %>
@@ -154,6 +154,63 @@
               <%= image_tag 'VK.png', class: 'vk' %></a>
             </li>
           </ul>
+
+          <!--xs-->
+          <ul class="nav navbar-nav dropdown1 visible-xs">
+            <% @catmenu.each do |category| %>
+            <li class="dropdown ">
+              <a type="button" id="<%= category.id %>" role="button" class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#">
+            <%= category.name %>
+            <b class="caret"></b>
+            </a>
+
+            <ul class="dropdown-menu" role="menu" aria-labelledby="<%= category.id %>">
+              <li class="dr2"><%= link_to 'Все товары категории', showcat_path(category.translit_url) %></li>
+
+              <!--<li><a href="#" class="dr2">Все товары <%= category.name %></a></li>-->
+            <% category.twocategories.each do |twocategory| %>
+
+                  <li class="menu-item dropdown dropdown-submenu dr2">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+                <%= twocategory.name %>
+            </a>
+                  <ul class="dropdown-menu">
+                    <li class="dr3"><%= link_to 'Все товары категории', showtwocat_path(twocategory.category.translit_url, twocategory.translit_url) %></li>
+                    <!--<li><a href="#" class="dr3">Все товары <%= twocategory.name %></a></li>-->
+                      <% twocategory.threecategories.each do |threecategory| %>
+                  <li class="dr3">
+                  <%= link_to threecategory.name, showthreecat_path(twocategory.category.translit_url, twocategory.translit_url, threecategory.translit_url) %>
+                   </li>
+
+                  <% end %>
+
+                  </ul>
+            </li>
+
+            <% end %>
+
+            </ul>
+            </li>
+
+            <% end %>
+
+            <li class="hidden-xs">
+              <%= form_tag({:controller => "/search", :action => "result"}, method: "get", class: "navbar-form navbar-left", "role" => "search") do %>
+                  <div class="form-group">
+                    <%= text_field_tag(:q, nil, placeholder: "Поиск товара", class: "form-control searchInput") %>
+                  </div>
+                  <%= button_tag 'Найти', class: 'btn btn-default' %>
+              <% end %>
+            </li>
+            <li>
+              <p class="text-vk hidden-xs hidden-sm sh14">Наша группа в ВК:</p>
+              <p class="text-vk visible-sm sh14">Мы в ВК:</p>
+            <li class="vk hidden-xs"><a href="https://vk.com/ukrstock" target="_blank">
+              <%= image_tag 'VK.png', class: 'vk' %></a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -163,6 +220,7 @@
 
 <%= yield %>
 <!-- footer -->
+
 <div class="tofooter">
   <!--
   <% if rootadmin_signed_in? %>-->
@@ -173,6 +231,7 @@
       <!--
   <% end %>-->
 </div>
+
 <footer class="navbar navbar-inverse" id="footer">
   <div class="container-fluid text-center">
     <div class="col-xs-12 col-sm-6">
