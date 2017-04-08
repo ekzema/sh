@@ -87,7 +87,7 @@ class CategoriesController < ApplicationController
     end
 
   def set_category_translit
-    @category = Category.find_by_name(params[:name])
+    @category = Category.find_by_translit_url(params[:name])
   end
 
     # Never trust parameters from the scary internet, only allow the white list through.
