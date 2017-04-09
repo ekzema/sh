@@ -72,7 +72,7 @@ Rails.application.routes.draw do
 
   resources :products, only: [:destroy, :update, :new, :create] do
     collection do
-      put 'delete_attachment'
+      delete 'delete_attachment/:product_img', to: 'products#delete_attachment', as: 'delete_image'
     end
   end
   get 'product/:name', to: 'products#show', as: 'show_product'

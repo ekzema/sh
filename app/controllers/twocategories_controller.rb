@@ -76,7 +76,7 @@ class TwocategoriesController < ApplicationController
   end
 
   def delete_attachment
-    @twocategory= Threecategory.find(params[:id])
+    @twocategory= Twocategory.find(params[:id])
     @twocategory.image = nil
     @twocategory.save
     redirect_to :back

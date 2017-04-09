@@ -123,10 +123,10 @@ class ProductsController < ApplicationController
   end
 
   def delete_attachment
-    @product= Product.find(params[:id])
+    @product = Product.find(params[:id])
     @product.main_image = nil
     @product.save
-    redirect_to :back
+    redirect_back(fallback_location: @product)
   end
   private
 
