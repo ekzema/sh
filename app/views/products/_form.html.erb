@@ -19,13 +19,13 @@
         </div>
         <div class="col-sm-10">
           <ul class="sliderImg imgcat">
-            <% if @product.main_image_file_name.nil? %>
+            <% if @product.main_image.exists? %>
                 <li><%= image_tag @product.main_image.url, title: "#{@product.name}", id: 'avatarSeller', class: "EditImage jcrop-tracker" %></li>
                 <li><%= f.file_field :main_image, id: 'imgInp', "required" => true %></li>
             <% else %>
                 <li><%= image_tag @product.main_image.url, title: "#{@product.name}", id: 'avatarSeller', class: "EditImage jcrop-tracker" %></li>
                 <li><%= f.file_field :main_image, id: 'imgInp' %></li>
-                <li><%= link_to ' ',  delete_image_products_path(@product.id), :type => 'button', :class => 'btn btn1 glyphicon glyphicon-trash', method: :delete, data: {confirm: 'Вы уверены что хотите удалить?'} %></li>
+                <!--<li><%= link_to ' ',  delete_image_products_path(@product.id), :type => 'button', :class => 'btn btn1 glyphicon glyphicon-trash', method: :delete, data: {confirm: 'Вы уверены что хотите удалить?'} %></li>-->
             <% end %>
           </ul>
         </div>

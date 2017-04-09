@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
 
-  # validates :main_image, :presence => { :message => 'укажите фотографию товара' }
+  validates :main_image, :presence => { :message => 'укажите фотографию товара' }
   validates :name, :presence => { :message => 'не может быть пустым' }
   validates :size, :presence => { :message => 'укажите размер товара' }
   validates :price, :presence => { :message => 'укажите цену' }

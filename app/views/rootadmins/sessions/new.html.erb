@@ -17,8 +17,10 @@
         <span class="pull-right"> <%= link_to 'Забыли пароль?', new_rootadmin_password_path %></span>
       </label>
       <%= f.submit "Войти", class: 'btn btn-primary btn-lg btn-block' %>
-      <%= link_to new_rootadmin_registration_path, class: 'btn btn-info btn-lg btn-block rootReg' do %>
-          <span>Регистрация</span>
+      <% if Rails.env == 'development' %>
+          <%= link_to new_rootadmin_registration_path, class: 'btn btn-info btn-lg btn-block rootReg' do %>
+              <span>Регистрация</span>
+          <% end %>
       <% end %>
     </div>
 
