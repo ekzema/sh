@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
 
-  validates :main_image, :presence => { :message => 'укажите фотографию товара' }
+  #validates :main_image, :presence => { :message => 'укажите фотографию товара' }
   validates :name, :presence => { :message => 'не может быть пустым' }
   validates :size, :presence => { :message => 'укажите размер товара' }
   validates :price, :presence => { :message => 'укажите цену' }
@@ -22,7 +22,6 @@ class Product < ApplicationRecord
 
   has_attached_file :main_image, :styles => { :medium => "250x250", :thumb => "70x70" }, :default_url => "noimage.png"
   validates_attachment_content_type :main_image, content_type: /\Aimage\/.*\z/
-  validates_attachment_file_name :main_image, matches: [/png\z/, /jpe?g\z/, /gif\z/]
   crop_attached_file :main_image
 
 end
