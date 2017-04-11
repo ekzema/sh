@@ -201,10 +201,15 @@ nav#topMenu {
 }
  @media only screen and (min-width: 200px) and (max-width: 767px) {
      .navbar-default .navbar-nav .open .dropdown-menu > li > a { color: #fff!important;}
-
+     .slick-slide { margin: 0px 5px!important; }
+     .size2 { padding: 3px 5px!important; }
+     .sh14 li{ font-size: 12px!important; }
+     .showproduct li { padding: 2px!important;}
  }
 
 @media only screen and (min-width: 350px) and (max-width: 767px) {
+
+    .okey{margin-left: 5px!important;}
     .navbar-brand{ height: auto!important;float:none!important;}
      h4{ font-size: 14px!important;}
     .fotoava2{ width: 100px!important;border-radius: 0%!important;}
