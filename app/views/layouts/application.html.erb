@@ -37,10 +37,14 @@
         <ul class="nav navbar-nav tmenu">
           <a class="logo " href="/"><%= image_tag '001.png', class: 'hidden-xs hidden-sm' %><%= image_tag 'logo2.png', class: 'visible-sm' %></a>
           <li class="menuonas"><a href="/about">О нас</a></li>
+          <li class="vk visible-xs text-vk visible-xs sh14">
+            <a href="https://vk.com/ukrstock" target="_blank">
+              Наша группа <%= image_tag 'VK.png', class: 'vk' %></a>
+          </li>
           <!--<li><a href="/categories">Новоcти</a></li>-->
           <!--<li class="hidden-xs"><a href="/vip">VIP-Статус</a></li>-->
           <li class="">
-            <ul class="nav navbar-nav okey">
+            <ul class="nav navbar-nav oas">
               <li class="dropdown">
                 <a type="button" id="drop01" role="button" class="dropdown-toggle tmenu"
                    data-toggle="dropdown" href="#">
@@ -59,7 +63,7 @@
             </ul>
           </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right oas">
           <li class="dropdown">
             <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu"
                data-toggle="dropdown" href="#">
@@ -204,12 +208,7 @@
                   <%= button_tag 'Найти', class: 'btn btn-default' %>
               <% end %>
             </li>
-            <li>
-              <p class="text-vk hidden-xs hidden-sm sh14">Наша группа в ВК:</p>
-              <p class="text-vk visible-sm sh14">Мы в ВК:</p>
-            <li class="vk"><a href="https://vk.com/ukrstock" target="_blank">
-              <%= image_tag 'VK.png', class: 'vk' %></a>
-            </li>
+
           </ul>
         </div>
       </div>

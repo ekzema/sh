@@ -205,11 +205,13 @@ nav#topMenu {
      .size2 { padding: 3px 5px!important; }
      .sh14 li{ font-size: 12px!important; }
      .showproduct li { padding: 2px!important;}
+     .nav > li > a {padding: 0!important;  }
+     .text-vk {padding: 0!important;  }
  }
 
-@media only screen and (min-width: 350px) and (max-width: 767px) {
-
-    .okey{margin-left: 5px!important;}
+@media only screen and (min-width: 200px) and (max-width: 767px) {
+    .vk img { width: 30px!important; margin: 0!important;opacity: 1!important;}
+    .oas li{ padding-left: 15px!important; }
     .navbar-brand{ height: auto!important;float:none!important;}
      h4{ font-size: 14px!important;}
     .fotoava2{ width: 100px!important;border-radius: 0%!important;}
@@ -276,10 +278,15 @@ p {
     width: 90%;
     border-radius: 100%;
 }
-.tmenu a{
-    font-size: 18px;
-    text-transform: capitalize;
-}
+ .tmenu a{
+     font-size: 18px;
+     text-transform: capitalize;
+
+ }
+ .tmenu {
+
+     margin: 0px!important;
+ }
 
 .tmenu1 a{
     font-size: 18px;
@@ -288,6 +295,7 @@ p {
 .tmenu3 {
     color: #fff;
     padding: 13px;
+
 }
 
 .tmenu3 a{
@@ -934,12 +942,15 @@ body {
 }
 
 /*В контакте*/
-.vk img{
-    width: 38px!important;
-    margin-top: 6px!important;
-    opacity:0.6;
-    -moz-opacity:0.6;
-}
+ @media only screen and (min-width: 768px) {
+     .vk img{
+         width: 38px!important;
+         margin-top: 6px!important;
+         opacity:0.6!important;
+         -moz-opacity:0.6!important;
+     }
+ }
+
 .vk2 img{
     padding: 3px!important;
     width: 29px!important;
