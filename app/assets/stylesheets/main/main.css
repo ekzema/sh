@@ -199,24 +199,48 @@ nav#topMenu {
 @media only screen and (min-width: 767px) {
     .dropdown:hover > .dropdown-menu { display: block!important; }
 }
- @media only screen and (min-width: 200px) and (max-width: 767px) {
-     .navbar-default .navbar-nav .open .dropdown-menu > li > a { color: #fff!important;}
-     .slick-slide { margin: 0px 5px!important; }
-     .size2 { padding: 3px 5px!important; }
-     .sh14 li{ font-size: 12px!important; }
-     .showproduct li { padding: 2px!important;}
-     .nav > li > a {padding: 0!important;  }
-     .text-vk {padding: 0!important;  }
- }
 
-@media only screen and (min-width: 200px) and (max-width: 767px) {
-    .vk img { width: 30px!important; margin: 0!important;opacity: 1!important;}
+ /*меню телефон*/
+@media only screen and (min-width: 220px) and (max-width: 767px) {
+    .navbar-brand{ font-size: 14px!important;}
+    .tmenu a { font-size:14px!important;}
+    .logo{margin-top: -15px!important; margin-left: 0px!important;}
+    .form{margin-bottom: -10px!important; }
+    .carousel-caption{padding: 0px}
+    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 4px!important; font-size: 11px!important;}
+    .shrift{font-size: 14px!important; margin-bottom: 20px!important;}
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a { color: #fff!important;}
+    .slick-slide { margin: 0px 5px!important; }
+    .size2 { padding: 3px 5px!important; }
+    .sh14 li{ font-size: 12px!important; }
+    .showproduct li { padding: 2px!important;}
+    .nav > li > a {padding: 0!important;  }
+    .text-vk {padding: 0!important;  }
+    .vk img { width: 35px!important; margin: 0!important;opacity: 1!important;}
     .oas li{ padding-left: 15px!important; }
+    .oast li{ padding-left: 5px!important; }
     .navbar-brand{ height: auto!important;float:none!important;}
-     h4{ font-size: 14px!important;}
+    h4{ font-size: 14px!important;}
     .fotoava2{ width: 100px!important;border-radius: 0%!important;}
     td btn{vertical-align: middle!important;}
+    .menuonas{ margin: 7.5px 0!important;}
+    .menurazdel > li > a{ padding:7.5px 15px!important;}
+    .dla > li > a img { margin: 2px!important; padding: 0!important; opacity: 1!important; }
+    .navbar-inverse .navbar-nav   .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #333!important; color: #CD423C!important;}
+    .logo{vertical-align: middle!important;}
+    .size3{padding-bottom: 0!important;}
+    ul { -webkit-padding-start: 10px!important;}
+    .fotoav img{ width: 35px!important;height:35px!important; }
 }
+
+@media only screen and (max-width: 320px) {
+ .tmenu3 {padding-left: 0px!important; padding-right: 0px!important;}
+ .logo img{ position: absolute; height: 35px!important; margin-top: 7.5px!important;}
+ .logo {margin-left: -15px!important; }
+}
+
 @media only screen and (min-width: 768px) and (max-width: 992px) {
     body{ font-size: 12px!important;}
     .navbar-nav > li > a {padding-left: 10px!important; padding-right:10px!important; }
@@ -227,16 +251,7 @@ nav#topMenu {
     .text-vk { padding-right: 0px!important;}
 
 }
-@media only screen and (min-width: 200px) and (max-width: 767px) {
-    .navbar-brand{ font-size: 14px!important;}
-    .tmenu a { font-size:14px!important;}
-    .logo{margin-top: -15px!important; margin-left: -15px!important;}
-    .form{margin-bottom: -10px!important; }
-    .carousel-caption{padding: 0px}
-    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
-        padding: 4px!important; font-size: 11px!important;}
-    .shrift{font-size: 14px!important; margin-bottom: 20px!important;}
-}
+
 @media only screen and (min-width: 767px) and (max-width: 799px) {
     .menuonas{ margin-left: 40px!important;}
 }
@@ -251,21 +266,14 @@ p {
     text-transform: uppercase!important;
 }
 
-@media only screen and (max-width: 800px) {
-    .logo img{
-        position: absolute;
-        margin: -10px 0px 0 0px!important;
-        z-index: 100;
-        height: 40px;
-}
 
+@media only screen and (min-width: 321px) {
+ .logo img {
+     height: 45px;
+     margin-top: 3px !important;
+     float: left;
+ }
 }
-.logo img{
-    height: 45px;
-    margin-top: 3px!important;
-    float: left;
-}
-
 .fotoava{
     width: 42px!important;
     height: 42px!important;
@@ -533,7 +541,6 @@ table{
 
 .sld01{
     text-align: justify;
-
 }
 .sld1 {
     background: rgba(0, 0, 0, 0.4);
@@ -685,9 +692,9 @@ table{
 }
 
 @media only screen and (min-width: 300px) and (max-width: 767px) {
-    .size3 {font-size: 10px!important; }
+    /*.size3 {font-size: 10px!important; }*/
     .tmenu3{font-size: 14px!important; }
-    p{font-size: 10px!important;}
+    /*p{font-size: 10px!important;}*/
     h2{font-size: 18px!important;}
     .padp{padding-left: 5px!important; padding-right:5px!important; }
 }

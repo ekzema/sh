@@ -35,7 +35,7 @@
       </div>
       <div class="collapse navbar-collapse " id="responsive-menu">
         <ul class="nav navbar-nav tmenu">
-          <a class="logo " href="/"><%= image_tag '001.png', class: 'hidden-xs hidden-sm' %><%= image_tag 'logo2.png', class: 'visible-sm' %></a>
+          <a class="logo hidden-xs" href="/"><%= image_tag '001.png', class: 'hidden-xs hidden-sm' %><%= image_tag 'logo2.png', class: 'visible-sm' %></a>
           <li class="menuonas"><a href="/about">О нас</a></li>
           <li class="vk visible-xs text-vk visible-xs sh14">
             <a href="https://vk.com/ukrstock" target="_blank">
@@ -44,13 +44,13 @@
           <!--<li><a href="/categories">Новоcти</a></li>-->
           <!--<li class="hidden-xs"><a href="/vip">VIP-Статус</a></li>-->
           <li class="">
-            <ul class="nav navbar-nav oas">
+            <ul class="nav navbar-nav oast">
               <li class="dropdown">
                 <a type="button" id="drop01" role="button" class="dropdown-toggle tmenu"
                    data-toggle="dropdown" href="#">
                   Помощь
                   <b class="caret"></b></a>
-                <ul class="dropdown-menu " role="menu" aria-labelledby="drop01">
+                <ul class="dropdown-menu dla" role="menu" aria-labelledby="drop01">
                   <li class="vk2"><a href="/feedback">
                     <%= image_tag 'pismo.jpg', class: 'vk' %><span class="vk3">отправить E-mail</span></a>
                   </li>
@@ -65,7 +65,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right oas">
           <li class="dropdown">
-            <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu"
+            <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu fotoav"
                data-toggle="dropdown" href="#">
               <% if seller_signed_in? %>
                   <%= image_tag current_seller.avatar.url(:medium), class: 'fotoava', alt: current_seller.name %>
@@ -160,10 +160,10 @@
           </ul>
 
           <!--xs-->
-          <ul class="nav navbar-nav dropdown1 visible-xs">
+          <ul class="nav navbar-nav dropdown1 visible-xs menurazdel">
             <% @catmenu.each do |category| %>
             <li class="dropdown ">
-              <a type="button" id="<%= category.id %>" role="button" class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#">
+              <a type="button" id="<%= category.id %>" role="button" class="dropdown-toggle navbar-brand " data-toggle="dropdown" href="#">
             <%= category.name %>
             <b class="caret"></b>
             </a>

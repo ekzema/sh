@@ -142,7 +142,7 @@ $(document).on('ready turbolinks:load', function(){
 
 $(document).on('ready turbolinks:load', function(){
     $('.auto3').not('.slick-initialized').slick({
-        slidesToShow: 5,
+        slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: true,
         pauseOnHover: false,
@@ -195,7 +195,7 @@ $(document).on('ready turbolinks:load', function(){
 
 $(document).on('ready turbolinks:load', function(){
     $('.productseller').not('.slick-initialized').slick({
-        slidesToShow: 5,
+        slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: true,
         pauseOnHover: false,
