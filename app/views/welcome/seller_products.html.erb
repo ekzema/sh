@@ -26,7 +26,7 @@
         </div>
         <% end %>
     </div>
-    <div class="hidden-xs col-sm-2 text-center">
+    <div class="hidden-xs col-sm-2 text-center sld3">
         <p class="size4">Другие продавцы</p>
         <section class="autoplaydr">
         <% @sellers.each do | seller | %>
@@ -50,7 +50,7 @@
           <div class="">
             <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :class => 'size1' do %>
                 <%= image_tag product.main_image.url(:medium) %>
-                <p class="size3"><%= product.name %></p>
+                <p class="size2"><%= product.name %></p>
             <% end %>
           </div>
       <% end %>
@@ -58,9 +58,9 @@
     <section class="autoplayproduct2 visible-xs">
       <% @products.each do |product| %>
           <div class="">
-            <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :class => 'size2' do %>
+            <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :class => 'size1' do %>
                 <%= image_tag product.main_image.url(:medium) %>
-                <p class="size3"><%= product.name %></p>
+                <p class="size2"><%= product.name %></p>
             <% end %>
           </div>
       <% end %>

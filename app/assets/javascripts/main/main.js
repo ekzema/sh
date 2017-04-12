@@ -168,7 +168,7 @@ $(document).on('ready turbolinks:load', function(){
 
 $(document).on('ready turbolinks:load', function(){
     $('.autoplayproduct2').not('.slick-initialized').slick({
-        slidesToShow: 5,
+        slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: true,
         pauseOnHover: false,

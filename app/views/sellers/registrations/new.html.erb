@@ -3,7 +3,8 @@
     <h4 class="text-center sh16">Регистрация</h4>
 
     <%= form_for(resource, as: resource_name, :html => {"data-parsley-validate" => true}, url: registration_path(resource_name)) do |f| %>
-        <%= devise_error_messages! %>
+      <div class="container col-xs-offset-1 col-sm-offset-4 text-center"><%= devise_error_messages! %>
+      </div>
 
 
 
@@ -68,7 +69,7 @@
             <%= f.label 'О себе', class: "control-label form" %><br/>
           </div>
           <div class="col-sm-10 ">
-            <%= f.text_area :description, placeholder: 'Оставьте ссылки по которым продаете свои товары( на вашу группу вк, олх и др.)', class: "form-control form", "required" => true, "type" => "phone", "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Телефон</span>".html_safe %>
+            <%= f.text_area :description, placeholder: 'Укажите ссылки, где продаете свои товары( вк, олх и др.)', class: "form-control form", "required" => true, "type" => "phone", "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>данные</span>".html_safe %>
           </div>
         </div>
 
@@ -84,18 +85,18 @@
         <div class="form-group col-md-offset-2">
           <div class="col-sm-2 ">
             <%= f.label :password, class: "control-label form control-l" %>
-            <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> min)</em>
-            <% end %>
+            <!--<% if @minimum_password_length %>-->
+                <!--<em>(<%= @minimum_password_length %> min)</em>-->
+            <!--<% end %>-->
           </div>
           <div class="col-sm-10 ">
-            <%= f.password_field :password, autocomplete: "off", class: "form-control form", "required" => true, "data-parsley-trigger" => "change", 'data-parsley-length' => '[5, 16]', "data-parsley-error-message" => "Пароль должен быть <span style='font-weight: bold;color:#5EBB5E;'>min 5 - max 16</span>".html_safe %>
+            <%= f.password_field :password, placeholder: '6 знаков минимум', autocomplete: "off", class: "form-control form", "required" => true, "data-parsley-trigger" => "change", 'data-parsley-length' => '[5, 16]', "data-parsley-error-message" => "Пароль должен быть <span style='font-weight: bold;color:#5EBB5E;'>min 5 - max 16</span>".html_safe %>
           </div>
         </div>
 
         <div class="form-group col-md-offset-2">
           <div class="col-sm-2 ">
-            <%= f.label :password_confirmation, class: "control-label form control-l" %>
+            <%= f.label "Повторите пароль", class: "control-label form control-l" %>
           </div>
           <div class="col-sm-10 ">
             <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control form", "required" => true, "data-parsley-trigger" => "change", 'data-parsley-length' => '[5, 16]', "data-parsley-error-message" => "Пароль должен быть <span style='font-weight: bold;color:#5EBB5E;'>min 5 - max 16</span>".html_safe %>
