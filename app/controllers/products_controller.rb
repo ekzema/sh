@@ -19,7 +19,8 @@ class ProductsController < ApplicationController
     @twocategories = Twocategory.where(:id => twocategories_id).order(created_at: :desc)
     @seller = @product.seller
     @sellers = Seller.all.order(created_at: :desc)
-    @products = Product.all.order(created_at: :desc)
+    @product_sell = @seller.products.where(moderation: 1, visible: 1).order(created_at: :desc)
+    @products = Product.where(moderation: 1, visible: 1).order(created_at: :desc)
     unless @product.visible == 1 and @product.moderation == 1
       redirect_to :root
     end
