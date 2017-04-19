@@ -1,8 +1,9 @@
 class Product < ApplicationRecord
-
+  PRODUCT_SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL']
   #validates :main_image, :presence => { :message => 'укажите фотографию товара' }
   validates :name, :presence => { :message => 'не может быть пустым' }
   validates :size, :presence => { :message => 'укажите размер товара' }
+  validates_inclusion_of :size, :in => PRODUCT_SIZES + [''], :message => 'Выбран не верный формат размера товара'
   validates :price, :presence => { :message => 'укажите цену' }
   validates :quality, :presence => { :message => 'укажите состояние(качество) товара' }
   validates :description, :presence => { :message => 'опишите товар' }

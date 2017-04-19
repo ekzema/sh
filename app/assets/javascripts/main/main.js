@@ -258,8 +258,8 @@ $('.ui-helper-hidden-accessible').hide(); //hide result message in div classes u
 
 
 
-(function($){
-    $(document).ready(function(){
+
+    document.addEventListener("turbolinks:load", function () {
         $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
             event.preventDefault();
             event.stopPropagation();
@@ -267,7 +267,7 @@ $('.ui-helper-hidden-accessible').hide(); //hide result message in div classes u
             $(this).parent().toggleClass('open');
         });
     });
-})(jQuery);
+
 
 
 

@@ -53,7 +53,7 @@
           <%= f.label 'Размер', class: "control-label" %>
         </div>
         <div class="col-sm-10 ">
-          <%= f.text_field :size, class: "form-control form", "required" => true %>
+          <%= f.select(:size, Product::PRODUCT_SIZES, {prompt: 'Выберите размер товара'}, class: "form-control form", "required" => true) %>
         </div>
       </div>
 
