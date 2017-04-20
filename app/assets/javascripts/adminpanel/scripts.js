@@ -1,68 +1,38 @@
 function initializeJS() {
 
-    //tool tips
-    jQuery('.tooltips').tooltip();
+    //    BEGIN ajax add category to ptoduct_admin
 
-    //popovers
-    jQuery('.popovers').popover();
-
-    //custom scrollbar
-    //for html
-
-    document.addEventListener("turbolinks:load", function () {
-        $("html").getNiceScroll().remove()
-        $("html").niceScroll({
-            styler: "fb",
-            cursorcolor: "#007AFF",
-            cursorwidth: '6',
-            cursorborderradius: '10px',
-            background: '#F7F7F7',
-            cursorborder: '',
-            zindex: '1000'
+    var img_load = '<center><img src="/loading.gif" alt=""/></center>';
+    $(document).on( "change", "#product_category_id", function() {
+        $('#twocategory').html(img_load);
+        $.ajax({
+            url: '/admin_panel/form_render',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(result){
+                if(result == '') $('#twocategory' && '#threecategory').html(result);
+                $('#twocategory').html(result);
+                $('#threecategory').html('');
+                console.log(result);
+            }
         });
     });
 
-    //for sidebar
-    jQuery("#sidebar").niceScroll({
-        styler: "fb",
-        cursorcolor: "#007AFF",
-        cursorwidth: '3',
-        cursorborderradius: '10px',
-        background: '#F7F7F7',
-        cursorborder: ''
-    });
-    // for scroll panel
-    jQuery(".scroll-panel").niceScroll({
-        styler: "fb",
-        cursorcolor: "#007AFF",
-        cursorwidth: '3',
-        cursorborderradius: '10px',
-        background: '#F7F7F7',
-        cursorborder: ''
+    $(document).on( "change", "#product_twocategory_id", function() {
+        $('#threecategory').html(img_load);
+        $.ajax({
+            url: '/admin_panel/form_render',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(result){
+                $('#threecategory').html(result);
+                console.log(result);
+            }
+        });
     });
 
-    //sidebar dropdown menu
-    jQuery('#sidebar .sub-menu > a').click(function () {
-        var last = jQuery('.sub-menu.open', jQuery('#sidebar'));
-        jQuery('.menu-arrow').removeClass('arrow_carrot-right');
-        jQuery('.sub', last).slideUp(200);
-        var sub = jQuery(this).next();
-        if (sub.is(":visible")) {
-            jQuery('.menu-arrow').addClass('arrow_carrot-right');
-            sub.slideUp(200);
-        } else {
-            jQuery('.menu-arrow').addClass('arrow_carrot-down');
-            sub.slideDown(200);
-        }
-        var o = (jQuery(this).offset());
-        diff = 200 - o.top;
-        if (diff > 0)
-            jQuery("#sidebar").scrollTo("-=" + Math.abs(diff), 500);
-        else
-            jQuery("#sidebar").scrollTo("+=" + Math.abs(diff), 500);
-    });
+//    END ajax add category to ptoduct_admin
 
-    // sidebar menu toggle
     jQuery(function () {
         function responsiveView() {
             var wSize = jQuery(window).width();
@@ -118,9 +88,6 @@ function initializeJS() {
 
 }
 
-jQuery(document).ready(function () {
-    initializeJS();
-});
 
 $(document).on('ready turbolinks:load', function () {
 
@@ -176,3 +143,9 @@ $(document).on('ready turbolinks:load', function () {
 //         });
 //     });
 // });
+
+
+jQuery(document).ready(function () {
+    initializeJS();
+});
+
