@@ -63,10 +63,11 @@ body {
      max-width: 200px;
      max-height: 100px;
  }
- .imgcat img{
-
-     max-width: 100px;
-     max-height: 100px;
+@media only screen and (min-width: 767px) {
+ .imgcat img{ width: 100px!important; height: auto!important;}
+}
+ @media only screen and (max-width: 768px) {
+     .imgcat img{max-width: 100px!important; }
  }
 .imgcat3 img{
     margin: 50px!important;
@@ -251,6 +252,10 @@ nav#topMenu {
  .logo {margin-left: -15px!important; }
     #error_explanation { max-width: 200px!important; }
     .imgtel img{ width: 60px!important; height: 60px!important; }
+}
+
+@media only screen and (min-width: 220px) and (max-width: 425px) {
+ .showproduct ul { width: 80%!important;}
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
@@ -758,10 +763,6 @@ body {
 }
 
 @media only screen and (max-width: 991px) {
-    .imgcat img{
-    max-width: 100px!important;
-    max-height: 100px!important;
-}
     .info{font-size: 12px;}
 }
 /*кнопки цветные*/

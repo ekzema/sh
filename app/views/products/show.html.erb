@@ -46,10 +46,11 @@
 <div class="col-xs-12 col-sm-8 text-center showproduct">
 <div class="formaul">
 <ul class="sh14">
-  <li><%= image_tag(@product.main_image) %></li>
+  <li><%= image_tag(@product.main_image(:medium)) %></li>
   <li class="sld"><%= @product.name %></li>
   <li>Стоимость: <%= @product.price %> ГРН.</li>
   <li>Размер: <%= @product.size %></li>
+  <li>Качество товара: <%= @product.quality %></li>
   <li>Описание: <%= @product.description %></li>
   <li>Продавец <%= @product.seller.name %></li>
   <li><a href="#demo1" class="size1" data-toggle="collapse" data-parent=".showproduct">Связаться с продавцом<i class="fa fa-caret-down"></i></a>
@@ -79,6 +80,27 @@
     </div>
   </div>
 </div>
+
+  <div class="container-fluid niz1 visible-xs">
+    <div class="row">
+      <h4 class="text-center sh16">Подобные товары</h4>
+      <div class="col-xs-12 ">
+        <div class="row">
+          <section class="productseller2">
+            <% @products.each do |product| %>
+                <div class="">
+                  <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :class => 'size1' do %>
+                      <%= image_tag product.main_image.url(:medium) %>
+                      <p class="size3 sld"><%= product.name %></p>
+                  <% end %>
+                </div>
+            <% end %>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
   </div> 
   <div class="hidden-xs col-sm-2 glf">
     <div class="row">

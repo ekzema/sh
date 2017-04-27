@@ -206,6 +206,20 @@ $(document).on('ready turbolinks:load', function(){
 
 });
 
+$(document).on('ready turbolinks:load', function(){
+    $('.productseller2').not('.slick-initialized').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: true,
+        pauseOnHover: false,
+        adaptiveHeight: true,
+        arrows: false,
+        autoplaySpeed: 6000
+    });
+
+});
+
+
 $(document).on('turbolinks:load', function() {
     $('form').parsley().validate();
 });
