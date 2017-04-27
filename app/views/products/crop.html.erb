@@ -1,20 +1,39 @@
-<div class="container">
-<div class="row">
-<div class="page-header"></div>
-<div class="formCrop">
-  <%= form_for(@product) do |f| %>
-    <div class="landscape-crop-preview">    
-      <%= f.crop_preview :main_image %>
+<div class="container hidden-xs">
+  <div class="row">
+    <div class="page-header"></div>
+    <div class="formCrop">
+      <%= form_for(@product) do |f| %>
+          <div class="landscape-crop-preview">
+            <%= f.crop_preview :main_image %>
+          </div>
+          <div class="landscape-crop-area">
+            <%= f.cropbox :main_image, :width => 600 %>
+          </div>
+          <div class="clear"></div>
+          <div class="actions">
+            <%= f.submit 'Сохранить', class: "btn btn-success cropSubmit" %>
+          </div>
+      <% end %>
     </div>
-    <div class="landscape-crop-area">
-      <%= f.cropbox :main_image, :width => 600 %>
-    </div>
-    <div class="clear"></div>
-    <div class="actions">
-      <%= f.submit 'Сохранить', class: "btn btn-success cropSubmit" %>
-    </div>
-  <% end %>
+  </div>
 </div>
-</div>
+<div class="container visible-xs">
+  <div class="row">
+    <div class="page-header"></div>
+    <div class="formCrop">
+      <%= form_for(@product) do |f| %>
+          <div class="landscape-crop-preview">
+            <%= f.crop_preview :main_image %>
+          </div>
+          <div class="landscape-crop-area">
+            <%= f.cropbox :main_image, :width => 300 %>
+          </div>
+          <div class="clear"></div>
+          <div class="actions">
+            <%= f.submit 'Сохранить', class: "btn btn-success cropSubmit" %>
+          </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 

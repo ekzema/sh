@@ -191,22 +191,22 @@
             <!--<% end %>-->
         </section>
         <section class="auto2 visible-xs visible-sm">
-            <!--<% @category.each do |category| %>-->
-              <!--<% category.category_slide_images.each do |slide| %>-->
-                  <!--<%= link_to category_path(category.id), class:'size1' do %>-->
-                      <!--<%= image_tag slide.image %>-->
-                      <!--<p class="text-center sld1 padp"><%= slide.category.description %></p>-->
-                  <!--<% end %>-->
-
-            <!--<% end %>-->
-            <!--<% end %>-->
           <% @twocategories.each do |twocategory| %>
-              <%= link_to twocategory_path(twocategory.id), class:'size1' do %>
+              <%= link_to showtwocat_path(twocategory.category.translit_url, twocategory.translit_url), class:'size1' do %>
                   <%= image_tag twocategory.image %>
                   <p class="text-center sld1 "><%= twocategory.name %></p>
               <% end %>
 
           <% end %>
+          <!--<% @category.each do |category| %>-->
+              <!--<% category.category_slide_images.each do |slide| %>-->
+                  <!--<%= link_to category_path(category.id), class:'size1' do %>-->
+                      <!--<%= image_tag slide.image %>-->
+                      <!--<p class="text-center sld1 padp"><%= slide.category.description %></p>-->
+                      <!--<% end %>-->
+
+                  <!--<% end %>-->
+              <!--<% end %>-->
         </section>
         </div>
     </div>
