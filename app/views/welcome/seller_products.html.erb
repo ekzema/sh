@@ -20,7 +20,8 @@
             <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), class:'size1' do %>
                 <%= image_tag product.main_image.url(:medium), title: product.name, alt: product.name %>
                 <p class="size3"><%= product.name %></p>
-                <p class="sld0"><%= product.size %></p>
+                <p class="sld0 col-xs-12 col-sm-4"><%= product.size %></p>
+                <p class="col-xs-12 col-sm-8"><%= product.price %> грн.</p>
             <% end %>
           </div>
         </div>
@@ -34,6 +35,7 @@
         <%= link_to seller_products_path(seller.id), :class => 'size1' do %>
         <%= image_tag seller.avatar(:medium) %>
         <p class="size3"><%= seller.name %></p>
+
         <% end %>
         </div>
         <% end %>
