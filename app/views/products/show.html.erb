@@ -48,14 +48,14 @@
 <ul class="sh14">
   <li><%= image_tag(@product.main_image(:medium)) %></li>
   <li class="sld"><%= @product.name %></li>
-  <li>Стоимость: <%= @product.price %> ГРН.</li>
-  <li>Размер: <%= @product.size %></li>
+  <li>Стоимость: <span class="btn-custom"><%= @product.price %> ГРН.</span></li>
+  <li>Размер: <span class="sld"><%= @product.size %></span></li>
   <li>Качество товара: <%= @product.quality %></li>
   <li>Описание: <%= @product.description %></li>
   <li>Продавец <%= @product.seller.name %></li>
-  <li><a href="#demo1" class="size1" data-toggle="collapse" data-parent=".showproduct">Связаться с продавцом<i class="fa fa-caret-down"></i></a>
+  <li><a href="#demo1" class="size1" data-toggle="collapse" data-parent=".showproduct">Связаться с продавцом  <span class='btn-custom glyphicon glyphicon-earphone'></span></a>
     <div class="collapse" id="demo1">
-    <p class=""><%= @product.seller.phone %></p>
+    <p class="seller_phone"><%= @product.seller.phone %></p>
     </div>
   </li>
 </ul>
