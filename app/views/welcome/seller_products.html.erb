@@ -2,15 +2,34 @@
 <div class="row">
 
     <div class="col-xs-12 col-sm-2">
-      <div class="col-xs-6 col-sm-12">
-      <h4 class="sh16">Немного о продавце:</h4>
-      <p><%= image_tag @seller.avatar(:medium), class: 'fotoava2' %></p>
-      <p class="sh16"><%= @seller.name %></p>
-            </div>
-            <div class="col-xs-6 col-sm-12">
-              <!--<h4 class="sh16">Рейтинг: +15</h4>-->
-              <!--<h4 class="sh16">Его группа ВК:</h4>-->
-            </div>
+
+          <ul class="hidden-xs col-sm-12 sh14 oseller">
+            <li><p><%= image_tag @seller.avatar(:medium), class: 'fotoava2' %></p></li>
+            <li><p class="sld0"><%= @seller.name %></p></li>
+          </ul>
+          <ul class="visible-xs col-xs-3 sh14 oseller">
+            <li><%= image_tag @seller.avatar(:medium), class: 'fotoava2' %></li>
+          </ul>
+          <ul class="col-xs-9 col-sm-12 sh14 oseller">
+            <li class="visible-xs"><p class="sld0"><%= @seller.name %></p></li>
+            <li><a href="#demo6" class="size1" data-toggle="collapse" data-parent=".showproduct"><p>О продавце <span class='btn-custom glyphicon glyphicon-chevron-down'></span></p></a>
+              <div class="collapse" id="demo6">
+                <p class="seller_phone"><%= @seller.phone %></p>
+                <!--<h4 class="">Рейтинг: +15</h4>-->
+                <!--<h4 class="">Его группа ВК:</h4>-->
+                </div>
+
+            </li>
+          </ul>
+
+      <!--<h4 class="sh16">Немного о продавце:</h4>-->
+      <!--<p><%= image_tag @seller.avatar(:medium), class: 'fotoava2' %></p>-->
+      <!--<p class="sh16"><%= @seller.name %></p>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6 col-sm-12">-->
+              <!--&lt;!&ndash;<h4 class="sh16">Рейтинг: +15</h4>&ndash;&gt;-->
+              <!--&lt;!&ndash;<h4 class="sh16">Его группа ВК:</h4>&ndash;&gt;-->
+            <!--</div>-->
     </div>
     <div class="col-xs-12 col-sm-8 text-center">
         <h4>Все его товары:</h4>

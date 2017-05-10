@@ -63,11 +63,11 @@ body {
      max-width: 200px;
      max-height: 100px;
  }
-@media only screen and (min-width: 767px) {
- .imgcat img{ width: 100px!important; height: auto!important;}
+@media only screen and (min-width: 768px) {
+ .imgcat img{ width: 100px!important; height: auto!important; margin-bottom: 5px!important;}
 }
- @media only screen and (max-width: 768px) {
-     .imgcat img{max-width: 100px!important; }
+ @media only screen and (max-width: 767px) {
+     .imgcat img{max-width: 120px!important; height: auto!important; margin-bottom: 5px!important; }
  }
 .imgcat3 img{
     margin: 50px!important;
@@ -230,7 +230,7 @@ nav#topMenu {
     .oast li{ padding-left: 15px!important; }
     .navbar-brand{ height: auto!important;float:none!important;}
     h4{ font-size: 14px!important;}
-    .fotoava2{ width: 100px!important;border-radius: 0%!important;}
+    .fotoava2{ width: 47px!important;border-radius: 10%!important;}
     td btn{vertical-align: middle!important;}
     .menuonas{ margin: 7.5px 0!important;}
     .menurazdel > li > a{ padding:7.5px 15px!important;}
@@ -299,11 +299,6 @@ p {
     margin-right: 10px;
     border-radius: 100%;
 }
-.fotoava2{
-    width: 90%;
-    border-radius: 100%;
-}
-
 
 .tmenu a{
     font-size: 18px;
@@ -1075,4 +1070,29 @@ body {
 }
  .seller_phone{
      padding: 5px 0;
+ }
+ul,li > .oseller{
+    list-style-type: none;
+    padding-left: 0px!important;
+    margin-bottom:  0px!important;
+}
+
+ ul > .oseller{
+     margin-bottom:  0px!important;
+
+ }
+
+.oseller{
+
+     color: #fff!important;
+     background: #555!important;
+
+ }
+ .oseller > li{
+    padding: 5px!important;
+}
+
+ .fotoava2{
+     width: 100%;
+     border-radius: 100%;
  }

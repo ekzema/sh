@@ -1,5 +1,6 @@
 <script type="text/javascript">
     setTimeout(function(){$('.box').fadeOut(3000)},3000);
+    setTimeout(function(){$('.box2').fadeOut(5000)},3000);
 </script>
 <div class="container box">
   <% if flash[:alert] %>
@@ -23,7 +24,7 @@
 </div> -->
 <div class="col-sm-12">
 
-  <div class="alert alert-info alert-dismissable">
+  <div class="alert alert-info alert-dismissable box2">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <h4 class="text-center sh16"><strong><%= current_seller.name %>  !  </strong>Товары добавляем только хорошего качества, и не каких реплик только оригиналы!!!</h4></div>
   <h3 class="text-center">Все товары</h3>
