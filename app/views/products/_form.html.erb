@@ -23,7 +23,7 @@
                 <li><%= image_tag @product.main_image.url, title: "#{@product.name}", id: 'avatarSeller', class: "EditImage jcrop-tracker" %></li>
                 <li><%= f.file_field :main_image, id: 'imgInp' %></li>
             <% else %>
-                <li class="visible-xs"><img title="#{@product.name}" id='avatarSeller' class="EditImage jcrop-tracker" src="/assets/prav2.jpg"></li>
+                <li class="visible-xs"><%= image_tag 'prav2.jpg', title: "#{@product.name}", id: 'avatarSeller', class: "EditImage jcrop-tracker" %></li>
                 <li><%= image_tag @product.main_image.url, title: "#{@product.name}", id: 'avatarSeller', class: "EditImage jcrop-tracker hidden-xs" %></li>
                 <li><%= f.file_field :main_image, id: 'imgInp' %></li>
 
