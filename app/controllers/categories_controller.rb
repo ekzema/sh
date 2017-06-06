@@ -19,7 +19,6 @@ class CategoriesController < ApplicationController
     @keywords = @category.meta_key unless @category.meta_key.blank?
     @sellers = Seller.all.order(created_at: :desc)
     @products = @category.products.where(visible: 1, moderation: 1).order(created_at: :desc)
-     
     twocategories_id =  @category.twocategories.ids
     @twocategories = Twocategory.where(:id => twocategories_id).order(created_at: :desc)
   end

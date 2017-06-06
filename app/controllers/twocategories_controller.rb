@@ -21,7 +21,7 @@ class TwocategoriesController < ApplicationController
     @title = @twocategory.meta_title unless @twocategory.meta_title.blank?
     @description = @twocategory.meta_desc unless @twocategory.meta_desc.blank?
     @keywords = @twocategory.meta_key unless @twocategory.meta_key.blank?
-    @products = Product.all
+    @products = Product.where(visible: 1, moderation: 1).order(created_at: :desc)
     @showcat = @twocategory.category
     @sellers = Seller.all
     threecategories_id =  @twocategory.threecategories.ids

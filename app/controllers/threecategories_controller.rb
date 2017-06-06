@@ -20,7 +20,7 @@ class ThreecategoriesController < ApplicationController
     @keywords = @threecategory.meta_key unless @threecategory.meta_key.blank?
     @cater = @threecategory.twocategory.category
     # @twocategories = Twocategory.where(id: @cater)
-    @products = Product.all.order(created_at: :desc)
+    @products = Product.where(visible: 1, moderation: 1).order(created_at: :desc)
     @showca = @threecategory.twocategory
     @sellers = Seller.all.order(created_at: :desc)
   end

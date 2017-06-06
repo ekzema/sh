@@ -45,7 +45,7 @@
     </thead>
     <tbody>
     <% @seller_products.each do |product| %>
-      <tr class="success imgtel text-center">
+      <tr class="success imgtel text-center" id="product_<%= product.id %>">
         <td><%= image_tag product.main_image.url(:medium) %></td>
         <td class="hidden-xs "><%= product.name %></td>
         <td class="hidden-xs"><%= product.size %></td>
@@ -54,7 +54,7 @@
         <td class="hidden-xs ">
         <%= link_to ' ', showproduct_seller_panel_path(product.id.to_s+'-'+transtlit_name(product.name)), :type => 'button', :class => ' btn btn2 glyphicon glyphicon-zoom-in' %></td>
         <td><%= link_to ' ', edit_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :type => 'button', :class => 'btn btn3 glyphicon glyphicon-pencil' %></td>
-        <td><%= link_to ' ', product, method: :delete, data: { confirm: 'Are you sure?' }, :type => 'button', :class => 'btn btn1 glyphicon glyphicon-trash' %></td>
+        <td><%= link_to ' ', product, remote: true, method: :delete, data: { confirm: 'Вы уверены что хотите удалить это товар?' }, :type => 'button', :class => 'btn btn1 glyphicon glyphicon-trash' %></td>
         <td>
           <%= form_tag(seller_panel_product_visible_path, method: :post,  class: "product_info", id: "product_visible#{product.id}") do %>
               <%= hidden_field_tag 'product_id', product.id %>
