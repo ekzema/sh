@@ -19,7 +19,7 @@ class Product < ApplicationRecord
                                 :reject_if => :all_blank
 
 
-  has_attached_file :main_image, :styles => {:medium => ":400", :thumb => "70x70"},
+  has_attached_file :main_image, :styles => {:original => "", :medium => ":400", :thumb => "70x70"},
                     :convert_options => {:medium => Proc.new { |instance| instance.crop_center }},
                     :default_url => "noimage.png"
   validates_attachment_content_type :main_image, content_type: /\Aimage\/.*\z/
