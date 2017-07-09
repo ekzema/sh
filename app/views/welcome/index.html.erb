@@ -148,7 +148,7 @@
             <div>
             <%= link_to seller_products_path(seller.id), :class => 'size1' do %>
               <%= image_tag seller.avatar(:medium) %>
-              <p class="sld1 sld text-center"><%= seller.name %></p>
+              <p class="sld1 sld text-center "><%= seller.name %></p>
               <% end %>
             </div>
             <% end %>
@@ -158,7 +158,7 @@
             <div>
               <%= link_to seller_products_path(seller.id), :class => 'size1' do %>
               <%= image_tag seller.avatar(:medium) %>
-              <div class="sld1 sld text-center"><p ><%= seller.name %></p></div>
+              <div class="sld1 sld text-center"><p class="size2"><%= seller.name %></p></div>
               <% end %>
             </div>
             <% end %>

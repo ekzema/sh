@@ -56,22 +56,22 @@
           <table class="table table-striped table-advance table-hover">
             <tbody>
             <tr>
-              <th># id</th>
-              <th><i class="icon_profile"></i> Картинка</th>
-              <th><i class="icon_profile"></i> Название</th>
-              <th><i class="icon_profile"></i> Цена</th>
-              <th><i class="icon_profile"></i> Описание</th>
-              <th><i class="icon_calendar"></i> Создан</th>
-              <th><i class="icon_key"></i></th>
+              <th class="hidden-xs"># id</th>
+              <th><i class="icon_profile hidden-xs"></i>Фото</th>
+              <th><i class="icon_profile hidden-xs"></i>Название</th>
+              <th><i class="icon_profile hidden-xs"></i>Цена</th>
+              <th class="hidden-xs"><i class="icon_profile hidden-xs"></i> Описание</th>
+              <th class="hidden-xs"><i class="icon_calendar hidden-xs"></i> Создан</th>
+              <th><i class="icon_key hidden-xs"></i></th>
             </tr>
             <% @product.each do |product| %>
                 <tr id="product_<%= product.id %>">
-                  <td><%= product.id %></td>
+                  <td class="hidden-xs"><%= product.id %></td>
                   <td><span class="profile-ava sellerAvatar"><%= image_tag product.main_image %></span></td>
                   <td><%= product.name %></td>
                   <td><%= product.price %></td>
-                  <td><%= product.description %></td>
-                  <td><%= product.created_at.strftime('%F') %></td>
+                  <td class="hidden-xs"><%= product.description %></td>
+                  <td class="hidden-xs"><%= product.created_at.strftime('%F') %></td>
                   <td><%= product.moderation == 1 ? '<i class="icon_lock-open seller_lock-open">'.html_safe : '<i class="icon_lock seller_lock-lock">'.html_safe %></td>
                   <td>
                     <div class="btn-group">

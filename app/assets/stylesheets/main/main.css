@@ -225,7 +225,8 @@ nav#topMenu {
     .showproduct li { padding: 2px!important;}
     .nav > li > a {padding: 0!important;  }
     .text-vk {padding: 0!important;  }
-    .vk img { width: 35px!important; margin: 0!important;opacity: 1!important;}
+    /*.vk img { width: 35px!important; margin: 0!important;opacity: 1!important;}*/
+    .fac img { width: 35px!important; margin: 0!important;opacity: 1!important; border-radius: 7px!important;}
     .oas li{ padding-left: 15px!important; }
     .oast li{ padding-left: 15px!important; }
     .navbar-brand{ height: auto!important;float:none!important;}
@@ -233,6 +234,7 @@ nav#topMenu {
     .fotoava2{ width: 47px!important;border-radius: 10%!important;}
     td btn{vertical-align: middle!important;}
     .menuonas{ margin: 7.5px 0!important;}
+    .menuonas1 a{ margin: 7.5px 0px 7.5px 0px!important;}
     .menurazdel > li > a{ padding:7.5px 15px!important;}
     .dla > li > a img { margin: 2px!important; padding: 0!important; opacity: 1!important; }
     .navbar-inverse .navbar-nav   .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
@@ -244,6 +246,7 @@ nav#topMenu {
     .sliderImg li{ display: block!important; width: 100%!important; }
     .xsmenu{ background: #555!important; border: 1px solid #333;}
     .imgtel img{ width: 70px!important; height: 70px!important; }
+    .onas2 {text-align: left!important; }
 }
 
 @media only screen and (max-width: 320px) {
@@ -916,14 +919,15 @@ body {
 }
 .onas{
     font-size: 16px;
+
 }
 .onas3{
     background-color: #f8f8f8!important;
-    font-size: 12px!important;
+
 }
 .onas2{
-    text-align: justify!important;
-    font-size: 12px!important;
+
+    font-size: 14px!important;
 }
 .onas li{
     list-style-type: none;
@@ -974,6 +978,37 @@ body {
          -moz-opacity:0.6!important;
 
      }
+     .fa img{
+         width: 36px!important;
+         margin-top: 7px!important;
+         opacity:1!important;
+         -moz-opacity:1!important;
+         border-radius: 6px!important;
+     }
+     .onas2{
+         text-align: justify!important;
+
+     }
+ }
+.fa a{
+    padding: 0px!important;
+}
+.menuonas1 p{
+    padding: 14px 5px 14px 15px!important;
+    color: #9d9d9d!important;
+    font-size: 16px!important;
+}
+ .name p{
+     padding: 14px 0px 14px 0px!important;
+     color: #333!important;
+     font-size: 16px!important;
+ }
+.navbar {
+
+ min-height: 48px!important;}
+ .vk:hover {
+     opacity:0.8!important;
+     -moz-opacity:0.8!important;
  }
 .vkk{
     border-radius: 6px!important;
@@ -1005,9 +1040,7 @@ body {
 .vk a{
     padding: 0px!important;
 }
- vka{
 
- }
 .navbar-form {
     margin-top: 6px!important;
     margin-bottom: 0px!important;

@@ -38,31 +38,16 @@
         <ul class="nav navbar-nav tmenu">
           <a class="logo hidden-xs" href="/"><%= image_tag '001.png', class: 'hidden-xs hidden-sm' %><%= image_tag 'logo2.png', class: 'visible-sm' %></a>
           <li class="menuonas"><a href="/about">О нас</a></li>
-          <li class="vk visible-xs text-vk visible-xs sh14">
-            <a href="https://vk.com/ukrstock" target="_blank">
-              Наша группа <%= image_tag 'VK.png', class: 'vk' %></a>
+          <li class="fac visible-xs text-vk sh14">
+            <a href="https://www.facebook.com/stockmarketukraine/" target="_blank">
+              Наша страница <%= image_tag 'fa.png', class: '' %></a>
           </li>
           <!--<li><a href="/categories">Новоcти</a></li>-->
           <!--<li class="hidden-xs"><a href="/vip">VIP-Статус</a></li>-->
-          <li class="">
-            <ul class="nav navbar-nav oast">
-              <li class="dropdown">
-                <a type="button" id="drop01" role="button" class="dropdown-toggle tmenu"
-                   data-toggle="dropdown" href="#">
-                  Помощь
-                  <b class="caret"></b></a>
-                <ul class="dropdown-menu dla" role="menu" aria-labelledby="drop01">
-                  <li class="vk2 xsmenu"><a href="/feedback">
-                    <%= image_tag 'pismo.jpg', class: 'vk vkk' %><span class="vk3">отправить E-mail</span></a>
-                  </li>
-                  <li class="vk2 xsmenu"><a href="https://vk.com/im?media=&sel=-126921609" target="_blank">
+          <li class="menuonas1 "><a href="/feedback">Написать нам</a></li>
+          <li class="menuonas1 hidden-xs"><p>Наша страница</p></li>
+          <li class="fa hidden-xs"><a href="https://www.facebook.com/stockmarketukraine/" target="_blank"><%= image_tag 'fa.png', class: 'fa' %></a></li>
 
-                    <%= image_tag 'VK.png', class: 'vk' %><span class="vk3">сообщение ВК</span></a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
         </ul>
         <ul class="nav navbar-nav navbar-right oas">
           <li class="dropdown">
@@ -152,12 +137,13 @@
                   <%= button_tag 'Найти', class: 'btn btn-default' %>
               <% end %>
             </li>
-            <li>
-              <p class="text-vk hidden-xs hidden-sm sh14">Наша группа в ВК:</p>
-              <p class="text-vk visible-sm sh14">Мы в ВК:</p>
-            <li class="vk hidden-xs"><a href="https://vk.com/ukrstock" target="_blank">
-              <%= image_tag 'VK.png', class: 'vk' %></a>
-            </li>
+            <li class="name"><p >Stock & SecondHand Lux</p></li>
+            <!--<li class="hidden">-->
+              <!--<p class="text-vk hidden-xs hidden-sm sh14">Наша группа в ВК:</p>-->
+              <!--<p class="text-vk visible-sm sh14">Мы в ВК:</p></li>-->
+            <!--<li class="vk hidden-xs"><a href="https://vk.com/ukrstock" target="_blank">-->
+              <%= image_tag 'VK.png', class: 'vk hidden' %></a>
+            <!--</li>-->
           </ul>
 
           <!--xs-->
@@ -222,14 +208,7 @@
 <!-- footer -->
 
 <div class="tofooter">
-  <!--
-  <% if rootadmin_signed_in? %>-->
-      <!--<li><%= link_to 'Выход АДМИН', destroy_rootadmin_session_path %></li>-->
-      <!--
-  <% else %>-->
-      <!--<li><%= link_to 'Вход АДМИН', new_rootadmin_session_path %></li>-->
-      <!--
-  <% end %>-->
+
 </div>
 
 <footer class="navbar navbar-inverse" id="footer">
