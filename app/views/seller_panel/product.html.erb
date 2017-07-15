@@ -46,7 +46,7 @@
     <tbody>
     <% @seller_products.each do |product| %>
       <tr class="success imgtel text-center" id="product_<%= product.id %>">
-        <td><%= image_tag product.main_image.url(:medium) %></td>
+        <td><%= image_tag product.main_image.url(:thumb) %></td>
         <td class="hidden-xs "><%= product.name %></td>
         <td class="hidden-xs"><%= product.size %></td>
         <td class="hidden-xs"><%= product.price %></td>

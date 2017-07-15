@@ -19,7 +19,7 @@ class Product < ApplicationRecord
                                 :reject_if => :all_blank
 
 
-  has_attached_file :main_image, :styles => {:original => "", :medium => ":400", :thumb => "70x70"},
+  has_attached_file :main_image, :styles => {:original => "", :medium => ":800", :thumb => "70x70"},
                     :convert_options => {:medium => Proc.new { |instance| instance.crop_center }},
                     :default_url => "noimage.png"
   validates_attachment_content_type :main_image, content_type: /\Aimage\/.*\z/
@@ -32,9 +32,9 @@ class Product < ApplicationRecord
       w = dimensions.width
       h = dimensions.height
       if w > h
-        "-resize x250 -gravity Center -crop 250x250+0+0"
+        "-resize x500 -gravity Center -crop 500x500+0+0"
       else
-        "-resize 250x -gravity Center -crop 250x250+0+0"
+        "-resize 500x -gravity Center -crop 500x500+0+0"
       end
     end
   end

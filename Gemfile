@@ -26,6 +26,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'paperclip', '~> 5.1'
 gem 'papercrop', '~> 0.3.0'
+
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 gem 'jquery-ui-rails'
 # Use Redis adapter to run Action Cable in production

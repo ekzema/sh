@@ -67,7 +67,7 @@
             <% @product.each do |product| %>
                 <tr id="product_<%= product.id %>">
                   <td class="hidden-xs"><%= product.id %></td>
-                  <td><span class="profile-ava sellerAvatar"><%= image_tag product.main_image %></span></td>
+                  <td><span class="profile-ava sellerAvatar"><%= image_tag product.main_image.url(:thumb) %></span></td>
                   <td><%= product.name %></td>
                   <td><%= product.price %></td>
                   <td class="hidden-xs"><%= product.description %></td>

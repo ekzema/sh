@@ -25,7 +25,7 @@
                   </div>
                   <div class="col-sm-10">
                     <ul class="sliderImg imgcat">
-                      <li><%= image_tag @product.main_image.url, title: "#{@product.name}", class: "EditImage" %></li>
+                      <li><%= image_tag @product.main_image.url(:medium), title: "#{@product.name}", class: "EditImage" %></li>
                       <li><%= f.file_field :main_image %>
                         <% unless @product.main_image.exists? %></li>
                             <!--<li><%= link_to("Удалить", {action: :delete_attachment_product, id: @product.id}, method: :delete, data: {confirm: 'Вы уверины что хотите удалить?'}) %></li>-->

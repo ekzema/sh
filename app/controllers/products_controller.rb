@@ -54,6 +54,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
+        ProductMailer.new_product.deliver
         format.html { redirect_to seller_panel_product_path, notice: 'После прохождения модерации товар появится на сайте.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -71,6 +72,7 @@ class ProductsController < ApplicationController
       respond_to do |format|
         if @product.update(product_params)
           @product.update(:moderation => 0)
+          ProductMailer.update_product.deliver
           format.html { redirect_to seller_panel_product_path, notice: 'Товар успешно обновлён и отправлен на модерацию' }
           format.json { render :show, status: :ok, location: @product }
         else
