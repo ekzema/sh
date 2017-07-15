@@ -71,7 +71,7 @@
             <% @sellers.each do |seller| %>
                 <tr id="product_<%= seller.id %>">
                   <td><%= seller.id %></td>
-                  <td><span class="profile-ava sellerAvatar"><%= image_tag seller.avatar %></span></td>
+                  <td><span class="profile-ava sellerAvatar"><%= image_tag seller.avatar.url(:mini) %></span></td>
                   <td><%= seller.surname %>. <%= seller.name.first %></td>
                   <td><%= seller.city %></td>
                   <td><%= seller.email %></td>
