@@ -272,6 +272,9 @@ ul.sidebar-menu {
 #sidebar > ul > li.active > ul.sub, #sidebar > ul > li > ul.sub > li > a {
     display: block;
 }
+@media (min-width: 768px) {
+    .collapse{ display: block!important;}
+}
 
 ul.sidebar-menu li ul.sub li{
     background: #394a59;

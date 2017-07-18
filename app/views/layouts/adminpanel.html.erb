@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sh</title>
+  <title>ADMIN</title>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    'adminpanel', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -54,9 +54,9 @@
 
   <!--sidebar start-->
   <aside>
-    <div id="sidebar"  class="nav-collapse ">
+    <div id="sidebar"  class="nav-collapse">
       <!-- sidebar menu start-->
-      <ul class="sidebar-menu">
+      <ul class="sidebar-menu collapse">
         <li>
           <%= link_to admin_panel_path do %>
               <i class="icon_house_alt"></i>
@@ -101,24 +101,25 @@
         </li>
 
         <!--<li>-->
-          <!--<%= link_to admin_panel_categories_path do %>-->
-              <!--<i class="fa fa-barcode" aria-hidden="true"></i>-->
-              <!--<span>Категории</span>-->
-          <!--<% end %>-->
+        <!--<%= link_to admin_panel_categories_path do %>-->
+            <!--<i class="fa fa-barcode" aria-hidden="true"></i>-->
+            <!--<span>Категории</span>-->
+            <!--<% end %>-->
         <!--</li>-->
         <!--<li>-->
-          <!--<%= link_to admin_panel_twocategories_path do %>-->
-              <!--<i class="fa fa-barcode" aria-hidden="true"></i>-->
-              <!--<span>Категории(2)</span>-->
-          <!--<% end %>-->
+        <!--<%= link_to admin_panel_twocategories_path do %>-->
+            <!--<i class="fa fa-barcode" aria-hidden="true"></i>-->
+            <!--<span>Категории(2)</span>-->
+            <!--<% end %>-->
         <!--</li>-->
         <!--<li>-->
-          <!--<%= link_to admin_panel_threecategories_path do %>-->
-              <!--<i class="fa fa-barcode" aria-hidden="true"></i>-->
-              <!--<span>Категории(3)</span>-->
-          <!--<% end %>-->
+        <!--<%= link_to admin_panel_threecategories_path do %>-->
+            <!--<i class="fa fa-barcode" aria-hidden="true"></i>-->
+            <!--<span>Категории(3)</span>-->
+            <!--<% end %>-->
         <!--</li>-->
       </ul>
+
       <!-- sidebar menu end-->
     </div>
   </aside>
