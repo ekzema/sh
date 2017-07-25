@@ -108,7 +108,7 @@
       <!--<h4 class="text-center">Другие товары этого продавца</h4>-->
       <section class="autoplay">
         <% @products.each do |product| %>
-            <div class="">
+            <div class="fone">
               <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :class => 'size1' do %>
                   <%= image_tag product.main_image.url(:medium) %>
                   <p class="size3 sld"><%= product.name %></p>
@@ -120,7 +120,7 @@
       <p class="size4">Лучшие продавцы</p>
       <section class="autoplay">
         <% @sellers.each do | seller | %>
-            <div>
+            <div class="fone">
               <%= link_to seller_products_path(seller.id), :class => 'size1' do %>
                   <%= image_tag seller.avatar(:medium) %>
                   <p class="size3 sld"><%= seller.name %></p>

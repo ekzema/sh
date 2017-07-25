@@ -100,7 +100,7 @@
         <div class="collapse navbar-collapse" id="responsive-menu1">
           <ul class="nav navbar-nav dropdown1 hidden-xs">
             <% @catmenu.each do |category| %>
-                <li class="dropdown ">
+                <li class="dropdown">
                   <%= link_to showcat_path(category.translit_url), type: "button", id: category.id, role: "button",
                               class: "dropdown-toggle navbar-brand block", data_toggle: "dropdown" do %>
                       <%= category.name %>

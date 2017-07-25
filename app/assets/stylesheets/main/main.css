@@ -1,11 +1,22 @@
  /*шрифт фон*/
 body {
-     font-family: Florence!important;
-     background: #CD423C !important;
-     font-size: 12px!important;
+    font-family: Florence!important;
+    /*background: #CD423C !important;*/
+    background: #F5F5F5!important;
+    font-size: 12px!important;
 }
+.fone{
+    border: 1px solid #555!important;
+}
+
+.navbar-default {
+    background: #DCDCDC !important;
+    border-color: #333!important;
+}
+
 .navbar-brand {
     font-size: 16px!important;
+    color: #333!important;
 }
 .tmenu a {
  font-size: 16px!important;
@@ -610,9 +621,9 @@ table{
 }
 
 
-.slick-vertical .slick-slide {
- border: 0px!important;
-}
+/*.slick-vertical .slick-slide {*/
+ /*border: 0px!important;*/
+/*}*/
 
 .prov a{
     color: #333;
@@ -674,14 +685,30 @@ table{
 }
 
 /* product*/
+.tovar{
+    margin-left: -10px!important;
+    margin-right: -10px!important;
+    border: 2px solid #333!important;
+    margin-bottom: 10px;
+}
+.tovar p{
+    background-color: #333!important;
+}
+
+.tovar img{
+ width: 100%;
+}
+
 .product{
-    padding: 5px 0px;
-    border: 4px solid #CD423C;
+    /*padding: 5px 0px;*/
+    padding: 3px!important;
+    /*border: 4px solid #CD423C;*/
+    /*border: 4px solid #DCDCDC !important;*/
     margin-bottom: 10px;
     background-color: #333;
 }
 .product img{
-    width: 95%;
+    width: 100%;
 }
 .product1{
     padding-top: 5px;
@@ -915,7 +942,7 @@ body {
 
 /*о нас*/
 .onas1{
-    border: 1px solid #CD423C;
+    border: 1px solid #333;
 }
 .onas{
     font-size: 16px;
@@ -931,16 +958,18 @@ body {
 }
 .onas li{
     list-style-type: none;
-    margin: 0px 10px 10px 0px;
-    padding: 10px;
-    border: 1px solid #CD423C;
+    margin: 5px!important;
+    padding: 5px!important;
+    /*border: 1px solid #CD423C;*/
+    border: 1px solid #DCDCDC;
     border-radius: 5px;
     background-color: #fff;
 }
 .onas ul{
-    background-color: #CD423C;
+    /*background-color: #CD423C;*/
+    background: #DCDCDC !important;
     border-radius: 5px;
-    padding: 5px;
+    /*padding: 5px!important;*/
 }
 .three{
     height: 120px;

@@ -24,13 +24,13 @@
         <% @twocategory.threecategories.each do |threecategory| %>
             <% threecategory.products.each do |product| %>
                 <% if product.visible == 1 and product.moderation == 1 %>
-                    <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 product">
-                      <div class="row size1 ppp">
+                    <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+                      <div class="tovar">
                         <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), class: 'size1' do %>
                             <%= image_tag product.main_image(:medium) %>
                             <p class="size3 sld"><%= product.name %></p>
-                            <p class="sld0 col-xs-12 col-sm-4"><%= product.size %></p>
-                            <p class="col-xs-12 col-sm-8"><%= product.price %> грн.</p>
+                            <p class="sld0"><%= product.size %></p>
+                            <p class=""><%= product.price %> грн.</p>
                         <% end %>
                       </div>
                     </div>
