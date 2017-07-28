@@ -37,7 +37,7 @@
         <th class="hidden-xs text-center">Размер</th>
         <th class="hidden-xs text-center">Цена</th>
         <th class="hidden-xs text-center">Описание</th>
-        <th class="hidden-xs text-center">Просмотров</th>
+        <th class="text-center">Было просмотрено</th>
         <th class="hidden-xs text-center">Show</th>
         <th class="text-center">Edit</th>
         <th class="text-center">Delete</th>
@@ -52,7 +52,7 @@
         <td class="hidden-xs"><%= product.size %></td>
         <td class="hidden-xs"><%= product.price %></td>
         <td class="hidden-xs "><%= product.description %></td>
-        <td class="hidden-xs "><span class="glyphicon glyphicon-eye-open btn-lg" aria-hidden="true"></span> <%= product.view_count %></td>
+        <td class=" "><span class="glyphicon glyphicon-eye-open btn-md" aria-hidden="true"></span> <%= product.view_count %></td>
         <td class="hidden-xs ">
         <%= link_to ' ', showproduct_seller_panel_path(product), :type => 'button', :class => ' btn btn2 glyphicon glyphicon-zoom-in' %></td>
         <td><%= link_to ' ', edit_product_path(product), :type => 'button', :class => 'btn btn3 glyphicon glyphicon-pencil' %></td>

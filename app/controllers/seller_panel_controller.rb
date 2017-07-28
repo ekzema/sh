@@ -7,6 +7,10 @@ class SellerPanelController < ApplicationController
     @seller_products = current_seller.products.where(:moderation => 1).order(created_at: :desc)
   end
 
+  def sms
+
+  end
+
   def showproduct
     
     # unless @product.visible == 1 and @product.moderation == 1

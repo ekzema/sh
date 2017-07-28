@@ -47,13 +47,13 @@
 <div class="formaul">
 <ul class="sh14">
   <li><%= image_tag(@product.main_image(:medium)) %></li>
-  <li class="sld"><%= @product.name %></li>
-  <li>Стоимость: <span class="btn-custom"><%= @product.price %> ГРН.</span></li>
-  <li>Размер: <span class="sld"><%= @product.size %></span></li>
-  <li>Качество товара: <%= @product.quality %></li>
-  <li>Описание: <%= @product.description %></li>
-  <li>Продавец <%= @product.seller.name %></li>
-  <li><a href="#demo1" class="size1" data-toggle="collapse" data-parent=".showproduct">Связаться с продавцом  <span class='btn-custom glyphicon glyphicon-earphone'></span></a>
+  <li class="sld ple"><%= @product.name %></li>
+  <li class="ple">Стоимость: <span class="btn-custom"><%= @product.price %> ГРН.</span></li>
+  <li class="ple">Размер: <span class="sld"><%= @product.size %></span></li>
+  <li class="ple">Качество товара: <%= @product.quality %></li>
+  <li class="ple">Описание: <%= @product.description %></li>
+  <li class="hidden"><span class="btn-custom" >Добавить в избранное</span></li>
+  <li class="ple"><a href="#demo1" class="size1" data-toggle="collapse" data-parent=".showproduct">Продавец <%= @product.seller.name %> <span class='btn-custom glyphicon glyphicon-earphone'></span></a>
     <div class="collapse" id="demo1">
     <p class="seller_phone"><%= @product.seller.phone %></p>
     </div>
@@ -104,7 +104,7 @@
   </div> 
   <div class="hidden-xs col-sm-2 glf">
     <div class="row">
-      <p class="size4">Подобные товары</p>
+      <p class="size4 fone">Подобные товары</p>
       <!--<h4 class="text-center">Другие товары этого продавца</h4>-->
       <section class="autoplay">
         <% @products.each do |product| %>
@@ -117,7 +117,7 @@
         <% end %>
       </section>
 
-      <p class="size4">Лучшие продавцы</p>
+      <p class="size4 fone">Лучшие продавцы</p>
       <section class="autoplay">
         <% @sellers.each do | seller | %>
             <div class="fone">

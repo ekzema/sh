@@ -2,7 +2,7 @@
 body {
     font-family: Florence!important;
     /*background: #CD423C !important;*/
-    background: #F5F5F5!important;
+    background: #f2f2f2!important;
     font-size: 12px!important;
 }
 .fone{
@@ -10,7 +10,7 @@ body {
 }
 
 .navbar-default {
-    background: #DCDCDC !important;
+    background: #e9e9e9 !important;
     border-color: #333!important;
 }
 
@@ -233,7 +233,7 @@ nav#topMenu {
     .slick-slide { margin: 0px 5px!important; }
     .size2 { padding: 3px 5px!important; }
     .sh14 li{ font-size: 12px!important; }
-    .showproduct li { padding: 2px!important;}
+    /*.showproduct li { padding: 2px!important;}*/
     .nav > li > a {padding: 0!important;  }
     .text-vk {padding: 0!important;  }
     /*.vk img { width: 35px!important; margin: 0!important;opacity: 1!important;}*/
@@ -362,7 +362,7 @@ p {
 
  /*showproduct*/
  .showproduct img{
-    width: 95%;
+    width: 100%;
  }
  .showproduct ul li{
      list-style:none;
@@ -370,7 +370,7 @@ p {
  .showproduct ul{
      padding: 0;
      list-style: none;
-     text-align: center;
+     /*text-align: center;*/
      font-size: 0; /* убираем нежелательные отсутпы у дочерних элементов */
      width: 50%;
      margin: auto!important;
@@ -385,8 +385,13 @@ p {
      padding: 5px;
      font-size: 16px; /* возвращаем размер шрифта */
      display: block;
+    text-align: left;
 
  }
+.ple{
+     padding-left: 20px!important;
+}
+
 .formaul ul{
     margin-bottom: 20px!important;
 }
@@ -1154,7 +1159,13 @@ ul,li > .oseller{
     padding: 5px!important;
 }
 
- .fotoava2{
-     width: 100%;
-     border-radius: 100%;
- }
+.fotoava2{
+    width: 100%;
+    border-radius: 100%;
+}
+.demo{
+    margin-bottom: 20px;
+}
+.demo2{
+    margin-top: 20px;
+}
