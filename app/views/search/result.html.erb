@@ -6,7 +6,7 @@
         <% @products.each do |product| %>
             <div class="col-xs-6 col-sm-4 col-lg-3">
               <div class="tovar">
-                <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), class: 'size1' do %>
+                <%= link_to product_path(product), class: 'size1' do %>
                     <%= image_tag product.main_image(:medium) %><br>
                     <p class="size3"><%= product.name %></p>
                     <p class="sld0"><%= product.size %></p>
@@ -22,7 +22,7 @@
         <p class="size4 sh14">Популярное</p>
         <section class="autoplaydr">
           <% @prs.each do |product| %>
-              <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :class => 'size1 fone' do %>
+              <%= link_to product_path(product), :class => 'size1 fone' do %>
                   <%= image_tag product.main_image(:medium) %>
                   <p class="size3"><%= product.name %></p>
               <% end %>

@@ -70,13 +70,11 @@ Rails.application.routes.draw do
     get "/rootadmins" => "rootadmins/sessions#new"
   end
 
-  resources :products, only: [:destroy, :update, :new, :create] do
+  resources :products, except: [:index] do
     collection do
       delete 'delete_attachment/:product_img', to: 'products#delete_attachment', as: 'delete_image'
     end
   end
-  get 'product/:name', to: 'products#show', as: 'show_product'
-  get 'products/:name/edit', to: 'products#edit', as: 'edit_product'
 
   get 'category_slide_images/create'
 

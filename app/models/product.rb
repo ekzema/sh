@@ -24,6 +24,9 @@ class Product < ApplicationRecord
                     :default_url => "noimage.png"
   validates_attachment_content_type :main_image, content_type: /\Aimage\/.*\z/
 
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
 
   def crop_center
     tempfile = self.main_image.queued_for_write[:original]

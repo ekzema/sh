@@ -115,7 +115,7 @@
         <section class="autoplay">
             <% @products.each do |product| %>
             <div class="fone">
-              <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :class => 'size1' do %>
+              <%= link_to product_path(product), :class => 'size1' do %>
               <%= image_tag product.main_image.url(:medium) %>
               <p class="size3 sld"><%= product.name %></p>
               <% end %>

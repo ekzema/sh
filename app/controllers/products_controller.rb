@@ -14,8 +14,18 @@ class ProductsController < ApplicationController
   def show
     @title = @product.name.capitalize + ' | Stockmarket'
     @description = 'Купить недорого ' + @product.name.capitalize + ' стоковая цена от ' + @product.price.to_s + ' грн.'+ ' Доставка по Украине во все города'
-    @category = Category.find( @product.category_id)
-    twocategories_id =  @category.twocategories.ids
+    if seller_signed_in?
+      cur_sell = current_seller.id
+    else
+      cur_sell = nil
+    end
+    if browser.known? and cookies["view_post_#{@product.id}"].nil? and cur_sell != @product.seller_id
+      cookies["view_product_#{@product.id}"] = {:value => true, :expires => 3.day.from_now.utc}
+      view_count = @product.view_count + 1
+      @product.update(view_count: view_count)
+    end
+    @category = Category.find(@product.category_id)
+    twocategories_id = @category.twocategories.ids
     @twocategories = Twocategory.where(:id => twocategories_id).order(created_at: :desc)
     @seller = @product.seller
     @sellers = Seller.all.order(created_at: :desc)
@@ -107,7 +117,7 @@ class ProductsController < ApplicationController
       if params[:product][:category_id].blank?
         render text: ''
       else
-        render :partial => 'twocategory', locals: { twocategory: @twocategory }
+        render :partial => 'twocategory', locals: {twocategory: @twocategory}
       end
     end
 
@@ -115,7 +125,7 @@ class ProductsController < ApplicationController
       if params[:product][:twocategory_id].blank?
         render text: ''
       else
-        render :partial => 'threecategory', locals: { threecategory: @threecategory }
+        render :partial => 'threecategory', locals: {threecategory: @threecategory}
       end
     end
 
@@ -127,6 +137,7 @@ class ProductsController < ApplicationController
     @product.save
     redirect_back(fallback_location: @product)
   end
+
   private
 
   # def reset_session
@@ -137,8 +148,7 @@ class ProductsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_product
-    @pars_id =  params[:name].match(/^\d{1,}/).to_s
-    @product = Product.find(@pars_id)
+    @product = Product.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

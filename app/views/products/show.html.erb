@@ -69,7 +69,7 @@
         <section class="productseller">
           <% @product_sell.each do |product| %>
               <div class="">
-                <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :class => 'size1' do %>
+                <%= link_to product_path(product), :class => 'size1' do %>
                     <%= image_tag product.main_image.url(:medium) %>
                     <p class="size2"><%= product.name %></p>
                 <% end %>
@@ -89,7 +89,7 @@
           <section class="productseller2">
             <% @products.each do |product| %>
                 <div class="">
-                  <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :class => 'size1' do %>
+                  <%= link_to product_path(product), :class => 'size1' do %>
                       <%= image_tag product.main_image.url(:medium) %>
                       <p class="size3 sld"><%= product.name %></p>
                   <% end %>
@@ -109,7 +109,7 @@
       <section class="autoplay">
         <% @products.each do |product| %>
             <div class="fone">
-              <%= link_to show_product_path(product.id.to_s+'-'+transtlit_name(product.name)), :class => 'size1' do %>
+              <%= link_to product_path(product), :class => 'size1' do %>
                   <%= image_tag product.main_image.url(:medium) %>
                   <p class="size3 sld"><%= product.name %></p>
               <% end %>
@@ -134,7 +134,7 @@
 </div> 
 
 <!-- 
-<%= link_to 'Редактировать', edit_product_path(@product.id.to_s+'-'+transtlit_name(@product.name)), :type => 'button', :class => 'btn btn3' %>
+<%= link_to 'Редактировать', edit_product_path(@product), :type => 'button', :class => 'btn btn3' %>
 <%= link_to 'Назад', seller_panel_product_path, :type => 'button', :class => 'btn btn4' %>
 <%= link_to "На главную", root_path, :class => 'btn btn4 form' %>-->
 
