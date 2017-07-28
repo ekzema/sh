@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
     else
       cur_sell = nil
     end
-    if browser.known? and cookies["view_post_#{@product.id}"].nil? and cur_sell != @product.seller_id
+    if browser.known? and cookies["view_product_#{@product.id}"].nil? and cur_sell != @product.seller_id
       cookies["view_product_#{@product.id}"] = {:value => true, :expires => 3.day.from_now.utc}
       view_count = @product.view_count + 1
       @product.update(view_count: view_count)
