@@ -51,7 +51,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right oas">
           <li class="dropdown">
-            <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu fotoav"
+            <a type="button" id="drop001" role="button" class="dropdown-toggle tmenu fotoav sh16"
                data-toggle="dropdown" href="#">
               <% if seller_signed_in? %>
                   <%= image_tag current_seller.avatar.url(:medium), class: 'fotoava', alt: current_seller.name %>
@@ -62,7 +62,6 @@
               <b class="caret"></b></a>
             <ul class="dropdown-menu " role="menu" aria-labelledby="drop001">
               <% if seller_signed_in? %>
-
                   <li class="xsmenu"><%= link_to 'Редактировать данные', edit_seller_registration_path %></li>
                   <li class="xsmenu"><%= link_to 'Мои товары', seller_panel_product_path %></li>
                   <li class="xsmenu"><%= link_to 'Мои сообщения', seller_panel_sms_path %></li>

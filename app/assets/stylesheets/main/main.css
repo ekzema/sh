@@ -10,13 +10,14 @@ body {
 }
 
 .navbar-default {
-    background: #e9e9e9 !important;
+    background: #b2b2b2!important;
     border-color: #333!important;
+
 }
 
 .navbar-brand {
     font-size: 16px!important;
-
+    color: #111!important;
 }
 .tmenu a {
  font-size: 16px!important;
@@ -1034,7 +1035,7 @@ body {
 }
  .name p{
      padding: 14px 0px 14px 0px!important;
-     color: #333!important;
+     color: #111!important;
      font-size: 16px!important;
  }
 .navbar {
