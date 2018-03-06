@@ -1,0 +1,32 @@
+body {
+    font-family: Montserrat!important;
+    /*background: #CD423C !important;*/
+    background: #f2f2f2!important;
+   }
+
+a, a:focus, a:hover{
+    text-decoration: none!important;
+}
+
+nav{
+    font-size: 14px;
+    color: #433346;
+}
+.navbar_menu a{
+    font-size: 14px!important;
+    color: #433346!important;
+}
+.navbar_user a{
+    font-size: 14px!important;
+    color: #433346!important;
+}
+.log img{
+    width: 250px;
+}
+.p10{
+    padding: 20px;
+}
+.foto_user{
+    width: 45px;
+    border-radius: 50%;
+}
