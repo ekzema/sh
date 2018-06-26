@@ -1,7 +1,26 @@
-body {
-    font-family: Montserrat!important;
-    background: #f2f2f2!important;
-   }
+/*спецификация*/
+
+body{
+    font-family: 'Montserrat'!important;
+    background: #fff;
+}
+
+h1, h2, h3, h4, h5, h6{
+    padding: 0;
+    margin: 0;
+}
+
+
+ul,li{
+    box-sizing: border-box;
+    display: block;
+    padding: 0!important;
+    margin: 0!important;
+}
+
+div, section, span, input, button{
+    box-sizing: border-box;
+}
 
 a, a:focus, a:hover{
     text-decoration: none!important;
@@ -12,11 +31,11 @@ nav{
     color: #433346;
 }
 .navbar_menu a{
-    font-size: 14px!important;
+    font-size: 16px!important;
     color: #433346!important;
 }
 .navbar_user a{
-    font-size: 14px!important;
+    font-size: 16px!important;
     color: #433346!important;
 }
 .log img{
@@ -28,4 +47,23 @@ nav{
 .foto_user{
     width: 45px;
     border-radius: 50%;
+}
+.button__search{
+    height: 34px;
+}
+
+.img__tovar{
+    width: 100%;
+}
+
+.u-list li:nth-child(n+4) {
+    display: none;
+}
+
+.u-list.open li:nth-child(n+4) {
+    display: list-item;
+}
+
+.slick-slide img {
+    width: 100%;
 }

@@ -2,199 +2,155 @@
 
 <!-- центральное меню -->
 
-<div class="container">
+<div class="container-fluid">
 <div class="row">
-<div class="col-sm-2 col-md-2 col-lg-2 hidden-xs">
 
-<menu class="fot">
-<% if @product.product_slide_images.present? %>
+  <div class="col-sm-2 col-md-2 col-lg-2 d-none d-sm-block">
 
-<h4 class="text-center sh16">Фото товара</h4>
-<% @product.product_slide_images.each do |slide| %>
-<li>
-<%= link_to(slide.image.to_s, class: 'gallery', rel: 'group') do %>
-<%= image_tag slide.image.url(:medium) %>
-<% end %>
-</li>
-<% end %>
+  <menu class="fot">
+  <% if @product.product_slide_images.present? %>
 
-<% else %>
+  <h4 class="text-center sh16">Фото товара</h4>
+  <% @product.product_slide_images.each do |slide| %>
+  <li>
+  <%= link_to(slide.image.to_s, class: 'gallery', rel: 'group') do %>
+  <%= image_tag slide.image.url(:medium) %>
+  <% end %>
+  </li>
+  <% end %>
 
-<div class="row ul1">
-<ul class="ul2 ">
-<p class="category"><%= @category.name %></p>
-<li class="li1">
-<% @category.twocategories.each do |twocategory | %>
-<p><%= twocategory.name %></p>
-<ul>
-<% twocategory.threecategories.each do | threecategory | %>
-<li class="li2">
-<p><%= link_to threecategory.name, showthreecat_path(@category.translit_url, twocategory.translit_url, threecategory.translit_url) %></p>
-</li>
-<% end %>
-</ul>
-<% end %>
-</li>
-</ul>
-</div>
+  <% else %>
 
-<% end %>
+  <!--<div class="row ul1">-->
+  <!--<ul class="ul2 ">-->
+  <!--<p class="category"><%= @category.name %></p>-->
+  <!--<li class="li1">-->
+  <!--<% @category.twocategories.each do |twocategory | %>-->
+  <!--<p><%= twocategory.name %></p>-->
+  <!--<ul>-->
+  <!--<% twocategory.threecategories.each do | threecategory | %>-->
+  <!--<li class="li2">-->
+  <!--<p><%= link_to threecategory.name, showthreecat_path(@category.translit_url, twocategory.translit_url, threecategory.translit_url) %></p>-->
+  <!--</li>-->
+  <!--<% end %>-->
+  <!--</ul>-->
+  <!--<% end %>-->
+  <!--</li>-->
+  <!--</ul>-->
+  <!--</div>-->
 
-</menu>
+  <% end %>
 
-</div>
+  </menu>
 
-<!--<div class="col-xs-12 col-sm-8 text-center showproduct">-->
-<!--<div class="formaul">-->
-<!--<ul class="sh14"><li><%= image_tag(@product.main_image(:medium)) %></li>-->
-<!--<li class="sld ple"><%= @product.name %></li>-->
-<!--<li class="ple">Стоимость: <span class="btn-custom"><%= @product.price %> ГРН.</span></li>-->
-<!--<li class="ple">Размер: <span class="sld"><%= @product.size %></span></li>-->
-<!--<li class="ple">Качество товара: <%= @product.quality %></li>-->
-<!--<li class="ple">Описание: <%= @product.description %></li>-->
-<!--<li class="hidden"><span class="btn-custom" >Добавить в избранное</span></li>-->
-<!--<li class="ple"><a href="#demo1" class="size1" data-toggle="collapse" data-parent=".showproduct">Продавец <%= @product.seller.name %> <span class='btn-custom glyphicon glyphicon-earphone'></span></a>-->
-<!--<div class="collapse" id="demo1">-->
-<!--<p class="seller_phone"><%= @product.seller.phone %></p>-->
-<!--</div>-->
-<!--</li>-->
-<!--</ul>-->
-<!--</div>-->
-
-<!--новая версия-->
-<div class="col-xs-12 col-sm-8">
-  <div class="row">
-  <div class="products">
-    <div class="col-sm-6">
-      <div class="row">
-      <div class="products__foto">
-        <%= image_tag(@product.main_image(:medium)) %>
-      </div>
-    </div>
-  </div>
-    <div class="col-sm-6">
-      <div class="row">
-      <div class="products__about">
-        <ul >
-        <li ><%= @product.name %></li>
-        <li >Стоимость: <%= @product.price %> ГРН.</li>
-        <li >Размер: <%= @product.size %></li>
-        <li >Качество товара: <%= @product.quality %></li>
-        <li >Описание: <%= @product.description %></li>
-        <li >Добавить в избранное <a href="#"><span class="btn-custom glyphicon glyphicon-heart-empty"></span></a></li>
-        </ul>
-      </div>
-    </div>
-    </div>
-    <div class="col-sm-12">
-      <div class="row">
-      <div class="products__call">
-        <ul>
-          <li>Продавец <%= @product.seller.name %></li>
-          <li>
-            Желаете купить данный товар, то звоните продавцу
-            <a href="#demo1" class="size1" data-toggle="collapse" data-parent=".showproduct">
-            <span class='btn-custom glyphicon glyphicon-earphone'></span></a>
-            <div class="collapse" id="demo1">
-              <p><%= @product.seller.phone %></p>
-            </div>
-          </li>
-          <li>Есть вопросы по данному товару, напишите продавцу
-            <a href="#demo2" class="size1" data-toggle="collapse" data-parent=".showproduct">
-            <span class='btn-custom glyphicon glyphicon-envelope'></span></a>
-            <div class="collapse" id="demo2">
-              <form action="">
-                <textarea name="" id="" cols="30" rows="5"></textarea>
-                <button>Отправить</button>
-              </form>
-            </div>
-          </li>
-        </ul>
-      </div>
-      </div>
-    </div>
   </div>
 
-
-<!--новая версия-->
-
-
-<!--<div class="container-fluid niz1">-->
-<!--<div class="row">-->
-<!--<h4 class="text-center sh16">Другие товары этого продавца</h4>-->
-<!--<div class="col-xs-12 ">-->
-<!--<div class="row">-->
-<!--<section class="productseller">-->
-<!--<% @product_sell.each do |product| %>-->
-<!--<div class="">-->
-<!--<%= link_to product_path(product), :class => 'size1' do %>-->
-<!--<%= image_tag product.main_image.url(:medium) %>-->
-<!--<p class="size2"><%= product.name %></p>-->
-<!--<% end %>-->
-<!--</div>-->
-<!--<% end %>-->
-<!--</section>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-      <div class="container-fluid niz1 visible-xs">
-        <div class="row">
-          <h4 class="text-center sh16">Подобные товары</h4>
-          <div class="col-xs-12 ">
-          <div class="row">
-          <section class="productseller2">
-          <% @products.each do |product| %>
-          <div class="">
-          <%= link_to product_path(product), :class => 'size1' do %>
-          <%= image_tag product.main_image.url(:medium) %>
-          <p class="size3 sld"><%= product.name %></p>
-          <% end %>
+  <div class="col-12 col-sm-8">
+      <div class="poduct">
+        <div class="d-flex">
+          <div class="col-6 products_foto d-flex justify-content-center">
+            <%= image_tag(@product.main_image(:medium)) %>
           </div>
-          <% end %>
-          </section>
-          </div>
+          <div class="col-6 products_offer">
+            <ul>
+              <li ><span><%= @product.name %></span></li>
+              <li >Стоимость: <%= @product.price %> ГРН.</li>
+              <li >Размер: <span><%= @product.size %></span></li>
+              <li >Качество товара: <span><%= @product.quality %></span></li>
+              <li >Добавить в <a href="#"><span class="btn-custom glyphicon glyphicon-heart-empty">избранное</span></a></li>
+            </ul>
           </div>
         </div>
+          <div class="col-12 products_description">
+            <p>Описание: <%= @product.description %></p>
+          </div>
+          <div class="col-12 products_call">
+            <p>Хотите купить, обращайтесь:</p>
+            <ul>
+              <li>Продавец <span><%= @product.seller.name %></span>
+              </li>
+              <li>Обратиться:
+                <a href="#demo1" class="size1" data-toggle="collapse" data-parent=".showproduct">
+                  <span class='btn-custom glyphicon glyphicon-earphone'>Позвонить или написать</span>
+                </a>
+                <div class="collapse" id="demo1">
+                  <p>Телефон:<%= @product.seller.phone %></p>
+                  <form action="">
+                    <p>Текст сообщения:</p>
+                    <textarea name="" id="" cols="30" rows="5"></textarea>
+                    <button>Отправить</button>
+                  </form>
+                </div>
+              </li>
+              <!--<li>Есть вопросы по данному товару, напишите продавцу-->
+                <!--<a href="#demo2" class="size1" data-toggle="collapse" data-parent=".showproduct">-->
+                  <!--<span class='btn-custom glyphicon glyphicon-envelope'></span></a>-->
+                <!--<div class="collapse" id="demo2">-->
+                  <!--<form action="">-->
+                    <!--<textarea name="" id="" cols="30" rows="5"></textarea>-->
+                    <!--<button>Отправить</button>-->
+                  <!--</form>-->
+                <!--</div>-->
+              <!--</li>-->
+            </ul>
+          </div>
+
       </div>
+
+
+
+      <!--<div class="col-12 niz1 visible-xs">-->
+       <!---->
+          <!--<h4 class="text-center sh16">Подобные товары</h4>-->
+          <!--<div class="col-xs-12 ">-->
+          <!--<div class="row">-->
+          <!--<section class="productseller2">-->
+          <!--<% @products.each do |product| %>-->
+          <!--<div class="">-->
+          <!--<%= link_to product_path(product), :class => 'size1' do %>-->
+          <!--<%= image_tag product.main_image.url(:medium) %>-->
+          <!--<p class="size3 sld"><%= product.name %></p>-->
+          <!--<% end %>-->
+          <!--</div>-->
+          <!--<% end %>-->
+          <!--</section>-->
+          <!--</div>-->
+          <!--</div>-->
+       <!---->
+     <!--</div>-->
+
   </div>
-</div>
 
-<div class="hidden-xs col-sm-2 glf">
-<div class="row">
-<p class="size4 fone">Подобные товары</p>
-<section class="autoplay">
-<% @products.each do |product| %>
-<div class="fone">
-<%= link_to product_path(product), :class => 'size1' do %>
-<%= image_tag product.main_image.url(:medium) %>
-<p class="size3 sld"><%= product.name %></p>
-<% end %>
-</div>
-<% end %>
-</section>
+  <div class="d-none d-sm-block col-sm-2 glf">
+      <!-- слайдер для рекламы-товара -->
 
-<p class="size4 fone">Лучшие продавцы</p>
-<section class="autoplay">
-<% @sellers.each do | seller | %>
-<div class="fone">
-<%= link_to seller_products_path(seller.id), :class => 'size1' do %>
-<%= image_tag seller.avatar(:medium) %>
-<p class="size3 sld"><%= seller.name %></p>
-<% end %>
-</div>
-<% end %>
-</section>
-</div>
+    <p class="slider_title">Подобные товары</p>
+    <section class="home_slider_product">
+      <% @products.each do |product| %>
 
-</div>
+          <%= link_to product_path(product), :class => 'slider_product_block' do %>
+              <%= image_tag product.main_image.url(:medium) %>
+              <p class="slider_product_name"><%= product.name %></p>
+          <% end %>
+
+      <% end %>
+    </section>
+
+    <p class="slider_title">Лучшие продавцы</p>
+    <section class="home_slider_product">
+      <% @sellers.each do | seller | %>
+          <div class="fone">
+            <%= link_to seller_products_path(seller.id) do %>
+                <%= image_tag seller.avatar(:medium) %>
+                <p class="slider_product_name"><%= seller.name %></p>
+            <% end %>
+          </div>
+      <% end %>
+    </section>
+
+  </div>
 
 </div>
 </div> 
 
-<!-- 
-<%= link_to 'Редактировать', edit_product_path(@product), :type => 'button', :class => 'btn btn3' %>
-<%= link_to 'Назад', seller_panel_product_path, :type => 'button', :class => 'btn btn4' %>
-<%= link_to "На главную", root_path, :class => 'btn btn4 form' %>-->
 

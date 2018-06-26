@@ -74,15 +74,41 @@ $(document).on( "change", "#product_twocategory_id", function() {
 
 });
 
+
 $(document).on('ready turbolinks:load', function(){
-    $('.autoplay').not('.slick-initialized').slick({
-        slidesToShow: 1,
+    $('.list-toggle').click(function(){
+        $('.u-list').toggleClass('open');
+    });
+});
+
+
+
+
+
+$(document).on('ready turbolinks:load', function(){
+    $('.home_slider_product').not('.slick-initialized').slick({
+        vertical: true,
+        slidesToShow: 2,
         slidesToScroll: 1,
         autoplay: true,
         pauseOnHover: false,
         adaptiveHeight: true,
         arrows: false,
-        autoplaySpeed: 6000
+        autoplaySpeed: 1500
+    });
+
+});
+
+$(document).on('ready turbolinks:load', function(){
+    $('.home_slider_user').not('.slick-initialized').slick({
+        vertical: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        pauseOnHover: false,
+        adaptiveHeight: true,
+        arrows: false,
+        autoplaySpeed: 1500
     });
 
 });

@@ -1,35 +1,41 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12 col-md-10">
-      <div class="text-center">
+<section id="search">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-md-10 text-center d-flex flex-wrap">
+
         <h4>Вы искали: <%= params[:q] %></h4>
         <% @products.each do |product| %>
-            <div class="col-xs-6 col-sm-4 col-lg-3">
-              <div class="tovar">
+            <div class="col-xs-6 col-sm-4 col-lg-3 ">
+              <div class="card_product">
                 <%= link_to product_path(product), class: 'size1' do %>
                     <%= image_tag product.main_image(:medium) %><br>
-                    <p class="size3"><%= product.name %></p>
-                    <p class="sld0"><%= product.size %></p>
-                    <p class=""><%= product.price %> грн.</p>
+                    <p class="card_product_name"><%= product.name %></p>
+                    <p class="card_product_size"><%= product.size %></p>
+                    <p class="card_product_price"><%= product.price %> грн.</p>
                 <% end %>
               </div>
             </div>
         <% end %>
-      </div>
-    </div>
-    <div class="hidden-xs hidden-sm col-md-2">
-      <div class="row text-center">
-        <p class="size4 sh14 fone">Популярное</p>
-        <section class="autoplaydr">
-          <% @prs.each do |product| %>
-              <%= link_to product_path(product), :class => 'size1 fone' do %>
-                  <%= image_tag product.main_image(:medium) %>
-                  <p class="size3"><%= product.name %></p>
-              <% end %>
 
-          <% end %>
-        </section>
+      </div>
+
+      <div class="hidden-xs hidden-sm col-md-2 text-center">
+        <div class="slider">
+          <p class="slider_title">Популярное</p>
+          <section class="autoplaydr ">
+            <% @prs.each do |product| %>
+                <div class="slider_user">
+
+                  <%= link_to product_path(product), :class => 'size1' do %>
+                      <%= image_tag product.main_image(:medium) %>
+                      <p class=""><%= product.name %></p>
+                  <% end %>
+                </div>
+            <% end %>
+          </section>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+</section>
