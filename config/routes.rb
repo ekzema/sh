@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :favorite_products
   resources :feeds, except: [:new, :index, :show]
   root 'welcome#index'
   get 'admin_panel', to: 'admin_panel#index'
