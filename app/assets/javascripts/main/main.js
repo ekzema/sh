@@ -296,17 +296,54 @@ $('.searchInput').autocomplete({
 $('.ui-helper-hidden-accessible').hide(); //hide result message in div classes ui-helper-hidden-accessible
 });
 
-
-
-
-    document.addEventListener("turbolinks:load", function () {
-        $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            $(this).parent().siblings().removeClass('open');
-            $(this).parent().toggleClass('open');
-        });
+document.addEventListener("turbolinks:load", function () {
+    $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        $(this).parent().siblings().removeClass('open');
+        $(this).parent().toggleClass('open');
     });
+});
+
+function addToFavorite(id) {
+    $.ajax({
+        url: '/favorites',
+        type: 'POST',
+        data: {product_id: id},
+        success: function(result){
+            if (result.success) {
+                $('.favoriteButton').html("Удалить из <span class='btn-custom glyphicon glyphicon-heart-empty' onclick='removeToFavorite("+result.id+")'>избранного</span>");
+                $('#notice').html("<div class='alert alert-success' role='alert'>"+result.message+"</div>");
+                setTimeout("$('.alert').fadeOut(1000);", 4000);
+                setTimeout("$('.alert').remove();", 5000);
+            } else {
+                $('#notice').html("<div class='alert alert-danger' role='alert'>"+result.message+"</div>");
+                setTimeout("$('.alert').fadeOut(1000);", 4000);
+                setTimeout("$('.alert').remove();", 5000);
+            }
+        }
+    });
+}
+
+function removeToFavorite(id){
+    $.ajax({
+        url: '/favorites/'+id,
+        type: 'delete',
+        data: {product_id: id},
+        success: function(result){
+            if (result.success) {
+                $('.favoriteButton').html("Добавить в <span class='btn-custom glyphicon glyphicon-heart-empty' onclick='addToFavorite("+result.id+")'>избранное</span>");
+                $('#notice').html("<div class='alert alert-success' role='alert'>"+result.message+"</div>");
+                setTimeout("$('.alert').fadeOut(1000);", 4000);
+                setTimeout("$('.alert').remove();", 5000);
+            } else {
+                $('#notice').html("<div class='alert alert-danger' role='alert'>"+result.message+"</div>");
+                setTimeout("$('.alert').fadeOut(1000);", 4000);
+                setTimeout("$('.alert').remove();", 5000);
+            }
+        }
+    });
+}
 
 
 

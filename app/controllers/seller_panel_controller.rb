@@ -29,6 +29,9 @@ class SellerPanelController < ApplicationController
 
   end
 
+  def favorite
+  end
+
   private
 
   # def reset_session
@@ -41,5 +44,4 @@ class SellerPanelController < ApplicationController
     @pars_id =  params[:name].match(/^\d{1,}/).to_s
     @product = Product.find(@pars_id)
   end
-
 end

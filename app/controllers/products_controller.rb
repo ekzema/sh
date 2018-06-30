@@ -61,7 +61,6 @@ class ProductsController < ApplicationController
   def create
     @seller = Seller.find(current_seller.id)
     @product = @seller.products.new(product_params)
-
     respond_to do |format|
       if @product.save
         ProductMailer.new_product.deliver

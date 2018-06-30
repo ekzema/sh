@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180628215739) do
+ActiveRecord::Schema.define(version: 20180629115821) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -38,13 +38,13 @@ ActiveRecord::Schema.define(version: 20180628215739) do
     t.index ["category_id"], name: "index_category_slide_images_on_category_id", using: :btree
   end
 
-  create_table "favorite_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "products_id", null: false
     t.integer  "sellers_id",  null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["products_id"], name: "index_favorite_products_on_products_id", using: :btree
-    t.index ["sellers_id"], name: "index_favorite_products_on_sellers_id", using: :btree
+    t.index ["products_id"], name: "index_favorites_on_products_id", using: :btree
+    t.index ["sellers_id"], name: "index_favorites_on_sellers_id", using: :btree
   end
 
   create_table "feeds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -190,8 +190,8 @@ ActiveRecord::Schema.define(version: 20180628215739) do
   end
 
   add_foreign_key "category_slide_images", "categories"
-  add_foreign_key "favorite_products", "products", column: "products_id"
-  add_foreign_key "favorite_products", "sellers", column: "sellers_id"
+  add_foreign_key "favorites", "products", column: "products_id"
+  add_foreign_key "favorites", "sellers", column: "sellers_id"
   add_foreign_key "product_slide_images", "products"
   add_foreign_key "threecategories", "twocategories"
   add_foreign_key "twocategories", "categories"

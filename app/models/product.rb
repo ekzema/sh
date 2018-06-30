@@ -42,4 +42,7 @@ class Product < ApplicationRecord
     end
   end
 
+  def favorite? seller_id
+    Favorite.where(products_id: self.id, sellers_id: seller_id).first
+  end
 end

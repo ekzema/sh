@@ -57,7 +57,13 @@
               <li >Стоимость: <%= @product.price %> ГРН.</li>
               <li >Размер: <span><%= @product.size %></span></li>
               <li >Качество товара: <span><%= @product.quality %></span></li>
-              <li >Добавить в <a href="#"><span class="btn-custom glyphicon glyphicon-heart-empty">избранное</span></a></li>
+              <% if ! seller_signed_in?  %>
+                  <li class="favoriteButton">Добавить в <span class="btn-custom glyphicon glyphicon-heart-empty"><%= link_to 'избранное', new_seller_session_path(continue: product_path(@product.id), class: "btn-custom glyphicon glyphicon-heart-empty") %></span></li>
+                  <% elsif @product.favorite? current_seller.id%>
+              <li class="favoriteButton">Удалить из <span class="btn-custom glyphicon glyphicon-heart-empty" onclick="removeToFavorite(<%= @product.id %>)">избранное</span></li>
+                  <% else %>
+                  <li class="favoriteButton">Добавить в <span class="btn-custom glyphicon glyphicon-heart-empty" onclick="addToFavorite(<%= @product.id %>)">избранное</span></li>
+              <% end %>
             </ul>
           </div>
         </div>

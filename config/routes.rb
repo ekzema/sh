@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :favorite_products
+  resources :favorites, only: [:create, :destroy]
   resources :feeds, except: [:new, :index, :show]
   root 'welcome#index'
   get 'admin_panel', to: 'admin_panel#index'
@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
 
   get 'seller_panel/product'
+  get 'seller_panel/favorites', to: 'seller_panel#favorite'
   get 'seller_panel/vipstatus'
   get 'seller_panel/sms'
   get 'seller_panel/:name/showproduct', to: 'seller_panel#showproduct', as: 'showproduct_seller_panel'
