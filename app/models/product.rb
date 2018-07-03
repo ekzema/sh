@@ -8,7 +8,7 @@ class Product < ApplicationRecord
   validates :category, :presence => {message: 'выберите категорию'}
   validates :twocategory, :presence => {message: 'выберите сезон'}
   validates :threecategory, :presence => {message: 'выберите тип товара'}
-
+  has_many :favorites, :dependent => :destroy
   belongs_to :seller
   belongs_to :category
   belongs_to :twocategory
@@ -43,6 +43,6 @@ class Product < ApplicationRecord
   end
 
   def favorite? seller_id
-    Favorite.where(products_id: self.id, sellers_id: seller_id).first
+    Favorite.where(product_id: self.id, seller_id: seller_id).first
   end
 end

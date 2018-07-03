@@ -1,5 +1,7 @@
 class Seller < ApplicationRecord
   has_many :products, :dependent => :destroy
+  has_many :favorites, :dependent => :destroy
+  has_many :favorites, :dependent => :destroy
   CITY_TYPES = ['Винницкая', 'Волынская', 'Днепропетровская', 'Житомирская', 'Закарпатская', 'Запорожская', 'Ивано-Франковская', 'Киевская', 'Кировоградская', 'Луганская', 'Львовская', 'Николаевская', 'Одесская', 'Полтавская', 'Ровенская', 'Сумская', 'Тернопольская', 'Харьковская', 'Херсонская', 'Хмельницкая', 'Черкасская', 'Черниговская', 'Черновицкая']
   validates :name, :presence => {message: '(укажите своё имя)'}
   validates :surname, :presence => {message: '(укажите свою фамилию)'}
@@ -17,4 +19,8 @@ class Seller < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   validates_attachment_file_name :avatar, matches: [/png\z/, /jpe?g\z/, /gif\z/]
   crop_attached_file :avatar
+
+  def favorites
+    Product.joins(:favorites).where('favorites.seller_id' => self.id)
+  end
 end

@@ -52,7 +52,9 @@
 
       </ul>
       <ul class="nav navbar-nav navbar_user">
-        избранное(1) смс(4)
+        <% if seller_signed_in? %>
+        <%= link_to 'Избранное', seller_panel_favorites_path %>(<span class="favoritesCount"><%= current_seller.favorites.count %></span>) смс(4)
+            <% end %>
         <li class="dropdown dropdown_user">
           <a id="drop001" role="button" class="dropdown-toggle p10"
              data-toggle="dropdown" href="#">

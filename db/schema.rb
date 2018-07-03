@@ -39,12 +39,12 @@ ActiveRecord::Schema.define(version: 20180629115821) do
   end
 
   create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer  "products_id", null: false
-    t.integer  "sellers_id",  null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["products_id"], name: "index_favorites_on_products_id", using: :btree
-    t.index ["sellers_id"], name: "index_favorites_on_sellers_id", using: :btree
+    t.integer  "product_id", null: false
+    t.integer  "seller_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_favorites_on_product_id", using: :btree
+    t.index ["seller_id"], name: "index_favorites_on_seller_id", using: :btree
   end
 
   create_table "feeds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -190,8 +190,8 @@ ActiveRecord::Schema.define(version: 20180629115821) do
   end
 
   add_foreign_key "category_slide_images", "categories"
-  add_foreign_key "favorites", "products", column: "products_id"
-  add_foreign_key "favorites", "sellers", column: "sellers_id"
+  add_foreign_key "favorites", "products"
+  add_foreign_key "favorites", "sellers"
   add_foreign_key "product_slide_images", "products"
   add_foreign_key "threecategories", "twocategories"
   add_foreign_key "twocategories", "categories"

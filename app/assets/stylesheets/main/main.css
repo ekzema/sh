@@ -1361,3 +1361,7 @@ ul,li > .oseller{
     width: 100%;
     height: 60px;
 }
+
+.favItem{
+    cursor: pointer;
+}

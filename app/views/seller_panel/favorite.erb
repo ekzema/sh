@@ -1,1 +1,82 @@
-<h1>test</h1>
+<script type="text/javascript">
+    setTimeout(function(){$('.box').fadeOut(3000)},3000);
+    setTimeout(function(){$('.box2').fadeOut(5000)},3000);
+</script>
+<div class="container box">
+  <% if flash[:alert] %>
+      <div class="alert alert-error" class="text-center">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:alert] %></div>
+  <% end %>
+  <% if flash[:notice] %>
+      <div class="alert alert-success" class="text-center">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:notice] %>
+      </div>
+  <% end %>
+
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <!-- <div class="col-sm-12 ava hidden-xs hidden-sm">
+  <%= image_tag current_seller.avatar, :class => 'img-responsive img-rounded' %>
+  <%= current_seller.name %> <%= current_seller.surname %>
+</div> -->
+    <div class="col-sm-12">
+
+      <div class="alert alert-info alert-dismissable box2">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4 class="text-center sh16"><strong><%= current_seller.name %>  !  </strong>Товары добавляем только хорошего качества, и не каких реплик только оригиналы!!!</h4></div>
+      <h3 class="text-center">Все товары</h3>
+      <div class="table- responsive">
+        <table class="table table-hover">
+          <thead>
+          <tr class="info">
+            <th class="text-center">Фото</th>
+            <th class="hidden-xs text-center">Название</th>
+            <th class="hidden-xs text-center">Размер</th>
+            <th class="hidden-xs text-center">Цена</th>
+            <th class="hidden-xs text-center">Описание</th>
+            <th class="hidden-xs text-center">Show</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% current_seller.favorites.each do |product| %>
+              <tr class="success imgtel text-center" id="product_<%= product.id %>">
+                <td><%= image_tag product.main_image.url(:thumb) %></td>
+                <td class="hidden-xs "><%= product.name %></td>
+                <td class="hidden-xs"><%= product.size %></td>
+                <td class="hidden-xs"><%= product.price %></td>
+                <td class="hidden-xs "><%= product.description %></td>
+                <td class="hidden-xs ">
+                  <%= link_to ' ', product_path(product), :type => 'button', :class => ' btn btn2 glyphicon glyphicon-zoom-in' %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+        <script type="text/javascript">
+
+            $(function () {
+                $('input[type=checkbox]').change(function () {
+                    var check_id = $(this).attr('pr_id');
+                    $.ajax({
+                        url: '/seller_panel/product_visible',
+                        type: 'POST',
+                        data: $('#product_visible'+check_id).serialize()
+                    });
+                });
+            });
+
+        </script>
+      </div>
+      <div>
+        <%= link_to 'Новый товар', new_product_path, :class => 'btn btn2 form' %>
+      </div>
+      <div>
+        <%= link_to "На главную", root_path, :class => 'btn btn4 form' %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

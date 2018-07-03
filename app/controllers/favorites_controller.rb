@@ -9,17 +9,19 @@ class FavoritesController < ApplicationController
       result[:message] = 'Товар не найден.'
       return render json: result
     end
-    favorite = Favorite.where(products_id: product_id, sellers_id: current_seller.id).first
+    favorite = Favorite.where(product_id: product_id, seller_id: current_seller.id).first
     if favorite
       result[:message] = 'Товар уже добавлен в избранное.'
       return render json: result
     end
-    favorite = Favorite.new(products_id: product_id, sellers_id: current_seller.id)
+    favorite = Favorite.new(product_id: product_id, seller_id: current_seller.id)
     unless favorite.save
       result[:message] = favorite.errors
       return render json: result
     end
+    count = Favorite.where(seller_id: current_seller.id).count
     result[:success] = true
+    result[:count] = count
     result[:message] = 'Товар добавлен в избранное.'
     result[:id] = product_id
     render json: result
@@ -36,7 +38,7 @@ class FavoritesController < ApplicationController
       result[:message] = 'Товар не найден.'
       return render json: result
     end
-    favorite = Favorite.where(products_id: product_id, sellers_id: current_seller.id).first
+    favorite = Favorite.where(product_id: product_id, seller_id: current_seller.id).first
     unless favorite
       result[:message] = 'Такого товара нет в избранном.'
       return render json: result
@@ -45,7 +47,9 @@ class FavoritesController < ApplicationController
       result[:message] = favorite.errors
       return render json: result
     end
+    count = Favorite.where(seller_id: current_seller.id).count
     result[:success] = true
+    result[:count] = count
     result[:message] = 'Товар удалён из избранного.'
     result[:id] = product_id
     render json: result

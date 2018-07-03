@@ -19,14 +19,13 @@ class SellerPanelController < ApplicationController
   end
 
   def product_visible
-    if params[:product_id]
-  @pr = Product.find(params[:product_id])
-  @pr.update(:visible => params[:visible])
-  head :ok
-    else
-      head :error
-    end
-
+    @pr = Product.find_by(:id => params[:product_id], :seller_id => current_seller.id)
+    if @pr
+    @pr.update(:visible => params[:visible])
+    head :ok
+      else
+        head :error
+      end
   end
 
   def favorite
