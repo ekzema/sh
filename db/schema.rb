@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180629115821) do
+ActiveRecord::Schema.define(version: 20180705220756) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -38,6 +38,11 @@ ActiveRecord::Schema.define(version: 20180629115821) do
     t.index ["category_id"], name: "index_category_slide_images_on_category_id", using: :btree
   end
 
+  create_table "dialogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "product_id", null: false
     t.integer  "seller_id",  null: false
@@ -55,6 +60,19 @@ ActiveRecord::Schema.define(version: 20180629115821) do
     t.integer  "moderation",                default: 0
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+  end
+
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.text     "body",         limit: 65535
+    t.integer  "dialog_id",                  null: false
+    t.integer  "seller_id",                  null: false
+    t.integer  "recipient_id",               null: false
+    t.datetime "status"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["dialog_id"], name: "index_messages_on_dialog_id", using: :btree
+    t.index ["recipient_id"], name: "index_messages_on_recipient_id", using: :btree
+    t.index ["seller_id"], name: "index_messages_on_seller_id", using: :btree
   end
 
   create_table "product_slide_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -189,10 +207,24 @@ ActiveRecord::Schema.define(version: 20180629115821) do
     t.index ["category_id"], name: "index_twocategories_on_category_id", using: :btree
   end
 
+  create_table "users_cross_chats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "dialog_id",  null: false
+    t.integer  "seller_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dialog_id"], name: "index_users_cross_chats_on_dialog_id", using: :btree
+    t.index ["seller_id"], name: "index_users_cross_chats_on_seller_id", using: :btree
+  end
+
   add_foreign_key "category_slide_images", "categories"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "sellers"
+  add_foreign_key "messages", "dialogs"
+  add_foreign_key "messages", "sellers"
+  add_foreign_key "messages", "sellers", column: "recipient_id"
   add_foreign_key "product_slide_images", "products"
   add_foreign_key "threecategories", "twocategories"
   add_foreign_key "twocategories", "categories"
+  add_foreign_key "users_cross_chats", "dialogs"
+  add_foreign_key "users_cross_chats", "sellers"
 end

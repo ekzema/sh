@@ -81,11 +81,17 @@
                 </a>
                 <div class="collapse" id="demo1">
                   <p>Телефон:<%= @product.seller.phone %></p>
-                  <form action="">
-                    <p>Текст сообщения:</p>
-                    <textarea name="" id="" cols="30" rows="5"></textarea>
-                    <button>Отправить</button>
-                  </form>
+                  <% if seller_signed_in? %>
+                  <%= form_tag(dialogs_path, remote: true, method: :post) do %>
+                    <%= hidden_field_tag 'message[recipient_id]', @product.seller.id %>
+                    <%= hidden_field_tag 'message[seller_id]', current_seller.id %>
+                    <%= text_area_tag 'message[body]' %>
+                    <%= submit_tag "Отправить" %>
+                  <% end %>
+                  <% else %>
+                      <p class="messageLinkUser">Чтобы оставить сообщение продавцу <%= link_to 'Войти', new_seller_session_path %> или
+                        <%= link_to 'Зарегистрируйся', new_seller_registration_path %></p>
+                  <% end %>
                 </div>
               </li>
               <!--<li>Есть вопросы по данному товару, напишите продавцу-->

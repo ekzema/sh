@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :messages
+  resources :dialogs, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
   resources :feeds, except: [:new, :index, :show]
   root 'welcome#index'
