@@ -1,0 +1,16 @@
+var success = <%= @result[:success] %>;
+var message = "<%= @result[:message] %>";
+
+if (success === true) {
+    $('form textarea').val(' ');
+    $('#notice').html("<div class='alert alert-success' role='alert'>"+message+"</div>");
+    setTimeout("$('.alert').fadeOut(1000);", 4000);
+    setTimeout("$('.alert').remove();", 5000);
+} else {
+    $('#notice').html("<div class='alert alert-danger' role='alert'>"+message+"</div>");
+    setTimeout("$('.alert').fadeOut(1000);", 4000);
+    setTimeout("$('.alert').remove();", 5000);
+};
+
+
+

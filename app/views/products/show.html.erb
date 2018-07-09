@@ -82,12 +82,16 @@
                 <div class="collapse" id="demo1">
                   <p>Телефон:<%= @product.seller.phone %></p>
                   <% if seller_signed_in? %>
-                  <%= form_tag(dialogs_path, remote: true, method: :post) do %>
-                    <%= hidden_field_tag 'message[recipient_id]', @product.seller.id %>
-                    <%= hidden_field_tag 'message[seller_id]', current_seller.id %>
-                    <%= text_area_tag 'message[body]' %>
-                    <%= submit_tag "Отправить" %>
-                  <% end %>
+                      <% if current_seller.id == @product.seller_id %>
+                          <p>Товар текущего пользователя!</p>
+                      <% else %>
+                        <%= form_tag(dialogs_path, remote: true, method: :post) do %>
+                          <%= hidden_field_tag 'message[recipient_id]', @product.seller.id %>
+                          <%= hidden_field_tag 'message[seller_id]', current_seller.id %>
+                          <%= text_area_tag 'message[body]' %>
+                          <%= submit_tag "Отправить" %>
+                        <% end %>
+                      <% end %>
                   <% else %>
                       <p class="messageLinkUser">Чтобы оставить сообщение продавцу <%= link_to 'Войти', new_seller_session_path %> или
                         <%= link_to 'Зарегистрируйся', new_seller_registration_path %></p>
