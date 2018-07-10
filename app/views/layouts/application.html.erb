@@ -53,7 +53,10 @@
       </ul>
       <ul class="nav navbar-nav navbar_user">
         <% if seller_signed_in? %>
-        <%= link_to 'Избранное', seller_panel_favorites_path %>(<span class="favoritesCount"><%= current_seller.favorites.count %></span>) смс(4)
+        <%= link_to 'Избранное', seller_panel_favorites_path %>(<span class="favoritesCount"><%= current_seller.favorites.count %></span>)
+              <%= link_to  seller_panel_dialogs_path do %>
+                смс (<%= Message.total_new(current_seller.id) %>)
+              <% end %>
             <% end %>
         <li class="dropdown dropdown_user">
           <a id="drop001" role="button" class="dropdown-toggle p10"
@@ -69,7 +72,7 @@
             <% if seller_signed_in? %>
                 <li class=""><%= link_to 'Редактировать данные', edit_seller_registration_path %></li>
                 <li class=""><%= link_to 'Мои товары', seller_panel_product_path %></li>
-                <li class=""><%= link_to 'Мои сообщения', seller_panel_sms_path %></li>
+                <li class=""><%= link_to 'Мои сообщения', seller_panel_dialogs_path %></li>
                 <li class=""><%= link_to 'Мой VIP-Статус', seller_panel_vipstatus_path %></li>
                 <li class="divider hidden-xs"></li>
                 <li class=""><%= link_to('Выйти', destroy_seller_session_path, {:tabindex => '-1'}) %></li>

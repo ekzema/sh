@@ -3,8 +3,8 @@ class WelcomeController < ApplicationController
     @category = Category.all.order(created_at: :desc)
     @image_count =  CategorySlideImage.count
     @i = 1
-    @sellers = Seller.all.order(created_at: :desc)
-    @products = Product.where(moderation: 1, visible: 1).order(created_at: :desc)
+    @sellers = Seller.limit(10).order(created_at: :desc)
+    @products = Product.where(moderation: 1, visible: 1).limit(10).order(created_at: :desc)
     @twocategories = Twocategory.all.order(created_at: :desc)
   end
 

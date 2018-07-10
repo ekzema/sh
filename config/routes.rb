@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   get 'seller_panel/product'
   get 'seller_panel/favorites', to: 'seller_panel#favorite'
   get 'seller_panel/vipstatus'
-  get 'seller_panel/sms'
+  get 'seller_panel/dialogs'
   get 'seller_panel/:name/showproduct', to: 'seller_panel#showproduct', as: 'showproduct_seller_panel'
   post 'seller_panel/product_visible'
 

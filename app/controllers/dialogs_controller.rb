@@ -3,14 +3,22 @@ class DialogsController < ApplicationController
 
   def create
     @result = {success: false, message: "Возникла ошибка при отправке сообщения"}
-    if params[:message][:body].empty?
+    if params[:body].empty?
       @result[:message] = "Сообщение не может быть пустым!"
       return  @result
     end
-    findmessage = Message.where(seller_id: params[:message][:seller_id], recipient_id: params[:message][:recipient_id]).take
-    if ! findmessage
+    seller = Seller.find_by_id(params[:recipient_id])
+    unless seller
+      @result[:message] = "Такого пользователя не существует!"
+      return  @result
+    end
+    findmessage = Message.where(seller_id: current_seller.id, recipient_id: seller.id).take
+    message_params = {seller_id: current_seller.id, recipient_id: seller.id, body: params[:body]}
+    unless findmessage
       dialog = Dialog.create
       message = Message.new(message_params)
+       UsersCrossChat.create(seller_id: current_seller.id, dialog_id:  dialog.id)
+       UsersCrossChat.create(seller_id: seller.id, dialog_id:  dialog.id)
       message.dialog_id = dialog.id
     else
       message = Message.new(message_params)
@@ -29,11 +37,5 @@ class DialogsController < ApplicationController
 
   def destroy
 
-  end
-
-  private
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def message_params
-    params.require(:message).permit(:body, :seller_id, :recipient_id)
   end
 end
