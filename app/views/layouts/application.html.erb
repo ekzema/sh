@@ -55,7 +55,7 @@
         <% if seller_signed_in? %>
         <%= link_to 'Избранное', seller_panel_favorites_path %>(<span class="favoritesCount"><%= current_seller.favorites.count %></span>)
               <%= link_to  seller_panel_dialogs_path do %>
-                смс (<%= Message.total_new(current_seller.id) %>)
+                смс (<%= @message_new %>)
               <% end %>
             <% end %>
         <li class="dropdown dropdown_user">

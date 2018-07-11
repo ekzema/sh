@@ -246,9 +246,9 @@ $(document).on('ready turbolinks:load', function(){
 });
 
 
-$(document).on('turbolinks:load', function() {
-    $('form').parsley().validate();
-});
+// $(document).on('turbolinks:load', function() {
+//     $('form').parsley().validate();
+// });
 
 
  //date

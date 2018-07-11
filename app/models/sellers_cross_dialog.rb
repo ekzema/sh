@@ -1,0 +1,2 @@
+class SellersCrossDialog < ApplicationRecord
+end

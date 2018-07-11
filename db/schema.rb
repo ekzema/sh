@@ -38,12 +38,12 @@ ActiveRecord::Schema.define(version: 20180705220756) do
     t.index ["category_id"], name: "index_category_slide_images_on_category_id", using: :btree
   end
 
-  create_table "dialogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "dialogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "product_id", null: false
     t.integer  "seller_id",  null: false
     t.datetime "created_at", null: false
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20180705220756) do
     t.datetime "updated_at",                            null: false
   end
 
-  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "body",         limit: 65535
     t.integer  "dialog_id",                  null: false
     t.integer  "seller_id",                  null: false
@@ -173,6 +173,15 @@ ActiveRecord::Schema.define(version: 20180705220756) do
     t.index ["reset_password_token"], name: "index_sellers_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "sellers_cross_dialogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "dialog_id",  null: false
+    t.integer  "seller_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dialog_id"], name: "index_sellers_cross_dialogs_on_dialog_id", using: :btree
+    t.index ["seller_id"], name: "index_sellers_cross_dialogs_on_seller_id", using: :btree
+  end
+
   create_table "threecategories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "twocategory_id"
@@ -207,15 +216,6 @@ ActiveRecord::Schema.define(version: 20180705220756) do
     t.index ["category_id"], name: "index_twocategories_on_category_id", using: :btree
   end
 
-  create_table "users_cross_chats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer  "dialog_id",  null: false
-    t.integer  "seller_id",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["dialog_id"], name: "index_users_cross_chats_on_dialog_id", using: :btree
-    t.index ["seller_id"], name: "index_users_cross_chats_on_seller_id", using: :btree
-  end
-
   add_foreign_key "category_slide_images", "categories"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "sellers"
@@ -223,8 +223,8 @@ ActiveRecord::Schema.define(version: 20180705220756) do
   add_foreign_key "messages", "sellers"
   add_foreign_key "messages", "sellers", column: "recipient_id"
   add_foreign_key "product_slide_images", "products"
+  add_foreign_key "sellers_cross_dialogs", "dialogs"
+  add_foreign_key "sellers_cross_dialogs", "sellers"
   add_foreign_key "threecategories", "twocategories"
   add_foreign_key "twocategories", "categories"
-  add_foreign_key "users_cross_chats", "dialogs"
-  add_foreign_key "users_cross_chats", "sellers"
 end

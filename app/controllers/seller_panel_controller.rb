@@ -7,8 +7,9 @@ class SellerPanelController < ApplicationController
     @seller_products = current_seller.products.where(:moderation => 1).order(created_at: :desc)
   end
 
-  def sms
-
+  def dialogs
+    @dialogs = Dialog.connection.select_all("SELECT d.id AS dialog_id, scd.seller_id AS seller_id, s.name AS name, s.surname AS surname FROM dialogs d INNER JOIN sellers_cross_dialogs scd ON scd.dialog_id = d.id INNER JOIN sellers s ON s.id = scd.seller_id WHERE scd.seller_id <> #{current_seller.id}
+")
   end
 
   def showproduct

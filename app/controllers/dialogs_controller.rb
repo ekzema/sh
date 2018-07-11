@@ -17,8 +17,8 @@ class DialogsController < ApplicationController
     unless findmessage
       dialog = Dialog.create
       message = Message.new(message_params)
-       UsersCrossChat.create(seller_id: current_seller.id, dialog_id:  dialog.id)
-       UsersCrossChat.create(seller_id: seller.id, dialog_id:  dialog.id)
+      SellersCrossDialog.create(seller_id: current_seller.id, dialog_id:  dialog.id)
+      SellersCrossDialog.create(seller_id: seller.id, dialog_id:  dialog.id)
       message.dialog_id = dialog.id
     else
       message = Message.new(message_params)

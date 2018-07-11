@@ -1,6 +1,6 @@
-class CreateUsersCrossChats < ActiveRecord::Migration[5.0]
+class CreateSellersCrossDialogs < ActiveRecord::Migration[5.0]
   def change
-    create_table :users_cross_chats do |t|
+    create_table :sellers_cross_dialogs do |t|
       t.references :dialog, foreign_key: true, :null => false
       t.references :seller, foreign_key: true, :null => false
 

@@ -11,21 +11,27 @@
     </ul>
 
   </div>
+  <ul>
+    <% @dialogs.each do |dialog| %>
+      <li><%= dialog['dialog_id'] %></li>
+      <li><%= dialog['name'] %></li>
+      <li><%= dialog['surname'] %></li>
+    <% end %>
+  </ul>
+  <!--<div class="col-xs-12">-->
+    <!--<ul class="nav nav-tabs sh16" role="tablist">-->
+      <!--<li class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><p>Полученные сообщения</p></a></li>-->
+      <!--<li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><p>Отправленные сообщения</p></a></li>-->
 
-  <div class="col-xs-12">
-    <ul class="nav nav-tabs sh16" role="tablist">
-      <li class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><p>Полученные сообщения</p></a></li>
-      <li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><p>Отправленные сообщения</p></a></li>
+    <!--</ul>-->
+    <!--&lt;!&ndash; Содержимое вкладок &ndash;&gt;-->
+    <!--<div class="tab-content sh14 demo2">-->
+      <!--<div role="tabpanel" class="tab-pane active" id="home"><p class="showProductDesc">Полученные сообщения</p>-->
+      <!--</div>-->
+      <!--<div role="tabpanel" class="tab-pane" id="profile">Отправленные сообщения</div>-->
 
-    </ul>
-    <!-- Содержимое вкладок -->
-    <div class="tab-content sh14 demo2">
-      <div role="tabpanel" class="tab-pane active" id="home"><p class="showProductDesc">Полученные сообщения</p>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="profile">Отправленные сообщения</div>
-
-    </div>
-  </div>
+    <!--</div>-->
+  <!--</div>-->
 
 </div>
 </div>

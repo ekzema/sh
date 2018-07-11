@@ -1,2 +1,0 @@
-class UsersCrossChat < ApplicationRecord
-end

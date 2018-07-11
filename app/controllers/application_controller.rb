@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   def nav_main
     @catmenu = Category.all
+    @message_new = Message.where(recipient_id: current_seller.id, status: nil).count if seller_session
   end
 
   def setting_site
@@ -16,8 +17,6 @@ class ApplicationController < ActionController::Base
     @description = 'Мужская, женская и детская стоковая одежда от ведущих мировых брендов по сомым низким ценам в Украине на сайте: ' + @domen
     @keywords = 'стоковая детская одежда, одежда секондхенд, стоковая женская одежда, сток оптом, одежда секондхенд украина, женская одежда secondhand украина, купить одежду secondhand, детская одежда secondhand, одежда secondhand, стоковая одежда оптом,  брендовая стоковая одежда, дешевая одежда secondhand, сток одежда оптом, купить сток одежду, сток украина'
   end
-
-
 
   def after_sign_in_path_for(resource)
     # check for the class of the object to determine what type it is
