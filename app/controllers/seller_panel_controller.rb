@@ -8,8 +8,14 @@ class SellerPanelController < ApplicationController
   end
 
   def dialogs
-    @dialogs = Dialog.connection.select_all("SELECT d.id AS dialog_id, scd.seller_id AS seller_id, s.name AS name, s.surname AS surname FROM dialogs d INNER JOIN sellers_cross_dialogs scd ON scd.dialog_id = d.id INNER JOIN sellers s ON s.id = scd.seller_id WHERE scd.seller_id <> #{current_seller.id}
-")
+    sql = "SELECT d.id AS dialog_id, scd2.seller_id AS seller_id, s.name AS name, s.surname AS surname FROM dialogs d
+INNER JOIN sellers_cross_dialogs scd1 ON scd1.dialog_id = d.id AND scd1.seller_id = #{current_seller.id}
+INNER JOIN sellers_cross_dialogs scd2 ON scd2.dialog_id = d.id AND scd2.dialog_id = scd1.dialog_id
+INNER JOIN sellers s ON s.id = scd2.seller_id WHERE scd2.seller_id <> #{current_seller.id}
+"
+    @dialogs = Dialog.paginate(:page => params[:page], :per_page => 30).find_by_sql(sql)
+    # @dialogs = ActiveRecord::Base.connection.select_all(sql)
+
   end
 
   def showproduct
