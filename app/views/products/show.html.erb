@@ -76,7 +76,7 @@
               <li>Продавец <span><%= @product.seller.name %></span>
               </li>
               <li>Обратиться:
-                <a href="#" class="size1" data-toggle="collapse" data-parent=".showproduct">
+                <a href="#demo1" class="size1" data-toggle="collapse" data-parent=".showproduct">
                   <span class='btn-custom glyphicon glyphicon-earphone'>Позвонить или написать</span>
                 </a>
                 <div class="collapse" id="demo1">
@@ -87,7 +87,7 @@
                       <% else %>
                         <%= form_tag(dialogs_path, remote: true, method: :post) do %>
                           <%= hidden_field_tag 'recipient_id', @product.seller.id %>
-                          <%= text_area_tag 'body' %>
+                          <%= text_area_tag 'body' %><br>
                           <%= submit_tag "Отправить" %>
                         <% end %>
                       <% end %>
