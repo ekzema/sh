@@ -1,0 +1,8 @@
+<h1>Dialog Messages</h1>
+<% @messages.each do |message| %>
+    <ul>
+      <li><span>Написал(а): <%= message.seller.name %></span></li>
+      <p><%= message.body %></p>
+    </ul>
+    <hr>
+<% end %>

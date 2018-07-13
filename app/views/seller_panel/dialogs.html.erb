@@ -13,9 +13,11 @@
   </div>
   <ul>
     <% @dialogs.each do |dialog| %>
-      <li><%= dialog['dialog_id'] %></li>
-      <li><%= dialog['name'] %></li>
-      <li><%= dialog['surname'] %></li>
+      <li>
+      <%= link_to seller_dialogs_path(dialog.id) do%>
+        <p><%= dialog.name %> | <%= dialog.surname %> | <%= dialog.product_name %><%= dialog.total_new(current_seller.id) %></p>
+      <% end %>
+      </li><br>
     <% end %>
   </ul>
   <!--<div class="col-xs-12">-->

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   resources :messages
-  resources :dialogs, only: [:create, :destroy]
+  resources :dialogs, only: [:create]
+  get 'seller_panel/dialogs/:id', to: 'dialogs#show', as: 'seller_dialogs'
   resources :favorites, only: [:create, :destroy]
   resources :feeds, except: [:new, :index, :show]
   root 'welcome#index'

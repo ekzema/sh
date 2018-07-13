@@ -87,6 +87,7 @@
                       <% else %>
                         <%= form_tag(dialogs_path, remote: true, method: :post) do %>
                           <%= hidden_field_tag 'recipient_id', @product.seller.id %>
+                          <%= hidden_field_tag 'product_id', @product.id %>
                           <%= text_area_tag 'body' %><br>
                           <%= submit_tag "Отправить" %>
                         <% end %>

@@ -8,17 +8,19 @@ class DialogsController < ApplicationController
       return  @result
     end
     seller = Seller.find_by_id(params[:recipient_id])
+    product = Product.find(params[:product_id])
+    arr = [current_seller.id, seller.id]
     unless seller
       @result[:message] = "Такого пользователя не существует!"
       return  @result
     end
-    findmessage = Message.where(seller_id: current_seller.id, recipient_id: seller.id).take
+    findmessage = SellersCrossDialog.where(seller_id: current_seller.id, product_id: product.id).take
     message_params = {seller_id: current_seller.id, recipient_id: seller.id, body: params[:body]}
     unless findmessage
       dialog = Dialog.create
       message = Message.new(message_params)
-      SellersCrossDialog.create(seller_id: current_seller.id, dialog_id:  dialog.id)
-      SellersCrossDialog.create(seller_id: seller.id, dialog_id:  dialog.id)
+      SellersCrossDialog.create(seller_id: current_seller.id, dialog_id:  dialog.id, product_id: product.id)
+      SellersCrossDialog.create(seller_id: seller.id, dialog_id:  dialog.id, product_id: product.id)
       message.dialog_id = dialog.id
     else
       message = Message.new(message_params)
@@ -33,6 +35,11 @@ class DialogsController < ApplicationController
       end
     end
     @result
+  end
+
+  def show
+    dialog = Dialog.find(params[:id])
+    @messages = dialog.messages
   end
 
   def destroy

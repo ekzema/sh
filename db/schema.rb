@@ -176,9 +176,11 @@ ActiveRecord::Schema.define(version: 20180705220756) do
   create_table "sellers_cross_dialogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "dialog_id",  null: false
     t.integer  "seller_id",  null: false
+    t.integer  "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dialog_id"], name: "index_sellers_cross_dialogs_on_dialog_id", using: :btree
+    t.index ["product_id"], name: "index_sellers_cross_dialogs_on_product_id", using: :btree
     t.index ["seller_id"], name: "index_sellers_cross_dialogs_on_seller_id", using: :btree
   end
 
@@ -224,6 +226,7 @@ ActiveRecord::Schema.define(version: 20180705220756) do
   add_foreign_key "messages", "sellers", column: "recipient_id"
   add_foreign_key "product_slide_images", "products"
   add_foreign_key "sellers_cross_dialogs", "dialogs"
+  add_foreign_key "sellers_cross_dialogs", "products"
   add_foreign_key "sellers_cross_dialogs", "sellers"
   add_foreign_key "threecategories", "twocategories"
   add_foreign_key "twocategories", "categories"
