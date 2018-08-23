@@ -1,14 +1,14 @@
 <div class="container-fluid">
   <div class="row">
     <div class="hidden-xs col-sm-3 ">
-      <div class="ul1">
-        <ul class="ul2 ">
-          <li class="li1">
+      <div class="block_menu">
+        <ul class="">
+          <li class="">
             <% @cater.twocategories.each do |twocategory| %>
-                <p><%= twocategory.name %></p>
+                <p class="category"><%= twocategory.name %></p>
                 <ul>
                   <% twocategory.threecategories.each do |threecategory| %>
-                      <li class="li2">
+                      <li class="">
                         <p><%= link_to threecategory.name, showthreecat_path(@cater.translit_url, twocategory.translit_url, threecategory.translit_url) %></p>
                       </li>
                   <% end %>

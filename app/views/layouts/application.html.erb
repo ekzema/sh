@@ -51,11 +51,11 @@
         <!--<li class="hidden-xs"><a href="/vip">VIP-Статус</a></li>-->
 
       </ul>
-      <ul class="nav navbar-nav navbar_user">
+      <ul class="nav navbar-nav navbar_user d-flex align-items-center ">
         <% if seller_signed_in? %>
-        <%= link_to 'Избранное', seller_panel_favorites_path %>(<span class="favoritesCount"><%= current_seller.favorites.count %></span>)
+            <%= link_to 'Избранное', seller_panel_favorites_path, class: 'navbar_user_panel' %>(<span class="favoritesCount"><%= current_seller.favorites.count %></span><span class="navbar_user_panel">)</span>
               <%= link_to  seller_panel_dialogs_path do %>
-                смс (<%= @message_new %>)
+                Сообщения (<%= @message_new %>)
               <% end %>
             <% end %>
         <li class="dropdown dropdown_user">

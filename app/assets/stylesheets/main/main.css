@@ -44,6 +44,10 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     color: #433346!important;
 
 }
+.navbar_user_panel{
+   margin-right: 5px;
+}
+
 .log img{
     width: 250px;
 }
@@ -849,55 +853,82 @@ table{
 }
 
 /* левое меню*/
-.category{
-    padding: 5px 20px;
+.block_menu{
     font-size: 16px;
-    border: 1px solid #111!important;
 }
-.ul1 ul {
-    list-style-type: none;
-    color: #111;
-    padding: 0px;
-    background-color: #555!important;
- }
-
-.ul1 li {
-    border: 1px solid #111;
-    padding: 0px;
- }
-
-.li1{
-    background-color:  #333;
-    color: #fff;
-    margin: 0px;
-}
-
-.li1 p{
+.block_menu .category{
     padding: 5px 20px;
+    color: #f8c45c;
+    border-bottom: 1px solid #f8c45c !important;
 }
-
-.li3{
-    background-color:  #fff;
-    margin: -1px -2px -2px -1px;
-    padding-left: 20px!important;
+.block_menu ul{
+    background: #f2f5f8;
+    color: #433346;
 }
-
-.li2{
-    background-color: #e7e7e7;
-    /*margin-left: -2px;*/
- }
-
-.li1 a{
-    color: #333;
-    display: block; /* Ссылка как блочный элемент */
-    height: 100%; /* Высота на весь слой */
+.block_menu p{
+    background: #ec6255;
+    color: #f2f5f8;
 }
-
-.li1 a:hover, .li1 a:focus{
-    color: #333!important;
-    font-weight: 600!important;
-    text-decoration: none;
+.block_menu span{
+    display: block;
+    padding: 5px 20px;
+    background: #ec6255;
+    color: #f2f5f8;
 }
+.block_menu li a{
+    display: block;
+    padding: 5px 20px;
+    background: #f2f5f8;
+    color: #433346;
+}
+.block_menu li a:hover{
+    background: #f8c45c;
+}
+/*.ul1 ul {*/
+    /*list-style-type: none;*/
+    /*color: #111;*/
+    /*padding: 0px;*/
+    /*!*background-color: #555!important;*!*/
+ /*}*/
+
+/*.ul1 li {*/
+    /*border: 1px solid #ec6255;*/
+    /*padding: 0px;*/
+ /*}*/
+
+/*.li1{*/
+    /*background-color: #433346;*/
+    /*color: #fff;*/
+    /*margin: 0px;*/
+/*}*/
+
+/*.li1 a{*/
+    /*padding: 5px 20px;*/
+/*}*/
+
+/*.li3{*/
+    /*background-color:  #fff;*/
+    /*margin: -1px -2px -2px -1px;*/
+    /*padding-left: 20px!important;*/
+/*}*/
+
+/*.li2{*/
+    /*background-color: #f2f5f8;*/
+ /*}*/
+
+/*.li1 a{*/
+    /*color: #433346;*/
+    /*padding: 5px 20px;*/
+    /*display: block; !* Ссылка как блочный элемент *!*/
+    /*!*height: 100%; !* Высота на весь слой *!*!*/
+/*}*/
+
+/*.li1 a:hover, .li1 a:focus{*/
+    /*color: #333!important;*/
+    /*!*font-weight: 600!important;*!*/
+    /*text-decoration: none;*/
+    /*background: #f8c45c;*/
+/*}*/
 
 /* product*/
 .card_product{
@@ -918,7 +949,7 @@ table{
 
 .card_product a:hover, .card_product a:focus{
     color: #433346!important;
-    letter-spacing: 0.05em;
+    /*letter-spacing: 0.05em;*/
 }
 .card_product_name, .card_product_size{
     padding: 0 5px;
@@ -942,7 +973,7 @@ table{
 
 }
 .products_offer li, .products_call li, .products_call p{
-    padding: 10px 10px!important;
+    padding: 10px 10px 0 0!important;
 }
 .products_offer li span, .products_call li span{
     text-transform: capitalize;
@@ -1025,50 +1056,7 @@ body {
 @media only screen and (max-width: 991px) {
     .info{font-size: 12px;}
 }
-/*кнопки цветные*/
 
-.btn1{
-    background-color: #696969!important;
-    border-color: #111!important;
-    color: #111!important;
-    margin-bottom: 2px!important;
-}
-.btn1:hover{
-    background-color: #FF0000!important;
-    color: #fff!important;
-}
-.btn2{
-    background-color: #696969!important;
-    border-color: #111!important;
-    color: #111!important;
-    margin-bottom: 2px!important;
-}
-.btn2:hover{
-    color: #fff!important;
-    background-color: #008000!important;
-}
-
-.btn3{
-    background-color: #696969!important;
-    border-color: #111!important;
-    color: #111!important;
-    margin-bottom: 2px!important;
-}
-.btn3:hover{
-    color: #fff!important;
-    background-color: #0000FF!important;
-}
-
-.btn4{
-    background-color: #696969!important;
-    border-color: #111!important;
-    color: #111!important;
-    margin-bottom: 2px!important;
-}
-.btn4:hover{
-    color: #111!important;
-    background-color: #C0C0C0!important;
-}
 
 /*страница пользователя*/
 
@@ -1176,36 +1164,27 @@ body {
 }
 
 /*о нас*/
-.onas1{
-    border: 1px solid #333;
-}
-.onas{
+.name_title{
+    text-align: center;
+    padding: 20px 0!important;
     font-size: 16px;
-
 }
-.onas3{
-    background-color: #f8f8f8!important;
 
+
+.onas3{
+    background: #f2f5f8 !important;
 }
 .onas2{
-
     font-size: 14px!important;
 }
 .onas li{
+    font-size: 16px;
     list-style-type: none;
     margin: 5px!important;
     padding: 5px!important;
-    /*border: 1px solid #CD423C;*/
-    border: 1px solid #DCDCDC;
-    border-radius: 5px;
-    background-color: #fff;
+
 }
-.onas ul{
-    /*background-color: #CD423C;*/
-    background: #DCDCDC !important;
-    border-radius: 5px;
-    /*padding: 5px!important;*/
-}
+
 .three{
     height: 120px;
 }
@@ -1364,4 +1343,63 @@ ul,li > .oseller{
 
 .favItem{
     cursor: pointer;
+}
+
+/*кнопки отправить*/
+.card_product img{
+    width: 100%;
+
+}
+.button_send{
+    background: #c9cccf;
+    color: #212529;
+}
+.button_send:hover{
+    background: #f2f5f8;
+    /*color: #f2f5f8;*/
+}
+
+/*кнопки цветные*/
+
+.btn1{
+    background-color: #696969!important;
+    border-color: #111!important;
+    color: #111!important;
+    margin-bottom: 2px!important;
+}
+.btn1:hover{
+    background-color: #FF0000!important;
+    color: #fff!important;
+}
+.btn2{
+    background-color: #696969!important;
+    border-color: #111!important;
+    color: #111!important;
+    margin-bottom: 2px!important;
+}
+.btn2:hover{
+    color: #fff!important;
+    background-color: #008000!important;
+}
+
+.btn3{
+    background-color: #696969!important;
+    border-color: #111!important;
+    color: #111!important;
+    margin-bottom: 2px!important;
+}
+.btn3:hover{
+    color: #fff!important;
+    background-color: #0000FF!important;
+}
+
+.btn4{
+    background-color: #696969!important;
+    border-color: #111!important;
+    color: #111!important;
+    margin-bottom: 2px!important;
+}
+.btn4:hover{
+    color: #111!important;
+    background-color: #C0C0C0!important;
 }

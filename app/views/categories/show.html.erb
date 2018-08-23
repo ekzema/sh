@@ -4,15 +4,15 @@
   <div class="row">
     <div class="hidden-xs col-sm-3 ">
       <!-- меню левое -->
-      <div class="ul1">
-        <ul class="ul2 ">
+      <div class="block_menu">
+        <ul class="">
           <p class="category"><%= @category.name %></p>
-          <li class="li1">
+          <li class="">
             <% @category.twocategories.each do |twocategory| %>
-                <p class="sh14"><%= twocategory.name %></p>
+                <span class="sh16"><%= twocategory.name %></span>
                 <ul>
                   <% twocategory.threecategories.each do |threecategory| %>
-                      <li class="li2">
+                      <li class="">
                         <p><%= link_to threecategory.name, showthreecat_path(@category.translit_url, twocategory.translit_url, threecategory.translit_url) %></p>
                       </li>
                   <% end %>

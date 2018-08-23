@@ -4,13 +4,13 @@
   <div class="row">
     <div class="hidden-sm hidden-xs col-sm-3 ">
       <!-- меню -->
-      <div class="ul1">
-        <ul class="ul2">
-          <li class="li1">
-            <p class=""><%= @showcat.name %></p>
+      <div class="block_menu">
+        <ul class="">
+          <li class="">
+            <p class="category"><%= @showcat.name %></p>
             <ul>
               <% @showcat.twocategories.each do |twocategory| %>
-                  <li class="li2">
+                  <li class="">
                     <p><%= link_to twocategory.name, showtwocat_path(@showcat.translit_url, twocategory.translit_url) %></p>
                   </li>
               <% end %>
