@@ -27,54 +27,53 @@
       <div class="alert alert-info alert-dismissable box2">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h4 class="text-center sh16"><strong><%= current_seller.name %>  !  </strong>Товары добавляем только хорошего качества, и не каких реплик только оригиналы!!!</h4></div>
-      <h3 class="name_title">Все товары</h3>
-      <div class="table- responsive">
-        <table class="table table-hover">
-          <thead>
-          <tr class="info">
-            <th class="text-center">Фото</th>
-            <th class="hidden-xs text-center">Название</th>
-            <th class="hidden-xs text-center">Размер</th>
-            <th class="hidden-xs text-center">ценник</th>
-            <th class="hidden-xs text-center">Описание</th>
-            <th class="hidden-xs text-center">Show</th>
-          </tr>
-          </thead>
-          <tbody>
-          <% current_seller.favorites.each do |product| %>
-              <tr class="success imgtel text-center" id="product_<%= product.id %>">
-                <td><%= image_tag product.main_image.url(:thumb) %></td>
-                <td class="hidden-xs "><%= product.name %></td>
-                <td class="hidden-xs"><%= product.size %></td>
-                <td class="hidden-xs"><%= product.price %></td>
-                <td class="hidden-xs "><%= product.description %></td>
-                <td class="hidden-xs ">
+      <h4 class="name_title">Избранные товары</h4>
+      <!--<div class="table- responsive">-->
+        <!--<table class="table table-hover">-->
+          <!--<thead>-->
+          <!--<tr class="info">-->
+            <!--<th class="text-center">Фото</th>-->
+            <!--<th class="hidden-xs text-center">Название</th>-->
+            <!--<th class="hidden-xs text-center">Размер</th>-->
+            <!--<th class="hidden-xs text-center">ценник</th>-->
+            <!--<th class="hidden-xs text-center">Описание</th>-->
+            <!--<th class="hidden-xs text-center">Show</th>-->
+          <!--</tr>-->
+          <!--</thead>-->
+          <!--<tbody>-->
+          <!--<% current_seller.favorites.each do |product| %>-->
+              <!--<tr class="success imgtel text-center" id="product_<%= product.id %>">-->
+                <!--<td><%= image_tag product.main_image.url(:thumb) %></td>-->
+                <!--<td class="hidden-xs "><%= product.name %></td>-->
+                <!--<td class="hidden-xs"><%= product.size %></td>-->
+                <!--<td class="hidden-xs"><%= product.price %></td>-->
+                <!--<td class="hidden-xs "><%= product.description %></td>-->
+                <!--<td class="hidden-xs ">-->
                   <%= link_to ' ', product_path(product), :type => 'button', :class => ' btn btn2 glyphicon glyphicon-zoom-in' %></td>
-              </tr>
-          <% end %>
-          </tbody>
-        </table>
+              <!--</tr>-->
+          <!--<% end %>-->
+          <!--</tbody>-->
+        <!--</table>-->
+<div class="col-12 d-flex justify-content-center px-0">
+  <div class="col-12 col-sm-11 d-flex flex-wrap text-center px-0">
 
-        <div class="col-12 d-flex flex-wrap text-center">
-          <% current_seller.favorites.each do |product| %>
-             <div class="col-6 col-sm-4 col-md-4 col-lg-3">
+  <% current_seller.favorites.each do |product| %>
+    <div class="col-6 col-sm-4 col-md-3 col-lg-3">
+      <div class="card_product" id="product_<%= product.id %>">
 
-                <div class="card_product" id="product_<%= product.id %>">
-                  <%= link_to product_path(product), class: 'size1' do %>
-                <%= image_tag product.main_image(:medium) %>
-                <p class="card_product_name"><%= product.name %></p>
-                <p class="card_product_size"><%= product.size %></p>
-                <p class="card_product_price"><%= product.price %> грн.</p>
+      <%= link_to product_path(product), class: 'size1' do %>
+      <%= image_tag product.main_image(:medium) %>
+        <p class="card_product_name"><%= product.name %></p>
+        <p class="card_product_size"><%= product.size %></p>
+        <p class="card_product_price"><%= product.price %> грн.</p>
+      <% end %>
 
-                  <% end %>
-              </div>
+      </div>
+    </div>
+  <% end %>
 
-              </div>
-          <% end %>
-
-
-
-        </div>
+  </div>
+</div>
 
         <script type="text/javascript">
 
@@ -90,12 +89,12 @@
             });
 
         </script>
-      </div>
-      <div>
-        <%= link_to 'Новый товар', new_product_path, :class => 'btn btn2 form' %>
-      </div>
-      <div>
-        <%= link_to "На главную", root_path, :class => 'btn btn4 form' %>
+      <!--</div>-->
+      <!--<div>-->
+        <!--<%= link_to 'Новый товар', new_product_path, :class => 'btn btn2 form' %>-->
+      <!--</div>-->
+      <div class="col-12 d-flex justify-content-center">
+        <%= link_to "На главную", root_path, :class => 'btn button_form' %>
       </div>
     </div>
   </div>

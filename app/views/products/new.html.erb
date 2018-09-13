@@ -1,10 +1,11 @@
 <div class="container">
 <div class="row">
-<h4 class="text-center">Новый товар</h4>
+<h4 class="form_name">Новый товар</h4>
 
 <%= render 'form', product: @product %>
-<div class="form-group col-xs-offset-2">
-<%= link_to 'Back', seller_panel_product_path, :type => 'button', :class => 'btn btn4' %>
+
+<div class="form-group justify-content-md-center d-flex align-items-center">
+<%= link_to 'Back', seller_panel_product_path, :type => 'button', :class => 'btn button_form' %>
 </div> 
 </div>
 </div>

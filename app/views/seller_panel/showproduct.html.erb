@@ -6,7 +6,7 @@
 <div class="container-fluid">
   <div class="row">
   <div class="col-sm-2 col-md-2 col-lg-2 hidden-xs">
-    
+
     <menu class="fot">
       <% @product.product_slide_images.each do |slide| %>
           <li>
@@ -18,28 +18,30 @@
     </menu>
      
   </div>
-  <div class="col-xs-12 col-sm-5 showproduct text-center">
+  <div class="col-12 col-sm-10 ">
 
-    <p><%= image_tag(@product.main_image) %></p>
+      <div class="d-flex showproduct">
+        <div class="col-6 products_foto d-flex justify-content-center">
+          <%= image_tag(@product.main_image(:medium)) %>
+        </div>
+        <div class="col-6 products_offer">
+          <ul>
+            <li ><span><%= @product.name %></span></li>
+            <li >Стоимость: <%= @product.price %> ГРН.</li>
+            <li >Размер: <span><%= @product.size %></span></li>
+            <li >Качество товара: <span><%= @product.quality %></span></li>
+            <li>Описание: <%= @product.description %></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 justify-content-md-center d-flex flex-column flex-md-row align-items-center">
+        <div class="col-6">
+          <%= link_to 'Назад', seller_panel_product_path, :type => 'button', :class => 'btn button_form' %>
+          <%= link_to "На главную", root_path, :class => 'btn button_form' %>
+        </div>
+      </div>
 
-
-  </div> 
-  <div class="col-xs-12 col-sm-5 showproduct showproduct2">
-    <ul>
-      <li><%= @product.name %></li>
-      <li>СТОИМОСТЬ: <%= @product.price %> ГРН.</li>
-      <li>РАЗМЕР: <%= @product.size %></li>
-      <li>ОПИСАНИЕ: <%= @product.description %></li>
-    </ul>
-
-
-
-  </div>
   </div> 
 </div> 
 
-<!-- 
-<%= link_to 'Редактировать', edit_product_path(@product.id.to_s+'-'+transtlit_name(@product.name)), :type => 'button', :class => 'btn btn3' %> -->
-<%= link_to 'Назад', seller_panel_product_path, :type => 'button', :class => 'btn btn4' %>
-<%= link_to "На главную", root_path, :class => 'btn btn4 form' %>
-
+<!-- <%= link_to 'Редактировать', edit_product_path(@product.id.to_s+'-'+transtlit_name(@product.name)), :type => 'button', :class => 'btn button_form' %> -->

@@ -1,11 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<!-- центральное меню -->
-
 <div class="container-fluid">
 <div class="row">
 
-  <div class="col-sm-2 col-md-2 col-lg-2 d-none d-sm-block">
+  <div class="d-none d-md-block col-2 col-md-2">
 
   <menu class="fot">
   <% if @product.product_slide_images.present? %>
@@ -45,99 +43,84 @@
 
   </div>
 
-  <div class="col-12 col-sm-8">
-      <div class="poduct">
-        <div class="d-flex">
-          <div class="col-6 products_foto d-flex justify-content-center">
-            <%= image_tag(@product.main_image(:medium)) %>
-          </div>
-          <div class="col-6 products_offer">
-            <ul>
-              <li ><span><%= @product.name %></span></li>
-              <li >Стоимость: <%= @product.price %> ГРН.</li>
-              <li >Размер: <span><%= @product.size %></span></li>
-              <li >Качество товара: <span><%= @product.quality %></span></li>
-              <% if ! seller_signed_in?  %>
-                  <li class="favoriteButton">Добавить в <span class="favItem btn-custom glyphicon glyphicon-heart-empty"><%= link_to 'избранное', new_seller_session_path(continue: product_path(@product)), class: "btn-custom glyphicon glyphicon-heart-empty" %></span></li>
-                  <% elsif @product.favorite? current_seller.id%>
-              <li class="favoriteButton">Удалить из <span class="favItem btn-custom glyphicon glyphicon-heart-empty" onclick="removeToFavorite(<%= @product.id %>)">избранное</span></li>
-                  <% else %>
-                  <li class="favoriteButton">Добавить в <span class="favItem btn-custom glyphicon glyphicon-heart-empty" onclick="addToFavorite(<%= @product.id %>)">избранное</span></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-          <div class="col-12 products_description">
-            <p>Описание: <%= @product.description %></p>
-          </div>
-          <div class="col-12 products_call">
-            <p>Хотите купить, обращайтесь:</p>
-            <ul>
-              <li>Продавец <span><%= @product.seller.name %></span>
-              </li>
-              <li>Обратиться:
-                <a href="#demo1" class="size1" data-toggle="collapse" data-parent=".showproduct">
-                  <span class='btn-custom glyphicon glyphicon-earphone'>Позвонить или написать</span>
-                </a>
-                <div class="collapse" id="demo1">
-                  <p>Телефон:<%= @product.seller.phone %></p>
-                  <% if seller_signed_in? %>
-                      <% if current_seller.id == @product.seller_id %>
-                          <p>Товар текущего пользователя!</p>
-                      <% else %>
-                        <%= form_tag(dialogs_path, remote: true, method: :post) do %>
-                          <%= hidden_field_tag 'recipient_id', @product.seller.id %>
-                          <%= hidden_field_tag 'product_id', @product.id %>
-                          <%= text_area_tag 'body' %><br>
-                          <%= submit_tag "Отправить" %>
-                        <% end %>
-                      <% end %>
-                  <% else %>
-                      <p class="messageLinkUser">Чтобы оставить сообщение продавцу <%= link_to 'Войти', new_seller_session_path %> или
-                        <%= link_to 'Зарегистрируйся', new_seller_registration_path %></p>
-                  <% end %>
-                </div>
-              </li>
-              <!--<li>Есть вопросы по данному товару, напишите продавцу-->
-                <!--<a href="#demo2" class="size1" data-toggle="collapse" data-parent=".showproduct">-->
-                  <!--<span class='btn-custom glyphicon glyphicon-envelope'></span></a>-->
-                <!--<div class="collapse" id="demo2">-->
-                  <!--<form action="">-->
-                    <!--<textarea name="" id="" cols="30" rows="5"></textarea>-->
-                    <!--<button>Отправить</button>-->
-                  <!--</form>-->
-                <!--</div>-->
-              <!--</li>-->
-            </ul>
-          </div>
+  <div class="col-12 col-md-10 col-lg-8">
+    <div class="d-block d-sm-flex">
+      <div class="col-12 col-sm-6 products_foto d-flex justify-content-center">
+        <%= image_tag(@product.main_image(:medium)) %>
+      </div>
+      <div class="col-12 col-sm-6 products_offer">
+        <ul>
+          <li ><span><%= @product.name %></span></li>
+          <li >Стоимость: <%= @product.price %> ГРН.</li>
+          <li >Размер: <span><%= @product.size %></span></li>
+          <li >Качество товара: <span><%= @product.quality %></span></li>
+          <% if ! seller_signed_in?  %>
+              <li class="favoriteButton">Добавить в <span class="favItem button_send"><%= link_to 'избранное', new_seller_session_path(continue: product_path(@product)), class: " " %></span></li>
+              <% elsif @product.favorite? current_seller.id%>
+          <li class="favoriteButton">Удалить из <span class="favItem button_send" onclick="removeToFavorite(<%= @product.id %>)">избранное</span></li>
+              <% else %>
+              <li class="favoriteButton">Добавить в <span class="favItem button_send" onclick="addToFavorite(<%= @product.id %>)">избранное</span></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+      <div class="col-12 products_description">
+        <p>Описание: <%= @product.description %></p>
+      </div>
+      <div class="col-12 products_call">
+        <p>Понравился товар, обращайтесь:</p>
+        <ul>
+          <li class="sellerButton">Продавец <span><%= @product.seller.name %></span> <a href="#demo1" class="size1" data-toggle="collapse" data-parent=".showproduct">
+              <span class='button_send'>Связаться:</span>
+            </a>
+            <div class="collapse" id="demo1">
+              <p>Позвонить <br> <%= @product.seller.phone %></p>
+              <p><a href="#"><span class="button_send">Перейти</span></a> на страницу продавца</p>
 
+              <% if seller_signed_in? %>
+                  <% if current_seller.id == @product.seller_id %>
+                      <p>Этот товар добавили Вы!</p>
+                  <% else %>
+                      <p>Написать сообщение</p>
+                    <%= form_tag(dialogs_path, remote: true, method: :post) do %>
+                      <%= hidden_field_tag 'recipient_id', @product.seller.id %>
+                      <%= hidden_field_tag 'product_id', @product.id %>
+                      <%= text_area_tag 'body' %><br>
+                      <%= submit_tag "Отправить", class: "btn button_send" %>
+                    <% end %>
+                  <% end %>
+              <% else %>
+                  <p class="messageLinkUser">Чтобы оставить сообщение продавцу, нужно <%= link_to 'Войти', new_seller_session_path, class: "btn button_form " %> или
+                    <%= link_to 'Зарегистрироваться', new_seller_registration_path, class: "btn button_form " %></p>
+              <% end %>
+            </div>
+          </li>
+        </ul>
       </div>
 
 
 
-      <!--<div class="col-12 niz1 visible-xs">-->
-       <!---->
-          <!--<h4 class="text-center sh16">Подобные товары</h4>-->
-          <!--<div class="col-xs-12 ">-->
-          <!--<div class="row">-->
-          <!--<section class="productseller2">-->
-          <!--<% @products.each do |product| %>-->
-          <!--<div class="">-->
-          <!--<%= link_to product_path(product), :class => 'size1' do %>-->
-          <!--<%= image_tag product.main_image.url(:medium) %>-->
-          <!--<p class="size3 sld"><%= product.name %></p>-->
-          <!--<% end %>-->
-          <!--</div>-->
-          <!--<% end %>-->
-          <!--</section>-->
-          <!--</div>-->
-          <!--</div>-->
-       <!---->
-     <!--</div>-->
+<div class="productPanel">
+<h4 class="text-center">Другие товары этого продавца</h4>
+  <section class="productseller">
 
+  <% @product_sell.each do |product| %>
+
+  <%= link_to product_path(product), :class => 'oneProduct' do %>
+  <%= image_tag product.main_image.url(:medium) %>
+
+    <p class="slider_product_name"><%= product.name %></p>
+
+  <% end %>
+
+  <% end %>
+
+  </section>
+</div>
   </div>
 
-  <div class="d-none d-sm-block col-sm-2 glf">
+
+  <div class="d-none d-lg-block col-lg-2 glf">
       <!-- слайдер для рекламы-товара -->
 
     <p class="slider_title">Подобные товары</p>

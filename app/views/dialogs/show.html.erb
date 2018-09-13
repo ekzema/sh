@@ -1,4 +1,8 @@
-<h1>Dialog Messages</h1>
+<div class="container">
+<div class="row">
+
+<h4 class="form_name">Диалог с пользователем</h4>
+
 <% @messages.each do |message| %>
     <ul>
       <li><span>Написал(а): <%= message.seller.name %></span></li>
@@ -6,3 +10,7 @@
     </ul>
     <hr>
 <% end %>
+
+
+</div>
+</div>

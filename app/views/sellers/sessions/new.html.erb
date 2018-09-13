@@ -1,6 +1,7 @@
 <div class="container">
-<div class="">
-<h4 class="text-center sh16">Войти на сайт</h4>
+<div class="row">
+<h4 class="form_name">Войти на сайт</h4>
+
   <% if flash[:error] %>
       <div class="alert alert-danger text-center" style="margin:10px;">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -13,37 +14,39 @@
         <span><%= raw flash[:notice] %></span>
       </div>
   <% end %>
+  <div class="col-12">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {'data-parsley-validate' => 'true'}) do |f| %>
-  <div class="form-group col-md-offset-2">
-  <div class="col-sm-2 ">
-    <%= f.label :email, class:"control-label" %><br />
+  <div class="form-group justify-content-md-center d-flex flex-column flex-md-row align-items-center">
+    <div class="col-12 col-md-2">
+      <%= f.label :email, class:"control-label" %>
     </div>
-  <div class="col-sm-10 ">
-    <%= f.email_field :email, autofocus: true, class:"form-control form", "required" => true, "type" => "email", "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свой <span style='font-weight: bold;color:#5EBB5E;'>Email</span>".html_safe %>
-  </div>
-  </div>
-  <div class="form-group col-md-offset-2">
-  <div class="col-sm-2 ">
-    <%= f.label :password, class:"control-label" %><br />
+    <div class="col-12 col-md-6">
+      <%= f.email_field :email, autofocus: true, class:"form-control form", "required" => true, "type" => "email", "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свой <span style='font-weight: bold;color:#5EBB5E;'>Email</span>".html_safe %>
     </div>
-  <div class="col-sm-10 ">
+  </div>
+
+  <div class="form-group justify-content-md-center d-flex flex-column flex-md-row align-items-center">
+  <div class="col-12 col-md-2">
+    <%= f.label :password, class:"control-label" %>
+    </div>
+  <div class="col-12 col-md-6">
     <%= f.password_field :password, autocomplete: "off", class:"form-control form" , "required" => true,"data-parsley-trigger" => "change", 'data-parsley-length' => '[5, 16]',  "data-parsley-error-message" => "Пароль должен быть <span style='font-weight: bold;color:#5EBB5E;'>min 5 - max 16</span>".html_safe %>
   </div>
   </div>
   <% if devise_mapping.rememberable? -%>
-    <div class="form-group col-md-offset-2">
+    <div class="form-group justify-content-md-center d-flex align-items-center col-12">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div> 
   <% end -%>
-  <div class="form-group col-md-offset-2">
-    <div class="col-sm-offset-2 col-sm-10 actions">
-      <button type="submit" class="btn btn-default">Войти</button>
+  <div class="form-group justify-content-md-center d-flex">
+    <div class="col-12 col-md-4 justify-content-center actions">
+      <button type="submit" class="btn button_form">Войти</button>
     </div>
   </div>
   
 <% end %>
- 
+  </div>
 <%= render "sellers/shared/links" %>
 </div>
 </div>

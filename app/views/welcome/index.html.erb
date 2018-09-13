@@ -27,7 +27,7 @@
               <a href="/about"><%= image_tag '5.jpg', :class => 'd-block w-100' %></a>
               <div class="carousel-caption">
                 <p class="sh16">StockMarket.com.ua</p>
-                <p class="hidden-xs">О нас</p>
+                <p class="d-none d-md-flex text-center">О нас</p>
               </div>
           </div>
           <% @category.each do |category| %>
@@ -38,7 +38,7 @@
                     <% end %>
                     <div class="carousel-caption">
                       <p class="sh16"><%= slide.category.name %></p>
-                      <p class="hidden-xs"><%= slide.category.description %></p>
+                      <p class="d-none d-md-flex text-center"><%= slide.category.description %></p>
                     </div>
                   </div>
               <% end %>
@@ -83,7 +83,7 @@
       <h4 class="center_title">Популярные разделы сайта</h4>
       <ul class="u-list d-flex flex-wrap col-12 question-cont text-center">
         <% @twocategories.each do |twocategory| %>
-            <li class="col-4 toggle_block">
+            <li class="col-12 col-sm-6 col-md-4 toggle_block">
             <%= link_to showtwocat_path(twocategory.category.translit_url, twocategory.translit_url), class:'size1' do %>
 
                 <%= image_tag twocategory.image, :class => 'img__tovar' %>
@@ -95,7 +95,7 @@
 
       </ul>
       <div class="text-center">
-         <button class="list-toggle">
+         <button class="all-product">
               ВСЕ КАТЕГОРИИ
           </button>
       </div>

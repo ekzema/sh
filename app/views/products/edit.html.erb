@@ -3,14 +3,16 @@
 <h3 class="text-center">Редактирование товара</h3>
 
 <%= render 'form', product: @product %>
-    <div class="form-group col-md-offset-2">
-      <div class="col-sm-2 "></div>
-      <div class="col-sm-10">
-<%= form_tag(seller_panel_product_visible_path, method: :post,  class: "product_info", id: "product_visible#{@product.id}") do %>
-    <%= hidden_field_tag 'product_id', @product.id %>
-    <%= check_box_tag 'visible', 1, @product.visible == 1, {id: "product#{@product.id}", pr_id: @product.id }  %>
-    <%= label_tag "product#{@product.id}", 'Показать товар <span></span>'.html_safe %>
-<% end %>
+
+<div class="col-12 justify-content-md-center d-flex flex-column flex-md-row align-items-center">
+
+  <div class="col-12 col-md-4">
+      <%= form_tag(seller_panel_product_visible_path, method: :post,  class: "product_info", id: "product_visible#{@product.id}") do %>
+          <%= hidden_field_tag 'product_id', @product.id %>
+          <%= check_box_tag 'visible', 1, @product.visible == 1, {id: "product#{@product.id}", pr_id: @product.id }  %>
+          <%= label_tag "product#{@product.id}", 'Показать товар <span></span>'.html_safe %>
+      <% end %>
+  </div>
 
 <script type="text/javascript">
 
@@ -26,13 +28,18 @@
     });
 
 </script>
-</div>
+
       </div>
-      <div class="form-group col-md-offset-4">
+
+      <div class="col-12 justify-content-md-center d-flex flex-column flex-md-row">
     
-<!--     
-<%= link_to 'Просмотр', @product, :type => 'button', :class => 'btn btn3' %> -->
-<%= link_to 'Назад', seller_panel_product_path, :type => 'button', :class => 'btn btn3' %>
+<!--  <%= link_to 'Просмотр', @product, :type => 'button', :class => 'btn button_form' %> -->
+
+          <div class="col-12 col-md-4">
+          <%= link_to 'Назад', seller_panel_product_path, :type => 'button', :class => 'btn button_form' %>
+          </div>
+
+
 </div>
   </div>
 </div>

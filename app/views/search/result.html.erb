@@ -1,11 +1,11 @@
 <section id="search">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-12 col-md-10 text-center d-flex flex-wrap">
-
-        <h4>Вы искали: <%= params[:q] %></h4>
+      <div class="col-12 col-lg-10 align-content-center px-0">
+        <h4 class="name_title">Вы искали: <%= params[:q] %></h4>
+        <div class="col-12 d-flex flex-wrap">
         <% @products.each do |product| %>
-            <div class="col-xs-6 col-sm-4 col-lg-3 ">
+              <div class="col-6 col-sm-4 col-md-3">
               <div class="card_product">
                 <%= link_to product_path(product), class: 'size1' do %>
                     <%= image_tag product.main_image(:medium) %><br>
@@ -16,17 +16,17 @@
               </div>
             </div>
         <% end %>
-
+        </div>
       </div>
 
-      <div class="hidden-xs hidden-sm col-md-2 text-center">
+      <div class="d-none d-lg-block col-lg-2 text-center">
         <div class="slider">
           <p class="slider_title">Популярное</p>
           <section class="autoplaydr ">
             <% @prs.each do |product| %>
                 <div class="slider_user">
 
-                  <%= link_to product_path(product), :class => 'size1' do %>
+                  <%= link_to product_path(product), :class => '' do %>
                       <%= image_tag product.main_image(:medium) %>
                       <p class=""><%= product.name %></p>
                   <% end %>

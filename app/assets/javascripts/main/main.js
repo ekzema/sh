@@ -76,12 +76,10 @@ $(document).on( "change", "#product_twocategory_id", function() {
 
 
 $(document).on('ready turbolinks:load', function(){
-    $('.list-toggle').click(function(){
+    $('.all-product').click(function(){
         $('.u-list').toggleClass('open');
     });
 });
-
-
 
 
 
@@ -208,7 +206,7 @@ $(document).on('ready turbolinks:load', function(){
 $(document).on('ready turbolinks:load', function(){
     $('.autoplaydr').not('.slick-initialized').slick({
         vertical: true,
-        slidesToShow: 5,
+        slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
         pauseOnHover: false,
@@ -227,7 +225,21 @@ $(document).on('ready turbolinks:load', function(){
         pauseOnHover: false,
         adaptiveHeight: true,
         arrows: false,
-        autoplaySpeed: 5000
+        autoplaySpeed: 5000,
+        responsive: [
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 450,
+                settings: {
+                    slidesToShow: 2
+                }
+            }
+        ]
     });
 
 });

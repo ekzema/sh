@@ -1,6 +1,6 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="hidden-xs col-sm-3 ">
+  <div class="row justify-content-center">
+    <div class="d-none d-md-block col-md-3">
       <div class="block_menu">
         <ul class="">
           <li class="">
@@ -21,13 +21,13 @@
     </div>
 
 
-     <div class="col-12 col-sm-9 d-flex flex-wrap text-center">
+     <div class="col-12 col-sm-11 col-md-9 d-flex flex-wrap text-center">
 
             <% @threecategory.products.each do |product| %>
             <% if product.visible == 1 and product.moderation == 1 %>
                 <div class="col-6 col-sm-4 col-md-4 col-lg-3">
                   <div class="card_product">
-                    <%= link_to product_path(product), class: 'size1' do %>
+                    <%= link_to product_path(product), class: '' do %>
                         <%= image_tag product.main_image(:medium) %>
                         <div>
                           <p class="card_product_name"><%= product.name %></p>

@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row">
-    <h4 class="text-center delo sh16">Редактирование данных <%= current_seller.name %> <%= current_seller.surname %></h4>
-  </div>
-</div>
+    <h4 class="form_name">Редактирование данных:</h4>
 
+    <div class="col-12">
 <%= form_for(resource, as: resource_name, html: {"data-parsley-validate" => true, :method => :put}, url: registration_path(resource_name)) do |f| %>
-    <div class="container col-xs-offset-1 col-sm-offset-4 text-center"><%= devise_error_messages! %>
+    <div class="justify-content-md-center d-flex align-items-center">
+      <%= devise_error_messages! %>
     </div>
-    <div class="form-group col-xs-offset-1 col-sm-offset-2">
-      <div class="col-sm-2 ">
+    <div class="form-group justify-content-md-center d-flex flex-column flex-md-row align-items-center">
+      <div class="col-12 col-md-2">
         <%= f.label 'Основное фото', class: "control-label" %>
       </div>
-      <div class="col-sm-10">
+      <div class="col-12 col-md-6">
         <ul class="sliderImg imgcat"> 
           <li><%= image_tag current_seller.avatar.url(:mini), title: "#{current_seller.name}", id: 'avatarSeller', class: "EditImage jcrop-tracker" %></li>
           <li><%= f.file_field :avatar, id: 'imgInp' %></li>
@@ -27,38 +27,38 @@
 
 
 
-    <div class="form-group col-xs-offset-1 col-sm-offset-2">
-      <div class="col-sm-2 ">
+    <div class="form-group justify-content-md-center d-flex flex-column flex-md-row align-items-center">
+      <div class="col-12 col-md-2">
         <%= f.label :email, class: "control-label form2" %>
       </div>
-      <div class="col-sm-10 ">
+      <div class="col-12 col-md-6">
         <%= f.email_field :email, autofocus: true, class: "form-control form" %>
       </div>
     </div>
 
-    <div class="form-group col-xs-offset-1 col-sm-offset-2">
-      <div class="col-sm-2 ">
+    <div class="form-group justify-content-md-center d-flex flex-column flex-md-row align-items-center">
+      <div class="col-12 col-md-2">
         <%= f.label 'Имя', class: "control-label form2" %><br/>
       </div>
-      <div class="col-sm-10 ">
+      <div class="col-12 col-md-6">
         <%= f.text_field :name, class: "form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Имя</span>".html_safe %>
       </div>
     </div>
  
-    <div class="form-group col-xs-offset-1 col-sm-offset-2">
-      <div class="col-sm-2 ">
+    <div class="form-group justify-content-md-center d-flex flex-column flex-md-row align-items-center">
+      <div class="col-12 col-md-2">
         <%= f.label 'Фамилия', class: "control-label form2" %>
       </div>
-      <div class="col-sm-10 ">
+      <div class="col-12 col-md-6">
         <%= f.text_field :surname, class: "form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Фамилию</span>".html_safe %>
       </div>
     </div>
 
-    <div class="form-group col-xs-offset-1 col-sm-offset-2">
-        <div class="col-sm-2 ">
+    <div class="form-group justify-content-md-center d-flex flex-column flex-md-row align-items-center">
+        <div class="col-12 col-md-2">
           <%= f.label 'Телефон', class:"control-label form2" %><br />
         </div>
-        <div class="col-sm-10 ">
+        <div class="col-12 col-md-6">
           <%= f.telephone_field :phone, class:"form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Телефон</span>".html_safe %>
         </div>
       </div>
@@ -66,38 +66,38 @@
 
 
 
-    <div class="form-group col-xs-offset-1 col-sm-offset-2">
-      <div class="col-sm-2 ">
+    <div class="form-group justify-content-md-center d-flex flex-column flex-md-row align-items-center">
+      <div class="col-12 col-md-2">
         <%= f.label 'Дата рождения', class: "control-label control-l form1" %>
       </div>
-      <div class="col-sm-10">
+      <div class="col-12 col-md-6">
         <%= f.text_field :date_of_birth, class: "form-control form", id: "datepicker", 'data-no-turbolink' => true, "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Дату рождения</span>".html_safe %>
       </div>
     </div>
 
-    <div class="form-group col-xs-offset-1 col-sm-offset-2">
-      <div class="col-sm-2 ">
+    <div class="form-group justify-content-md-center d-flex flex-column flex-md-row align-items-center">
+      <div class="col-12 col-md-2">
         <%= f.label 'Область', class: "control-label form2" %>
       </div>
-      <div class="col-sm-10 ">
+      <div class="col-12 col-md-6">
         <%= f.select(:city, Seller::CITY_TYPES, {prompt: 'Выберите область'}, class: "form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Выберите<span style='font-weight: bold;color:#5EBB5E;'>Свою область</span>".html_safe) %>
       </div>
     </div>
 
-    <div class="form-group col-xs-offset-1 col-sm-offset-2">
-      <div class="col-sm-2 ">
+    <div class="form-group justify-content-md-center d-flex flex-column flex-md-row align-items-center">
+      <div class="col-12 col-md-2">
         <%= f.label 'О себе', class: "control-label form" %><br/>
       </div>
-      <div class="col-sm-10 ">
+      <div class="col-12 col-md-6">
         <%= f.text_area :description, class: "form-control form", "required" => true, "type" => "phone", "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Телефон</span>".html_safe %>
       </div>
     </div>
 
-    <div class="form-group col-xs-offset-1 col-sm-offset-2">
-      <div class="col-sm-2 ">
+    <div class="form-group justify-content-md-center d-flex flex-column flex-md-row align-items-center">
+      <div class="col-12 col-md-2">
         <%= f.label 'Промо код', class: "control-label control-l form2" %><br/>
       </div>
-      <div class="col-sm-10 ">
+      <div class="col-12 col-md-6">
         <%= f.text_field :promo_code, class: "form-control form" %>
       </div>
     </div>
@@ -106,45 +106,55 @@
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
 
-    <div class="form-group col-xs-offset-1 col-sm-offset-2">
-      <div class="col-sm-2">
+    <div class="form-group justify-content-md-center d-flex flex-column flex-md-row align-items-center">
+      <div class="col-12 col-md-2">
         <%= f.label "Новый пароль", class: "control-label form2" %>
       </div>
-      <div class="col-sm-10">
+      <div class="col-12 col-md-6">
         <%= f.password_field :password, placeholder: "6 знаков минимум", autocomplete: "off", class: "form-control form " %>
 
       </div>
-    </div></br>
+    </div>
 
 
-    <div class="form-group col-xs-offset-1 col-sm-offset-2">
-      <div class="col-sm-2">
+    <div class="form-group justify-content-md-center d-flex flex-column flex-md-row align-items-center">
+      <div class="col-12 col-md-2">
         <%= f.label "Повторите пароль", class: "control-label form1" %>
       </div>
-      <div class="col-sm-10 ">
+      <div class="col-12 col-md-6">
         <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control form form2" %>
       </div>
     </div>
 
-    <div class="form-group col-xs-offset-1 col-sm-offset-2">
-      <div class="col-sm-2">
+    <div class="form-group justify-content-md-center d-flex flex-column flex-md-row align-items-center">
+      <div class="col-12 col-md-2">
         <%= f.label "Текущий пароль", class: "control-label form1" %>
       </div>
-      <div class="col-sm-10 ">
-        <%= f.password_field :current_password, placeholder: "Для изменений введите пароль!",  autocomplete: "off", class: "form-control form" %>
+      <div class="col-12 col-md-6">
+        <%= f.password_field :current_password, autocomplete: "off", class: "form-control form" %>
       </div>
     </div>
 
-    <div class="actions col-xs-offset-2 col-sm-offset-4">
-      <%= f.submit "Обновить", :class => 'btn btn2 form' %>
-    </div>
+    <div class="actions justify-content-start d-flex flex-column align-items-center">
+      <div class="col-12 col-md-4 d-flex">
+      <%= f.submit "Обновить", :class => 'btn button_form form' %>
+      <p class="info_block">Перед обновлением заполните поле "текущий пароль"</p>
+      </div>
+      </div>
 <% end %>
-<div class="actions col-xs-offset-2 col-sm-offset-4">
-  <%= button_to "Удалить аккаунт", registration_path(resource_name), data: {confirm: "Вы уверены?"}, method: :delete, :class => 'btn btn1 text-center form' %>
+<div class="actions justify-content-start d-flex flex-column align-items-center">
+  <div class="col-12 col-md-4">
+  <%= button_to "Удалить аккаунт", registration_path(resource_name), data: {confirm: "Вы уверены?"}, method: :delete, :class => 'btn button_form form' %>
   <div class="form">
-    <%= link_to "Назад", :back, :class => 'btn btn4' %>
+    <%= link_to "Назад", :back, :class => 'btn button_form' %>
+  </div>
   </div>
 </div>
+    </div>
+
+</div>
+</div>
+
 
 <script>
     $(document).ready(function() {

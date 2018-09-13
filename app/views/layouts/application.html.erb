@@ -48,13 +48,15 @@
         <a class="logo d-none d-sm-block" href="/"><%= image_tag '001.png', class: 'd-none' %><%= image_tag 'logo2.png', class: 'd-none' %></a>
 
         <!--<li><a href="/categories">Новоcти</a></li>-->
-        <!--<li class="hidden-xs"><a href="/vip">VIP-Статус</a></li>-->
 
       </ul>
-      <ul class="nav navbar-nav navbar_user d-flex align-items-center ">
+      <ul class="nav navbar-nav navbar_user d-flex align-items-start align-items-lg-center">
         <% if seller_signed_in? %>
-            <%= link_to 'Избранное', seller_panel_favorites_path, class: 'navbar_user_panel' %>(<span class="favoritesCount"><%= current_seller.favorites.count %></span><span class="navbar_user_panel">)</span>
-              <%= link_to  seller_panel_dialogs_path do %>
+            <div class="d-flex ">
+            <%= link_to 'Избранное', seller_panel_favorites_path, class: 'navbar_user_panel' %>
+              <span class="navbar_user_block">(<span class="favoritesCount"><%= current_seller.favorites.count %></span><span class="navbar_user_panel">)</span></span>
+            </div>
+            <%= link_to  seller_panel_dialogs_path do %>
                 Сообщения (<%= @message_new %>)
               <% end %>
             <% end %>
@@ -89,7 +91,7 @@
       </ul>
 
     </div>
-    </div>
+
   </nav>
 </header>
 <header class="header_category">
@@ -240,7 +242,7 @@
               </script><!--/LiveInternet-->
             </noindex>
         <% end %>
-        Сайт разработан<a href="http://labsites.org/en/" target="_blank"> Labsites.org</a></p>
+        Сайт разработан<a href="http://labsites.org" target="_blank"> Labsites.org</a></p>
     </div>
   </div>
 </footer>

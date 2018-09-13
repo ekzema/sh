@@ -1,6 +1,6 @@
-<div class="col-sm-2 ">
-  <%= label_tag 'threecategory', 'Тип товара', class:"control-label" %>
+<div class="col-12 col-md-2">
+  <%= label_tag 'threecategory', 'Подкатегория', class:"control-label" %>
       </div>
-      <div class="col-sm-10">
- <%= select_tag('product[threecategory_id]',  options_for_select(threecategory.collect {|threecategory| [threecategory.name, threecategory.id]}), {:include_blank => '- Тип товара -', :class => 'form-control form', "required" => true}) %>
+      <div class="col-12 col-md-6">
+ <%= select_tag('product[threecategory_id]',  options_for_select(threecategory.collect {|threecategory| [threecategory.name, threecategory.id]}), {:include_blank => '- Подкатегория -', :class => 'form-control form', "required" => true}) %>
       </div>
