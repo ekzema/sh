@@ -40,6 +40,14 @@ class DialogsController < ApplicationController
   def show
     dialog = Dialog.find(params[:id])
     @messages = dialog.messages
+    @count = 0
+    @messages.each do |m|
+      if m.recipient_id == current_seller.id && ! m.status
+        m.update(:status => Time.now)
+        @count += 1
+      end
+    end
+    @count_all = Message.where(recipient_id: current_seller.id, status: nil).count
   end
 
   def destroy

@@ -57,7 +57,7 @@
               <span class="navbar_user_block">(<span class="favoritesCount"><%= current_seller.favorites.count %></span><span class="navbar_user_panel">)</span></span>
             </div>
             <%= link_to  seller_panel_dialogs_path do %>
-                Сообщения (<%= @message_new %>)
+                Сообщения (<span class="countNewMessage"><%= @message_new %></span>)
               <% end %>
             <% end %>
         <li class="dropdown dropdown_user">
