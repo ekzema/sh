@@ -6,7 +6,7 @@
     <% @dialogs.each do |dialog| %>
       <li>
       <%= link_to seller_dialogs_path(dialog.id) do%>
-        <p><%= dialog.name %> | <%= dialog.surname %> | <%= dialog.product_name %><%= dialog.total_new(current_seller.id) %></p>
+        <p><%= dialog.name %> | <%= dialog.surname %> | <%= dialog.product_name %><%= dialog.total_new(current_seller.id, dialog.id) %></p>
       <% end %>
       </li><br>
     <% end %>
