@@ -14,9 +14,9 @@ class DialogsController < ApplicationController
       @result[:message] = "Такого пользователя не существует!"
       return  @result
     end
-    findmessage = SellersCrossDialog.where(seller_id: current_seller.id, product_id: product.id).take
+    findMessage = SellersCrossDialog.where(seller_id: current_seller.id, product_id: product.id).take
     message_params = {seller_id: current_seller.id, recipient_id: seller.id, body: params[:body]}
-    unless findmessage
+    unless findMessage
       dialog = Dialog.create
       message = Message.new(message_params)
       SellersCrossDialog.create(seller_id: current_seller.id, dialog_id:  dialog.id, product_id: product.id)
@@ -40,13 +40,7 @@ class DialogsController < ApplicationController
   def show
     dialog = Dialog.find(params[:id])
     @messages = dialog.messages
-    @count = 0
-    @messages.each do |m|
-      if m.recipient_id == current_seller.id && ! m.status
-        m.update(:status => Time.now)
-        @count += 1
-      end
-    end
+    @messages.each {|m| m.update(:status => Time.now) if m.recipient_id == current_seller.id && ! m.status}
     @count_all = Message.where(recipient_id: current_seller.id, status: nil).count
   end
 
