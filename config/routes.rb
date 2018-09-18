@@ -79,6 +79,7 @@ Rails.application.routes.draw do
   resources :products, except: [:index] do
     collection do
       delete 'delete_attachment/:product_img', to: 'products#delete_attachment', as: 'delete_image'
+      post 'sent_message', to: 'products#sent_message'
     end
   end
 

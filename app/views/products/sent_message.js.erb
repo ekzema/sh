@@ -6,7 +6,6 @@ if (success === true) {
     $('#notice').html("<div class='alert alert-success' role='alert'>"+message+"</div>");
     setTimeout("$('.alert').fadeOut(1000);", 4000);
     setTimeout("$('.alert').remove();", 5000);
-    $("<%= escape_javascript(render('addMessage', :message => @message)) %>").fadeIn(1000).appendTo('.messages');
 } else {
     $('#notice').html("<div class='alert alert-danger' role='alert'>"+message+"</div>");
     setTimeout("$('.alert').fadeOut(1000);", 4000);

@@ -3,45 +3,33 @@ class DialogsController < ApplicationController
 
   def create
     @result = {success: false, message: "Возникла ошибка при отправке сообщения"}
-    if params[:body].empty?
+    if params[:body].strip.empty?
       @result[:message] = "Сообщение не может быть пустым!"
-      return  @result
     end
-    seller = Seller.find_by_id(params[:recipient_id])
-    product = Product.find(params[:product_id])
-    arr = [current_seller.id, seller.id]
-    unless seller
-      @result[:message] = "Такого пользователя не существует!"
-      return  @result
-    end
-    findMessage = SellersCrossDialog.where(seller_id: current_seller.id, product_id: product.id).take
-    message_params = {seller_id: current_seller.id, recipient_id: seller.id, body: params[:body]}
-    unless findMessage
-      dialog = Dialog.create
-      message = Message.new(message_params)
-      SellersCrossDialog.create(seller_id: current_seller.id, dialog_id:  dialog.id, product_id: product.id)
-      SellersCrossDialog.create(seller_id: seller.id, dialog_id:  dialog.id, product_id: product.id)
-      message.dialog_id = dialog.id
-    else
-      message = Message.new(message_params)
-      message.dialog_id = findmessage.dialog_id
-    end
-    if message.save
+    return @result if params[:dialog_id].empty?
+    scd = SellersCrossDialog.where(dialog_id: params[:dialog_id]).where.not(seller_id: current_seller.id).take
+    message_params = {seller_id: current_seller.id, recipient_id: scd.seller_id, body: params[:body], dialog_id: scd.dialog_id}
+    @message = Message.new(message_params)
+    if @message.save
       @result[:success] = true
       @result[:message] = "Сообщение было успешно отправлено"
     else
-      if dialog.defined?
-        dialog.destroy
-      end
+      @result
     end
-    @result
   end
 
   def show
     dialog = Dialog.find(params[:id])
+    redirect_to :root if ! dialog
+    @dialog_id = dialog.id
     @messages = dialog.messages
-    @messages.each {|m| m.update(:status => Time.now) if m.recipient_id == current_seller.id && ! m.status}
-    @count_all = Message.where(recipient_id: current_seller.id, status: nil).count
+    if @messages.first.seller_id == current_seller.id || @messages.first.recipient_id == current_seller.id
+      @messages.each {|m| m.update(:status => Time.now) if m.recipient_id == current_seller.id && ! m.status}
+      @count_all = Message.where(recipient_id: current_seller.id, status: nil).count
+      else
+      redirect_to :root
+    end
+
   end
 
   def destroy

@@ -82,7 +82,7 @@
                       <p>Этот товар добавили Вы!</p>
                   <% else %>
                       <p>Написать сообщение</p>
-                    <%= form_tag(dialogs_path, remote: true, method: :post) do %>
+                    <%= form_tag(sent_message_products_path, remote: true, method: :post) do %>
                       <%= hidden_field_tag 'recipient_id', @product.seller.id %>
                       <%= hidden_field_tag 'product_id', @product.id %>
                       <%= text_area_tag 'body' %><br>
