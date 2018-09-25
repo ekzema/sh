@@ -1,0 +1,51 @@
+<script type="text/javascript">
+    setTimeout(function(){$('.box').fadeOut(3000)},3000);
+    setTimeout(function(){$('.box2').fadeOut(5000)},3000);
+</script>
+<div class="container box">
+  <% if flash[:alert] %>
+      <div class="alert alert-error" class="text-center">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:alert] %></div>
+  <% end %>
+  <% if flash[:notice] %>
+      <div class="alert alert-success" class="text-center">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:notice] %>
+      </div>
+  <% end %>
+
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="alert alert-info alert-dismissable box2">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4 class="text-center sh16"><strong><%= current_seller.name %>  !  </strong>Товары добавляем только хорошего качества, и не каких реплик только оригиналы!!!</h4></div>
+      <h4 class="name_title">Избранные товары</h4>
+<div class="col-12 d-flex justify-content-center px-0">
+  <div class="col-12 col-sm-11 d-flex flex-wrap text-center px-0">
+  <% current_seller.favorites.each do |product| %>
+    <div class="col-6 col-sm-4 col-md-3 col-lg-3">
+      <div id="fav_<%= product.id %>"></div>
+      <div class="card_product" id="product_<%= product.id %>">
+      <%= link_to product_path(product), class: 'size1' do %>
+      <%= image_tag product.main_image(:medium) %>
+        <p class="card_product_name"><%= product.name %></p>
+        <p class="card_product_size"><%= product.size %></p>
+        <p class="card_product_price"><%= product.price %> грн.</p>
+      <% end %>
+      </div>
+      <span class="delFav" onclick="removeFav(<%= product.id %>)">Удалить</span>
+    </div>
+  <% end %>
+
+  </div>
+</div>
+      <div class="col-12 d-flex justify-content-center">
+        <%= link_to "На главную", root_path, :class => 'btn button_form' %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

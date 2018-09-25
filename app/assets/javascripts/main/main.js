@@ -361,6 +361,22 @@ function removeToFavorite(id){
     });
 }
 
+function removeFav(id){
+    $('#fav_'+id).addClass('favPreloader');
+    $.ajax({
+        url: '/favorites/'+id,
+        type: 'delete',
+        data: {product_id: id},
+        success: function(result){
+            if (result.success) {
+                $('#fav_'+id).parent().remove();
+                var count = $('.favoritesCount').text();
+                $('.favoritesCount').text(count - 1)
+            }
+        }
+    });
+}
+
 
 
 
