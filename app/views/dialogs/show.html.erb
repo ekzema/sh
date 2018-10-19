@@ -2,22 +2,28 @@
 <div class="row">
   <p id="notice"><%= notice %></p>
 <h4 class="form_name">Диалог с пользователем</h4>
+<div class="d-flex flex-column">
+  <div>
+    <ul class="messages">
+      <p>сюда нужно добавить название вещи и её фото</p>
+      <% @messages.each do |message| %>
+          <li><span><%= message.seller.name %> : </span>
+            <%= message.body %></p
+          </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="dialog_form">
+    <%= form_tag(dialogs_path, remote: true, method: :post) do %>
+        <%= hidden_field_tag 'dialog_id', @dialog_id %>
+        <%= text_area_tag 'body' %><br>
+        <%= submit_tag "Отправить", class: "btn button_send" %>
+    <% end %>
+  </div>
+</div>
+  <script type="text/javascript" charset="utf-8">
+      $('.countNewMessage').text(<%= @count_all %>);
+  </script>
 
-  <ul class="messages">
-  <% @messages.each do |message| %>
-        <li><span>Написал(а): <%= message.seller.name %></span>
-        <%= message.body %></p
-        </li>
-  <% end %>
-  </ul>
- <p></p>
 </div>
 </div>
-<%= form_tag(dialogs_path, remote: true, method: :post) do %>
-    <%= hidden_field_tag 'dialog_id', @dialog_id %>
-    <%= text_area_tag 'body' %><br>
-    <%= submit_tag "Отправить", class: "btn button_send" %>
-<% end %>
-<script type="text/javascript" charset="utf-8">
-    $('.countNewMessage').text(<%= @count_all %>);
-</script>

@@ -53,7 +53,7 @@
           <li ><span><%= @product.name %></span></li>
           <li >Стоимость: <%= @product.price %> ГРН.</li>
           <li >Размер: <span><%= @product.size %></span></li>
-          <li >Качество товара: <span><%= @product.quality %></span></li>
+          <li >Качество товара: <span><%= @product.quality %></span><%= image_tag 'like1.png', class: 'like' %><%= image_tag 'like2.png', class: 'like' %></li>
           <% if ! seller_signed_in?  %>
               <li class="favoriteButton">Добавить в <span class="favItem button_send"><%= link_to 'избранное', new_seller_session_path(continue: product_path(@product)), class: " " %></span></li>
               <% elsif @product.favorite? current_seller.id%>

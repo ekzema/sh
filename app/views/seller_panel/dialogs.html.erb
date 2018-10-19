@@ -6,12 +6,12 @@
     <% @dialogs.each do |dialog| %>
       <li>
       <%= link_to seller_dialogs_path(dialog.id) do%>
-        <p><%= dialog.name %> | <%= dialog.surname %> | <%= dialog.product_name %><%= dialog.total_new(current_seller.id, dialog.id) %></p>
+        <p><%= dialog.name %> | <%= dialog.product_name %><%= dialog.total_new(current_seller.id, dialog.id) %></p>
       <% end %>
       </li><br>
     <% end %>
   </ul>
-  <!--<div class="col-xs-12">-->
+  <!---->
     <!--<ul class="nav nav-tabs sh16" role="tablist">-->
       <!--<li class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><p>Полученные сообщения</p></a></li>-->
       <!--<li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><p>Отправленные сообщения</p></a></li>-->

@@ -30,89 +30,136 @@
 
   <h4 class="name_title">Все товары</h4>
 
+<!--new-->
+  <% @seller_products.each do |product| %>
+      <div class="product_block_mobail d-flex flex-column flex-md-row">
 
-  <table class="col-12 table table-hover d-none d-md-block">
-    <thead>
-      <tr class="info text-center col-12">
-        <th class="">Фото</th>
-        <th class="">Название</th>
-        <th class="">Size</th>
-        <th class="">Цена</th>
-        <th class="">Описание</th>
-        <th class="">Show</th>
+        <div class="product_block_about d-flex col-12 col-sm-12 col-md-6 col-lg-7 px-0">
+          <div class="product_block_foto col-4 col-sm-3 col-md-5 col-lg-2 d-flex align-items-center justify-content-center" >
+            <%= image_tag product.main_image.url(:thumb) %>
+          </div>
+          <div class="col-8 col-sm-9 col-md-7 col-lg-4">
+            <p><%= product.name %></p>
+            <p>Размер: <%= product.size %></p>
+            <p>Цена: <%= product.price %> грн.</p>
+          </div>
+          <div class="d-none d-lg-flex col-lg-6">
+            <p><%= product.description %></p>
+          </div>
+        </div>
+        <div class="product_block_about d-flex col-12 col-md-6 col-lg-5 flex-column flex-sm-row px-0">
+          <div class="product_block_statistic d-block col-12 col-sm-5 col-md-6 flex-md-column flex-row">
+            <div class="col-6 col-md-12 px-0 d-flex align-items-center">
+              <div>Просмотров</div>
+              <div class="product_block_statistic_count"><%= product.view_count %></div>
+            </div>
+            <div class="col-6 col-md-12 d-flex align-items-center px-0">
+              <div>Видимость</div>
+              <div>
+                <%= form_tag(seller_panel_product_visible_path, method: :post,  class: "product_info", id: "product_visible#{product.id}") do %>
+                    <%= hidden_field_tag 'product_id', product.id %>
+                    <%= check_box_tag 'visible', 1, product.visible == 1, {id: "product#{product.id}", pr_id: product.id }  %>
+                    <%= label_tag "product#{product.id}", '<span></span>'.html_safe %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="product_block_edit d-flex justify-content-around col-12 col-sm-7 col-md-6 flex-column flex-sm-row flex-md-column">
+            <div>
+              <%= link_to ' Редактировать ', edit_product_path(product), :type => 'button', :class => 'btn button_form' %>
+            </div>
+            <div>
+              <%= link_to ' Удалить ', product, remote: true, method: :delete, data: { confirm: 'Вы уверены что хотите удалить это товар?' }, :type => 'button', :class => 'btn button_form' %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+  <% end %>
+
+  <!--old-->
+  <!--<table class="col-12 table table-hover d-none d-md-block">-->
+    <!--<thead>-->
+      <!--<tr class="info text-center col-12">-->
+        <!--<th class="">Фото</th>-->
+        <!--<th class="">Название</th>-->
+        <!--<th class="">Size</th>-->
+        <!--<th class="">Цена</th>-->
+        <!--<th class="">Описание</th>-->
+        <!--<th class="">Show</th>-->
         <!--<th class="hidden-xs text-center">Show</th>-->
-        <th class="">Edit</th>
-        <th class="">Delete</th>
-        <th class="">Показать</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @seller_products.each do |product| %>
-      <tr class="success imgtel text-center col-12" id="product_<%= product.id %>">
-        <td><%= image_tag product.main_image.url(:thumb) %></td>
-        <td class=""><%= product.name %></td>
-        <td class=""><%= product.size %></td>
-        <td class=""><%= product.price %></td>
-        <td class=""><%= product.description %></td>
-        <td class=" "><span class="glyphicon glyphicon-eye-open btn-md" aria-hidden="true"></span> <%= product.view_count %></td>
+        <!--<th class="">Edit</th>-->
+        <!--<th class="">Delete</th>-->
+        <!--<th class="">Показать</th>-->
+      <!--</tr>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+    <!--<% @seller_products.each do |product| %>-->
+      <!--<tr class="success imgtel text-center col-12" id="product_<%= product.id %>">-->
+        <!--<td><%= image_tag product.main_image.url(:thumb) %></td>-->
+        <!--<td class=""><%= product.name %></td>-->
+        <!--<td class=""><%= product.size %></td>-->
+        <!--<td class=""><%= product.price %></td>-->
+        <!--<td class=""><%= product.description %></td>-->
+        <!--<td class=" "><span class="glyphicon glyphicon-eye-open btn-md" aria-hidden="true"></span> <%= product.view_count %></td>-->
         <!--<td class="hidden-xs "><%= link_to ' Show ', showproduct_seller_panel_path(product), :type => 'button', :class => ' btn button_form' %></td>-->
-        <td><%= link_to ' Edit ', edit_product_path(product), :type => 'button', :class => 'btn button_form' %></td>
-        <td><%= link_to ' Del ', product, remote: true, method: :delete, data: { confirm: 'Вы уверены что хотите удалить это товар?' }, :type => 'button', :class => 'btn button_form' %></td>
-        <td>
-          <%= form_tag(seller_panel_product_visible_path, method: :post,  class: "product_info", id: "product_visible#{product.id}") do %>
-              <%= hidden_field_tag 'product_id', product.id %>
-              <%= check_box_tag 'visible', 1, product.visible == 1, {id: "product#{product.id}", pr_id: product.id }  %>
-          <%= label_tag "product#{product.id}", '<span></span>'.html_safe %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
+        <!--<td><%= link_to ' Edit ', edit_product_path(product), :type => 'button', :class => 'btn button_form' %></td>-->
+        <!--<td><%= link_to ' Del ', product, remote: true, method: :delete, data: { confirm: 'Вы уверены что хотите удалить это товар?' }, :type => 'button', :class => 'btn button_form' %></td>-->
+        <!--<td>-->
+          <!--<%= form_tag(seller_panel_product_visible_path, method: :post,  class: "product_info", id: "product_visible#{product.id}") do %>-->
+              <!--<%= hidden_field_tag 'product_id', product.id %>-->
+              <!--<%= check_box_tag 'visible', 1, product.visible == 1, {id: "product#{product.id}", pr_id: product.id }  %>-->
+          <!--<%= label_tag "product#{product.id}", '<span></span>'.html_safe %>-->
+          <!--<% end %>-->
+        <!--</td>-->
+      <!--</tr>-->
+    <!--<% end %>-->
 
-    </tbody>
-  </table>
+    <!--</tbody>-->
+  <!--</table>-->
 
   <!--мобильная версия-->
 
-  <% @seller_products.each do |product| %>
-  <div class="product_block_mobail d-block d-md-none">
+  <!--<% @seller_products.each do |product| %>-->
+  <!--<div class="product_block_mobail d-block d-md-none">-->
 
-    <div class="product_block_about d-flex">
-      <div class="col-4" >
-        <%= image_tag product.main_image.url(:thumb) %>
-      </div>
-      <div class="col-8">
-        <p><%= product.name %></p>
-        <p>Размер: <%= product.size %></p>
-        <p><%= product.price %> грн.</p>
-      </div>
-    </div>
-    <div class="product_block_statistic d-flex align-content-center text-center">
-      <div class="col-6">
-        <div>Просмотров</div>
-        <div class="product_block_statistic_count"><%= product.view_count %></div>
-      </div>
-      <div class="col-6">
-        <div>Видимость</div>
-        <div>
-          <%= form_tag(seller_panel_product_visible_path, method: :post,  class: "product_info", id: "product_visible#{product.id}") do %>
-              <%= hidden_field_tag 'product_id', product.id %>
-              <%= check_box_tag 'visible', 1, product.visible == 1, {id: "product#{product.id}", pr_id: product.id }  %>
-              <%= label_tag "product#{product.id}", '<span></span>'.html_safe %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-        <div class="product_block_edit d-flex justify-content-around">
-          <div>
-            <%= link_to ' Редактировать ', edit_product_path(product), :type => 'button', :class => 'btn button_form' %>
-          </div>
-          <div>
-            <%= link_to ' Удалить ', product, remote: true, method: :delete, data: { confirm: 'Вы уверены что хотите удалить это товар?' }, :type => 'button', :class => 'btn button_form' %>
-          </div>
-        </div>
+    <!--<div class="product_block_about d-flex">-->
+      <!--<div class="col-4" >-->
+        <!--<%= image_tag product.main_image.url(:thumb) %>-->
+      <!--</div>-->
+      <!--<div class="col-8">-->
+        <!--<p><%= product.name %></p>-->
+        <!--<p>Размер: <%= product.size %></p>-->
+        <!--<p><%= product.price %> грн.</p>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="product_block_statistic d-flex align-content-center text-center">-->
+      <!--<div class="col-6">-->
+        <!--<div>Просмотров</div>-->
+        <!--<div class="product_block_statistic_count"><%= product.view_count %></div>-->
+      <!--</div>-->
+      <!--<div class="col-6">-->
+        <!--<div>Видимость</div>-->
+        <!--<div>-->
+          <!--<%= form_tag(seller_panel_product_visible_path, method: :post,  class: "product_info", id: "product_visible#{product.id}") do %>-->
+              <!--<%= hidden_field_tag 'product_id', product.id %>-->
+              <!--<%= check_box_tag 'visible', 1, product.visible == 1, {id: "product#{product.id}", pr_id: product.id }  %>-->
+              <!--<%= label_tag "product#{product.id}", '<span></span>'.html_safe %>-->
+          <!--<% end %>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+        <!--<div class="product_block_edit d-flex justify-content-around">-->
+          <!--<div>-->
+            <!--<%= link_to ' Редактировать ', edit_product_path(product), :type => 'button', :class => 'btn button_form' %>-->
+          <!--</div>-->
+          <!--<div>-->
+            <!--<%= link_to ' Удалить ', product, remote: true, method: :delete, data: { confirm: 'Вы уверены что хотите удалить это товар?' }, :type => 'button', :class => 'btn button_form' %>-->
+          <!--</div>-->
+        <!--</div>-->
 
-  </div>
-  <% end %>
+  <!--</div>-->
+  <!--<% end %>-->
 
   <script type="text/javascript">
 

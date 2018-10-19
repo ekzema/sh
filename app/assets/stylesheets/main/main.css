@@ -376,7 +376,8 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     padding-top: 4.5px;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 576px) {
+    .container{width: 90%!important;}
     .form{ max-width: 90%;}
 }
 
@@ -1106,10 +1107,10 @@ body {
     width:25px;
     height:25px;
     vertical-align: middle;
-    margin: 4px 0 0 0;
+    margin: 0 0 0 5px;
     background:url('/checkbox-border25X25.png') left top no-repeat;
     cursor:pointer;
-    transition: all .2s
+    transition: all .2s;
 }
 .product_info input[type="checkbox"]:checked + label span {
     background:url('/checkbox25X25-green.png') top no-repeat;
@@ -1118,29 +1119,38 @@ body {
 /*END checkbox product_info*/
 
 /*страница sellerproduct мобилка*/
+/*.p_size:first-letter {*/
+    /*font-size: 24px; */
+    /*color: #212529!important;*/
+    /*font-weight: 400!important;*/
+/*}*/
 .product_block_mobail{
     margin-bottom: 5px;
     border: 1px solid #c9cccf;
 }
 .product_block_about img{
-    width: 100%;
+    /*width: 100%;*/
     /*margin: 5px;*/
 }
 .product_block_about{
-    padding: 10px 0;
+    /*padding: 10px 0;*/
 }
 .product_block_about p{
 
-    text-transform: capitalize;
-    white-space: nowrap!important;
-    overflow: hidden!important;
-    text-overflow: ellipsis!important;
+    /*text-transform: capitalize;*/
+    /*white-space: nowrap!important;*/
+    /*overflow: hidden!important;*/
+    /*text-overflow: ellipsis!important;*/
+}
+.product_block_foto{
+    background: #f2f5f8;
 }
 .product_block_statistic{
-    background: #c9cccf;
+    background: #f2f5f8;
 }
 .product_block_statistic_count{
-    margin-top: 4px;
+    /*margin-top: 4px;*/
+    margin-left: 5px;
 }
 .product_block_edit{
     margin-top: 10px;
@@ -1559,4 +1569,22 @@ input[type="checkbox"] {
 
 .delFav{
     cursor: pointer;
+}
+.dialog_form textarea{
+    border: 1px solid #c9cccf;
+    border-radius: 5px;
+    background: #f2f5f8;
+    margin: 10px 0;
+    width: 500px;
+    height: 100px;
+}
+@media only screen and (max-width: 576px) {
+    .dialog_form textarea{
+
+        width: 100%!important;
+
+    }
+}
+.like{
+    width: 25px;
 }
