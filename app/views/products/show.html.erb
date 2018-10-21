@@ -75,8 +75,11 @@
             </a>
             <div class="collapse" id="demo1">
               <p>Позвонить <br> <%= @product.seller.phone %></p>
-              <p><a href="#"><span class="button_send">Перейти</span></a> на страницу продавца</p>
-
+              <p>
+              <%= link_to seller_products_path(@seller.id) do %>
+                  <span class="button_send">Перейти</span>
+              <% end %>
+                на страницу продавца</p>
               <% if seller_signed_in? %>
                   <% if current_seller.id == @product.seller_id %>
                       <p>Этот товар добавили Вы!</p>

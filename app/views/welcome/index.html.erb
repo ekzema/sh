@@ -34,7 +34,7 @@
               <% category.category_slide_images.each do |slide| %>
                   <div class="carousel-item">
                     <%= link_to showcat_path(category.translit_url) do %>
-                        <%= image_tag slide.image, :class => 'd-block w-100'  %>
+                        <%= image_tag slide.image.url, :class => 'd-block w-100'  %>
                     <% end %>
                     <div class="carousel-caption">
                       <p class="sh16"><%= slide.category.name %></p>
@@ -86,7 +86,7 @@
             <li class="col-12 col-sm-6 col-md-4 toggle_block">
             <%= link_to showtwocat_path(twocategory.category.translit_url, twocategory.translit_url), class:'size1' do %>
 
-                <%= image_tag twocategory.image, :class => 'img__tovar' %>
+                <%= image_tag twocategory.image.url, :class => 'img__tovar' %>
                 <p class="category_name"><%= twocategory.name %></p>
 
             <% end %>
