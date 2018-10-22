@@ -325,8 +325,8 @@ function addToFavorite(id) {
         data: {product_id: id},
         success: function(result){
             if (result.success) {
-                $('.favoritesCount').html(result.count)
-                $('.favoriteButton').html("Удалить из <span class='favItem btn-custom glyphicon glyphicon-heart-empty' onclick='removeToFavorite("+result.id+")'>избранного</span>");
+                $('.favoritesCount').html(result.count);
+                $('.favImg').attr({'src': '/favorite_red.svg', 'title': 'Удалить из избранного', 'onclick': 'removeToFavorite('+result.id+')'});
                 $('#notice').html("<div class='alert alert-success' role='alert'>"+result.message+"</div>");
                 setTimeout("$('.alert').fadeOut(1000);", 4000);
                 setTimeout("$('.alert').remove();", 5000);
@@ -347,8 +347,8 @@ function removeToFavorite(id){
         data: {product_id: id},
         success: function(result){
             if (result.success) {
-                $('.favoritesCount').html(result.count)
-                $('.favoriteButton').html("Добавить в <span class='favItem btn-custom glyphicon glyphicon-heart-empty' onclick='addToFavorite("+result.id+")'>избранное</span>");
+                $('.favoritesCount').html(result.count);
+                $('.favImg').attr({'src': '/favorite_yellow.svg', 'title': 'Добавить в избранное', 'onclick': 'addToFavorite('+result.id+')'});
                 $('#notice').html("<div class='alert alert-success' role='alert'>"+result.message+"</div>");
                 setTimeout("$('.alert').fadeOut(1000);", 4000);
                 setTimeout("$('.alert').remove();", 5000);
@@ -371,7 +371,7 @@ function removeFav(id){
             if (result.success) {
                 $('#fav_'+id).parent().remove();
                 var count = $('.favoritesCount').text();
-                $('.favoritesCount').text(count - 1)
+                $('.favoritesCount').text(count - 1);
             }
         }
     });

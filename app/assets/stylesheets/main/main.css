@@ -1426,6 +1426,11 @@ body {
 }
 
 .favItem{
+    position: absolute;
+    width: 25px !important;
+    height: 25px !important;
+    top: 5px;
+    right: 5px;
     cursor: pointer;
 }
 
@@ -1587,4 +1592,8 @@ input[type="checkbox"] {
 }
 .like{
     width: 25px;
+}
+
+.wrapImgProdShow{
+    position: relative;
 }

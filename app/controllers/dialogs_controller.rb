@@ -22,6 +22,8 @@ class DialogsController < ApplicationController
     dialog = Dialog.find(params[:id])
     redirect_to :root if ! dialog
     @dialog_id = dialog.id
+    cross = SellersCrossDialog.find(params[:id]).product_id
+    @product = Product.find(cross)
     @messages = dialog.messages
     if @messages.first.seller_id == current_seller.id || @messages.first.recipient_id == current_seller.id
       @messages.each {|m| m.update(:status => Time.now) if m.recipient_id == current_seller.id && ! m.status}
@@ -29,7 +31,6 @@ class DialogsController < ApplicationController
       else
       redirect_to :root
     end
-
   end
 
   def destroy

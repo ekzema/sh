@@ -5,7 +5,8 @@
 <div class="d-flex flex-column">
   <div>
     <ul class="messages">
-      <p>сюда нужно добавить название вещи и её фото</p>
+      <p><strong><%= @product.name %></strong></p>
+      <p><%= image_tag @product.main_image(:thumb) %></p>
       <% @messages.each do |message| %>
           <li><span><%= message.seller.name %> : </span>
             <%= message.body %></p

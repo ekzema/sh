@@ -46,7 +46,18 @@
   <div class="col-12 col-md-10 col-lg-8">
     <div class="d-block d-sm-flex">
       <div class="col-12 col-sm-6 products_foto d-flex justify-content-center">
-        <%= image_tag(@product.main_image(:medium)) %>
+        <div class="wrapImgProdShow">
+          <%= image_tag(@product.main_image(:medium)) %>
+          <% if ! seller_signed_in?  %>
+              <%= link_to new_seller_session_path(continue: product_path(@product)) do %>
+                  <%= image_tag '/favorite_yellow.svg', class: 'favItem', title: 'Добавить в избранное'%>
+              <% end %>
+          <% elsif @product.favorite? current_seller.id%>
+              <%= image_tag '/favorite_red.svg', class: 'favItem favImg', title: 'Удалить из избранного', onclick: "removeToFavorite(#{@product.id})" %>
+          <% else %>
+              <%= image_tag '/favorite_yellow.svg', class: 'favItem favImg', title: 'Добавить в избранное', onclick: "addToFavorite(#{@product.id})" %>
+          <% end %>
+        </div>
       </div>
       <div class="col-12 col-sm-6 products_offer">
         <ul>
@@ -54,13 +65,6 @@
           <li >Стоимость: <%= @product.price %> ГРН.</li>
           <li >Размер: <span><%= @product.size %></span></li>
           <li >Качество товара: <span><%= @product.quality %></span><%= image_tag 'like1.png', class: 'like' %><%= image_tag 'like2.png', class: 'like' %></li>
-          <% if ! seller_signed_in?  %>
-              <li class="favoriteButton">Добавить в <span class="favItem button_send"><%= link_to 'избранное', new_seller_session_path(continue: product_path(@product)), class: " " %></span></li>
-              <% elsif @product.favorite? current_seller.id%>
-          <li class="favoriteButton">Удалить из <span class="favItem button_send" onclick="removeToFavorite(<%= @product.id %>)">избранное</span></li>
-              <% else %>
-              <li class="favoriteButton">Добавить в <span class="favItem button_send" onclick="addToFavorite(<%= @product.id %>)">избранное</span></li>
-          <% end %>
         </ul>
       </div>
     </div>
