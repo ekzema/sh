@@ -27,4 +27,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def not_found
+    render_404 if Rails.env == 'production'
+  end
+
+  def render_404
+    render :file => "#{Rails.root}/public/404", :layout => false, :status => 404
+  end
+
 end

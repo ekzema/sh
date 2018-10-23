@@ -4,7 +4,7 @@ class SellerPanelController < ApplicationController
   before_action :set_product, only: [:showproduct]
 
   def product
-    @seller_products = current_seller.products.where(:moderation => 1).order(created_at: :desc)
+    @seller_products = current_seller.products.where(:moderation => 1, :deleted_at => nil).order(created_at: :desc)
   end
 
   def dialogs
@@ -19,7 +19,6 @@ INNER JOIN sellers s ON s.id = scd2.seller_id WHERE scd2.seller_id <> #{current_
   end
 
   def showproduct
-    
     # unless @product.visible == 1 and @product.moderation == 1
     #   redirect_to :root
     # end

@@ -35,9 +35,9 @@ class Product < ApplicationRecord
       w = dimensions.width
       h = dimensions.height
       if w > h
-        "-resize x500 -gravity Center -crop 500x500+0+0"
+        "-resize x300 -gravity Center -crop 300x300+0+0"
       else
-        "-resize 500x -gravity Center -crop 500x500+0+0"
+        "-resize 300x -gravity Center -crop 300x300+0+0"
       end
     end
   end

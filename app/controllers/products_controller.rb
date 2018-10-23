@@ -100,13 +100,18 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
-    if @product.destroy
+    if ! @product || @product.seller_id != current_seller.id
+      render :plain =>  'Product error' and return
+    end
+    @product.deleted_at = DateTime.current
+    if @product.save
       respond_to do |format|
         format.js
       end
+    else
+      render :plain => 'Product was not deleted'
     end
   end
-
 
   def form_render
     @twocategory = Twocategory.where(category_id: params[:product][:category_id])
@@ -119,7 +124,6 @@ class ProductsController < ApplicationController
         render :partial => 'twocategory', locals: {twocategory: @twocategory}
       end
     end
-
     if params[:product][:twocategory_id]
       if params[:product][:twocategory_id].blank?
         render text: ''
@@ -131,10 +135,15 @@ class ProductsController < ApplicationController
   end
 
   def delete_attachment
-    @product = Product.find(params[:id])
+    @product = Product.find_by(id: params[:id], deleted_at: nil)
+    if @product || @product.seller_id == current_seller.id
     @product.main_image = nil
     @product.save
     redirect_back(fallback_location: @product)
+    else
+      redirect_to :root
+      flash[:notice] = 'Product not found'
+    end
   end
 
   def sent_message
@@ -183,13 +192,12 @@ class ProductsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_product
-    @product = Product.find(params[:id])
+    @product = Product.find_by(id: params[:id], deleted_at: nil) or not_found
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def product_params
-    params.require(:product).permit(:size, :price, :quality, :category_id, :twocategory_id, :threecategory_id, :description, :meta_desc, :meta_key, :meta_title, :main_image, :name, :article, :visible, :main_image_original_w, :main_image_original_h, :main_image_box_w, :main_image_aspect, :main_image_crop_x, :main_image_crop_y, :main_image_crop_w, :main_image_crop_h,
-                                    product_slide_images_attributes: [:id, :_destroy, :image]
+    params.require(:product).permit(:size, :price, :quality, :category_id, :twocategory_id, :threecategory_id, :description, :meta_desc, :meta_key, :meta_title, :main_image, :name, :article, :visible, :deleted_at, :main_image_original_w, :main_image_original_h, :main_image_box_w, :main_image_aspect, :main_image_crop_x, :main_image_crop_y, :main_image_crop_w, :main_image_crop_h, product_slide_images_attributes: [:id, :_destroy, :image]
     )
   end
 end
