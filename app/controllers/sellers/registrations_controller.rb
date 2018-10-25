@@ -46,9 +46,14 @@ before_action :configure_account_update_params, only: [:update]
 
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    resource.deleted_at = DateTime.current
+    resource.save
+    Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+    set_flash_message! :notice, :destroyed
+    yield resource if block_given?
+    respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -60,10 +65,15 @@ before_action :configure_account_update_params, only: [:update]
   # end
 
   def delete_attachment
-    @seller= Seller.find(params[:id])
-    @seller.avatar = nil
-    @seller.save
-    redirect_to :back
+    @seller= Seller.find_by(id: params[:id], deleted_at: nil)
+    if @seller || @seller.id == current_seller.id
+      @seller.avatar = nil
+      @seller.save
+      redirect_back(fallback_location: @seller)
+    else
+      redirect_back(fallback_location: @seller)
+      flash[:notice] = 'Seller not found'
+    end
   end
 
   private

@@ -99,9 +99,9 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
 
   def destroy
-    @product = Product.find(params[:id])
+    @product = Product.find_by(id: params[:id], deleted_at: nil)
     if ! @product || @product.seller_id != current_seller.id
-      render :plain =>  'Product error' and return
+      render :plain =>  'Product not found', status: 404 and return
     end
     @product.deleted_at = DateTime.current
     if @product.save
@@ -141,7 +141,7 @@ class ProductsController < ApplicationController
     @product.save
     redirect_back(fallback_location: @product)
     else
-      redirect_to :root
+      redirect_back(fallback_location: @product)
       flash[:notice] = 'Product not found'
     end
   end

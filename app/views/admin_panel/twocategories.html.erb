@@ -34,7 +34,7 @@
             <% @twocategory.each do |twocategory| %>
                 <tr id="product_<%= twocategory.id %>">
                   <td><%= twocategory.id %></td>
-                  <td><span class="profile-ava sellerAvatar"><%= image_tag twocategory.image %></span></td>
+                  <td><span class="profile-ava sellerAvatar"><%= image_tag twocategory.image.url %></span></td>
                   <td><%= twocategory.name %></td>
                   <td><%= twocategory.category.name %></td>
                   <td><%= twocategory.description %></td>

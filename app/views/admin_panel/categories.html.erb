@@ -33,7 +33,7 @@
             <% @category.each do |category| %>
                 <tr id="product_<%= category.id %>">
                   <td><%= category.id %></td>
-                  <td><span class="profile-ava sellerAvatar"><%= image_tag category.main_image %></span></td>
+                  <td><span class="profile-ava sellerAvatar"><%= image_tag category.main_image.url %></span></td>
                   <td><%= category.name %></td>
                   <td><%= category.description %></td>
                   <td><%= category.created_at.strftime('%F') %></td>
