@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :authenticate_seller!
+  before_action :check_delete_seller
 
   def create
     result = {success: false, message: 'Error'}

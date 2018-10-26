@@ -1,5 +1,5 @@
 class SellerPanelController < ApplicationController
-  before_action :authenticate_seller!
+  before_action :check_delete_seller
   # before_action :reset_session
   before_action :set_product, only: [:showproduct]
 

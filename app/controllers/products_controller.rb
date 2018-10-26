@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit]
-  before_action :authenticate_seller!, except: [:index, :show]
+  before_action :check_delete_seller, except: [:index, :show]
   # before_action :reset_session, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /products

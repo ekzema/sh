@@ -1,5 +1,5 @@
 class DialogsController < ApplicationController
-  before_action :authenticate_seller!
+  before_action :check_delete_seller
 
   def create
     @result = {success: false, message: "Возникла ошибка при отправке сообщения"}

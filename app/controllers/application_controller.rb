@@ -35,4 +35,13 @@ class ApplicationController < ActionController::Base
     render :file => "#{Rails.root}/public/404", :layout => false, :status => 404
   end
 
+  private
+  def check_delete_seller
+    if seller_signed_in? && current_seller.deleted_at
+      redirect_to destroy_seller_session_path
+    else
+      authenticate_seller!
+    end
+  end
+
 end
