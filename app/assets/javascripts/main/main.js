@@ -377,6 +377,15 @@ function removeFav(id){
     });
 }
 
+$(document).on('ready turbolinks:load', function(){
+    $('#showModal').on('click',  function () {
+        $('#win').show();
+    });
+
+    $('#hideModal').on('click',  function () {
+        $('#win').hide();
+    });
+});
 
 
 

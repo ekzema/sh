@@ -116,7 +116,6 @@ class ProductsController < ApplicationController
   def form_render
     @twocategory = Twocategory.where(category_id: params[:product][:category_id])
     @threecategory = Threecategory.where(twocategory_id: params[:product][:twocategory_id])
-    sleep(0.5)
     if params[:product][:category_id]
       if params[:product][:category_id].blank?
         render text: ''

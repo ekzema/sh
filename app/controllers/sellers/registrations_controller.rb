@@ -47,7 +47,7 @@ before_action :configure_account_update_params, only: [:update]
 
   # DELETE /resource
   def destroy
-    resource.deleted_at = DateTime.current
+    resource.soft_delete
     resource.save
     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
     set_flash_message! :notice, :destroyed

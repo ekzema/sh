@@ -21,6 +21,19 @@ class Seller < ApplicationRecord
   validates_attachment_file_name :avatar, matches: [/png\z/, /jpe?g\z/, /gif\z/]
   crop_attached_file :avatar
 
+  def soft_delete
+    update_attribute(:deleted_at, Time.current)
+  end
+
+  # ensure user account is active
+  def active_for_authentication?
+    super && !deleted_at
+  end
+
+  def inactive_message
+    !deleted_at ? super : "Акаунт #{self.email} был удалён или заблокирован. Попробуйте другой email"
+  end
+
   def favorites
     Product.joins(:favorites).where('favorites.seller_id' => self.id)
   end

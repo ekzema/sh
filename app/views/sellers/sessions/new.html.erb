@@ -8,6 +8,12 @@
         <span><%= raw flash[:error] %></span>
       </div>
   <% end %>
+  <% if flash[:alert] %>
+      <div class="alert alert-danger text-center" style="margin:10px;">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <span><%= raw flash[:alert] %></span>
+      </div>
+  <% end %>
   <% if flash[:notice] %>
       <div class="alert alert-danger text-center" style="margin:10px;">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
