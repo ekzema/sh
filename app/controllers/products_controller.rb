@@ -153,7 +153,6 @@ class ProductsController < ApplicationController
     end
     seller = Seller.find_by_id(params[:recipient_id])
     product = Product.find(params[:product_id])
-    arr = [current_seller.id, seller.id]
     unless seller
       @result[:message] = "Такого пользователя не существует!"
       return  @result
@@ -167,6 +166,10 @@ class ProductsController < ApplicationController
       SellersCrossDialog.create(seller_id: seller.id, dialog_id:  dialog.id, product_id: product.id)
       message.dialog_id = dialog.id
     else
+      if findMessage.deleted_at
+        findMessage.deleted_at = nil
+        findMessage.save
+      end
       message = Message.new(message_params)
       message.dialog_id = findMessage.dialog_id
     end

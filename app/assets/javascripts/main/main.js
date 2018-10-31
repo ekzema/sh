@@ -381,7 +381,7 @@ $(document).on('turbolinks:load', function(){
     $('.showModal').on('click',  function () {
         var dialog_id = $(this).attr('dialog_id');
         $('.deleteDialog').attr({id: dialog_id});
-        $('.errorResponse').text('')
+        $('.errorResponse').text('');
         $('#win').show();
     });
 
@@ -389,8 +389,10 @@ $(document).on('turbolinks:load', function(){
         $('#win').hide();
     });
     $('.deleteDialog').on('click',  function () {
+        setTimeout(function () {
+            $('.errorResponse').html("<img src='/images/dialog_del.svg'>");
+        },500);
         var id = $(this).attr('id');
-        console.log(id);
         $.ajax({
             url: '/dialogs/'+id,
             type: 'delete',
@@ -399,7 +401,7 @@ $(document).on('turbolinks:load', function(){
                     $('#dialog_'+id).remove();
                     $('#win').hide();
                 } else {
-                    $('.errorResponse').text('Возникла ошибка. Диалог не был удалён')
+                    $('.errorResponse').text('Возникла ошибка. Диалог не был удалён');
                 }
             }
         });
