@@ -34,6 +34,18 @@ class DialogsController < ApplicationController
   end
 
   def destroy
-
+    scd = SellersCrossDialog.find_by(
+        dialog_id: params[:id],
+        seller_id: current_seller.id,
+        deleted_at: nil
+    )
+    unless scd
+      render json: {success: false} and return
+    end
+    scd.deleted_at = DateTime.current
+    unless scd.save
+      render json: {success: false} and return
+    end
+    render json: {success: true}
   end
 end

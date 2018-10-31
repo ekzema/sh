@@ -9,7 +9,7 @@ class SellerPanelController < ApplicationController
 
   def dialogs
     sql = "SELECT d.id, scd2.seller_id AS seller_id, s.name AS name, s.surname AS surname, p.name AS product_name FROM dialogs d
-INNER JOIN sellers_cross_dialogs scd1 ON scd1.dialog_id = d.id AND scd1.seller_id = #{current_seller.id}
+INNER JOIN sellers_cross_dialogs scd1 ON scd1.dialog_id = d.id AND scd1.seller_id = #{current_seller.id} AND scd1.deleted_at IS NULL
 INNER JOIN sellers_cross_dialogs scd2 ON scd2.dialog_id = d.id AND scd2.dialog_id = scd1.dialog_id
 INNER JOIN products p ON p.id = scd2.product_id
 INNER JOIN sellers s ON s.id = scd2.seller_id WHERE scd2.seller_id <> #{current_seller.id}

@@ -4,30 +4,82 @@
 
   <ul class="dialogs">
     <% @dialogs.each do |dialog| %>
-      <li>
+      <li id="dialog_<%= dialog.id %>">
       <%= link_to seller_dialogs_path(dialog.id) do%>
         <p><%= dialog.name %> | <%= dialog.product_name %><%= dialog.total_new(current_seller.id, dialog.id) %></p>
       <% end %>
-      </li><br>
+        <span dialog_id="<%= dialog.id %>" class="delDialog showModal">удалить</span>
+      </li>
     <% end %>
   </ul>
   </div>
 </div>
 
-<p id="showModal">Написать нам</p>
 <div class="dm-overlay" id="win">
   <div class="dm-table">
     <div class="dm-cell">
       <div class="dm-modal">
-        <span id="hideModal" href="" class="closeModal"></span>
-        <h3><i class="fa fa-envelope-o fa-lg" style="color:#F05F40;"></i>&thinsp;&thinsp;Написать нам</h3>
-        <p><span>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Рукопись курсивных злых предупреждал своего путь по всей своих силуэт, имени, возвращайся даль подзаголовок, свою текстов толку одна точках осталось переписали.</span>
-          <span>Ручеек жаренные единственное запятой семь всемогущая коварных за над толку осталось. Предложения меня, толку осталось грамматики жизни предупредила единственное она необходимыми парадигматическая сих это залетают прямо буквоград, рот одна речью!</span>
-          <span>Текст переписывается большого пустился текста маленькая свой власти лучше, алфавит раз моей все последний образ рыбными запятой домах, они, рот ее? Имени последний если рекламных решила заголовок все ему, текстов.</span>
-          <span>Вскоре пустился решила, вопроса, своего все строчка, но своих он взгляд по всей рыбными живет силуэт продолжил страну, мир? Образ лучше сбить первую взобравшись, до там решила языком дал имени по всей.</span>
-          <span>Журчит если грустный предложения безорфографичный на берегу взгляд текст возвращайся образ но которой сбить гор несколько даль, вопрос вершину назад за живет взобравшись повстречался имени, ему продолжил рыбного не маленькая. Ведущими.</span>
-        </p>
+        <span class="closeModal hideModal"></span>
+        <h4>Внимание</h4>
+        <p class="modalMessage">Вы уверины что хотите удалить данный диалог?</p>
+        <p class="errorResponse" align="center"></p>
+        <hr>
+        <div class="wrapWinButton">
+          <div class="rowWrap">
+            <button type="button" class="deleteDialog btn btn-outline-danger btn-sm">да</button>
+          </div>
+          <div class="rowWrap">
+            <button type="button" class="hideModal btn btn-outline-secondary btn-sm">нет</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<style>
+  #win h4, #win p{
+    text-align: center;
+  }
+
+  #win h4{
+    color: red;
+  }
+
+  #win .modalMessage{
+    font-size: 20px;
+  }
+
+  #win .btn:hover{
+    color: white !important;
+  }
+  #win .btn{
+    margin: 0 !important;
+  }
+
+  .delDialog{
+    cursor: pointer;
+  }
+
+  .delDialog:hover{
+    text-decoration: underline;
+    color: red;
+  }
+
+  .rowWrap{
+    width: 100%;
+    text-align: center;
+  }
+
+  .wrapWinButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .errorResponse{
+    color: red;
+    font-size: 14px;
+  }
+</style>

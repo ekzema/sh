@@ -377,15 +377,33 @@ function removeFav(id){
     });
 }
 
-$(document).on('ready turbolinks:load', function(){
-    $('#showModal').on('click',  function () {
+$(document).on('turbolinks:load', function(){
+    $('.showModal').on('click',  function () {
+        var dialog_id = $(this).attr('dialog_id');
+        $('.deleteDialog').attr({id: dialog_id});
+        $('.errorResponse').text('')
         $('#win').show();
     });
 
-    $('#hideModal').on('click',  function () {
+    $('.hideModal').on('click',  function () {
         $('#win').hide();
     });
+    $('.deleteDialog').on('click',  function () {
+        var id = $(this).attr('id');
+        console.log(id);
+        $.ajax({
+            url: '/dialogs/'+id,
+            type: 'delete',
+            success: function(result){
+                if (result.success) {
+                    $('#dialog_'+id).remove();
+                    $('#win').hide();
+                } else {
+                    $('.errorResponse').text('Возникла ошибка. Диалог не был удалён')
+                }
+            }
+        });
+    });
 });
-
 
 
