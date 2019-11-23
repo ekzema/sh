@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20180705220756) do
     t.datetime "main_image_updated_at"
     t.string   "name"
     t.string   "article"
-    t.integer  "moderation"
+    t.integer  "moderation",                            default: 0
     t.integer  "visible"
     t.integer  "seller_id"
     t.integer  "view_count",                            default: 0
@@ -165,7 +165,7 @@ ActiveRecord::Schema.define(version: 20180705220756) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.integer  "moderation"
+    t.integer  "moderation",                           default: 0
     t.integer  "reset_session",                        default: 1
     t.string   "phone"
     t.text     "description",            limit: 65535
