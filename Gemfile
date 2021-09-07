@@ -44,7 +44,7 @@ end
 
 group :development do
   gem 'faker', '~> 1.6', '>= 1.6.6'
-  gem 'better_errors', '~> 2.1', '>= 2.1.1'
+  gem 'better_errors', '~> 2.8'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
